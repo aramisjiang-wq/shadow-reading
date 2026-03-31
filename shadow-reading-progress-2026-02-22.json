@@ -1,0 +1,16 @@
+{
+  "wordStatuses": {
+    "decades": "unknown",
+    "rings": "mastered",
+    "tidy": "unknown",
+    "clock": "mastered",
+    "curtains": "unknown",
+    "stretch": "review",
+    "alarm": "unknown"
+  },
+  "completedArticles": [
+    0
+  ],
+  "exportDate": "2026-02-22T12:23:10.777Z",
+  "version": "1.0"
+}
