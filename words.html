@@ -3,169 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>单词本 - Shadow Reading</title>
+    <title>单词本 — Shadow Reading</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a24;
-            --bg-hover: #22222e;
-            --accent-primary: #00d4aa;
-            --accent-secondary: #7c3aed;
-            --accent-gradient: linear-gradient(135deg, #00d4aa 0%, #00a8cc 100%);
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --text-muted: #606070;
-            --success: #00d4aa;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --border: rgba(255,255,255,0.06);
-            --font-display: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-body: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bg-primary:      #09090f;
+            --bg-secondary:    #111119;
+            --bg-card:         #17171f;
+            --bg-hover:        #1f1f2c;
+            --bg-elevated:     #1e1e2e;
+            --accent-primary:  #00d4aa;
+            --accent-dim:      rgba(0,212,170,0.12);
+            --accent-gradient: linear-gradient(135deg,#00d4aa 0%,#00b4d8 100%);
+            --text-primary:    #eeeef8;
+            --text-secondary:  #9090a8;
+            --text-muted:      #4a4a62;
+            --success:         #00d4aa;
+            --warning:         #f59e0b;
+            --error:           #f87171;
+            --border:          rgba(255,255,255,0.07);
+            --border-accent:   rgba(0,212,170,0.28);
+            --shadow-sm:       0 2px 8px rgba(0,0,0,0.35);
+            --shadow-md:       0 8px 24px rgba(0,0,0,0.5);
+            --shadow-lg:       0 20px 60px rgba(0,0,0,0.65);
+            --r-sm: 6px; --r-md: 10px; --r-lg: 14px;
+            --font-ui:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-cn:      'Noto Sans SC', var(--font-ui);
+            --font-reading: 'Lora', 'Georgia', serif;
+            --font-mono:    'SF Mono','Fira Code','Consolas',monospace;
         }
 
         .theme-light {
-            --bg-primary: #f5f5f7;
-            --bg-secondary: #ffffff;
-            --bg-card: #ffffff;
-            --bg-hover: #f0f0f2;
-            --accent-primary: #00a884;
-            --accent-gradient: linear-gradient(135deg, #00a884 0%, #0088cc 100%);
-            --text-primary: #1a1a1a;
-            --text-secondary: #333333;
-            --text-muted: #555555;
-            --success: #00a884;
-            --border: rgba(0,0,0,0.08);
+            --bg-primary:      #f2f2f7;
+            --bg-secondary:    #fafafa;
+            --bg-card:         #ffffff;
+            --bg-hover:        #ebebf0;
+            --bg-elevated:     #ffffff;
+            --accent-primary:  #009e80;
+            --accent-dim:      rgba(0,158,128,0.1);
+            --accent-gradient: linear-gradient(135deg,#009e80 0%,#0096b4 100%);
+            --text-primary:    #0c0c1a;
+            --text-secondary:  #44445e;
+            --text-muted:      #8888a0;
+            --border:          rgba(0,0,0,0.08);
+            --border-accent:   rgba(0,158,128,0.22);
+            --shadow-sm:       0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md:       0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg:       0 20px 60px rgba(0,0,0,0.18);
+            --success:         #009e80;
+            --error:           #dc2626;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 
         body {
-            font-family: var(--font-body);
+            font-family: var(--font-cn);
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px;
-        }
+        .container { max-width: 1360px; margin: 0 auto; padding: 24px 32px; }
 
+        /* ── Header ── */
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
             border-bottom: 1px solid var(--border);
         }
 
-        .header h1 {
-            font-size: 24px;
-            font-weight: 600;
+        .header-left { display:flex; align-items:center; gap:14px; }
+
+        .page-title {
+            font-family: var(--font-ui);
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
         }
 
-        .header-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
+        .header-actions { display:flex; gap:8px; align-items:center; }
 
         .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 8px 14px;
+            border-radius: var(--r-sm);
             border: 1px solid var(--border);
             background: var(--bg-card);
-            color: var(--text-primary);
-            font-size: 14px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--font-ui);
             cursor: pointer;
-            transition: all 0.15s ease;
+            display: inline-flex; align-items: center; gap: 6px;
+            transition: all 0.12s;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            white-space: nowrap;
         }
+        .btn:hover { background:var(--bg-hover); color:var(--text-primary); }
+        .btn:active { transform:scale(0.97); }
 
-        .btn:hover {
-            background: var(--bg-hover);
+        .btn-icon { padding:8px 10px; }
+
+        .theme-btn {
+            width: 34px; height: 34px;
+            border-radius: var(--r-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 16px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.15s;
         }
+        .theme-btn:hover { background:var(--bg-hover); color:var(--text-primary); }
 
-        .btn-primary {
-            background: var(--accent-primary);
-            color: #fff;
-            border-color: var(--accent-primary);
-        }
-
+        /* ── Stats bar ── */
         .stats-bar {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(4,1fr);
+            gap: 12px;
+            margin-bottom: 22px;
         }
 
         .stat-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: var(--r-md);
             padding: 16px 20px;
-            text-align: center;
         }
+
+        .stat-top { display:flex; align-items:baseline; gap:6px; margin-bottom:6px; }
 
         .stat-value {
-            font-size: 28px;
+            font-family: var(--font-ui);
+            font-size: 30px;
             font-weight: 700;
-            margin-bottom: 4px;
+            line-height: 1;
         }
-
-        .stat-value.total { color: var(--text-primary); }
+        .stat-value.total    { color: var(--text-primary); }
         .stat-value.mastered { color: var(--success); }
-        .stat-value.review { color: var(--error); }
-        .stat-value.new { color: var(--text-muted); }
+        .stat-value.review   { color: var(--error); }
+        .stat-value.new      { color: var(--text-muted); }
+
+        .stat-pct {
+            font-family: var(--font-ui);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
 
         .stat-label {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-muted);
+            margin-bottom: 8px;
         }
 
-        .category-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 12px;
-        }
-
-        .category-tab {
-            padding: 8px 16px;
-            border-radius: 6px;
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .category-tab:hover {
-            color: var(--text-primary);
+        .stat-bar-track {
+            height: 3px;
             background: var(--bg-hover);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+        .stat-bar-fill.mastered { background: var(--success); }
+        .stat-bar-fill.review   { background: var(--error); }
+        .stat-bar-fill.new      { background: var(--text-muted); }
+
+        /* ── View tabs ── */
+        .view-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
         }
 
-        .category-tab.active {
-            background: var(--accent-primary);
-            color: #fff;
-            border-color: var(--accent-primary);
+        .view-tab {
+            padding: 7px 14px;
+            border-radius: var(--r-sm);
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-family: var(--font-ui);
+            cursor: pointer;
+            transition: all 0.12s;
         }
+        .view-tab:hover { color:var(--text-secondary); background:var(--bg-hover); }
+        .view-tab.active { background:var(--accent-primary); color:#fff; border-color:transparent; }
 
+        /* ── Filter bar ── */
         .filter-bar {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             margin-bottom: 20px;
             flex-wrap: wrap;
             align-items: center;
@@ -174,1161 +211,937 @@
         .search-input {
             flex: 1;
             min-width: 200px;
-            padding: 10px 16px;
+            padding: 9px 14px;
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: var(--r-sm);
             background: var(--bg-card);
             color: var(--text-primary);
-            font-size: 14px;
+            font-size: 13.5px;
+            font-family: var(--font-ui);
+            transition: border-color 0.15s;
         }
+        .search-input::placeholder { color:var(--text-muted); }
+        .search-input:focus { outline:none; border-color:var(--accent-primary); }
 
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-        }
+        .filter-group { display:flex; gap:4px; }
 
         .filter-btn {
-            padding: 10px 16px;
+            padding: 8px 13px;
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: var(--r-sm);
             background: var(--bg-card);
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 12.5px;
+            font-family: var(--font-ui);
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: all 0.12s;
         }
+        .filter-btn:hover { color:var(--text-secondary); background:var(--bg-hover); }
+        .filter-btn.active { background:var(--accent-primary); color:#fff; border-color:transparent; }
+        .filter-btn.f-mastered.active { background:rgba(0,212,170,0.15); color:var(--success); border-color:var(--border-accent); }
+        .filter-btn.f-review.active   { background:rgba(248,113,113,0.14); color:var(--error); border-color:rgba(248,113,113,0.3); }
+        .filter-btn.f-new.active      { background:var(--bg-hover); color:var(--text-secondary); border-color:rgba(255,255,255,0.15); }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--accent-primary);
-            color: #fff;
-            border-color: var(--accent-primary);
-        }
+        /* ── Layout ── */
+        .content-area { display:flex; gap:20px; }
 
-        .content-area {
-            display: flex;
-            gap: 20px;
-        }
-
-        .sidebar-categories {
-            width: 200px;
+        .sidebar-cats {
+            width: 192px;
             flex-shrink: 0;
         }
 
-        .sidebar-title {
-            font-size: 12px;
+        .cats-title {
+            font-size: 10.5px;
             font-weight: 600;
+            font-family: var(--font-ui);
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
-            padding: 0 8px;
+            padding: 0 4px;
         }
 
-        .category-list {
+        .cat-list {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: var(--r-md);
             overflow: hidden;
         }
 
-        .category-item {
+        .cat-item {
             padding: 10px 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content:space-between; align-items:center;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: all 0.12s;
             border-bottom: 1px solid var(--border);
+            font-size: 13px;
         }
+        .cat-item:last-child { border-bottom:none; }
+        .cat-item:hover { background:var(--bg-hover); }
+        .cat-item.active { background:var(--accent-primary); color:#fff; }
+        .cat-item.active .cat-count { color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.18); }
 
-        .category-item:last-child {
-            border-bottom: none;
-        }
-
-        .category-item:hover {
-            background: var(--bg-hover);
-        }
-
-        .category-item.active {
-            background: var(--accent-primary);
-            color: #fff;
-        }
-
-        .category-item.active .category-count {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .category-name {
-            font-size: 14px;
-        }
-
-        .category-count {
-            font-size: 12px;
+        .cat-count {
+            font-family: var(--font-ui);
+            font-size: 11px;
             color: var(--text-muted);
             background: var(--bg-hover);
             padding: 2px 8px;
-            border-radius: 10px;
+            border-radius: 9px;
+            flex-shrink: 0;
         }
 
-        .words-area {
-            flex: 1;
-        }
+        /* ── Words grid ── */
+        .words-area { flex:1; min-width:0; }
 
         .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            display: flex; align-items:center; gap:10px;
+            margin-bottom: 14px;
         }
-
-        .section-header h2 {
-            font-size: 18px;
+        .section-title {
+            font-family: var(--font-ui);
+            font-size: 16px;
             font-weight: 600;
+        }
+        .section-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2px 9px;
+            border-radius: 9px;
+            font-family: var(--font-ui);
         }
 
         .words-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+            gap: 9px;
         }
 
         .word-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
+            border-radius: var(--r-md);
+            padding: 14px 15px;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: all 0.15s;
             position: relative;
+            overflow: hidden;
         }
-
-        .word-card:hover {
-            background: var(--bg-hover);
-            transform: translateY(-1px);
-        }
-
-        .word-card.mastered {
-            border-left: 3px solid var(--success);
-        }
-
-        .word-card.mastered .word-text {
-            color: var(--success);
-            font-weight: 500;
-        }
-
-        .word-card.review {
-            border-left: 3px solid var(--error);
-        }
-
-        .word-card.review .word-text {
-            color: var(--error);
-            font-weight: 500;
-        }
-
-        .word-card.new {
-            border-left: 3px solid var(--text-muted);
-        }
-
-        .word-text {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-        }
-
-        .word-pos {
-            font-size: 11px;
-            color: var(--accent-primary);
-            background: rgba(0,212,170,0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-right: 6px;
-        }
-
-        .word-meta {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .word-def {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 6px;
-            line-height: 1.5;
-            min-height: 36px;
-        }
-
-        .word-status-dot {
+        .word-card::before {
+            content: '';
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
         }
+        .word-card.mastered::before { background: var(--success); }
+        .word-card.review::before   { background: var(--error); }
+        .word-card.new::before      { background: var(--text-muted); }
+        .word-card:hover { background:var(--bg-hover); transform:translateY(-1px); box-shadow:var(--shadow-sm); }
 
-        .word-status-dot.mastered { background: var(--success); }
-        .word-status-dot.review { background: var(--error); }
-        .word-status-dot.new { background: var(--text-muted); }
+        .word-card.mastered .wc-word { color:var(--success); }
+        .word-card.review   .wc-word { color:var(--error); }
 
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
+        .wc-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .theme-toggle {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            color: var(--text-primary);
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-
-        .no-results h3 {
-            margin-bottom: 8px;
+        .wc-word {
+            font-family: var(--font-reading);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2;
             color: var(--text-secondary);
         }
 
-        .pos-tag {
-            display: inline-block;
+        .wc-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        .wc-dot.mastered { background:var(--success); }
+        .wc-dot.review   { background:var(--error); }
+        .wc-dot.new      { background:var(--text-muted); }
+
+        .wc-pos {
+            font-family: var(--font-ui);
             font-size: 10px;
+            color: var(--accent-primary);
+            background: var(--accent-dim);
             padding: 2px 6px;
-            border-radius: 4px;
-            margin-right: 4px;
-            margin-bottom: 4px;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            display: inline-block;
         }
 
-        .pos-n { background: rgba(0,212,170,0.15); color: var(--success); }
-        .pos-v { background: rgba(124,58,237,0.15); color: #a78bfa; }
-        .pos-adj { background: rgba(245,158,11,0.15); color: var(--warning); }
-        .pos-adv { background: rgba(59,130,246,0.15); color: #60a5fa; }
-        .pos-prep { background: rgba(239,68,68,0.15); color: var(--error); }
-        .pos-conj { background: rgba(236,72,153,0.15); color: #f472b6; }
-        .pos-pron { background: rgba(34,197,94,0.15); color: #4ade80; }
-        .pos-det { background: rgba(168,162,158,0.15); color: #a8a29e; }
+        .wc-def {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            min-height: 34px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .wc-meta {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 7px;
+            font-family: var(--font-ui);
+        }
+
+        /* ── Popup ── */
+        .popup-backdrop { position:fixed; inset:0; z-index:999; display:none; }
+        .popup-backdrop.show { display:block; }
 
         .word-popup {
             position: fixed;
-            background: var(--bg-card);
+            background: var(--bg-elevated);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px 20px;
-            min-width: 280px;
-            max-width: 340px;
+            border-radius: var(--r-lg);
+            padding: 20px 22px;
+            width: 330px;
             z-index: 1000;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-lg);
             opacity: 0;
-            transform: scale(0.95);
-            transition: all 0.2s ease;
+            transform: translateY(5px) scale(0.96);
+            transition: opacity 0.17s ease, transform 0.17s ease;
             pointer-events: none;
-            display: none;
         }
+        .word-popup.show { opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
 
-        .word-popup.show {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-            display: block;
-        }
-
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .popup-word {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .popup-phonetic {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
+        .popup-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+        .popup-word { font-family:var(--font-reading); font-size:26px; font-weight:600; letter-spacing:-0.5px; }
+        .popup-phonetic { font-family:var(--font-mono); font-size:12.5px; color:var(--text-muted); margin-top:3px; }
         .popup-speak {
-            background: var(--accent-primary);
-            border: none;
-            color: #fff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.15s ease;
+            width:36px; height:36px; border-radius:50%;
+            background:var(--accent-primary); border:none;
+            color:var(--bg-primary); cursor:pointer; font-size:15px;
+            display:flex; align-items:center; justify-content:center;
+            transition:all 0.12s; flex-shrink:0;
         }
+        .popup-speak:hover { transform:scale(1.1); }
 
-        .popup-speak:hover {
-            transform: scale(1.1);
+        .popup-pos-tag {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            color: var(--accent-primary);
+            background: var(--accent-dim);
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-right: 6px;
+            font-weight: 500;
         }
-
-        .popup-def {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
+        .popup-def { font-size:14.5px; color:var(--text-primary); line-height:1.5; margin-bottom:10px; }
         .popup-example {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-style: italic;
-            padding: 8px 12px;
-            background: var(--bg-hover);
-            border-radius: 6px;
-            margin-bottom: 12px;
-        }
-
-        .popup-actions {
-            display: flex;
-            gap: 8px;
+            font-family:var(--font-reading);
+            font-style:italic;
+            font-size:13px;
+            color:var(--text-secondary);
+            background:var(--bg-card);
+            padding:10px 13px;
+            border-radius:var(--r-sm);
+            line-height:1.5;
+            margin-bottom:12px;
         }
 
         .popup-sources {
-            margin-bottom: 12px;
             border-top: 1px solid var(--border);
-            padding-top: 10px;
+            padding-top: 12px;
+            margin-bottom: 12px;
         }
-
-        .popup-sources-title {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .popup-source-item {
-            font-size: 12px;
+        .sources-title { font-size:11px; color:var(--text-muted); margin-bottom:8px; font-family:var(--font-ui); font-weight:500; text-transform:uppercase; letter-spacing:0.4px; }
+        .source-item {
+            font-size: 12.5px;
             color: var(--text-secondary);
-            background: var(--bg-hover);
-            border-radius: 6px;
-            padding: 8px;
+            background: var(--bg-card);
+            border-radius: var(--r-sm);
+            padding: 9px 11px;
             margin-bottom: 6px;
             line-height: 1.5;
         }
-
-        .popup-source-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .popup-source-link {
+        .source-item:last-child { margin-bottom:0; }
+        .source-meta { font-weight:600; color:var(--text-primary); font-size:11.5px; margin-bottom:3px; }
+        .source-sentence { color:var(--text-secondary); }
+        .source-link {
             color: var(--accent-primary);
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11.5px;
+            margin-top: 5px;
             display: inline-block;
-            margin-top: 6px;
+            font-family: var(--font-ui);
         }
+        .source-link:hover { text-decoration:underline; }
 
-        .popup-source-link:hover {
-            text-decoration: underline;
+        .popup-actions { display:flex; gap:7px; }
+        .popup-action-btn {
+            flex:1; padding:8px 4px;
+            border-radius:var(--r-sm);
+            border:1px solid var(--border);
+            background:var(--bg-card);
+            color:var(--text-secondary);
+            font-size:12px; font-family:var(--font-ui);
+            cursor:pointer; transition:all 0.12s;
         }
+        .popup-action-btn:hover { border-color:rgba(255,255,255,0.15); }
+        .popup-action-btn.mastered { border-color:var(--border-accent); color:var(--success); background:rgba(0,212,170,0.08); }
+        .popup-action-btn.review   { border-color:rgba(248,113,113,0.3); color:var(--error); background:rgba(248,113,113,0.08); }
+        .popup-action-btn.new      { border-color:rgba(255,255,255,0.15); color:var(--text-secondary); }
 
-        .popup-btn {
-            flex: 1;
-            padding: 8px 12px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.15s ease;
+        /* ── Toast ── */
+        .toast {
+            position:fixed; bottom:26px; left:50%;
+            transform:translateX(-50%) translateY(10px);
+            background:var(--bg-elevated);
+            border:1px solid var(--border);
+            color:var(--text-primary);
+            padding:10px 20px;
+            border-radius:var(--r-md);
+            font-size:13px; font-family:var(--font-ui);
+            box-shadow:var(--shadow-md);
+            opacity:0;
+            transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
+            z-index:3000; pointer-events:none;
         }
+        .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-        .popup-btn:hover {
-            background: var(--bg-hover);
+        /* ── Empty / no-results ── */
+        .no-results {
+            text-align: center;
+            padding: 64px 20px;
+            color: var(--text-muted);
         }
+        .no-results h3 { font-family:var(--font-ui); font-size:17px; margin-bottom:8px; color:var(--text-secondary); }
+        .no-results p  { font-size:13.5px; }
 
-        .popup-btn.mastered { border-color: var(--success); color: var(--success); }
-        .popup-btn.review { border-color: var(--error); color: var(--error); }
-        .popup-btn.new { border-color: var(--text-muted); color: var(--text-muted); }
+        /* ── POS tag colors ── */
+        .pos-n    { background:rgba(0,212,170,0.12);  color:var(--success); }
+        .pos-v    { background:rgba(124,58,237,0.12); color:#a78bfa; }
+        .pos-adj  { background:rgba(245,158,11,0.12); color:var(--warning); }
+        .pos-adv  { background:rgba(59,130,246,0.12); color:#60a5fa; }
+        .pos-prep { background:rgba(248,113,113,0.12);color:var(--error); }
+        .pos-conj { background:rgba(236,72,153,0.12); color:#f472b6; }
+        .pos-pron { background:rgba(34,197,94,0.12);  color:#4ade80; }
+        .pos-det  { background:rgba(168,162,158,0.12);color:#a8a29e; }
 
-        @media (max-width: 900px) {
-            .content-area {
-                flex-direction: column;
-            }
-            .sidebar-categories {
-                width: 100%;
-            }
-            .category-list {
-                display: flex;
-                flex-wrap: wrap;
-                border-radius: 10px;
-            }
-            .category-item {
-                border-bottom: none;
-                border-right: 1px solid var(--border);
-            }
+        /* ── Mobile ── */
+        @media (max-width:900px) {
+            .content-area { flex-direction:column; }
+            .sidebar-cats { width:100%; }
+            .cat-list { display:flex; flex-wrap:wrap; }
+            .cat-item { border-bottom:none; border-right:1px solid var(--border); }
         }
-
-        @media (max-width: 768px) {
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .words-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
+        @media (max-width:640px) {
+            .container { padding:16px; }
+            .stats-bar { grid-template-columns:repeat(2,1fr); }
+            .words-grid { grid-template-columns:repeat(auto-fill,minmax(138px,1fr)); }
+            .header { flex-wrap:wrap; gap:10px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📚 单词本</h1>
-            <div class="header-actions">
-                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-                <button class="btn" onclick="exportData()" title="导出学习数据">📤 导出</button>
-                <button class="btn" onclick="document.getElementById('importFile').click()" title="导入学习数据">📥 导入</button>
-                <a href="index.html" class="btn">← 返回学习</a>
-            </div>
-        </div>
-        <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
+<div class="container">
 
-        <div class="stats-bar">
-            <div class="stat-card">
+    <div class="header">
+        <div class="header-left">
+            <div class="page-title">📚 单词本</div>
+        </div>
+        <div class="header-actions">
+            <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+            <button class="btn btn-icon" onclick="exportData()" title="导出学习数据">📤</button>
+            <button class="btn btn-icon" onclick="document.getElementById('importFile').click()" title="导入学习数据">📥</button>
+            <a href="index.html" class="btn">← 返回学习</a>
+        </div>
+    </div>
+
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
+
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-top">
                 <div class="stat-value total" id="totalWords">0</div>
-                <div class="stat-label">总单词</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-label">全部单词</div>
+            <div class="stat-bar-track"><div class="stat-bar-fill mastered" id="barTotal" style="width:100%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-top">
                 <div class="stat-value mastered" id="masteredWords">0</div>
-                <div class="stat-label">已掌握</div>
+                <div class="stat-pct" id="masteredPct"></div>
             </div>
-            <div class="stat-card">
+            <div class="stat-label">已掌握</div>
+            <div class="stat-bar-track"><div class="stat-bar-fill mastered" id="barMastered" style="width:0%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-top">
                 <div class="stat-value review" id="reviewWords">0</div>
-                <div class="stat-label">待复习</div>
+                <div class="stat-pct" id="reviewPct"></div>
             </div>
-            <div class="stat-card">
+            <div class="stat-label">待复习</div>
+            <div class="stat-bar-track"><div class="stat-bar-fill review" id="barReview" style="width:0%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-top">
                 <div class="stat-value new" id="newWords">0</div>
-                <div class="stat-label">未学习</div>
+                <div class="stat-pct" id="newPct"></div>
             </div>
-        </div>
-
-        <div class="category-tabs">
-            <button class="category-tab active" data-view="alpha" onclick="switchView('alpha')">🔤 按字母</button>
-            <button class="category-tab" data-view="pos" onclick="switchView('pos')">📝 按词性</button>
-            <button class="category-tab" data-view="scene" onclick="switchView('scene')">🎬 按场景</button>
-        </div>
-
-        <div class="filter-bar">
-            <input type="text" class="search-input" id="searchInput" placeholder="搜索单词..." oninput="filterWords()">
-            <button class="filter-btn active" data-filter="all" onclick="setStatusFilter('all')">全部</button>
-            <button class="filter-btn" data-filter="mastered" onclick="setStatusFilter('mastered')">已掌握</button>
-            <button class="filter-btn" data-filter="review" onclick="setStatusFilter('review')">待复习</button>
-            <button class="filter-btn" data-filter="new" onclick="setStatusFilter('new')">未学习</button>
-        </div>
-
-        <div class="content-area">
-            <div class="sidebar-categories" id="sidebarCategories"></div>
-            <div class="words-area" id="wordsContainer"></div>
+            <div class="stat-label">未学习</div>
+            <div class="stat-bar-track"><div class="stat-bar-fill new" id="barNew" style="width:0%"></div></div>
         </div>
     </div>
 
-    <div class="toast" id="toast"></div>
-    
-    <div class="word-popup" id="wordPopup">
-        <div class="popup-header">
-            <div>
-                <div class="popup-word" id="popupWord"></div>
-                <div class="popup-phonetic" id="popupPhonetic"></div>
-            </div>
-            <button class="popup-speak" onclick="speakWord()" title="发音">🔊</button>
-        </div>
-        <div class="popup-def" id="popupDef"></div>
-        <div class="popup-example" id="popupExample"></div>
-        <div class="popup-sources" id="popupSources"></div>
-        <div class="popup-actions">
-            <button class="popup-btn mastered" onclick="setWordStatus('mastered')">✓ 已掌握</button>
-            <button class="popup-btn review" onclick="setWordStatus('review')">↻ 待复习</button>
-            <button class="popup-btn new" onclick="setWordStatus('new')">○ 未学习</button>
+    <div class="view-tabs">
+        <button class="view-tab active" data-view="alpha" onclick="switchView('alpha')">🔤 字母</button>
+        <button class="view-tab" data-view="pos"   onclick="switchView('pos')">📝 词性</button>
+        <button class="view-tab" data-view="scene" onclick="switchView('scene')">🎬 场景</button>
+    </div>
+
+    <div class="filter-bar">
+        <input type="text" class="search-input" id="searchInput" placeholder="搜索单词…" oninput="renderWords()">
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="all"      onclick="setFilter('all')">全部</button>
+            <button class="filter-btn f-mastered" data-filter="mastered" onclick="setFilter('mastered')">已掌握</button>
+            <button class="filter-btn f-review"   data-filter="review"   onclick="setFilter('review')">待复习</button>
+            <button class="filter-btn f-new"      data-filter="new"      onclick="setFilter('new')">未学习</button>
         </div>
     </div>
 
-    <script src="articles-data.js"></script>
-    <script src="dictionary-data.js"></script>
-    <script>
-const wordPosData = {
-    n: ["alarm", "clock", "morning", "eyes", "arms", "head", "sunlight", "curtains", "glow", "bedroom", "breath", "day", "bed", "bathroom", "face", "tooth", "teeth", "water", "mirror", "smile", "challenges", "breakfast", "meal", "mother", "eggs", "toast", "cup", "coffee", "aroma", "kitchen", "phone", "messages", "news", "headlines", "briefcase", "coat", "air", "weather", "skies", "breeze", "subway", "station", "bus", "exercise", "rush", "hour", "people", "newspapers", "music", "headphones", "seat", "window", "book", "journey", "building", "guard", "elevator", "floor", "colleagues", "desks", "computers", "workstation", "emails", "morning", "meetings", "phone", "calls", "presentation", "week", "time", "data", "boss", "desk", "suggestions", "lunchtime", "coworkers", "restaurant", "sandwiches", "salads", "plans", "stories", "break", "friends", "conversation", "stress", "afternoon", "reports", "session", "training", "software", "company", "notes", "skills", "career", "development", "tasks", "list", "tomorrow", "home", "journey", "commute", "podcast", "train", "clothes", "dinner", "pasta", "sauce", "vegetables", "television", "dishes", "room", "hour", "novel", "vocabulary", "word", "opportunities", "technology", "internet", "smartphone", "laptop", "device", "information", "communication", "education", "health", "medicine", "science", "nature", "environment", "food", "culture", "history", "art", "music", "sports", "travel", "business", "economics", "law", "psychology", "philosophy"],
-    v: ["rings", "open", "stretch", "streams", "casting", "prepare", "getting", "head", "wash", "brush", "helps", "wake", "look", "face", "bring", "says", "prepare", "brewed", "fills", "making", "feel", "eating", "check", "glance", "dressed", "leave", "grab", "put", "step", "decide", "walk", "taking", "gives", "crowded", "packed", "reading", "listening", "manage", "find", "take", "read", "arrive", "greet", "take", "sit", "turn", "begin", "checking", "passes", "have", "prepare", "spend", "researching", "organizing", "stops", "discuss", "offer", "arrives", "join", "order", "chatting", "sharing", "take", "relax", "helps", "relieve", "devoted", "completing", "attending", "adopted", "find", "take", "learning", "finished", "organize", "make", "say", "leave", "wait", "listen", "think", "learned", "reach", "change", "prepare", "make", "cooking", "allowing", "rest", "eat", "watching", "wash", "tidy", "spend", "reading", "finish", "helps", "improves", "make", "encounter", "going", "sleep", "reflect", "think", "went", "improve", "set", "turn", "close", "feel", "bring", "embrace", "learn", "study", "work", "live", "play", "use", "create", "build", "develop", "change", "grow", "move", "run", "walk", "talk", "speak", "write", "read", "listen", "watch", "see", "hear", "feel", "think", "know", "understand", "believe", "hope", "want", "need", "love", "like", "hate", "fear", "try", "start", "stop", "continue", "keep", "let", "make", "get", "give", "take", "have", "do", "be", "have", "do", "say", "go", "can", "will", "would", "should", "could", "may", "might", "must"],
-    adj: ["typical", "slowly", "warm", "busy", "cold", "important", "scrambled", "freshly", "hungry", "important", "crisp", "pleasant", "clear", "blue", "gentle", "crowded", "tightly", "fifteenth", "detailed", "interesting", "beneficial", "nearby", "funny", "nice", "simple", "therapeutic", "long", "interesting", "productive", "new", "good", "great", "bad", "old", "young", "small", "big", "high", "low", "long", "short", "fast", "slow", "hard", "easy", "difficult", "simple", "complex", "important", "necessary", "possible", "impossible", "available", "different", "similar", "same", "other", "another", "such", "own", "real", "true", "false", "right", "wrong", "good", "better", "best", "bad", "worse", "worst", "many", "much", "more", "most", "few", "little", "less", "least", "some", "any", "no", "every", "each", "all", "both", "either", "neither", "one", "two", "three", "first", "second", "third", "last", "next", "previous", "early", "late", "quick", "slow", "careful", "careful", "beautiful", "ugly", "happy", "sad", "angry", "afraid", "tired", "hungry", "thirsty", "hot", "cold", "warm", "cool", "wet", "dry", "clean", "dirty", "rich", "poor", "cheap", "expensive", "free", "busy", "full", "empty", "open", "closed", "ready", "available", "popular", "famous", "special", "common", "normal", "strange", "natural", "artificial", "traditional", "modern", "ancient", "fresh", "healthy", "sick", "strong", "weak", "safe", "dangerous"],
-    adv: ["slowly", "immediately", "completely", "always", "usually", "often", "sometimes", "rarely", "never", "ever", "still", "already", "yet", "just", "now", "then", "soon", "later", "early", "late", "today", "yesterday", "tomorrow", "here", "there", "everywhere", "somewhere", "nowhere", "anywhere", "up", "down", "in", "out", "on", "off", "over", "under", "through", "across", "along", "around", "away", "back", "forward", "backward", "together", "apart", "alone", "quickly", "slowly", "carefully", "easily", "hard", "well", "badly", "fast", "slowly", "really", "very", "quite", "rather", "too", "enough", "so", "such", "almost", "nearly", "hardly", "barely", "completely", "totally", "absolutely", "certainly", "definitely", "probably", "possibly", "maybe", "perhaps", "yes", "no", "not", "never", "always", "often", "usually", "sometimes", "seldom", "rarely", "frequently", "occasionally", "generally", "normally", "typically", "actually", "really", "truly", "certainly", "surely", "clearly", "obviously", "apparently", "evidently", "simply", "just", "only", "even", "also", "too", "as well", "either", "neither", "nor", "so", "neither", "both", "not only", "but also"],
-    prep: ["in", "on", "at", "to", "for", "with", "by", "from", "of", "about", "after", "before", "between", "under", "over", "through", "during", "without", "within", "along", "across", "behind", "beyond", "beside", "among", "around", "above", "below", "into", "onto", "upon", "toward", "towards", "since", "until", "except", "besides", "against", "among", "throughout", "despite", "per", "via", "via", "versus", "via"],
-    conj: ["and", "but", "or", "so", "because", "although", "though", "while", "when", "where", "if", "unless", "until", "since", "as", "than", "whether", "neither", "either", "both", "not only", "even though", "even if", "as if", "as though", "in order that", "so that", "provided that", "supposing", "once", "whenever", "wherever", "however", "whoever", "whatever", "whichever"],
-    pron: ["i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us", "them", "my", "your", "his", "her", "its", "our", "their", "mine", "yours", "hers", "ours", "theirs", "this", "that", "these", "those", "who", "whom", "whose", "which", "what", "whoever", "whatever", "whichever", "anyone", "everyone", "someone", "no one", "nobody", "nothing", "anything", "something", "everything", "each", "every", "all", "some", "any", "no", "none", "both", "either", "neither", "one", "another", "other", "others", "many", "much", "few", "little", "several", "enough", "plenty", "a lot", "lots"],
-    det: ["the", "a", "an", "this", "that", "these", "those", "my", "your", "his", "her", "its", "our", "their", "some", "any", "no", "every", "each", "all", "both", "either", "neither", "many", "much", "few", "little", "several", "enough", "such", "what", "which", "whose"]
-};
+    <div class="content-area">
+        <div class="sidebar-cats" id="sidebarCats"></div>
+        <div class="words-area"   id="wordsContainer"></div>
+    </div>
+</div>
+
+<!-- Word popup -->
+<div class="popup-backdrop" id="popupBackdrop" onclick="hidePopup()"></div>
+<div class="word-popup" id="wordPopup">
+    <div class="popup-header">
+        <div>
+            <div class="popup-word"    id="popupWord"></div>
+            <div class="popup-phonetic" id="popupPhonetic"></div>
+        </div>
+        <button class="popup-speak" onclick="speakWord()">🔊</button>
+    </div>
+    <div class="popup-def" id="popupDef"></div>
+    <div class="popup-example" id="popupExample"></div>
+    <div class="popup-sources" id="popupSources"></div>
+    <div class="popup-actions">
+        <button class="popup-action-btn mastered" onclick="setWordStatus('mastered')">✓ 已掌握</button>
+        <button class="popup-action-btn review"   onclick="setWordStatus('review')">↺ 待复习</button>
+        <button class="popup-action-btn new"      onclick="setWordStatus('new')">○ 未学习</button>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="articles-data.js"></script>
+<script src="dictionary-data.js"></script>
+<script>
+// ── POS lookup (word → category) ──
+const wordPosMap = (() => {
+    const raw = {
+        n:    ["alarm","clock","morning","eyes","arms","head","sunlight","curtains","glow","bedroom","breath","day","bed","bathroom","face","tooth","teeth","water","mirror","smile","challenges","breakfast","meal","mother","eggs","toast","cup","coffee","aroma","kitchen","phone","messages","news","headlines","briefcase","coat","air","weather","skies","breeze","subway","station","bus","exercise","rush","hour","people","newspapers","music","headphones","seat","window","book","journey","building","guard","elevator","floor","colleagues","desks","computers","workstation","emails","meetings","calls","presentation","week","time","data","boss","suggestions","lunchtime","coworkers","restaurant","sandwiches","salads","plans","stories","break","friends","conversation","stress","afternoon","reports","session","training","software","company","notes","skills","career","development","tasks","list","home","commute","podcast","train","clothes","dinner","pasta","sauce","vegetables","television","dishes","room","novel","vocabulary","word","opportunities","technology","internet","smartphone","laptop","device","information","communication","education","health","medicine","science","nature","environment","food","culture","history","art","sports","business","economics","law","psychology","philosophy"],
+        v:    ["rings","stretch","stream","prepare","wash","brush","smile","check","greet","take","read","arrive","begin","complete","attend","adopt","finish","organize","relax","relieve","reflect","improve","embrace","study","work","play","use","create","build","develop","change","grow","move","run","walk","talk","speak","write","listen","watch","see","hear","feel","think","know","understand","believe","hope","want","need","love","like","try","start","stop","continue","keep","make","give","get","do","say","go"],
+        adj:  ["typical","warm","busy","cold","important","scrambled","freshly","hungry","crisp","pleasant","clear","blue","gentle","crowded","detailed","interesting","beneficial","funny","nice","simple","therapeutic","long","productive","good","great","bad","old","young","small","big","high","low","fast","slow","hard","easy","difficult","complex","possible","available","different","similar","real","true","right","wrong","beautiful","happy","sad","angry","tired","healthy","sick","strong","safe","dangerous","natural","modern","fresh","clean","rich","free","full","empty","open","ready","popular","special","common","strange"],
+        adv:  ["slowly","immediately","completely","always","usually","often","sometimes","rarely","never","still","already","just","now","then","soon","later","early","quickly","carefully","easily","really","very","quite","rather","too","almost","nearly","hardly","certainly","definitely","probably","possibly","actually","truly","clearly","simply","even","also","together","apart"],
+        prep: ["in","on","at","to","for","with","by","from","of","about","after","before","between","under","over","through","during","without","within","along","across","behind","beyond","beside","among","around","above","below","into","onto","toward","since","until","except","against"],
+        conj: ["and","but","or","so","because","although","though","while","when","where","if","unless","until","since","as","than","whether","even","once","whenever","wherever","however"],
+        pron: ["i","you","he","she","it","we","they","me","him","her","us","them","this","that","these","those","who","what","which","anyone","everyone","someone","nothing","anything","something","everything","each","all","some","any","none","both","one","another","other","others"],
+        det:  ["the","a","an","my","your","his","its","our","their","some","every","each","all","both","either","neither","many","much","few","little","several","enough","such","what","which","whose"]
+    };
+    const map = {};
+    for (const [pos, words] of Object.entries(raw)) words.forEach(w => { if (!map[w]) map[w] = pos; });
+    return map;
+})();
 
 const sceneCategories = {
-    "日常生活": ["morning", "alarm", "clock", "wake", "bed", "sleep", "bedroom", "bathroom", "shower", "breakfast", "lunch", "dinner", "kitchen", "cook", "eat", "drink", "water", "coffee", "tea", "food", "meal", "home", "house", "room", "door", "window", "furniture", "chair", "table", "sofa", "bed", "clothes", "dress", "wear", "shoes", "bag", "key", "phone", "call", "message", "email", "internet", "computer", "television", "watch", "listen", "music", "radio", "news", "paper", "book", "read", "write", "study", "learn", "school", "class", "teacher", "student", "homework", "exam", "test", "work", "office", "boss", "colleague", "meeting", "report", "project", "deadline", "stress", "tired", "rest", "relax", "weekend", "holiday", "vacation", "travel", "trip", "journey", "car", "bus", "train", "plane", "airport", "station", "ticket", "hotel", "restaurant", "menu", "order", "waiter", "bill", "pay", "money", "cash", "card", "bank", "shop", "store", "buy", "sell", "price", "cheap", "expensive", "market", "supermarket"],
-    "工作职场": ["work", "job", "career", "profession", "office", "company", "business", "industry", "market", "client", "customer", "boss", "manager", "employee", "colleague", "team", "department", "meeting", "conference", "presentation", "report", "document", "file", "email", "phone", "call", "message", "schedule", "deadline", "project", "task", "goal", "target", "plan", "strategy", "success", "failure", "promotion", "salary", "wage", "income", "tax", "budget", "expense", "profit", "loss", "investment", "contract", "agreement", "negotiation", "deal", "partnership", "competition", "competitor", "advantage", "disadvantage", "opportunity", "challenge", "problem", "solution", "idea", "innovation", "technology", "software", "hardware", "system", "network", "data", "information", "analysis", "research", "development", "training", "education", "skill", "experience", "qualification", "interview", "resume", "application", "position", "role", "responsibility", "duty", "authority", "leadership", "management", "communication", "cooperation", "collaboration", "teamwork"],
-    "健康医疗": ["health", "body", "mind", "heart", "brain", "blood", "bone", "muscle", "skin", "eye", "ear", "nose", "mouth", "tooth", "teeth", "head", "face", "hand", "foot", "arm", "leg", "doctor", "nurse", "hospital", "clinic", "medicine", "drug", "pill", "treatment", "surgery", "operation", "disease", "illness", "sickness", "pain", "ache", "fever", "cold", "cough", "headache", "stomach", "allergy", "infection", "virus", "bacteria", "cancer", "diabetes", "pressure", "weight", "diet", "exercise", "fitness", "sport", "gym", "running", "swimming", "yoga", "sleep", "rest", "relax", "stress", "anxiety", "depression", "mental", "physical", "healthy", "sick", "ill", "weak", "strong", "recovery", "heal", "cure", "prevent", "vaccine", "immunity", "nutrition", "vitamin", "protein", "calorie"],
-    "教育学习": ["education", "school", "university", "college", "student", "teacher", "professor", "class", "course", "lesson", "subject", "math", "science", "history", "geography", "language", "english", "literature", "art", "music", "sport", "exam", "test", "quiz", "homework", "assignment", "project", "research", "study", "learn", "teach", "read", "write", "speak", "listen", "understand", "knowledge", "skill", "ability", "talent", "intelligence", "wisdom", "memory", "thinking", "problem", "solution", "idea", "theory", "concept", "fact", "information", "data", "analysis", "experiment", "discovery", "invention", "technology", "computer", "internet", "library", "book", "article", "paper", "report", "thesis", "degree", "diploma", "certificate", "qualification", "scholarship", "graduation", "career", "profession", "job", "work"],
-    "社交人际": ["person", "people", "friend", "family", "parent", "mother", "father", "sister", "brother", "child", "children", "son", "daughter", "husband", "wife", "partner", "relationship", "marriage", "wedding", "love", "hate", "like", "dislike", "happy", "sad", "angry", "afraid", "worried", "excited", "surprised", "disappointed", "satisfied", "pleased", "grateful", "thankful", "sorry", "apologize", "forgive", "help", "support", "care", "trust", "respect", "honest", "loyal", "kind", "generous", "selfish", "rude", "polite", "friendly", "hostile", "stranger", "neighbor", "colleague", "boss", "employee", "customer", "client", "partner", "team", "group", "community", "society", "culture", "tradition", "custom", "value", "belief", "religion", "politics", "government", "law", "right", "duty", "freedom", "equality", "justice", "peace", "war", "conflict", "argument", "discussion", "conversation", "communication", "language", "speech", "talk", "say", "tell", "ask", "answer", "question", "reply", "response"],
-    "自然环境": ["nature", "environment", "earth", "world", "planet", "universe", "sun", "moon", "star", "sky", "cloud", "rain", "snow", "wind", "storm", "thunder", "lightning", "weather", "climate", "temperature", "hot", "cold", "warm", "cool", "dry", "wet", "season", "spring", "summer", "autumn", "winter", "mountain", "hill", "valley", "river", "lake", "sea", "ocean", "beach", "coast", "island", "forest", "tree", "plant", "flower", "grass", "garden", "park", "field", "farm", "animal", "bird", "fish", "insect", "pet", "dog", "cat", "wildlife", "nature", "ecology", "ecosystem", "pollution", "waste", "recycling", "energy", "power", "fuel", "oil", "gas", "coal", "nuclear", "solar", "wind", "water", "resource", "conservation", "protection", "sustainability", "climate", "change", "global", "warming", "carbon", "emission", "green", "clean", "renewable"],
-    "科技数码": ["technology", "computer", "laptop", "desktop", "keyboard", "mouse", "screen", "monitor", "printer", "scanner", "software", "hardware", "program", "application", "app", "system", "network", "internet", "website", "web", "online", "offline", "digital", "electronic", "device", "machine", "robot", "artificial", "intelligence", "ai", "data", "information", "file", "folder", "document", "image", "video", "audio", "music", "movie", "game", "phone", "mobile", "smartphone", "tablet", "camera", "photo", "picture", "screen", "display", "battery", "charger", "cable", "wire", "connection", "wifi", "bluetooth", "signal", "cloud", "storage", "memory", "processor", "speed", "performance", "update", "upgrade", "install", "download", "upload", "share", "copy", "paste", "delete", "save", "open", "close", "start", "stop", "restart", "reset", "settings", "options", "preferences", "security", "password", "login", "logout", "account", "profile", "user", "admin"],
-    "购物消费": ["shop", "store", "market", "supermarket", "mall", "center", "buy", "purchase", "sell", "sale", "price", "cost", "pay", "payment", "money", "cash", "card", "credit", "debit", "bank", "account", "budget", "expense", "spend", "save", "discount", "offer", "deal", "bargain", "cheap", "expensive", "affordable", "value", "worth", "quality", "brand", "product", "item", "goods", "stock", "inventory", "order", "delivery", "shipping", "package", "box", "bag", "receipt", "invoice", "bill", "refund", "return", "exchange", "warranty", "guarantee", "service", "customer", "client", "assistant", "manager", "complaint", "review", "rating", "feedback", "recommendation", "suggestion", "choice", "option", "selection", "variety", "range", "collection", "fashion", "style", "trend", "design", "size", "color", "material", "fabric", "fitting", "try", "test", "sample"],
-    "交通出行": ["transport", "transportation", "travel", "trip", "journey", "commute", "car", "vehicle", "bus", "train", "subway", "metro", "taxi", "plane", "airplane", "flight", "airport", "station", "stop", "terminal", "ticket", "pass", "card", "seat", "window", "aisle", "luggage", "baggage", "suitcase", "bag", "pack", "departure", "arrival", "schedule", "timetable", "delay", "cancel", "miss", "catch", "ride", "drive", "driver", "passenger", "traffic", "jam", "congestion", "road", "street", "highway", "motorway", "bridge", "tunnel", "sign", "signal", "light", "parking", "garage", "fuel", "gas", "petrol", "station", "map", "navigation", "gps", "direction", "route", "way", "path", "distance", "mile", "kilometer", "speed", "limit", "safety", "accident", "emergency", "police", "ambulance", "fire"],
-    "文化艺术": ["art", "culture", "history", "tradition", "custom", "heritage", "museum", "gallery", "exhibition", "display", "collection", "painting", "drawing", "sculpture", "statue", "photography", "photo", "picture", "image", "design", "style", "fashion", "trend", "music", "song", "sound", "rhythm", "melody", "harmony", "instrument", "piano", "guitar", "violin", "drum", "concert", "performance", "show", "stage", "theater", "cinema", "movie", "film", "actor", "actress", "director", "script", "story", "plot", "character", "scene", "chapter", "book", "novel", "poem", "poetry", "literature", "author", "writer", "reader", "publish", "edit", "translate", "language", "english", "chinese", "french", "german", "spanish", "japanese", "korean", "arabic", "russian", "word", "sentence", "paragraph", "text", "meaning", "definition", "expression", "phrase", "idiom", "metaphor", "symbol", "sign", "message", "communication"]
+    "日常生活":["morning","alarm","clock","wake","bed","sleep","bedroom","bathroom","shower","breakfast","lunch","dinner","kitchen","cook","eat","drink","water","coffee","tea","food","meal","home","house","room","clothes","phone","call","message","email","book","read","write","study","learn","work","weekend","holiday","travel","car","bus","train"],
+    "工作职场":["work","job","career","profession","office","company","business","client","customer","boss","manager","employee","colleague","team","department","meeting","conference","presentation","report","document","email","schedule","deadline","project","task","goal","strategy","success","salary","budget","contract","negotiation","competition"],
+    "健康医疗":["health","body","mind","heart","brain","blood","bone","muscle","doctor","nurse","hospital","medicine","drug","treatment","disease","illness","pain","fever","cold","exercise","fitness","sport","gym","sleep","rest","stress","anxiety","depression","nutrition","vitamin","protein"],
+    "教育学习":["education","school","university","college","student","teacher","class","course","lesson","subject","exam","test","homework","assignment","research","study","learn","knowledge","skill","theory","concept","information","library","book","degree","scholarship","graduation","career"],
+    "自然环境":["nature","environment","earth","world","planet","sun","moon","star","sky","cloud","rain","snow","wind","weather","climate","temperature","season","mountain","river","lake","sea","ocean","forest","tree","plant","flower","animal","bird","fish","ecology","pollution","energy","solar"],
+    "科技数码":["technology","computer","laptop","keyboard","screen","software","hardware","program","application","app","system","network","internet","website","digital","device","phone","mobile","smartphone","tablet","camera","battery","wifi","bluetooth","cloud","storage","data","password","login","security","update"],
+    "交通出行":["transport","travel","trip","journey","commute","car","vehicle","bus","train","subway","taxi","plane","flight","airport","station","ticket","seat","luggage","departure","arrival","schedule","delay","traffic","road","highway","map","route","distance","speed"],
+    "文化艺术":["art","culture","history","tradition","museum","gallery","painting","design","music","song","instrument","concert","performance","theater","cinema","movie","film","actor","book","novel","poem","literature","author","language","word","expression","communication"]
 };
 
-        let wordStatuses = {};
-        let currentView = 'alpha';
-        let currentCategory = 'all';
-        let currentFilter = 'all';
-        let allWords = {};
-        let autoTranslations = {};
-        const TRANSLATION_STORAGE_KEY = 'shadowReading_autoTranslations';
-        const translatingWords = new Set();
+// ── Constants ──
+const LS = {
+    WORD_STATUS:   'sr_wordStatus',
+    COMPLETED:     'sr_completed',
+    THEME:         'sr_theme',
+    AUTO_TRANS:    'sr_autoTrans',
+    LAST_BACKUP:   'sr_lastBackup',
+};
 
-        function loadTheme() {
-            const saved = localStorage.getItem('shadowReadingTheme');
-            if (saved === 'light') {
-                document.body.classList.add('theme-light');
-                document.querySelector('.theme-toggle').textContent = '☀️';
-            }
+// ── State ──
+let wordStatuses    = {};
+let allWords        = {};
+let autoTranslations = {};
+let currentView     = 'alpha';
+let currentCat      = 'all';
+let currentFilter   = 'all';
+let currentPopupWord = '';
+const translating   = new Set();
+
+// ── Init ──
+function init() {
+    loadTheme();
+    loadProgress();
+    loadAutoTranslations();
+    extractAllWords();
+    updateStats();
+    renderSidebar();
+    renderWords();
+
+    document.addEventListener('click', e => {
+        const popup = document.getElementById('wordPopup');
+        if (popup.classList.contains('show') && !popup.contains(e.target) && !e.target.closest('.word-card')) {
+            hidePopup();
         }
+    });
+}
 
-        function toggleTheme() {
-            document.body.classList.toggle('theme-light');
-            const isLight = document.body.classList.contains('theme-light');
-            document.querySelector('.theme-toggle').textContent = isLight ? '☀️' : '🌙';
-            localStorage.setItem('shadowReadingTheme', isLight ? 'light' : 'dark');
-        }
+// ── Theme ──
+function loadTheme() {
+    if (localStorage.getItem(LS.THEME) === 'light') {
+        document.body.classList.add('theme-light');
+        document.getElementById('themeBtn').textContent = '☀️';
+    }
+}
 
-        function loadProgress() {
-            const savedStatus = localStorage.getItem('shadowReading_wordStatus');
-            const savedCompleted = localStorage.getItem('shadowReading_completed');
-            if (savedStatus) {
-                wordStatuses = JSON.parse(savedStatus);
-            }
-        }
+function toggleTheme() {
+    const light = document.body.classList.toggle('theme-light');
+    document.getElementById('themeBtn').textContent = light ? '☀️' : '🌙';
+    localStorage.setItem(LS.THEME, light ? 'light' : 'dark');
+}
 
-        function loadAutoTranslations() {
-            const saved = localStorage.getItem(TRANSLATION_STORAGE_KEY);
-            if (!saved) return;
-            try {
-                autoTranslations = JSON.parse(saved);
-            } catch (err) {
-                autoTranslations = {};
-            }
-        }
+// ── Progress ──
+function loadProgress() {
+    const ws = localStorage.getItem(LS.WORD_STATUS);
+    if (ws) wordStatuses = JSON.parse(ws);
+}
 
-        function saveAutoTranslations() {
-            localStorage.setItem(TRANSLATION_STORAGE_KEY, JSON.stringify(autoTranslations));
-        }
+function saveProgress() {
+    localStorage.setItem(LS.WORD_STATUS, JSON.stringify(wordStatuses));
+}
 
-        function saveProgress() {
-            localStorage.setItem('shadowReading_wordStatus', JSON.stringify(wordStatuses));
-        }
+function loadAutoTranslations() {
+    try {
+        const saved = localStorage.getItem(LS.AUTO_TRANS);
+        if (saved) autoTranslations = JSON.parse(saved);
+    } catch { autoTranslations = {}; }
+}
 
-        function getWordPos(word) {
-            for (const [pos, words] of Object.entries(wordPosData)) {
-                if (words.includes(word)) return pos;
-            }
-            return null;
-        }
+function saveAutoTranslations() {
+    localStorage.setItem(LS.AUTO_TRANS, JSON.stringify(autoTranslations));
+}
 
-        function getWordScenes(word) {
-            const scenes = [];
-            for (const [scene, words] of Object.entries(sceneCategories)) {
-                if (words.includes(word)) scenes.push(scene);
-            }
-            return scenes;
-        }
-
-        function extractAllWords() {
-            const wordMap = {};
-            
-            articles.forEach((article, articleIndex) => {
-                const paragraphs = article.content.split('\n\n');
-                const translations = article.translation ? article.translation.split('\n\n') : [];
-                paragraphs.forEach((para, paraIndex) => {
-                    const words = para.split(/[\s\n]+/);
-                    const paraTranslation = translations[paraIndex] || '';
-                    words.forEach(word => {
-                        const cleanWord = word.toLowerCase().replace(/[.,!?;:'"()""''—–-]/g, '');
-                        if (cleanWord && cleanWord.length > 1 && /^[a-z]+$/.test(cleanWord)) {
-                            if (!wordMap[cleanWord]) {
-                                wordMap[cleanWord] = {
-                                    word: cleanWord,
-                                    count: 0,
-                                    articles: new Set(),
-                                    pos: getWordPos(cleanWord),
-                                    scenes: getWordScenes(cleanWord),
-                                    contexts: []
-                                };
-                            }
-                            wordMap[cleanWord].count++;
-                            wordMap[cleanWord].articles.add(articleIndex);
-                            addWordContext(wordMap[cleanWord], article, articleIndex, paraIndex, para, paraTranslation, cleanWord);
-                        }
-                    });
-                });
-            });
-            
-            allWords = wordMap;
-        }
-
-        function addWordContext(wordData, article, articleIndex, paraIndex, para, paraTranslation, word) {
-            if (wordData.contexts.length >= 3) return;
-            const sourceKey = `${articleIndex}-${paraIndex}`;
-            if (wordData.contexts.some(context => context.sourceKey === sourceKey)) return;
-
-            const sentence = pickSentenceFromParagraph(para, word);
-            wordData.contexts.push({
-                sourceKey,
-                articleId: article.id || (articleIndex + 1),
-                articleTitle: article.title,
-                paragraphIndex: paraIndex + 1,
-                sentence: sentence || para,
-                translation: paraTranslation
-            });
-        }
-
-        function pickSentenceFromParagraph(paragraph, word) {
-            const sentences = paragraph.match(/[^.!?]+[.!?]?/g) || [paragraph];
-            const exact = sentences.find(sentence => {
-                const normalized = sentence.toLowerCase().replace(/[^a-z\s]/g, ' ');
-                const tokens = normalized.split(/\s+/).filter(Boolean);
-                return tokens.includes(word);
-            });
-            return (exact || sentences[0] || paragraph).trim();
-        }
-
-        function getWordCandidates(word) {
-            const candidates = new Set();
-            const lower = (word || '').toLowerCase();
-            if (!lower) return [];
-            candidates.add(lower);
-
-            if (lower.endsWith('ies') && lower.length > 3) candidates.add(lower.slice(0, -3) + 'y');
-            if (lower.endsWith('es') && lower.length > 2) candidates.add(lower.slice(0, -2));
-            if (lower.endsWith('s') && lower.length > 1) candidates.add(lower.slice(0, -1));
-            if (lower.endsWith('ied') && lower.length > 3) candidates.add(lower.slice(0, -3) + 'y');
-            if (lower.endsWith('ed') && lower.length > 2) candidates.add(lower.slice(0, -2));
-            if (lower.endsWith('ing') && lower.length > 3) candidates.add(lower.slice(0, -3));
-            if (lower.endsWith('ing') && lower.length > 4) candidates.add(lower.slice(0, -3) + 'e');
-
-            return [...candidates];
-        }
-
-        function resolveDictionaryEntry(word) {
-            const candidates = getWordCandidates(word);
-            for (const candidate of candidates) {
-                if (dictionary && dictionary[candidate]) {
-                    return { entry: dictionary[candidate], matchedWord: candidate };
-                }
-                if (autoTranslations[candidate]) {
-                    return {
-                        entry: {
-                            phonetic: '',
-                            pos: '',
-                            def: autoTranslations[candidate],
-                            example: ''
-                        },
-                        matchedWord: candidate
+// ── Extract words from articles ──
+function extractAllWords() {
+    allWords = {};
+    articles.forEach((article, ai) => {
+        const paragraphs   = article.content.split('\n\n');
+        const translations = article.translation ? article.translation.split('\n\n') : [];
+        paragraphs.forEach((para, pi) => {
+            const paraWords = para.split(/[\s\n]+/);
+            const paraTranslation = translations[pi] || '';
+            paraWords.forEach(raw => {
+                const clean = raw.toLowerCase().replace(/[^a-z]/g, '');
+                if (clean.length < 2) return;
+                if (!allWords[clean]) {
+                    allWords[clean] = {
+                        word:     clean,
+                        count:    0,
+                        articles: new Set(),
+                        pos:      wordPosMap[clean] || null,
+                        scenes:   getWordScenes(clean),
+                        contexts: []
                     };
                 }
-            }
-            return { entry: null, matchedWord: '' };
-        }
-
-        function buildWordDefinition(wordData, resolved) {
-            if (resolved.entry && resolved.entry.def) {
-                if (resolved.matchedWord && resolved.matchedWord !== wordData.word) {
-                    return `${resolved.entry.def}（原形：${resolved.matchedWord}）`;
-                }
-                return resolved.entry.def;
-            }
-            if (translatingWords.has(wordData.word)) {
-                return '翻译生成中...';
-            }
-            return '暂无单词翻译';
-        }
-
-        function updateStats() {
-            const total = Object.keys(allWords).length;
-            const mastered = Object.values(wordStatuses).filter(s => s === 'mastered').length;
-            const review = Object.values(wordStatuses).filter(s => s === 'review').length;
-            const newWords = total - mastered - review;
-            
-            document.getElementById('totalWords').textContent = total;
-            document.getElementById('masteredWords').textContent = mastered;
-            document.getElementById('reviewWords').textContent = review;
-            document.getElementById('newWords').textContent = newWords;
-        }
-
-        function switchView(view) {
-            currentView = view;
-            currentCategory = 'all';
-            document.querySelectorAll('.category-tab').forEach(tab => {
-                tab.classList.toggle('active', tab.dataset.view === view);
+                allWords[clean].count++;
+                allWords[clean].articles.add(ai);
+                addContext(allWords[clean], article, ai, pi, para, paraTranslation, clean);
             });
-            renderSidebar();
-            renderWords();
-        }
+        });
+    });
+}
 
-        function setCategory(category) {
-            currentCategory = category;
-            document.querySelectorAll('.category-item').forEach(item => {
-                item.classList.toggle('active', item.dataset.category === category);
-            });
-            renderWords();
-        }
+function addContext(wordData, article, ai, pi, para, trans, word) {
+    if (wordData.contexts.length >= 3) return;
+    const key = `${ai}-${pi}`;
+    if (wordData.contexts.some(c => c.key === key)) return;
+    const sentence = pickSentence(para, word);
+    wordData.contexts.push({
+        key, articleId: article.id || (ai + 1),
+        articleTitle: article.title,
+        paraIndex: pi + 1,
+        sentence: sentence || para,
+        translation: trans
+    });
+}
 
-        function setStatusFilter(filter) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.filter === filter);
-            });
-            renderWords();
-        }
+function pickSentence(para, word) {
+    const sents = para.match(/[^.!?]+[.!?]?/g) || [para];
+    return (sents.find(s => {
+        const tokens = s.toLowerCase().replace(/[^a-z\s]/g,' ').split(/\s+/).filter(Boolean);
+        return tokens.includes(word);
+    }) || sents[0] || para).trim();
+}
 
-        function renderSidebar() {
-            const sidebar = document.getElementById('sidebarCategories');
-            let html = '';
-            
-            if (currentView === 'alpha') {
-                html = `
-                    <div class="sidebar-title">字母分类</div>
-                    <div class="category-list">
-                        <div class="category-item active" data-category="all" onclick="setCategory('all')">
-                            <span class="category-name">全部</span>
-                            <span class="category-count">${Object.keys(allWords).length}</span>
-                        </div>
-                `;
-                const letters = ['A-B', 'C-D', 'E-F', 'G-H', 'I-J', 'K-L', 'M-N', 'O-P', 'Q-R', 'S-T', 'U-V', 'W-Z'];
-                letters.forEach(letter => {
-                    const count = Object.values(allWords).filter(w => {
-                        const first = w.word[0].toUpperCase();
-                        return letter.includes(first);
-                    }).length;
-                    html += `
-                        <div class="category-item" data-category="${letter}" onclick="setCategory('${letter}')">
-                            <span class="category-name">${letter}</span>
-                            <span class="category-count">${count}</span>
-                        </div>
-                    `;
-                });
-                html += '</div>';
-            } else if (currentView === 'pos') {
-                const posNames = {
-                    n: '名词 noun',
-                    v: '动词 verb',
-                    adj: '形容词 adj',
-                    adv: '副词 adv',
-                    prep: '介词 prep',
-                    conj: '连词 conj',
-                    pron: '代词 pron',
-                    det: '冠词 det'
-                };
-                html = `
-                    <div class="sidebar-title">词性分类</div>
-                    <div class="category-list">
-                        <div class="category-item active" data-category="all" onclick="setCategory('all')">
-                            <span class="category-name">全部</span>
-                            <span class="category-count">${Object.keys(allWords).length}</span>
-                        </div>
-                `;
-                Object.entries(posNames).forEach(([pos, name]) => {
-                    const count = Object.values(allWords).filter(w => w.pos === pos).length;
-                    if (count > 0) {
-                        html += `
-                            <div class="category-item" data-category="${pos}" onclick="setCategory('${pos}')">
-                                <span class="category-name">${name}</span>
-                                <span class="category-count">${count}</span>
-                            </div>
-                        `;
-                    }
-                });
-                html += '</div>';
-            } else if (currentView === 'scene') {
-                html = `
-                    <div class="sidebar-title">场景分类</div>
-                    <div class="category-list">
-                        <div class="category-item active" data-category="all" onclick="setCategory('all')">
-                            <span class="category-name">全部</span>
-                            <span class="category-count">${Object.keys(allWords).length}</span>
-                        </div>
-                `;
-                Object.keys(sceneCategories).forEach(scene => {
-                    const count = Object.values(allWords).filter(w => w.scenes.includes(scene)).length;
-                    html += `
-                        <div class="category-item" data-category="${scene}" onclick="setCategory('${scene}')">
-                            <span class="category-name">${scene}</span>
-                            <span class="category-count">${count}</span>
-                        </div>
-                    `;
-                });
-                html += '</div>';
-            }
-            
-            sidebar.innerHTML = html;
-        }
+function getWordScenes(word) {
+    return Object.entries(sceneCategories)
+        .filter(([, words]) => words.includes(word))
+        .map(([scene]) => scene);
+}
 
-        function renderWords() {
-            const container = document.getElementById('wordsContainer');
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            let filteredWords = Object.values(allWords).filter(wordData => {
-                const status = wordStatuses[wordData.word] || 'new';
-                const matchesSearch = wordData.word.includes(searchTerm);
-                const matchesFilter = currentFilter === 'all' || status === currentFilter;
-                
-                let matchesCategory = currentCategory === 'all';
-                if (!matchesCategory) {
-                    if (currentView === 'alpha') {
-                        const first = wordData.word[0].toUpperCase();
-                        matchesCategory = currentCategory.includes(first);
-                    } else if (currentView === 'pos') {
-                        matchesCategory = wordData.pos === currentCategory;
-                    } else if (currentView === 'scene') {
-                        matchesCategory = wordData.scenes.includes(currentCategory);
-                    }
-                }
-                
-                return matchesSearch && matchesFilter && matchesCategory;
-            });
-            
-            filteredWords.sort((a, b) => a.word.localeCompare(b.word));
-            
-            if (filteredWords.length === 0) {
-                container.innerHTML = `
-                    <div class="no-results">
-                        <h3>没有找到匹配的单词</h3>
-                        <p>尝试更换搜索词或筛选条件</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            const posLabels = {
-                n: 'n.', v: 'v.', adj: 'adj.', adv: 'adv.',
-                prep: 'prep.', conj: 'conj.', pron: 'pron.', det: 'det.'
-            };
-            
-            let html = `
-                <div class="section-header">
-                    <h2>${currentCategory === 'all' ? '全部单词' : currentCategory}</h2>
-                    <span class="category-count">${filteredWords.length} 词</span>
+// ── Stats ──
+function updateStats() {
+    const total    = Object.keys(allWords).length;
+    const mastered = Object.values(wordStatuses).filter(s => s === 'mastered').length;
+    const review   = Object.values(wordStatuses).filter(s => s === 'review').length;
+    const newCount = Math.max(0, total - mastered - review);
+    const pct      = n => total > 0 ? Math.round(n / total * 100) : 0;
+
+    document.getElementById('totalWords').textContent    = total;
+    document.getElementById('masteredWords').textContent = mastered;
+    document.getElementById('reviewWords').textContent   = review;
+    document.getElementById('newWords').textContent      = newCount;
+
+    document.getElementById('masteredPct').textContent = mastered > 0 ? `${pct(mastered)}%` : '';
+    document.getElementById('reviewPct').textContent   = review   > 0 ? `${pct(review)}%`   : '';
+    document.getElementById('newPct').textContent      = newCount > 0 ? `${pct(newCount)}%`  : '';
+
+    document.getElementById('barMastered').style.width = pct(mastered) + '%';
+    document.getElementById('barReview').style.width   = pct(review)   + '%';
+    document.getElementById('barNew').style.width      = pct(newCount) + '%';
+}
+
+// ── View / filter ──
+function switchView(view) {
+    currentView = view;
+    currentCat  = 'all';
+    document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+    renderSidebar();
+    renderWords();
+}
+
+function setCategory(cat) {
+    currentCat = cat;
+    document.querySelectorAll('.cat-item').forEach(el => el.classList.toggle('active', el.dataset.cat === cat));
+    renderWords();
+}
+
+function setFilter(filter) {
+    currentFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+    renderWords();
+}
+
+// ── Sidebar ──
+function renderSidebar() {
+    const el = document.getElementById('sidebarCats');
+    let html  = '';
+
+    if (currentView === 'alpha') {
+        const letters = ['A–B','C–D','E–F','G–H','I–J','K–L','M–N','O–P','Q–R','S–T','U–V','W–Z'];
+        const rangeMap = { 'A–B':'AB','C–D':'CD','E–F':'EF','G–H':'GH','I–J':'IJ','K–L':'KL','M–N':'MN','O–P':'OP','Q–R':'QR','S–T':'ST','U–V':'UV','W–Z':'WXYZ' };
+        html = `<div class="cats-title">字母分类</div><div class="cat-list">
+            <div class="cat-item ${currentCat==='all'?'active':''}" data-cat="all" onclick="setCategory('all')">
+                <span>全部</span><span class="cat-count">${Object.keys(allWords).length}</span>
+            </div>`;
+        letters.forEach(label => {
+            const chars = rangeMap[label];
+            const count = Object.values(allWords).filter(w => chars.includes(w.word[0].toUpperCase())).length;
+            html += `<div class="cat-item ${currentCat===label?'active':''}" data-cat="${label}" onclick="setCategory('${label}')">
+                <span>${label}</span><span class="cat-count">${count}</span></div>`;
+        });
+        html += '</div>';
+
+    } else if (currentView === 'pos') {
+        const posLabels = { n:'名词 n.', v:'动词 v.', adj:'形容词 adj.', adv:'副词 adv.', prep:'介词 prep.', conj:'连词 conj.', pron:'代词 pron.', det:'冠词 det.' };
+        html = `<div class="cats-title">词性分类</div><div class="cat-list">
+            <div class="cat-item ${currentCat==='all'?'active':''}" data-cat="all" onclick="setCategory('all')">
+                <span>全部</span><span class="cat-count">${Object.keys(allWords).length}</span></div>`;
+        Object.entries(posLabels).forEach(([pos, label]) => {
+            const count = Object.values(allWords).filter(w => w.pos === pos).length;
+            if (!count) return;
+            html += `<div class="cat-item ${currentCat===pos?'active':''}" data-cat="${pos}" onclick="setCategory('${pos}')">
+                <span>${label}</span><span class="cat-count">${count}</span></div>`;
+        });
+        html += '</div>';
+
+    } else {
+        html = `<div class="cats-title">场景分类</div><div class="cat-list">
+            <div class="cat-item ${currentCat==='all'?'active':''}" data-cat="all" onclick="setCategory('all')">
+                <span>全部</span><span class="cat-count">${Object.keys(allWords).length}</span></div>`;
+        Object.keys(sceneCategories).forEach(scene => {
+            const count = Object.values(allWords).filter(w => w.scenes.includes(scene)).length;
+            html += `<div class="cat-item ${currentCat===scene?'active':''}" data-cat="${scene}" onclick="setCategory('${scene}')">
+                <span>${scene}</span><span class="cat-count">${count}</span></div>`;
+        });
+        html += '</div>';
+    }
+
+    el.innerHTML = html;
+}
+
+// ── Words grid ──
+const posShortMap = { n:'n.', v:'v.', adj:'adj.', adv:'adv.', prep:'prep.', conj:'conj.', pron:'pron.', det:'det.' };
+const rangeCharMap = { 'A–B':'AB','C–D':'CD','E–F':'EF','G–H':'GH','I–J':'IJ','K–L':'KL','M–N':'MN','O–P':'OP','Q–R':'QR','S–T':'ST','U–V':'UV','W–Z':'WXYZ' };
+
+function renderWords() {
+    const container  = document.getElementById('wordsContainer');
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+
+    let filtered = Object.values(allWords).filter(wd => {
+        const status = wordStatuses[wd.word] || 'new';
+        if (!wd.word.includes(searchTerm)) return false;
+        if (currentFilter !== 'all' && status !== currentFilter) return false;
+        if (currentCat === 'all') return true;
+        if (currentView === 'alpha') {
+            const chars = rangeCharMap[currentCat] || '';
+            return chars.includes(wd.word[0].toUpperCase());
+        }
+        if (currentView === 'pos')   return wd.pos === currentCat;
+        if (currentView === 'scene') return wd.scenes.includes(currentCat);
+        return true;
+    });
+
+    filtered.sort((a, b) => a.word.localeCompare(b.word));
+
+    if (!filtered.length) {
+        container.innerHTML = `
+            <div class="no-results">
+                <h3>没有找到匹配的单词</h3>
+                <p>尝试更换搜索词或筛选条件</p>
+            </div>`;
+        return;
+    }
+
+    const catLabel = currentCat === 'all' ? '全部单词' : currentCat;
+    let html = `
+        <div class="section-header">
+            <span class="section-title">${catLabel}</span>
+            <span class="section-count">${filtered.length} 词</span>
+        </div>
+        <div class="words-grid">`;
+
+    filtered.forEach(wd => {
+        const status   = wordStatuses[wd.word] || 'new';
+        const resolved = resolveDef(wd.word);
+        const defText  = resolved.def || '暂无释义';
+        if (!resolved.def) requestAutoTrans(wd.word);
+        const posHtml = wd.pos
+            ? `<span class="wc-pos pos-${wd.pos}">${posShortMap[wd.pos] || wd.pos}</span>`
+            : '';
+
+        html += `
+            <div class="word-card ${status}" onclick="showPopup(event,'${wd.word}')">
+                <div class="wc-top">
+                    <div class="wc-word">${wd.word}</div>
+                    <div class="wc-dot ${status}"></div>
                 </div>
-                <div class="words-grid">
-            `;
-            
-            filteredWords.forEach(wordData => {
-                const status = wordStatuses[wordData.word] || 'new';
-                const posTag = wordData.pos ? `<span class="pos-tag pos-${wordData.pos}">${posLabels[wordData.pos] || wordData.pos}</span>` : '';
-                const resolved = resolveDictionaryEntry(wordData.word);
-                const defText = buildWordDefinition(wordData, resolved);
-                if (!resolved.entry) {
-                    requestAutoTranslation(wordData.word);
-                }
-                
-                html += `
-                    <div class="word-card ${status}" onclick="showWordPopup(event, '${wordData.word}')">
-                        <span class="word-status-dot ${status}"></span>
-                        <div class="word-text">${posTag}${wordData.word}</div>
-                        <div class="word-def">${defText}</div>
-                        <div class="word-meta">出现 ${wordData.count} 次 · ${wordData.articles.size} 篇</div>
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
+                ${posHtml}
+                <div class="wc-def">${defText}</div>
+                <div class="wc-meta">${wd.count}次 · ${wd.articles.size}篇</div>
+            </div>`;
+    });
+
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+// ── Dictionary resolution ──
+function resolveDef(word) {
+    for (const c of getCandidates(word)) {
+        if (dictionary?.[c]) {
+            const e = dictionary[c];
+            return { phonetic: e.phonetic || '', pos: e.pos || '', def: e.def || '', example: e.example || '', matched: c };
         }
-
-        let currentPopupWord = '';
-
-        function showWordPopup(event, word) {
-            event.stopPropagation();
-            currentPopupWord = word;
-            
-            const popup = document.getElementById('wordPopup');
-            const wordData = allWords[word];
-            const resolved = resolveDictionaryEntry(word);
-            const dictEntry = resolved.entry;
-            
-            document.getElementById('popupWord').textContent = word;
-            
-            if (dictEntry) {
-                document.getElementById('popupPhonetic').textContent = dictEntry.phonetic || '';
-                document.getElementById('popupDef').innerHTML = `<strong>${dictEntry.pos || ''}</strong> ${buildWordDefinition(wordData, resolved)}`;
-                document.getElementById('popupExample').textContent = dictEntry.example ? `"${dictEntry.example}"` : '';
-            } else {
-                document.getElementById('popupPhonetic').textContent = '';
-                document.getElementById('popupDef').textContent = buildWordDefinition(wordData, resolved);
-                document.getElementById('popupExample').textContent = '';
-                requestAutoTranslation(word);
-            }
-
-            renderPopupSources(wordData);
-            
-            const rect = event.target.closest('.word-card').getBoundingClientRect();
-            let left = rect.right + 10;
-            let top = rect.top;
-            
-            if (left + 340 > window.innerWidth) {
-                left = rect.left - 350;
-            }
-            if (left < 10) {
-                left = 10;
-            }
-            if (top + 200 > window.innerHeight) {
-                top = window.innerHeight - 210;
-            }
-            
-            popup.style.left = left + 'px';
-            popup.style.top = top + 'px';
-            popup.classList.add('show');
+        if (autoTranslations[c]) {
+            return { phonetic: '', pos: '', def: autoTranslations[c], example: '', matched: c };
         }
+    }
+    return { phonetic: '', pos: '', def: '', example: '', matched: '' };
+}
 
-        function hideWordPopup() {
-            document.getElementById('wordPopup').classList.remove('show');
-        }
+function getCandidates(word) {
+    const s = new Set();
+    const w = (word || '').toLowerCase();
+    if (!w) return [];
+    s.add(w);
+    if (w.endsWith('ies') && w.length > 3) s.add(w.slice(0,-3)+'y');
+    if (w.endsWith('es')  && w.length > 2) s.add(w.slice(0,-2));
+    if (w.endsWith('s')   && w.length > 1) s.add(w.slice(0,-1));
+    if (w.endsWith('ied') && w.length > 3) s.add(w.slice(0,-3)+'y');
+    if (w.endsWith('ed')  && w.length > 2) s.add(w.slice(0,-2));
+    if (w.endsWith('ing') && w.length > 3) s.add(w.slice(0,-3));
+    if (w.endsWith('ing') && w.length > 4) s.add(w.slice(0,-3)+'e');
+    return [...s];
+}
 
-        function renderPopupSources(wordData) {
-            const sourceContainer = document.getElementById('popupSources');
-            if (!wordData || !wordData.contexts || wordData.contexts.length === 0) {
-                sourceContainer.innerHTML = '<div class="popup-sources-title">原文关联</div><div class="popup-source-item">暂无原文出处</div>';
-                return;
-            }
+// ── Popup ──
+function showPopup(event, word) {
+    event.stopPropagation();
+    currentPopupWord = word;
 
-            sourceContainer.innerHTML = `
-                <div class="popup-sources-title">原文关联</div>
-                ${wordData.contexts.map(context => `
-                    <div class="popup-source-item">
-                        <strong>${context.articleTitle} · P${context.paragraphIndex}</strong><br>
-                        ${context.sentence}<br>
-                        <a class="popup-source-link" href="index.html?article=${context.articleId}&paragraph=${context.paragraphIndex}">跳转到原文段落</a>
-                    </div>
-                `).join('')}
-            `;
-        }
+    const wd       = allWords[word];
+    const resolved = resolveDef(word);
 
-        function speakWord() {
-            if (currentPopupWord) {
-                const utterance = new SpeechSynthesisUtterance(currentPopupWord);
-                const voice = getGoogleUSEnglishVoice();
-                if (voice) {
-                    utterance.voice = voice;
-                    utterance.lang = voice.lang;
-                } else {
-                    utterance.lang = 'en-US';
-                }
-                utterance.rate = 0.8;
-                speechSynthesis.speak(utterance);
-            }
-        }
+    document.getElementById('popupWord').textContent     = word;
+    document.getElementById('popupPhonetic').textContent = resolved.phonetic;
 
-        function getGoogleUSEnglishVoice() {
-            const voices = window.speechSynthesis.getVoices();
-            const googleUS = voices.find(voice => voice.name === 'Google US English');
-            if (googleUS) return googleUS;
-            return voices.find(voice => voice.lang === 'en-US') || voices.find(voice => voice.lang.startsWith('en')) || null;
-        }
+    let defHtml = '';
+    if (resolved.pos) defHtml += `<span class="popup-pos-tag">${resolved.pos}</span>`;
+    let defText = resolved.def || (translating.has(word) ? '翻译生成中…' : '暂无释义');
+    if (resolved.matched && resolved.matched !== word) defText += `（原形：${resolved.matched}）`;
+    defHtml += defText;
+    document.getElementById('popupDef').innerHTML = defHtml;
+    document.getElementById('popupExample').textContent = resolved.example ? `"${resolved.example}"` : '';
 
-        async function requestAutoTranslation(word) {
-            const candidates = getWordCandidates(word);
-            if (candidates.some(candidate => dictionary && dictionary[candidate])) return;
-            if (candidates.some(candidate => autoTranslations[candidate])) return;
-            if (translatingWords.has(word)) return;
+    renderPopupSources(wd);
 
-            translatingWords.add(word);
-            try {
-                const translation = await fetchWordTranslation(word);
-                if (translation) {
-                    autoTranslations[word] = translation;
-                    saveAutoTranslations();
-                    renderWords();
-                    if (currentPopupWord === word) {
-                        const popupDef = document.getElementById('popupDef');
-                        popupDef.textContent = translation;
-                    }
-                }
-            } finally {
-                translatingWords.delete(word);
-            }
-        }
+    if (!resolved.def) requestAutoTrans(word);
 
-        async function fetchWordTranslation(word) {
-            try {
-                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(word)}`;
-                const response = await fetch(url);
-                if (!response.ok) return '';
-                const data = await response.json();
-                return data && data[0] && data[0][0] ? data[0][0][0] : '';
-            } catch (err) {
-                return '';
+    const card = event.target.closest('.word-card');
+    const rect = card?.getBoundingClientRect() || { right: event.clientX, left: event.clientX, top: event.clientY };
+    let left = rect.right + 12;
+    let top  = rect.top;
+    if (left + 340 > window.innerWidth)  left = rect.left - 342;
+    if (left < 8)                         left = 8;
+    if (top + 220 > window.innerHeight)  top  = window.innerHeight - 230;
+    if (top < 8)                          top  = 8;
+
+    const popup = document.getElementById('wordPopup');
+    popup.style.left = left + 'px';
+    popup.style.top  = top  + 'px';
+    popup.classList.add('show');
+    document.getElementById('popupBackdrop').classList.add('show');
+}
+
+function hidePopup() {
+    document.getElementById('wordPopup').classList.remove('show');
+    document.getElementById('popupBackdrop').classList.remove('show');
+}
+
+function renderPopupSources(wd) {
+    const el = document.getElementById('popupSources');
+    if (!wd?.contexts?.length) {
+        el.innerHTML = '';
+        return;
+    }
+    el.innerHTML = `
+        <div class="sources-title">原文出处</div>
+        ${wd.contexts.map(ctx => `
+            <div class="source-item">
+                <div class="source-meta">${ctx.articleTitle} · P${ctx.paraIndex}</div>
+                <div class="source-sentence">${ctx.sentence}</div>
+                <a class="source-link" href="index.html?article=${ctx.articleId}&paragraph=${ctx.paraIndex}">跳转原文</a>
+            </div>
+        `).join('')}`;
+}
+
+function speakWord() {
+    if (!currentPopupWord) return;
+    const voices = window.speechSynthesis.getVoices();
+    const voice  = voices.find(v => v.name === 'Google US English')
+                || voices.find(v => v.lang === 'en-US')
+                || voices.find(v => v.lang.startsWith('en'))
+                || null;
+    const utt = new SpeechSynthesisUtterance(currentPopupWord);
+    utt.voice = voice;
+    utt.lang  = voice?.lang || 'en-US';
+    utt.rate  = 0.8;
+    window.speechSynthesis.speak(utt);
+}
+
+function setWordStatus(status) {
+    if (!currentPopupWord) return;
+    if (status === 'new') delete wordStatuses[currentPopupWord];
+    else wordStatuses[currentPopupWord] = status;
+    saveProgress();
+    updateStats();
+    renderWords();
+    hidePopup();
+    const names = { new:'未学习', mastered:'已掌握', review:'待复习' };
+    showToast(`"${currentPopupWord}" → ${names[status]}`);
+}
+
+// ── Auto translate (Google unofficial endpoint) ──
+async function requestAutoTrans(word) {
+    for (const c of getCandidates(word)) {
+        if (dictionary?.[c] || autoTranslations[c]) return;
+    }
+    if (translating.has(word)) return;
+    translating.add(word);
+    try {
+        const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(word)}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const text = data?.[0]?.[0]?.[0] || '';
+        if (text) {
+            autoTranslations[word] = text;
+            saveAutoTranslations();
+            renderWords();
+            if (currentPopupWord === word) {
+                const el = document.getElementById('popupDef');
+                el.textContent = text;
             }
         }
+    } catch { /* network unavailable, silently skip */ }
+    finally { translating.delete(word); }
+}
 
-        function setWordStatus(status) {
-            if (!currentPopupWord) return;
-            
-            if (status === 'new') {
-                delete wordStatuses[currentPopupWord];
-            } else {
-                wordStatuses[currentPopupWord] = status;
-            }
-            
+// ── Export / Import ──
+function exportData() {
+    if (!Object.keys(wordStatuses).length) return showToast('⚠️ 暂无学习数据可导出');
+    const data = { wordStatuses, exportDate: new Date().toISOString(), version: '2.0' };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = Object.assign(document.createElement('a'), {
+        href: url, download: `shadow-reading-${new Date().toISOString().slice(0,10)}.json`
+    });
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    localStorage.setItem(LS.LAST_BACKUP, Date.now());
+    showToast('✅ 学习数据已导出');
+}
+
+function handleImport(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (data.wordStatuses) wordStatuses = data.wordStatuses;
             saveProgress();
             updateStats();
             renderWords();
-            hideWordPopup();
-            
-            const statusNames = { new: '未学习', mastered: '已掌握', review: '待复习' };
-            showToast(`"${currentPopupWord}" → ${statusNames[status]}`);
-        }
+            showToast('✅ 学习数据已导入');
+        } catch { showToast('❌ 导入失败：文件格式错误'); }
+    };
+    reader.onerror = () => showToast('❌ 文件读取失败');
+    reader.readAsText(file);
+    event.target.value = '';
+}
 
-        function cycleStatus(word) {
-            const current = wordStatuses[word] || 'new';
-            const statusOrder = ['new', 'mastered', 'review'];
-            const currentIndex = statusOrder.indexOf(current);
-            const nextIndex = (currentIndex + 1) % statusOrder.length;
-            
-            if (nextIndex === 0) {
-                delete wordStatuses[word];
-            } else {
-                wordStatuses[word] = statusOrder[nextIndex];
-            }
-            
-            saveProgress();
-            updateStats();
-            renderWords();
-            
-            const statusNames = { new: '未学习', mastered: '已掌握', review: '待复习' };
-            const newStatus = wordStatuses[word] || 'new';
-            showToast(`"${word}" → ${statusNames[newStatus]}`);
-        }
+// ── Toast ──
+let toastTimer;
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+}
 
-        function filterWords() {
-            renderWords();
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 1500);
-        }
-
-        function exportData() {
-            const data = {
-                wordStatuses: wordStatuses,
-                exportDate: new Date().toISOString(),
-                version: '1.0'
-            };
-            
-            console.log('导出数据:', data);
-            
-            if (Object.keys(wordStatuses).length === 0) {
-                showToast('⚠️ 没有学习数据可导出');
-                return;
-            }
-            
-            try {
-                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `shadow-reading-progress-${new Date().toISOString().slice(0,10)}.json`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                
-                localStorage.setItem('shadowReading_lastBackup', Date.now().toString());
-                showToast('✅ 学习数据已导出');
-            } catch (e) {
-                console.error('导出错误:', e);
-                showToast('❌ 导出失败: ' + e.message);
-            }
-        }
-
-        function handleImport(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            console.log('导入文件:', file.name);
-            
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                try {
-                    const data = JSON.parse(e.target.result);
-                    console.log('导入数据:', data);
-                    
-                    if (data.wordStatuses) {
-                        wordStatuses = data.wordStatuses;
-                    }
-                    saveProgress();
-                    updateStats();
-                    renderWords();
-                    showToast('✅ 学习数据已导入');
-                } catch (err) {
-                    console.error('导入错误:', err);
-                    showToast('❌ 导入失败：文件格式错误');
-                }
-            };
-            reader.onerror = (e) => {
-                console.error('文件读取错误:', e);
-                showToast('❌ 文件读取失败');
-            };
-            reader.readAsText(file);
-            event.target.value = '';
-        }
-
-        function init() {
-            loadTheme();
-            loadProgress();
-            loadAutoTranslations();
-            extractAllWords();
-            updateStats();
-            renderSidebar();
-            renderWords();
-            
-            document.addEventListener('click', (e) => {
-                const popup = document.getElementById('wordPopup');
-                if (popup.classList.contains('show') && !popup.contains(e.target)) {
-                    hideWordPopup();
-                }
-            });
-        }
-
-        init();
-    </script>
+init();
+</script>
 </body>
 </html>
