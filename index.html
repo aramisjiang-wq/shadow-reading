@@ -803,6 +803,107 @@
         .empty-icon  { font-size:32px; margin-bottom:8px; }
         .empty-text  { font-size:13px; }
 
+        /* ── Spotlight playback ── */
+        #articleContent.reading-spotlight .paragraph-wrapper {
+            transition: opacity 0.38s ease;
+        }
+        #articleContent.reading-spotlight .paragraph-wrapper:not(.playing) {
+            opacity: 0.32;
+        }
+        #articleContent.reading-spotlight .paragraph-wrapper.playing {
+            opacity: 1;
+        }
+
+        /* ── Review word wavy underline ── */
+        .word.review {
+            color: var(--error);
+            text-decoration: underline wavy rgba(248,113,113,0.45);
+            text-underline-offset: 3px;
+        }
+
+        /* ── Para difficulty badge ── */
+        .para-diff {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            color: var(--error);
+            background: rgba(248,113,113,0.1);
+            border: 1px solid rgba(248,113,113,0.18);
+            border-radius: 4px;
+            padding: 1px 5px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .para-diff:not(:empty) { opacity: 1; }
+
+        /* ── Overflow (⋯) menu ── */
+        .overflow-wrap { position: relative; }
+        .overflow-menu {
+            position: absolute; top: calc(100% + 6px); right: 0;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            box-shadow: var(--shadow-md);
+            min-width: 152px;
+            z-index: 500;
+            overflow: hidden;
+            opacity: 0; pointer-events: none;
+            transform: translateY(-5px) scale(0.97);
+            transition: opacity 0.15s, transform 0.15s;
+        }
+        .overflow-menu.show { opacity:1; pointer-events:auto; transform:translateY(0) scale(1); }
+        .overflow-item {
+            display: flex; align-items: center; gap: 9px;
+            padding: 10px 14px;
+            font-size: 12.5px; font-family: var(--font-ui);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: background 0.1s, color 0.1s;
+        }
+        .overflow-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .overflow-sep { height:1px; background:var(--border); margin:3px 0; }
+
+        /* ── Completion modal ── */
+        .completion-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.68);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1400;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .completion-overlay.show { opacity:1; pointer-events:auto; }
+        .completion-modal {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 40px 36px 32px;
+            width: min(400px, 90vw);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            transform: translateY(10px) scale(0.97);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .completion-overlay.show .completion-modal { transform: translateY(0) scale(1); }
+        .cm-icon  { font-size: 44px; margin-bottom: 14px; }
+        .cm-title { font-family:var(--font-ui); font-size:22px; font-weight:700; letter-spacing:-0.5px; margin-bottom:4px; }
+        .cm-sub   { font-family:var(--font-reading); font-style:italic; font-size:13px; color:var(--text-muted); margin-bottom:24px; max-width:300px; margin-left:auto; margin-right:auto; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .cm-stats {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 10px; margin-bottom: 24px;
+        }
+        .cm-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 16px 8px;
+        }
+        .cm-val { font-family:var(--font-ui); font-size:22px; font-weight:700; color:var(--accent-primary); line-height:1; margin-bottom:6px; }
+        .cm-lbl { font-size:11.5px; color:var(--text-muted); }
+        .cm-actions { display:flex; gap:10px; }
+        .cm-actions .btn { flex:1; justify-content:center; }
+
         /* ── Flashcard Review ── */
         .fc-overlay {
             position: fixed; inset: 0;
@@ -1020,11 +1121,15 @@
 
             <div class="ctrl-sep"></div>
 
-            <div class="ctrl-group">
-                <button class="btn btn-icon" onclick="exportData()" title="导出学习数据">📤</button>
-                <button class="btn btn-icon" onclick="document.getElementById('importFile').click()" title="导入学习数据">📥</button>
-                <button class="btn btn-icon" onclick="testSpeech()" title="测试语音">🔊</button>
-                <button class="btn btn-icon" onclick="showShortcuts()" title="键盘快捷键 (?)">⌨️</button>
+            <div class="ctrl-group overflow-wrap">
+                <button class="btn btn-icon" id="overflowBtn" onclick="toggleOverflow()" title="更多选项">⋯</button>
+                <div class="overflow-menu" id="overflowMenu">
+                    <div class="overflow-item" onclick="exportData();closeOverflow()">📤 导出数据</div>
+                    <div class="overflow-item" onclick="document.getElementById('importFile').click();closeOverflow()">📥 导入数据</div>
+                    <div class="overflow-sep"></div>
+                    <div class="overflow-item" onclick="testSpeech();closeOverflow()">🔊 测试语音</div>
+                    <div class="overflow-item" onclick="showShortcuts();closeOverflow()">⌨️ 快捷键</div>
+                </div>
             </div>
         </div>
 
@@ -1051,6 +1156,24 @@
             <button class="btn" id="nextBtn" onclick="nextArticle()">下一篇 →</button>
         </div>
     </main>
+</div>
+
+<!-- Completion Modal -->
+<div class="completion-overlay" id="completionOverlay">
+    <div class="completion-modal">
+        <div class="cm-icon">🎉</div>
+        <div class="cm-title">文章完成！</div>
+        <div class="cm-sub" id="cmSub"></div>
+        <div class="cm-stats">
+            <div class="cm-stat"><div class="cm-val" id="cmTime">—</div><div class="cm-lbl">用时</div></div>
+            <div class="cm-stat"><div class="cm-val" id="cmWords">—</div><div class="cm-lbl">遇到生词</div></div>
+            <div class="cm-stat"><div class="cm-val" id="cmParas">—</div><div class="cm-lbl">段已练习</div></div>
+        </div>
+        <div class="cm-actions">
+            <button class="btn" onclick="closeCompletion()">再读一遍</button>
+            <button class="btn btn-primary" onclick="nextArticleFromCompletion()">下一篇 →</button>
+        </div>
+    </div>
 </div>
 
 <!-- Flashcard Review Modal -->
@@ -1197,6 +1320,7 @@ let practicedMap    = {};
 let streak          = 0;
 
 // Shadow sentence state
+let articleStartTime = 0;
 let isShadowing     = false;
 let shadowParaIdx   = -1;
 let shadowSents     = [];
@@ -1488,6 +1612,7 @@ function loadArticle(index) {
                     <button class="play-para-btn" onclick="playParagraph(${i})" title="播放此段">▶</button>
                     <button class="shadow-para-btn" onclick="startSentenceShadow(${i})" title="逐句跟读">🎤</button>
                     <span class="para-num">P${i + 1}</span>
+                    <span class="para-diff" id="paradiff-${i}"></span>
                     <button class="practiced-btn ${isPracticed ? 'done' : ''}" data-para="${i}"
                         onclick="toggleParagraphPracticed(${i})"
                         title="${isPracticed ? '取消练习标记' : '标记为已练习'}">${isPracticed ? '✓' : '○'}</button>
@@ -1498,8 +1623,24 @@ function loadArticle(index) {
         `;
     }).join('');
 
+    articleStartTime = Date.now();
     renderArticleList();
     setTimeout(scrollSidebarToActive, 50);
+    setTimeout(updateAllParaBadges, 0);
+
+    // Resume to first un-practiced paragraph (only when some are already done)
+    if (practiced.length > 0) {
+        const paras = article.content.split('\n\n');
+        setTimeout(() => {
+            for (let i = 0; i < paras.length; i++) {
+                if (!practiced.includes(i)) {
+                    document.querySelector(`.paragraph-wrapper[data-index="${i}"]`)
+                        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+                }
+            }
+        }, 250);
+    }
 }
 
 // ── Playback internals ──
@@ -1510,6 +1651,7 @@ function clearPlaying() {
     currentParaIdx = -1;
     document.querySelectorAll('.paragraph-wrapper.playing').forEach(el => el.classList.remove('playing'));
     document.querySelectorAll('.play-para-btn.playing').forEach(el => el.classList.remove('playing'));
+    document.getElementById('articleContent').classList.remove('reading-spotlight');
     updatePlayButton();
 }
 
@@ -1554,7 +1696,7 @@ function playParagraph(index, autoContinue = false) {
             saveProgress();
             renderArticleList();
             updateStats();
-            showCompletionToast();
+            showCompletionModal();
         }
         return;
     }
@@ -1570,6 +1712,7 @@ function playParagraph(index, autoContinue = false) {
     wrapper?.classList.add('playing');
     btn?.classList.add('playing');
     wrapper?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('articleContent').classList.add('reading-spotlight');
 
     currentParaIdx = index;
     isPlaying = true;
@@ -1609,6 +1752,32 @@ function playParagraph(index, autoContinue = false) {
 
     currentUtterance = utt;
     speechSynthesis.speak(utt);
+}
+
+function showCompletionModal() {
+    const elapsed = Date.now() - articleStartTime;
+    const m = Math.floor(elapsed / 60000);
+    const s = Math.floor((elapsed % 60000) / 1000);
+    const timeStr = m > 0 ? `${m}分${s}秒` : `${s}秒`;
+
+    const total  = articles[currentArticle].content.split('\n\n').length;
+    const done   = (practicedMap[currentArticle] || []).length;
+    const words  = Object.keys(wordStatuses).length;
+
+    document.getElementById('cmSub').textContent   = articles[currentArticle].title;
+    document.getElementById('cmTime').textContent  = timeStr;
+    document.getElementById('cmWords').textContent = words;
+    document.getElementById('cmParas').textContent = `${done}/${total}`;
+    document.getElementById('completionOverlay').classList.add('show');
+}
+
+function closeCompletion() {
+    document.getElementById('completionOverlay').classList.remove('show');
+}
+
+function nextArticleFromCompletion() {
+    closeCompletion();
+    nextArticle();
 }
 
 function showCompletionToast() {
@@ -1959,11 +2128,32 @@ function updateStatusButtons() {
     });
 }
 
+// ── Para difficulty badges ──
+function updateAllParaBadges() {
+    const paragraphs = articles[currentArticle]?.content.split('\n\n') || [];
+    paragraphs.forEach((para, i) => {
+        const badge = document.getElementById(`paradiff-${i}`);
+        if (!badge) return;
+        const words = [...para.matchAll(/\b([a-z]{2,})\b/gi)].map(m => m[1].toLowerCase());
+        const rc    = words.filter(w => wordStatuses[w] === 'review').length;
+        badge.textContent = rc > 0 ? `${rc}词需复习` : '';
+    });
+}
+
+// ── Overflow menu ──
+function toggleOverflow() {
+    document.getElementById('overflowMenu').classList.toggle('show');
+}
+function closeOverflow() {
+    document.getElementById('overflowMenu').classList.remove('show');
+}
+
 function setWordStatus(status) {
     wordStatuses[currentWord] = status;
     updateStatusButtons();
     saveProgress();
     updateStats();
+    updateAllParaBadges();
 
     document.querySelectorAll(`.word[data-word="${currentWord}"]`).forEach(el => {
         el.classList.remove('mastered', 'review');
@@ -2234,7 +2424,7 @@ document.addEventListener('keydown', e => {
 
     switch (e.key) {
         case 'Escape':
-            closePopup(); hideShortcuts();
+            closePopup(); hideShortcuts(); closeCompletion(); closeOverflow();
             if (isShadowing) exitShadow();
             break;
         case '?':           e.preventDefault(); showShortcuts(); break;
@@ -2252,6 +2442,11 @@ document.addEventListener('click', e => {
     const popup = document.getElementById('wordPopup');
     if (popup.classList.contains('show') && !popup.contains(e.target) && !e.target.classList.contains('word')) {
         closePopup();
+    }
+    const omenu = document.getElementById('overflowMenu');
+    const obtn  = document.getElementById('overflowBtn');
+    if (omenu?.classList.contains('show') && !omenu.contains(e.target) && e.target !== obtn) {
+        closeOverflow();
     }
 });
 
