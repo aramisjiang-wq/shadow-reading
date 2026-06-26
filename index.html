@@ -33,7 +33,7 @@
             --font-cn:      'Noto Sans SC', var(--font-ui);
             --font-reading: 'Lora', 'Georgia', serif;
             --font-mono:    'SF Mono','Fira Code','Consolas',monospace;
-            --sidebar-width: 264px;
+            --sidebar-width: 290px;
             --article-font-size: 17px;
         }
 
@@ -197,21 +197,26 @@
         .article-list::-webkit-scrollbar-thumb,.word-list::-webkit-scrollbar-thumb { background:var(--bg-hover); border-radius:2px; }
 
         .article-item {
-            padding: 7px 10px;
+            padding: 7px 10px 7px 13px;
             border-radius: var(--r-sm);
             cursor: pointer;
-            display: flex; align-items: center; gap: 9px;
-            margin-bottom: 2px;
-            font-size: 12.5px;
+            display: flex; align-items: center; gap: 8px;
+            margin-bottom: 1px;
             color: var(--text-secondary);
-            transition: all 0.12s;
+            transition: background 0.12s, color 0.12s, border-left-color 0.12s;
+            border-left: 2px solid transparent;
+            position: relative;
         }
-        .article-item:hover { background: var(--bg-hover); color: var(--text-primary); }
-        .article-item.active { background: var(--accent-dim); color: var(--accent-primary); }
-        .article-item.completed { color: var(--success); }
+        .article-item:hover { background:var(--bg-hover); color:var(--text-primary); }
+        .article-item.active { background:var(--accent-dim); border-left-color:var(--accent-primary); }
+
+        /* Level left-border indicator */
+        .article-item.lvl-beginner:not(.active)     { border-left-color:rgba(74,222,128,0.4); }
+        .article-item.lvl-intermediate:not(.active)  { border-left-color:rgba(245,158,11,0.4); }
+        .article-item.lvl-advanced:not(.active)      { border-left-color:rgba(248,113,113,0.38); }
 
         .article-badge {
-            width: 22px; height: 22px;
+            width: 21px; height: 21px;
             border-radius: 5px;
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -220,20 +225,29 @@
             font-size: 10px; font-weight: 600;
             flex-shrink: 0;
             transition: all 0.15s;
-        }
-        .article-item.completed .article-badge { background: var(--success); border-color: var(--success); color: #fff; }
-        .article-item.active    .article-badge { border-color: var(--accent-primary); color: var(--accent-primary); }
-
-        .article-meta { flex:1; min-width:0; }
-        .article-name { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-        .article-para-progress {
-            font-size: 10px;
             color: var(--text-muted);
-            font-family: var(--font-mono);
-            margin-top: 2px;
         }
-        .article-item.active    .article-para-progress { color: rgba(0,212,170,0.5); }
-        .article-item.completed .article-para-progress { color: rgba(0,212,170,0.5); }
+        .article-item.completed .article-badge { background:var(--success); border-color:var(--success); color:#fff; }
+        .article-item.active    .article-badge { border-color:var(--accent-primary); color:var(--accent-primary); background:var(--accent-dim); }
+
+        /* Article item body — this is the ONLY flex:1 container */
+        .ai-body { flex:1; min-width:0; }
+        .ai-title {
+            display: block;
+            font-size: 12.5px; font-weight: 400;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+            transition: color 0.12s;
+        }
+        .article-item.active .ai-title { color:var(--accent-primary); font-weight:500; }
+        .article-item.completed .ai-title { color:var(--success); }
+        .ai-prog {
+            display: block;
+            font-size: 10px; color: var(--text-muted);
+            font-family: var(--font-mono);
+            margin-top: 1px;
+        }
+        .article-item.active    .ai-prog { color:rgba(0,212,170,0.55); }
+        .article-item.completed .ai-prog { color:rgba(0,212,170,0.55); }
 
         .word-item {
             padding: 10px 12px;
@@ -452,21 +466,29 @@
             opacity: 0.65;
         }
 
-        .para-header { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+        .para-header {
+            display: flex; align-items: center; gap: 5px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+            transition: opacity 0.18s;
+        }
+        .paragraph-wrapper:hover .para-header,
+        .paragraph-wrapper.playing .para-header,
+        .paragraph-wrapper.shadowing .para-header { opacity: 1; }
 
         .play-para-btn {
-            width: 26px; height: 26px;
+            width: 24px; height: 24px;
             border-radius: 5px;
-            background: var(--bg-hover);
+            background: transparent;
             border: 1px solid var(--border);
             color: var(--text-muted);
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            font-size: 10px;
+            font-size: 9px;
             transition: all 0.12s;
             flex-shrink: 0;
         }
-        .play-para-btn:hover  { background:var(--accent-primary); color:#fff; border-color:var(--accent-primary); }
+        .play-para-btn:hover  { background:var(--accent-primary); color:#fff; border-color:var(--accent-primary); transform:scale(1.05); }
         .play-para-btn.playing{ background:var(--accent-primary); color:#fff; border-color:var(--accent-primary); }
 
         .shadow-para-btn {
@@ -477,11 +499,11 @@
             color: var(--text-muted);
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            font-size: 11px;
+            font-size: 10px;
             transition: all 0.12s;
             flex-shrink: 0;
         }
-        .shadow-para-btn:hover  { background:rgba(124,58,237,0.12); color:#a78bfa; border-color:rgba(124,58,237,0.3); }
+        .shadow-para-btn:hover  { background:rgba(124,58,237,0.12); color:#a78bfa; border-color:rgba(124,58,237,0.3); transform:scale(1.05); }
         .shadow-para-btn.active { background:rgba(124,58,237,0.16); color:#a78bfa; border-color:rgba(124,58,237,0.35); }
 
         .para-num {
@@ -527,7 +549,12 @@
         }
         .word:hover    { background:var(--accent-dim); color:var(--accent-primary); }
         .word.mastered { color:var(--success); }
-        .word.review   { color:var(--error); }
+        .word.review   {
+            color: var(--error);
+            text-decoration: underline wavy;
+            text-decoration-color: rgba(248,113,113,0.45);
+            text-underline-offset: 3px;
+        }
 
         /* ── Translation ── */
         .translation {
@@ -1015,21 +1042,33 @@
         .dg-btn { flex-shrink:0; padding:4px 9px; border-radius:4px; border:1px solid var(--border-accent); background:var(--accent-dim); color:var(--accent-primary); font-size:11px; font-family:var(--font-ui); cursor:pointer; transition:all .12s; }
         .dg-btn:hover { background:rgba(0,212,170,0.2); }
 
-        /* ── Article level + difficulty ── */
-        .article-meta { display:flex; align-items:center; gap:5px; margin-left:auto; flex-shrink:0; }
-        .diff-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-        .diff-dot.easy { background:var(--success); } .diff-dot.medium { background:var(--warning); }
-        .diff-dot.hard { background:var(--error); }   .diff-dot.untried { background:var(--text-muted); }
-        .lvl-badge { font-family:var(--font-ui); font-size:9px; font-weight:600; padding:1px 5px; border-radius:3px; letter-spacing:.3px; white-space:nowrap; }
-        .lvl-badge.beginner     { color:#4ade80; background:rgba(74,222,128,0.12); }
-        .lvl-badge.intermediate { color:var(--warning); background:rgba(245,158,11,0.12); }
-        .lvl-badge.advanced     { color:var(--error); background:rgba(248,113,113,0.12); }
+        /* ── Difficulty dot (article item right indicator) ── */
+        .diff-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; opacity:0.9; }
+        .diff-dot.easy   { background:var(--success); }
+        .diff-dot.medium { background:var(--warning); }
+        .diff-dot.hard   { background:var(--error); }
+        .diff-dot.untried { background:var(--text-muted); opacity:0.35; }
 
-        /* ── Level filter ── */
-        .level-filter { display:flex; gap:4px; padding:5px 8px 2px; flex-shrink:0; }
-        .lvl-filter-btn { font-size:10.5px; font-family:var(--font-ui); padding:2px 8px; border-radius:4px; border:1px solid var(--border); background:transparent; color:var(--text-muted); cursor:pointer; transition:all .12s; }
-        .lvl-filter-btn.active { background:var(--accent-dim); color:var(--accent-primary); border-color:var(--border-accent); }
-        .lvl-filter-btn:hover:not(.active) { color:var(--text-secondary); }
+        /* ── Level segmented filter ── */
+        .level-filter {
+            display: flex; padding: 6px 8px 4px; gap: 3px;
+            flex-shrink: 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        .lvl-filter-btn {
+            flex: 1; padding: 4px 3px;
+            border-radius: 4px; border: none;
+            background: transparent;
+            font-size: 10.5px; font-family: var(--font-ui);
+            color: var(--text-muted); cursor: pointer;
+            transition: all .12s;
+        }
+        .lvl-filter-btn:hover { color:var(--text-secondary); background:var(--bg-hover); }
+        .lvl-filter-btn.active { background:var(--bg-elevated); color:var(--text-primary); font-weight:500; box-shadow:0 1px 3px rgba(0,0,0,0.25); }
+        .lvl-filter-btn[data-level="beginner"].active     { color:#4ade80; }
+        .lvl-filter-btn[data-level="intermediate"].active { color:var(--warning); }
+        .lvl-filter-btn[data-level="advanced"].active     { color:var(--error); }
 
         /* ── Word article context ── */
         .popup-articles { font-size:11.5px; color:var(--text-muted); font-family:var(--font-ui); margin-top:9px; display:flex; align-items:center; gap:7px; }
@@ -1173,10 +1212,6 @@
                         <option value="1.5">1.5×</option>
                     </select>
                 </div>
-                <div class="select-wrap">
-                    <label>音色</label>
-                    <select id="voiceSelect"></select>
-                </div>
             </div>
 
             <div class="ctrl-sep"></div>
@@ -1189,8 +1224,8 @@
             <div class="ctrl-sep"></div>
 
             <div class="ctrl-group">
-                <button class="btn btn-icon" onclick="adjustFontSize(-1)" title="缩小字号">A−</button>
-                <button class="btn btn-icon" onclick="adjustFontSize(1)"  title="放大字号">A+</button>
+                <button class="btn btn-icon" onclick="adjustFontSize(-1)" title="缩小字号 (−)">A−</button>
+                <button class="btn btn-icon" onclick="adjustFontSize(1)"  title="放大字号 (+)">A+</button>
                 <button class="btn btn-icon" id="focusBtn" onclick="toggleFocusMode()" title="专注模式 (F)">⛶</button>
             </div>
 
@@ -1199,6 +1234,11 @@
             <div class="ctrl-group overflow-wrap">
                 <button class="btn btn-icon" id="overflowBtn" onclick="toggleOverflow()" title="更多选项">⋯</button>
                 <div class="overflow-menu" id="overflowMenu">
+                    <div class="overflow-item" style="padding:8px 14px 4px">
+                        <div style="font-size:10px;color:var(--text-muted);font-family:var(--font-ui);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">音色</div>
+                        <select id="voiceSelect" style="width:100%;background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;color:var(--text-primary);font-size:12px;font-family:var(--font-ui);cursor:pointer;outline:none"></select>
+                    </div>
+                    <div class="overflow-sep"></div>
                     <div class="overflow-item" onclick="exportData();closeOverflow()">📤 导出数据</div>
                     <div class="overflow-item" onclick="document.getElementById('importFile').click();closeOverflow()">📥 导入数据</div>
                     <div class="overflow-sep"></div>
@@ -1553,7 +1593,7 @@ function dailyGuideAction() {
 // ── Level filter ──
 function setLevelFilter(level) {
     levelFilter = level;
-    document.querySelectorAll('.lvl-filter-btn').forEach(btn => {
+    document.querySelectorAll('#levelFilter .lvl-filter-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.level === level);
     });
     renderArticleList();
@@ -1793,28 +1833,25 @@ function getSelectedVoice() {
 
 // ── Article list ──
 function renderArticleList() {
-    const levelMap = { beginner: '初级', intermediate: '中级', advanced: '进阶' };
     document.getElementById('articleList').innerHTML = articles.map((a, i) => {
         if (levelFilter !== 'all' && a.level !== levelFilter) return '';
-        const total = a.content.split('\n\n').length;
-        const done  = (practicedMap[i] || []).length;
-        const prog  = done > 0 ? `${done}/${total} 段已练` : '';
-        const diff  = computeArticleDifficulty(i);
-        const lvl   = a.level || 'intermediate';
-        return `
-            <div class="article-item ${i === currentArticle ? 'active' : ''} ${completedArticles.has(i) ? 'completed' : ''}"
-                onclick="loadArticle(${i})">
-                <span class="article-badge">${completedArticles.has(i) ? '✓' : i + 1}</span>
-                <div style="flex:1;min-width:0">
-                    <span class="article-name">${a.title}</span>
-                    ${prog ? `<div class="article-para-progress">${prog}</div>` : ''}
-                </div>
-                <div class="article-meta">
-                    <span class="diff-dot ${diff.cls}" title="${diff.count > 0 ? diff.count + '词待复习' : '暂无待复习词'}"></span>
-                    <span class="lvl-badge ${lvl}">${levelMap[lvl] || lvl}</span>
-                </div>
+        const total    = a.content.split('\n\n').length;
+        const done     = (practicedMap[i] || []).length;
+        const prog     = done > 0 ? `${done}/${total} 段` : '';
+        const diff     = computeArticleDifficulty(i);
+        const lvl      = a.level || 'intermediate';
+        const isActive = i === currentArticle;
+        const isDone   = completedArticles.has(i);
+        const badge    = isDone ? '✓' : i + 1;
+        const diffTip  = diff.count > 0 ? `${diff.count}词待复习` : diff.cls === 'easy' ? '已掌握' : '';
+        return `<div class="article-item${isActive ? ' active' : ''}${isDone ? ' completed' : ''} lvl-${lvl}" onclick="loadArticle(${i})" title="${a.title}">
+            <span class="article-badge">${badge}</span>
+            <div class="ai-body">
+                <span class="ai-title">${a.title}</span>
+                ${prog ? `<span class="ai-prog">${prog} 已练</span>` : ''}
             </div>
-        `;
+            <span class="diff-dot ${diff.cls}"${diffTip ? ` title="${diffTip}"` : ''}></span>
+        </div>`;
     }).join('');
 }
 
@@ -2314,8 +2351,9 @@ function showWordPopup(event, word) {
         artCtx.style.display = 'none';
     }
 
-    const x = Math.min(event.clientX, window.innerWidth - 326);
-    const y = Math.min(event.clientY + 12, window.innerHeight - 260);
+    const sidebarW = document.body.classList.contains('focus-mode') ? 0 : (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sidebar-width')) || 290);
+    const x = Math.max(sidebarW + 8, Math.min(event.clientX, window.innerWidth - 330));
+    const y = Math.min(Math.max(event.clientY + 12, 60), window.innerHeight - 270);
     const popup = document.getElementById('wordPopup');
     popup.style.left      = x + 'px';
     popup.style.top       = y + 'px';
