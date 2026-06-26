@@ -526,6 +526,73 @@
         .pos-pron { background:rgba(34,197,94,0.12);  color:#4ade80; }
         .pos-det  { background:rgba(168,162,158,0.12);color:#a8a29e; }
 
+        /* ── Article filter select ── */
+        .article-select {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 12.5px;
+            font-family: var(--font-ui);
+            cursor: pointer;
+            transition: border-color 0.15s;
+            max-width: 220px;
+        }
+        .article-select:focus { outline:none; border-color:var(--accent-primary); }
+        .article-select.filtered { border-color:var(--border-accent); color:var(--accent-primary); }
+
+        /* ── Flashcard modal (words.html) ── */
+        .wfc-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.82);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1200;
+            display: none; align-items: center; justify-content: center;
+        }
+        .wfc-overlay.show { display: flex; }
+        .wfc-panel {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 28px;
+            width: min(440px, 92vw);
+            box-shadow: var(--shadow-lg);
+        }
+        .wfc-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+        .wfc-title { font-family:var(--font-ui); font-size:14px; font-weight:600; color:var(--text-secondary); }
+        .wfc-progress { font-family:var(--font-ui); font-size:12px; color:var(--text-muted); }
+        .wfc-close { background:none; border:none; color:var(--text-muted); font-size:18px; cursor:pointer; padding:2px 6px; border-radius:4px; }
+        .wfc-close:hover { color:var(--text-primary); background:var(--bg-hover); }
+        .wfc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 32px 24px;
+            text-align: center;
+            cursor: pointer;
+            min-height: 160px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 10px;
+            transition: border-color 0.15s;
+            margin-bottom: 16px;
+        }
+        .wfc-card:hover { border-color: var(--border-accent); }
+        .wfc-word { font-family:var(--font-reading); font-size:28px; font-weight:500; }
+        .wfc-phonetic { font-size:13px; color:var(--text-muted); font-family:var(--font-ui); }
+        .wfc-hint { font-size:12px; color:var(--text-muted); font-family:var(--font-ui); margin-top:6px; }
+        .wfc-reveal { display:none; flex-direction:column; gap:8px; }
+        .wfc-pos { font-size:11px; color:var(--accent-primary); font-family:var(--font-ui); font-weight:600; text-transform:uppercase; margin-right:5px; }
+        .wfc-def { font-size:15px; color:var(--text-primary); }
+        .wfc-example { font-size:12.5px; color:var(--text-muted); font-style:italic; }
+        .wfc-actions { display:flex; gap:10px; }
+        .wfc-btn { flex:1; padding:11px; border:1px solid var(--border); border-radius:var(--r-md); background:var(--bg-card); color:var(--text-secondary); font-size:13px; font-family:var(--font-ui); cursor:pointer; transition:all 0.15s; }
+        .wfc-btn-no:hover  { background:rgba(248,113,113,0.15); color:var(--error); border-color:rgba(248,113,113,0.3); }
+        .wfc-btn-yes { background:var(--accent-dim); color:var(--accent-primary); border-color:var(--border-accent); }
+        .wfc-btn-yes:hover { background:rgba(0,212,170,0.2); }
+        .wfc-empty { text-align:center; padding:48px; color:var(--text-muted); font-size:14px; font-family:var(--font-ui); }
+        .wfc-tip { text-align:center; margin-top:14px; font-size:11.5px; color:var(--text-muted); font-family:var(--font-ui); }
+
         /* ── Mobile ── */
         @media (max-width:900px) {
             .content-area { flex-direction:column; }
@@ -550,6 +617,7 @@
         </div>
         <div class="header-actions">
             <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+            <button class="btn" onclick="openWordFlashcard()" id="fcStartBtn" title="对待复习单词进行闪卡练习" style="display:none">📇 闪卡复习</button>
             <button class="btn btn-icon" onclick="exportData()" title="导出学习数据">📤</button>
             <button class="btn btn-icon" onclick="document.getElementById('importFile').click()" title="导入学习数据">📥</button>
             <a href="index.html" class="btn">← 返回学习</a>
@@ -606,6 +674,9 @@
             <button class="filter-btn f-review"   data-filter="review"   onclick="setFilter('review')">待复习</button>
             <button class="filter-btn f-new"      data-filter="new"      onclick="setFilter('new')">未学习</button>
         </div>
+        <select class="article-select" id="articleSelect" onchange="setArticleFilter(this.value)" title="按文章筛选">
+            <option value="all">全部文章</option>
+        </select>
     </div>
 
     <div class="content-area">
@@ -635,6 +706,31 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- Flashcard modal -->
+<div class="wfc-overlay" id="wfcOverlay">
+    <div class="wfc-panel">
+        <div class="wfc-top">
+            <span class="wfc-title">📇 单词闪卡复习</span>
+            <span class="wfc-progress" id="wfcProgress"></span>
+            <button class="wfc-close" onclick="closeWordFlashcard()">× 退出</button>
+        </div>
+        <div class="wfc-card" id="wfcCard" onclick="revealWfc()">
+            <div class="wfc-word" id="wfcWord"></div>
+            <div class="wfc-phonetic" id="wfcPhonetic"></div>
+            <div class="wfc-hint" id="wfcHint">点击查看释义</div>
+            <div class="wfc-reveal" id="wfcReveal">
+                <div><span class="wfc-pos" id="wfcPos"></span><span class="wfc-def" id="wfcDef"></span></div>
+                <div class="wfc-example" id="wfcExample"></div>
+            </div>
+        </div>
+        <div class="wfc-actions" id="wfcActions" style="display:none">
+            <button class="wfc-btn wfc-btn-no" onclick="wfcJudge('review')">↺ 还不熟</button>
+            <button class="wfc-btn wfc-btn-yes" onclick="wfcJudge('mastered')">✓ 已掌握</button>
+        </div>
+        <div class="wfc-tip">Space 翻转 · Y 掌握 · N 继续复习 · Esc 退出</div>
+    </div>
+</div>
 
 <script src="articles-data.js"></script>
 <script src="dictionary-data.js"></script>
@@ -683,8 +779,12 @@ let autoTranslations = {};
 let currentView     = 'alpha';
 let currentCat      = 'all';
 let currentFilter   = 'all';
+let currentArticleFilter = 'all';
 let currentPopupWord = '';
 const translating   = new Set();
+
+// Flashcard state
+let wfcQueue = [], wfcIdx = 0, wfcRevealed = false;
 
 // ── Init ──
 function init() {
@@ -693,6 +793,7 @@ function init() {
     loadAutoTranslations();
     extractAllWords();
     updateStats();
+    populateArticleSelect();
     renderSidebar();
     renderWords();
 
@@ -702,6 +803,31 @@ function init() {
             hidePopup();
         }
     });
+
+    document.addEventListener('keydown', e => {
+        if (!document.getElementById('wfcOverlay').classList.contains('show')) return;
+        if (e.key === 'Escape') { closeWordFlashcard(); return; }
+        if (e.key === ' ') { e.preventDefault(); revealWfc(); return; }
+        if (e.key === 'y' || e.key === 'Y') { if (wfcRevealed) wfcJudge('mastered'); return; }
+        if (e.key === 'n' || e.key === 'N') { if (wfcRevealed) wfcJudge('review'); return; }
+    });
+}
+
+function populateArticleSelect() {
+    const sel = document.getElementById('articleSelect');
+    articles.forEach((a, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = `第${i + 1}篇: ${a.title}`;
+        sel.appendChild(opt);
+    });
+}
+
+function setArticleFilter(val) {
+    currentArticleFilter = val;
+    const sel = document.getElementById('articleSelect');
+    sel.classList.toggle('filtered', val !== 'all');
+    renderWords();
 }
 
 // ── Theme ──
@@ -817,6 +943,13 @@ function updateStats() {
     document.getElementById('barMastered').style.width = pct(mastered) + '%';
     document.getElementById('barReview').style.width   = pct(review)   + '%';
     document.getElementById('barNew').style.width      = pct(newCount) + '%';
+
+    // Show flashcard button when review words exist
+    const fcBtn = document.getElementById('fcStartBtn');
+    if (fcBtn) {
+        fcBtn.style.display = review > 0 ? '' : 'none';
+        fcBtn.textContent = `📇 闪卡复习 (${review})`;
+    }
 }
 
 // ── View / filter ──
@@ -900,6 +1033,7 @@ function renderWords() {
         const status = wordStatuses[wd.word] || 'new';
         if (!wd.word.includes(searchTerm)) return false;
         if (currentFilter !== 'all' && status !== currentFilter) return false;
+        if (currentArticleFilter !== 'all' && !wd.articles.has(parseInt(currentArticleFilter))) return false;
         if (currentCat === 'all') return true;
         if (currentView === 'alpha') {
             const chars = rangeCharMap[currentCat] || '';
@@ -1139,6 +1273,75 @@ function showToast(msg) {
     t.classList.add('show');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ── Word flashcard (words.html) ──
+function openWordFlashcard() {
+    const reviewWords = Object.entries(wordStatuses)
+        .filter(([, s]) => s === 'review')
+        .map(([w]) => w)
+        .filter(w => allWords[w]);
+    if (!reviewWords.length) { showToast('没有待复习单词'); return; }
+    wfcQueue = reviewWords.sort(() => Math.random() - 0.5);
+    wfcIdx = 0; wfcRevealed = false;
+    renderWfcCard();
+    document.getElementById('wfcOverlay').classList.add('show');
+}
+
+function renderWfcCard() {
+    if (wfcIdx >= wfcQueue.length) {
+        document.getElementById('wfcCard').innerHTML = '<div class="wfc-empty">🎉 本轮复习完成！</div>';
+        document.getElementById('wfcActions').style.display = 'none';
+        document.getElementById('wfcProgress').textContent = '';
+        return;
+    }
+    const word = wfcQueue[wfcIdx];
+    const wd   = allWords[word] || {};
+    const dict = (typeof dictionary !== 'undefined') ? dictionary[word] : null;
+    const phonetic = dict?.phonetic || '';
+    const pos      = dict?.pos || wd.pos || '';
+    const def      = dict?.def || wd.autoTranslation || '暂无释义';
+    const example  = dict?.example || '';
+
+    document.getElementById('wfcWord').textContent     = word;
+    document.getElementById('wfcPhonetic').textContent = phonetic;
+    document.getElementById('wfcPos').textContent      = pos;
+    document.getElementById('wfcDef').textContent      = def;
+    document.getElementById('wfcExample').textContent  = example ? `"${example}"` : '';
+    document.getElementById('wfcHint').style.display   = 'block';
+    document.getElementById('wfcReveal').style.display = 'none';
+    document.getElementById('wfcActions').style.display = 'none';
+    document.getElementById('wfcProgress').textContent = `${wfcIdx + 1} / ${wfcQueue.length}`;
+    wfcRevealed = false;
+
+    if (speechSynthesis) {
+        const utt = new SpeechSynthesisUtterance(word);
+        utt.lang = 'en-US'; utt.rate = 0.9;
+        speechSynthesis.speak(utt);
+    }
+}
+
+function revealWfc() {
+    if (wfcIdx >= wfcQueue.length || wfcRevealed) return;
+    wfcRevealed = true;
+    document.getElementById('wfcHint').style.display   = 'none';
+    document.getElementById('wfcReveal').style.display = 'flex';
+    document.getElementById('wfcActions').style.display = 'flex';
+}
+
+function wfcJudge(status) {
+    const word = wfcQueue[wfcIdx];
+    if (!word) return;
+    wordStatuses[word] = status;
+    saveProgress();
+    updateStats();
+    wfcIdx++;
+    renderWfcCard();
+}
+
+function closeWordFlashcard() {
+    document.getElementById('wfcOverlay').classList.remove('show');
+    speechSynthesis?.cancel();
 }
 
 init();

@@ -1,5 +1,5 @@
 const articles = [
-    { id: 1, title: "A Typical Day in My Life", subtitle: "我的日常生活", content: `The alarm clock rings at six thirty in the morning. I slowly open my eyes and stretch my arms above my head. The sunlight streams through the curtains, casting a warm glow across my bedroom. I take a deep breath and prepare myself for another busy day.
+    { id: 1, level: 'beginner', title: "A Typical Day in My Life", subtitle: "我的日常生活", content: `The alarm clock rings at six thirty in the morning. I slowly open my eyes and stretch my arms above my head. The sunlight streams through the curtains, casting a warm glow across my bedroom. I take a deep breath and prepare myself for another busy day.
 
 After getting out of bed, I immediately head to the bathroom to wash my face and brush my teeth. The cold water helps me wake up completely. I look at myself in the mirror and smile, ready to face whatever challenges the day might bring.
 
@@ -52,7 +52,7 @@ Before going to sleep, I reflect on my day. I think about what went well and wha
 晚饭后，我洗碗并整理客厅。然后我花一个小时读一本我一直想读完的小说。睡前阅读帮助我放松并提高词汇量。我会记下遇到的任何有趣的单词。
 
 睡觉前，我反思这一天。我思考哪些做得好，哪些可以改进。我设好明天的闹钟，关灯。当我闭上眼睛时，我对又一个富有成效的一天心存感激。明天将带来新的机遇和挑战，我已经准备好拥抱它们。` },
-    { id: 2, title: "The Modern Workplace", subtitle: "现代职场", content: `The modern workplace has undergone significant changes over the past few decades. Technology has transformed how we communicate, collaborate, and conduct business. Companies now operate in a global environment, with employees working from different locations and time zones.
+    { id: 2, level: 'intermediate', title: "The Modern Workplace", subtitle: "现代职场", content: `The modern workplace has undergone significant changes over the past few decades. Technology has transformed how we communicate, collaborate, and conduct business. Companies now operate in a global environment, with employees working from different locations and time zones.
 
 In today's office, computers and smartphones are essential tools. Employees use email, instant messaging, and video conferencing to stay connected with colleagues and clients. Cloud computing allows teams to share documents and work on projects simultaneously, regardless of their physical location.
 
@@ -109,7 +109,7 @@ Looking ahead, the workplace will continue to evolve. Artificial intelligence an
 零工经济为独立工作者创造了新机会。自由职业者、顾问和承包商为多个客户提供服务，享受灵活性和多样性。然而，他们也面临收入不稳定和缺乏福利等挑战。
 
 展望未来，职场将继续演变。人工智能和自动化将改变许多工作的性质，要求工人适应并学习新技能。公司必须拥抱变化和创新，以在动态的全球市场中保持竞争力。` },
-    { id: 3, title: "Shopping and Consumer Culture", subtitle: "购物与消费文化", content: `Shopping has become an integral part of modern life, influencing our economy, society, and personal habits. From traditional markets to online platforms, the way we purchase goods has evolved dramatically over the years. Consumer culture shapes our identities, aspirations, and social relationships.
+    { id: 3, level: 'beginner', title: "Shopping and Consumer Culture", subtitle: "购物与消费文化", content: `Shopping has become an integral part of modern life, influencing our economy, society, and personal habits. From traditional markets to online platforms, the way we purchase goods has evolved dramatically over the years. Consumer culture shapes our identities, aspirations, and social relationships.
 
 Department stores and shopping malls were once the primary destinations for shoppers. These large retail spaces offered a wide variety of products under one roof, from clothing and electronics to home goods and groceries. People would spend hours browsing through stores, comparing prices, and making purchases.
 
@@ -162,7 +162,7 @@ Consumer protection laws safeguard shoppers from unfair practices. Regulations e
 本地企业面临与大公司和在线巨头竞争的挑战。然而，许多消费者重视小企业提供的个人服务、独特产品和社区联系。支持本地商店有助于维持本地经济并保护社区特色。
 
 消费者保护法保护购物者免受不公平做法。法规确保产品安全、广告准确和退货政策公平。消费者权益组织教育公众了解他们的权利，并追究公司不道德行为的责任。` },
-    { id: 4, title: "Health and Fitness", subtitle: "健康与健身", content: `Health is undoubtedly one of the most valuable assets a person can possess. Without good health, achievements in career, relationships, and personal growth become significantly more challenging. Maintaining physical and mental well-being requires consistent effort, knowledge, and commitment.
+    { id: 4, level: 'beginner', title: "Health and Fitness", subtitle: "健康与健身", content: `Health is undoubtedly one of the most valuable assets a person can possess. Without good health, achievements in career, relationships, and personal growth become significantly more challenging. Maintaining physical and mental well-being requires consistent effort, knowledge, and commitment.
 
 Regular exercise is fundamental to physical fitness. The human body is designed for movement, yet modern lifestyles often involve prolonged periods of sitting. Health experts recommend at least one hundred fifty minutes of moderate aerobic activity or seventy-five minutes of vigorous exercise per week.
 
@@ -205,7 +205,7 @@ Environmental factors influence health outcomes. Air quality, water safety, and 
 衰老带来独特的健康挑战。随着年龄增长，人们可能会经历行动能力下降、慢性病和认知变化。定期锻炼、社交参与和脑力刺激有助于在晚年保持生活质量。预防性护理随着年龄增长变得越来越重要。
 
 环境因素影响健康结果。空气质量、水安全和化学物质接触影响身体健康。接触绿地、安全社区和医疗服务也会影响健康。倡导更健康的环境有利于整个社区。` },
-    { id: 5, title: "Education and Learning", subtitle: "教育与学习", content: `Education is the foundation upon which individuals build their futures and societies develop their potential. From early childhood through adulthood, learning shapes our understanding of the world, develops our skills, and opens doors to opportunities. The pursuit of knowledge is a lifelong endeavor that enriches every aspect of life.
+    { id: 5, level: 'intermediate', title: "Education and Learning", subtitle: "教育与学习", content: `Education is the foundation upon which individuals build their futures and societies develop their potential. From early childhood through adulthood, learning shapes our understanding of the world, develops our skills, and opens doors to opportunities. The pursuit of knowledge is a lifelong endeavor that enriches every aspect of life.
 
 Early childhood education sets the stage for future academic success. Young children learn through play, exploration, and interaction with their environment. Preschools and kindergartens provide structured settings where children develop social skills, basic literacy, and numeracy. These early experiences influence attitudes toward learning for years to come.
 
@@ -262,7 +262,7 @@ Lifelong learning has become essential in a rapidly changing world. Professional
 教育不平等仍然是一个重大挑战。来自弱势背景的学生往往就读于资源不足、机会较少的学校。解决这些差距需要投资于幼儿项目、教师培训和公平资助。每个孩子都应获得优质教育。
 
 终身学习在快速变化的世界中变得至关重要。专业人士必须不断更新技能以在就业市场上保持竞争力。成年人通过夜校、专业发展研讨会和在线课程继续深造。最成功的人从不停止学习。` },
-    { id: 6, title: "Travel and Adventure", subtitle: "旅行与冒险", content: `Travel broadens the mind and enriches the soul in ways that few other experiences can. Stepping outside familiar surroundings exposes us to new cultures, perspectives, and possibilities. Whether exploring distant lands or discovering hidden gems in our own backyards, travel transforms our understanding of the world and ourselves.
+    { id: 6, level: 'beginner', title: "Travel and Adventure", subtitle: "旅行与冒险", content: `Travel broadens the mind and enriches the soul in ways that few other experiences can. Stepping outside familiar surroundings exposes us to new cultures, perspectives, and possibilities. Whether exploring distant lands or discovering hidden gems in our own backyards, travel transforms our understanding of the world and ourselves.
 
 Planning a trip involves numerous considerations. Travelers must decide on destinations, research attractions, book accommodations, and arrange transportation. Budgeting is essential, as costs can quickly accumulate. Travel agencies and online platforms simplify the planning process, offering packages and deals for various preferences and price ranges.
 
@@ -315,7 +315,7 @@ Returning home after travel often brings mixed emotions. While comfort and famil
 语言障碍带来挑战，但也提供了创造性沟通的机会。翻译应用程序、短语书和手势帮助弥合差距。学习当地语言的几个关键短语表示尊重，往往导致与当地人更温暖的互动。
 
 旅行后回家往往带来复杂的情绪。虽然舒适和熟悉是受欢迎的，但冒险的结束可能感觉苦乐参半。许多旅行者在重新适应日常时会经历旅行后忧郁。然而，旅行带来的记忆、教训和个人成长在旅程结束后仍长期存在。` },
-    { id: 7, title: "Technology and Innovation", subtitle: "科技与创新", content: `Technology has fundamentally transformed human civilization, reshaping how we live, work, communicate, and think. From the invention of the wheel to the development of artificial intelligence, technological innovations have driven progress throughout history. Today, we live in an era of unprecedented technological advancement, with changes occurring at an accelerating pace.
+    { id: 7, level: 'advanced', title: "Technology and Innovation", subtitle: "科技与创新", content: `Technology has fundamentally transformed human civilization, reshaping how we live, work, communicate, and think. From the invention of the wheel to the development of artificial intelligence, technological innovations have driven progress throughout history. Today, we live in an era of unprecedented technological advancement, with changes occurring at an accelerating pace.
 
 The internet stands as one of the most revolutionary technologies of our time. This global network connects billions of people, enabling instant communication, information sharing, and collaboration across vast distances. The internet has transformed commerce, education, entertainment, and virtually every aspect of modern life.
 
@@ -368,7 +368,7 @@ Digital divide refers to the gap between those with access to technology and tho
 可持续技术应对环境挑战。太阳能电池板、风力涡轮机和电动汽车减少对化石燃料的依赖。回收、水净化和可持续农业方面的创新有助于保护自然资源。技术可以是气候变化解决方案的一部分。
 
 数字鸿沟指的是有技术接入和无技术接入者之间的差距。虽然许多人享受数字连接的好处，但其他人缺乏基本的互联网接入、数字素养或负担得起的设备。弥合这一鸿沟对于公平参与现代经济和社会至关重要。` },
-    { id: 8, title: "Relationships and Family", subtitle: "人际关系与家庭", content: `Human beings are inherently social creatures, wired for connection and belonging. Our relationships with family, friends, partners, and colleagues shape our identities, influence our well-being, and give meaning to our lives. Navigating the complexities of human relationships is one of life's most important and challenging tasks.
+    { id: 8, level: 'beginner', title: "Relationships and Family", subtitle: "人际关系与家庭", content: `Human beings are inherently social creatures, wired for connection and belonging. Our relationships with family, friends, partners, and colleagues shape our identities, influence our well-being, and give meaning to our lives. Navigating the complexities of human relationships is one of life's most important and challenging tasks.
 
 Family forms the foundation of our social world. From our earliest moments, family members provide care, support, and guidance. Parents teach values, model behaviors, and shape their children's development. Siblings share experiences and form bonds that often last a lifetime. Extended family members contribute additional layers of connection and support.
 
@@ -421,7 +421,7 @@ Work-life balance affects relationship quality. Demanding careers can strain fam
 异地恋带来特殊的挑战。身体分离限制了共同体验和身体亲密的机会。保持联系需要有意识的沟通、信任和创造力。技术通过视频通话、消息和共享在线活动帮助弥合距离。
 
 工作与生活的平衡影响关系质量。要求高的职业可能会挤压家庭时间和精力。设定优先级、有效管理时间并在家庭时刻全情投入有助于维持健康的关系。支持性的雇主和灵活的工作安排促进这种平衡。` },
-    { id: 9, title: "Food and Cuisine", subtitle: "美食与烹饪", content: `Food is far more than mere sustenance; it is culture, tradition, art, and connection. Across the globe, food brings people together, tells stories of heritage, and provides pleasure in daily life. Exploring the world of cuisine reveals the incredible diversity of human creativity and the universal importance of nourishment.
+    { id: 9, level: 'beginner', title: "Food and Cuisine", subtitle: "美食与烹饪", content: `Food is far more than mere sustenance; it is culture, tradition, art, and connection. Across the globe, food brings people together, tells stories of heritage, and provides pleasure in daily life. Exploring the world of cuisine reveals the incredible diversity of human creativity and the universal importance of nourishment.
 
 Every culture has developed unique culinary traditions based on available ingredients, climate, history, and values. Italian cuisine emphasizes fresh ingredients and simple preparations that highlight natural flavors. Chinese cooking balances flavors, textures, and colors while incorporating philosophical principles. Indian food showcases complex spice combinations developed over millennia.
 
@@ -464,7 +464,7 @@ Food brings people together across cultures and generations. Holiday meals, fami
 发酵保存食物同时创造独特的风味。啤酒、葡萄酒、奶酪、酸奶和泡菜都是发酵过程的结果。古代文化出于必要开发了这些技术；现代消费者欣赏它们复杂的味道和潜在的健康益处。
 
 食物跨越文化和世代把人们聚在一起。节日大餐、家庭聚会和庆祝活动以特色菜肴为中心。分享食物是普遍的好客和友谊的姿态。一起用餐建立联系并促进理解。` },
-    { id: 10, title: "Sports and Competition", subtitle: "体育与竞技", content: `Sports have been an integral part of human culture since ancient times. From the Olympic Games of ancient Greece to modern professional leagues, athletic competition captivates participants and spectators alike. Sports teach valuable lessons about discipline, teamwork, perseverance, and fair play while providing entertainment and inspiration.
+    { id: 10, level: 'intermediate', title: "Sports and Competition", subtitle: "体育与竞技", content: `Sports have been an integral part of human culture since ancient times. From the Olympic Games of ancient Greece to modern professional leagues, athletic competition captivates participants and spectators alike. Sports teach valuable lessons about discipline, teamwork, perseverance, and fair play while providing entertainment and inspiration.
 
 Team sports foster cooperation and collective achievement. Soccer, known as football in most countries, is the world's most popular sport, played and watched by billions. Basketball combines athleticism, strategy, and skill in fast-paced action. Baseball, cricket, and rugby each have passionate followings in different regions. Team sports require players to work together toward common goals.
 
@@ -517,7 +517,7 @@ The psychology of sports performance fascinates researchers and practitioners. M
 体育精神定义了竞技中的道德行为。尊重对手、遵守规则、优雅地接受结果区分了真正的冠军。作弊、使用兴奋剂和不体育的行为损害体育的诚信。体育中的榜样影响年轻人对公平竞争的态度。
 
 体育表现心理学吸引着研究人员和从业者。心理准备、可视化和专注有助于运动成功。运动员与运动心理学家合作发展心理韧性和管理压力。身心联系在精英竞技水平至关重要。` },
-    { id: 11, title: "Nature and Environment", subtitle: "自然与环境", content: `The natural world surrounds us with beauty, complexity, and essential resources. From majestic mountains to vast oceans, from dense forests to arid deserts, Earth's diverse ecosystems support all life. Our relationship with nature profoundly affects our well-being, our economies, and our future as a species.
+    { id: 11, level: 'intermediate', title: "Nature and Environment", subtitle: "自然与环境", content: `The natural world surrounds us with beauty, complexity, and essential resources. From majestic mountains to vast oceans, from dense forests to arid deserts, Earth's diverse ecosystems support all life. Our relationship with nature profoundly affects our well-being, our economies, and our future as a species.
 
 Ecosystems are intricate webs of interdependent organisms and their environments. Plants convert sunlight into energy through photosynthesis, forming the base of food chains. Animals consume plants or other animals, transferring energy through ecosystems. Decomposers break down dead matter, recycling nutrients back into the soil. Every species plays a role in maintaining ecological balance.
 
@@ -562,7 +562,7 @@ Individual actions contribute to environmental outcomes. Reducing consumption, r
 环境污染影响空气、水和土壤质量。工业排放、汽车尾气和燃烧造成危害人类健康的空气污染。塑料废物污染海洋并进入食物链。农业径流用化肥和农药污染水道。清理污染需要协调一致的努力。
 
 个人行动有助于环境结果。减少消费、回收和选择可持续产品减少个人环境足迹。支持保护组织和倡导环境政策放大个人影响。集体行动对于重大变革是必要的。` },
-    { id: 12, title: "Art and Creativity", subtitle: "艺术与创造", content: `Art is a fundamental expression of human experience, transcending language and culture to communicate emotions, ideas, and perspectives. From ancient cave paintings to contemporary installations, humans have always felt compelled to create. Art enriches our lives, challenges our assumptions, and connects us across time and space.
+    { id: 12, level: 'intermediate', title: "Art and Creativity", subtitle: "艺术与创造", content: `Art is a fundamental expression of human experience, transcending language and culture to communicate emotions, ideas, and perspectives. From ancient cave paintings to contemporary installations, humans have always felt compelled to create. Art enriches our lives, challenges our assumptions, and connects us across time and space.
 
 Visual arts encompass painting, sculpture, photography, and other forms that appeal primarily to sight. Painters apply pigment to surfaces to create images ranging from realistic portraits to abstract compositions. Sculptors shape materials like stone, metal, and clay into three-dimensional forms. Photographers capture moments in time through the lens of a camera.
 
@@ -609,7 +609,7 @@ The business of art involves complex markets and institutions. Galleries, auctio
 艺术治疗利用创作过程促进心理健康和治愈。创作艺术允许表达可能难以用语言表达的情感。艺术治疗师在临床环境中与个人和团体合作。艺术的治疗益处也延伸到非正式的创意活动。
 
 艺术商业涉及复杂的市场和机构。画廊、拍卖行和艺术博览会促进销售。收藏家和投资者推动对某些艺术家和作品的需求。真实性、来源和价值问题使艺术市场复杂化。艺术家在保持创作完整性的同时应对商业压力。` },
-    { id: 13, title: "Science and Discovery", subtitle: "科学与发现", content: `Science is humanity's most powerful tool for understanding the natural world. Through systematic observation, experimentation, and reasoning, scientists uncover the laws that govern everything from subatomic particles to distant galaxies. Scientific discoveries have transformed our understanding of reality and enabled technologies that shape modern life.
+    { id: 13, level: 'advanced', title: "Science and Discovery", subtitle: "科学与发现", content: `Science is humanity's most powerful tool for understanding the natural world. Through systematic observation, experimentation, and reasoning, scientists uncover the laws that govern everything from subatomic particles to distant galaxies. Scientific discoveries have transformed our understanding of reality and enabled technologies that shape modern life.
 
 The scientific method provides a framework for reliable investigation. Scientists formulate hypotheses and design experiments to test them. Data collection and analysis reveal whether evidence supports or contradicts hypotheses. Peer review and replication ensure that findings are valid and reliable. This process, though imperfect, has proven remarkably effective.
 
@@ -662,7 +662,7 @@ The future of science holds both promise and uncertainty. Emerging fields like a
 科学传播弥合研究人员与公众之间的差距。记者以通俗易懂的方式报道科学发现。科学家参与外展活动直接分享他们的工作。有效的传播对抗错误信息并建立公众对研究的支持。
 
 科学的未来既有希望也有不确定性。人工智能、基因编辑和量子计算等新兴领域将改变社会。气候变化和大流行病等全球挑战需要科学解决方案。研究和教育投资将决定人类能否应对这些挑战。` },
-    { id: 14, title: "History and Civilization", subtitle: "历史与文明", content: `History is the record of human experience across time, preserving the stories of individuals, societies, and civilizations that have shaped our world. By studying the past, we gain perspective on the present and insight into the forces that drive human affairs. History teaches us about continuity and change, triumph and tragedy, the heights of human achievement and the depths of human folly.
+    { id: 14, level: 'advanced', title: "History and Civilization", subtitle: "历史与文明", content: `History is the record of human experience across time, preserving the stories of individuals, societies, and civilizations that have shaped our world. By studying the past, we gain perspective on the present and insight into the forces that drive human affairs. History teaches us about continuity and change, triumph and tragedy, the heights of human achievement and the depths of human folly.
 
 Ancient civilizations laid the foundations of human culture. Mesopotamia, often called the cradle of civilization, developed writing, law codes, and urban centers. Ancient Egypt built pyramids that still stand as monuments to human ambition. The Indus Valley civilization created sophisticated urban planning. These early societies developed technologies and institutions that influenced all subsequent history.
 
@@ -701,7 +701,7 @@ Memory and commemoration shape how societies relate to their pasts. Monuments, m
 文化史审视人们如何理解他们的世界并表达他们的价值观。艺术、文学、宗教和日常实践揭示了过去社会的心态。社会史关注普通人和他们的经历。经济史分析生产、贸易和消费。政治史研究权力、治理和冲突。
 
 记忆和纪念塑造了社会如何与他们的过去联系。纪念碑、博物馆和节日保存某些叙述而往往忽略其他。关于历史记忆的争议反映了对身份和价值观的持续斗争。理解历史如何被使用和滥用对于批判性公民至关重要。` },
-    { id: 15, title: "Medicine and Healthcare", subtitle: "医学与医疗保健", content: `Medicine is the science and art of preserving health and treating disease. From ancient healing traditions to cutting-edge biotechnology, humanity has always sought to understand the body and alleviate suffering. Modern medicine combines scientific knowledge, technological tools, and compassionate care to promote well-being and extend life.
+    { id: 15, level: 'advanced', title: "Medicine and Healthcare", subtitle: "医学与医疗保健", content: `Medicine is the science and art of preserving health and treating disease. From ancient healing traditions to cutting-edge biotechnology, humanity has always sought to understand the body and alleviate suffering. Modern medicine combines scientific knowledge, technological tools, and compassionate care to promote well-being and extend life.
 
 The human body is a marvel of biological engineering. Organ systems work together to maintain life: the circulatory system pumps blood, the respiratory system exchanges gases, the nervous system processes information, and the immune system defends against pathogens. Understanding anatomy and physiology provides the foundation for medical practice.
 
@@ -750,7 +750,7 @@ Health disparities persist across populations. Socioeconomic status, race, geogr
 医疗技术继续快速进步。机器人手术实现精确手术。远程医疗远程连接患者和提供者。可穿戴设备持续监测健康指标。人工智能辅助诊断和治疗决策。基因治疗为遗传疾病提供潜在治愈。
 
 健康差距在人群中持续存在。社会经济地位、种族、地理和其他因素影响健康结果。解决这些差距需要关注健康的社会决定因素。健康公平是许多情况下仍然难以实现的目标。` },
-    { id: 16, title: "Law and Justice", subtitle: "法律与正义", content: `Law provides the framework within which societies function, establishing rules that govern behavior and institutions that resolve disputes. From ancient codes to modern constitutions, legal systems reflect humanity's ongoing effort to create order, protect rights, and achieve justice. Understanding law is essential for participating in civic life and advocating for change.
+    { id: 16, level: 'advanced', title: "Law and Justice", subtitle: "法律与正义", content: `Law provides the framework within which societies function, establishing rules that govern behavior and institutions that resolve disputes. From ancient codes to modern constitutions, legal systems reflect humanity's ongoing effort to create order, protect rights, and achieve justice. Understanding law is essential for participating in civic life and advocating for change.
 
 Legal systems vary across cultures and history. Common law systems, originating in England, rely heavily on judicial precedent. Civil law systems are based on comprehensive codes that judges apply to specific cases. Religious legal systems draw authority from sacred texts and traditions. Many countries combine elements from multiple traditions.
 
@@ -801,7 +801,7 @@ Law is both a reflection of and a force for social change. Legal reforms have ad
 技术提出新的法律问题。隐私法涉及数据收集和监控。网络安全法保护数字系统免受攻击。人工智能挑战传统的责任和责任概念。监管者努力跟上技术变化的步伐。
 
 法律既是社会变革的反映，也是社会变革的力量。法律改革推进了民权，扩大了对工人的保护，并承认了新的权利。社会运动经常与其他策略一起追求法律策略。法律与正义的关系是复杂的：法律可以延续不公正，也可以作为正义的工具。` },
-    { id: 17, title: "Psychology and Human Behavior", subtitle: "心理学与人类行为", content: `Psychology is the scientific study of the mind and behavior, exploring how people think, feel, and act. From the biological basis of consciousness to the social dynamics of groups, psychology illuminates the complexities of human experience. Understanding psychology helps us know ourselves and relate more effectively to others.
+    { id: 17, level: 'advanced', title: "Psychology and Human Behavior", subtitle: "心理学与人类行为", content: `Psychology is the scientific study of the mind and behavior, exploring how people think, feel, and act. From the biological basis of consciousness to the social dynamics of groups, psychology illuminates the complexities of human experience. Understanding psychology helps us know ourselves and relate more effectively to others.
 
 Cognitive psychology examines mental processes including perception, attention, memory, and reasoning. How do we take in information from our environment? How do we store and retrieve memories? How do we make decisions and solve problems? Research in cognitive psychology has practical applications in education, design, and technology.
 
@@ -848,7 +848,7 @@ Psychology faces ongoing challenges regarding replication, ethics, and cultural 
 积极心理学关注人类优势和蓬勃发展。积极心理学不只解决问题，还研究使人们茁壮成长的因素。感恩、乐观和韧性有助于幸福。有意义的关系和有目的的活动增强生活满意度。积极干预可以增加幸福感。
 
 心理学面临关于复制、伦理和文化相关性的持续挑战。一些经典发现在新研究中未能复制。涉及人类参与者的研究需要仔细的伦理监督。西方心理学可能不适用于所有文化。该领域继续应对这些挑战而发展。` },
-    { id: 18, title: "Economics and Business", subtitle: "经济与商业", content: `Economics is the study of how societies allocate scarce resources to meet unlimited wants. From individual decisions to global systems, economic forces shape our lives in profound ways. Understanding economics helps us make better decisions as consumers, workers, investors, and citizens.
+    { id: 18, level: 'intermediate', title: "Economics and Business", subtitle: "经济与商业", content: `Economics is the study of how societies allocate scarce resources to meet unlimited wants. From individual decisions to global systems, economic forces shape our lives in profound ways. Understanding economics helps us make better decisions as consumers, workers, investors, and citizens.
 
 Microeconomics examines the behavior of individuals and firms. Consumers make choices about how to spend their limited incomes. Firms decide what to produce and how to price their products. Supply and demand interact to determine market prices. Market structures range from perfect competition to monopoly.
 
@@ -901,7 +901,7 @@ Sustainable economics considers environmental and social dimensions alongside fi
 数字经济正在改变商业模式。电子商务实现在线买卖。平台企业连接用户和提供者。零工经济提供灵活的工作安排。数据已成为有价值的经济资源。监管努力跟上技术变革的步伐。
 
 可持续经济学在财务回报之外考虑环境和社会维度。循环经济模式最小化废物并最大化资源效率。影响力投资寻求财务和社会回报。企业可持续发展报告衡量环境和社会绩效。经济系统必须在地球边界内服务于人类福祉。` },
-    { id: 19, title: "Communication and Media", subtitle: "传播与媒体", content: `Communication is fundamental to human society, enabling cooperation, knowledge transfer, and social bonds. From face-to-face conversation to global media networks, the ways we share information shape our relationships, institutions, and understanding of the world. In an age of unprecedented connectivity, understanding communication and media is essential.
+    { id: 19, level: 'intermediate', title: "Communication and Media", subtitle: "传播与媒体", content: `Communication is fundamental to human society, enabling cooperation, knowledge transfer, and social bonds. From face-to-face conversation to global media networks, the ways we share information shape our relationships, institutions, and understanding of the world. In an age of unprecedented connectivity, understanding communication and media is essential.
 
 Language is the primary tool of human communication. Spoken languages use sounds to convey meaning. Written languages represent speech visually. Sign languages use gestures for communication. Languages evolve over time, reflecting cultural changes. Learning languages opens access to other cultures and perspectives.
 
@@ -950,7 +950,7 @@ Freedom of expression is a fundamental right enshrined in international law. Cen
 媒体效果研究考察媒体如何影响受众。培养理论表明媒体塑造现实感知。议程设置理论描述媒体如何影响人们思考什么。框架理论解释呈现如何影响解释。媒体效果是复杂的，取决于许多因素。
 
 言论自由是国际法保障的基本权利。审查出于国家安全、公共道德和保护权利等各种原因限制表达。平衡言论自由与其他价值涉及困难的判断。数字平台面临在尊重言论自由的同时审核内容的压力。` },
-    { id: 20, title: "Philosophy and Wisdom", subtitle: "哲学与智慧", content: `Philosophy is the love of wisdom, the pursuit of fundamental understanding through reasoned inquiry. From ancient questions about the nature of reality to contemporary debates about artificial intelligence, philosophy addresses the deepest questions of human existence. Engaging with philosophy develops critical thinking, expands perspectives, and enriches life.
+    { id: 20, level: 'advanced', title: "Philosophy and Wisdom", subtitle: "哲学与智慧", content: `Philosophy is the love of wisdom, the pursuit of fundamental understanding through reasoned inquiry. From ancient questions about the nature of reality to contemporary debates about artificial intelligence, philosophy addresses the deepest questions of human existence. Engaging with philosophy develops critical thinking, expands perspectives, and enriches life.
 
 Metaphysics examines the nature of reality. What exists? What is the relationship between mind and matter? Do abstract entities like numbers exist independently? Questions about free will, determinism, and the nature of time are metaphysical. Metaphysical assumptions underlie all other inquiries, though they often remain unexamined.
 

@@ -989,18 +989,78 @@
         .review-trigger-label { font-size:12.5px; color:var(--error); font-family:var(--font-ui); }
         .review-trigger-count { font-family:var(--font-mono); font-size:11px; color:var(--error); background:rgba(248,113,113,0.15); padding:2px 7px; border-radius:4px; }
 
+        /* ── Onboarding ── */
+        .onboard-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.78); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); z-index:3500; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.35s; }
+        .onboard-overlay.show { opacity:1; pointer-events:auto; }
+        .onboard-panel { background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--r-lg); padding:36px 32px; width:min(480px,90vw); box-shadow:var(--shadow-lg); }
+        .onboard-logo { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+        .onboard-logo-mark { width:34px; height:34px; background:var(--accent-gradient); border-radius:9px; display:flex; align-items:center; justify-content:center; }
+        .onboard-logo-mark svg { width:17px; height:17px; fill:#fff; }
+        .onboard-logo-text { font-family:var(--font-ui); font-size:17px; font-weight:700; background:var(--accent-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .onboard-tagline { font-size:12px; color:var(--text-muted); margin-bottom:22px; }
+        .onboard-steps { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+        .onboard-step { display:flex; align-items:flex-start; gap:13px; padding:13px 15px; background:var(--bg-card); border-radius:var(--r-md); border:1px solid var(--border); }
+        .onboard-num { width:24px; height:24px; border-radius:50%; background:var(--accent-gradient); color:#fff; font-family:var(--font-ui); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+        .onboard-step-title { font-size:13.5px; font-weight:500; margin-bottom:3px; }
+        .onboard-step-desc { font-size:12px; color:var(--text-muted); line-height:1.55; }
+        .onboard-start { width:100%; padding:12px; border-radius:var(--r-md); border:none; background:var(--accent-gradient); color:#fff; font-size:14px; font-weight:600; font-family:var(--font-ui); cursor:pointer; transition:opacity .15s; box-shadow:0 2px 12px var(--accent-dim); }
+        .onboard-start:hover { opacity:0.88; }
+
+        /* ── Daily guide card ── */
+        .daily-guide { background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(0,180,216,0.05)); border:1px solid var(--border-accent); border-radius:var(--r-sm); padding:9px 11px; margin-top:10px; display:none; }
+        .daily-guide.show { display:block; }
+        .dg-label { font-size:10px; font-weight:600; color:var(--accent-primary); text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }
+        .dg-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+        .dg-text { font-size:12px; color:var(--text-secondary); line-height:1.45; flex:1; }
+        .dg-btn { flex-shrink:0; padding:4px 9px; border-radius:4px; border:1px solid var(--border-accent); background:var(--accent-dim); color:var(--accent-primary); font-size:11px; font-family:var(--font-ui); cursor:pointer; transition:all .12s; }
+        .dg-btn:hover { background:rgba(0,212,170,0.2); }
+
+        /* ── Article level + difficulty ── */
+        .article-meta { display:flex; align-items:center; gap:5px; margin-left:auto; flex-shrink:0; }
+        .diff-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+        .diff-dot.easy { background:var(--success); } .diff-dot.medium { background:var(--warning); }
+        .diff-dot.hard { background:var(--error); }   .diff-dot.untried { background:var(--text-muted); }
+        .lvl-badge { font-family:var(--font-ui); font-size:9px; font-weight:600; padding:1px 5px; border-radius:3px; letter-spacing:.3px; white-space:nowrap; }
+        .lvl-badge.beginner     { color:#4ade80; background:rgba(74,222,128,0.12); }
+        .lvl-badge.intermediate { color:var(--warning); background:rgba(245,158,11,0.12); }
+        .lvl-badge.advanced     { color:var(--error); background:rgba(248,113,113,0.12); }
+
+        /* ── Level filter ── */
+        .level-filter { display:flex; gap:4px; padding:5px 8px 2px; flex-shrink:0; }
+        .lvl-filter-btn { font-size:10.5px; font-family:var(--font-ui); padding:2px 8px; border-radius:4px; border:1px solid var(--border); background:transparent; color:var(--text-muted); cursor:pointer; transition:all .12s; }
+        .lvl-filter-btn.active { background:var(--accent-dim); color:var(--accent-primary); border-color:var(--border-accent); }
+        .lvl-filter-btn:hover:not(.active) { color:var(--text-secondary); }
+
+        /* ── Word article context ── */
+        .popup-articles { font-size:11.5px; color:var(--text-muted); font-family:var(--font-ui); margin-top:9px; display:flex; align-items:center; gap:7px; }
+        .popup-articles-dot { width:5px; height:5px; border-radius:50%; background:var(--accent-primary); flex-shrink:0; }
+
+        /* ── Mobile drawer ── */
+        .sidebar-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.52); z-index:98; display:none; }
+        .sidebar-overlay.show { display:block; }
+        .mobile-hamburger { display:none; width:34px; height:34px; border-radius:var(--r-sm); background:var(--bg-card); border:1px solid var(--border); color:var(--text-secondary); cursor:pointer; font-size:18px; align-items:center; justify-content:center; transition:all .15s; }
+        .mobile-hamburger:hover { background:var(--bg-hover); }
+        .mobile-bottom-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:var(--bg-elevated); border-top:1px solid var(--border); padding:9px 16px; padding-bottom:max(9px,env(safe-area-inset-bottom)); z-index:200; gap:8px; justify-content:center; align-items:center; }
+
         /* ── Mobile ── */
         @media (max-width:768px) {
-            .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid var(--border); max-height:42vh; }
-            body.focus-mode .sidebar { transform:none; display:none; }
+            .sidebar {
+                position:fixed; left:-100%; width:82vw; max-width:300px;
+                height:100vh; z-index:100;
+                transition:left 0.28s cubic-bezier(0.4,0,0.2,1);
+                border-right:1px solid var(--border); border-bottom:none;
+            }
+            .sidebar.drawer-open { left:0; }
+            body.focus-mode .sidebar { display:none; }
             .app   { flex-direction:column; }
-            .main  { margin-left:0; padding:16px 18px; }
-            .content { padding:20px; }
+            .main  { margin-left:0; padding:12px 16px 100px; }
+            .content { padding:18px 20px; }
             .title-row { flex-direction:column; align-items:flex-start; gap:6px; }
             .stats-grid { display:none; }
             .sidebar-footer { display:none; }
-            .ctrl-sep { display:none; }
-            .controls { gap:4px; }
+            .controls { display:none; }
+            .mobile-hamburger { display:flex; }
+            .mobile-bottom-bar { display:flex; }
             .shadow-panel { padding:12px 18px 16px; }
             .sp-sentence { font-size:15px; }
         }
@@ -1029,6 +1089,13 @@
                 <span class="streak-label">天连续学习</span>
                 <span class="streak-today" id="streakToday">今天 ✓</span>
             </div>
+            <div class="daily-guide" id="dailyGuide">
+                <div class="dg-label">今日建议</div>
+                <div class="dg-row">
+                    <span class="dg-text" id="dgText"></span>
+                    <button class="dg-btn" id="dgBtn" onclick="dailyGuideAction()">开始</button>
+                </div>
+            </div>
 
             <div class="stats-grid">
                 <div class="stat"><div class="stat-value" id="completedCount">0</div><div class="stat-label">已完成</div></div>
@@ -1045,6 +1112,13 @@
         <div class="review-trigger" id="reviewTrigger" style="display:none" onclick="startFlashcard()">
             <span class="review-trigger-label">📇 复习单词</span>
             <span class="review-trigger-count" id="reviewTriggerCount">0</span>
+        </div>
+
+        <div class="level-filter" id="levelFilter">
+            <button class="lvl-filter-btn active" data-level="all" onclick="setLevelFilter('all')">全部</button>
+            <button class="lvl-filter-btn" data-level="beginner" onclick="setLevelFilter('beginner')">初级</button>
+            <button class="lvl-filter-btn" data-level="intermediate" onclick="setLevelFilter('intermediate')">中级</button>
+            <button class="lvl-filter-btn" data-level="advanced" onclick="setLevelFilter('advanced')">进阶</button>
         </div>
 
         <div class="article-list" id="articleList"></div>
@@ -1068,6 +1142,7 @@
     <main class="main">
         <div class="header">
             <div class="title-row">
+                <button class="mobile-hamburger" onclick="openSidebar()" title="打开菜单">☰</button>
                 <div>
                     <h1 class="article-title" id="articleTitle">Loading…</h1>
                     <div class="article-subtitle" id="articleSubtitle"></div>
@@ -1158,6 +1233,54 @@
     </main>
 </div>
 
+<!-- Sidebar overlay for mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- Mobile bottom bar -->
+<div class="mobile-bottom-bar" id="mobileBottomBar">
+    <button class="btn btn-primary" id="mobilePlayBtn" onclick="togglePlay()">▶ 播放</button>
+    <button class="btn btn-icon" onclick="stopReading()" title="停止">■</button>
+    <button class="btn" onclick="toggleTranslation()" title="翻译">🌐</button>
+    <button class="btn btn-icon" onclick="toggleFocusMode()" title="专注">⛶</button>
+</div>
+
+<!-- Onboarding overlay -->
+<div class="onboard-overlay" id="onboardOverlay">
+    <div class="onboard-panel">
+        <div class="onboard-logo">
+            <div class="onboard-logo-mark">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            </div>
+            <span class="onboard-logo-text">Shadow Reading</span>
+        </div>
+        <div class="onboard-tagline">听声音，跟读，看懂英语的最快路径</div>
+        <div class="onboard-steps">
+            <div class="onboard-step">
+                <div class="onboard-num">1</div>
+                <div>
+                    <div class="onboard-step-title">选一篇文章，点 ▶ 播放</div>
+                    <div class="onboard-step-desc">左边栏选择感兴趣的文章，点击播放键开始聆听。初学者推荐初级（绿色标签）文章。</div>
+                </div>
+            </div>
+            <div class="onboard-step">
+                <div class="onboard-num">2</div>
+                <div>
+                    <div class="onboard-step-title">点 🎤 跟着句子朗读</div>
+                    <div class="onboard-step-desc">每段旁边有逐句跟读按钮，系统播放一句后留出跟读时间，帮你建立语感。</div>
+                </div>
+            </div>
+            <div class="onboard-step">
+                <div class="onboard-num">3</div>
+                <div>
+                    <div class="onboard-step-title">点单词查看释义，标记生词</div>
+                    <div class="onboard-step-desc">文章中所有单词都可以点击查看，遇到不会的标「需复习」，系统自动安排闪卡复习。</div>
+                </div>
+            </div>
+        </div>
+        <button class="onboard-start" onclick="dismissOnboarding()">开始学习 →</button>
+    </div>
+</div>
+
 <!-- Completion Modal -->
 <div class="completion-overlay" id="completionOverlay">
     <div class="completion-modal">
@@ -1240,6 +1363,10 @@
     </div>
     <div class="popup-def"><span class="popup-pos" id="popupPos"></span><span id="popupDef"></span></div>
     <div class="popup-example" id="popupExample"></div>
+    <div class="popup-articles" id="popupArticles" style="display:none">
+        <span class="popup-articles-dot"></span>
+        <span id="popupArticlesText"></span>
+    </div>
     <div class="popup-status-row">
         <button class="status-btn unknown" onclick="setWordStatus('unknown')">○ 不认识</button>
         <button class="status-btn mastered" onclick="setWordStatus('mastered')">✓ 已掌握</button>
@@ -1319,6 +1446,10 @@ let fontSizeIdx     = 3;
 let practicedMap    = {};
 let streak          = 0;
 
+// Level filter + word-article map
+let levelFilter     = 'all';
+const wordArticleMap = {};
+
 // Shadow sentence state
 let articleStartTime = 0;
 let isShadowing     = false;
@@ -1336,7 +1467,10 @@ function init() {
     loadPracticed();
     loadSettings();
     initStreak();
+    initWordArticleMap();
     renderArticleList();
+    renderDailyGuide();
+    initOnboarding();
     const target = getInitialTarget();
     loadArticle(target.articleIndex);
     loadVoices();
@@ -1344,6 +1478,109 @@ function init() {
     if (target.paragraphIndex !== null) {
         setTimeout(() => jumpToParagraph(target.paragraphIndex), 150);
     }
+}
+
+function initWordArticleMap() {
+    articles.forEach((art, i) => {
+        const words = [...(art.content.matchAll(/\b([a-z]{2,})\b/gi))].map(m => m[1].toLowerCase());
+        new Set(words).forEach(w => {
+            if (!wordArticleMap[w]) wordArticleMap[w] = [];
+            wordArticleMap[w].push(i);
+        });
+    });
+}
+
+// ── Onboarding ──
+function initOnboarding() {
+    if (!localStorage.getItem('sr_onboarded')) {
+        document.getElementById('onboardOverlay').classList.add('show');
+    }
+}
+function dismissOnboarding() {
+    localStorage.setItem('sr_onboarded', '1');
+    document.getElementById('onboardOverlay').classList.remove('show');
+}
+
+// ── Daily guide card ──
+function renderDailyGuide() {
+    const reviewCount = Object.values(wordStatuses).filter(s => s === 'review').length;
+    let text = '', action = '';
+    if (reviewCount > 0) {
+        text   = `你有 ${reviewCount} 个单词待复习`;
+        action = '开始闪卡';
+        document.getElementById('dgBtn').dataset.action = 'flashcard';
+    } else {
+        // Find last practiced article+paragraph
+        let lastArt = -1, lastPara = -1;
+        Object.entries(practicedMap).forEach(([ai, paras]) => {
+            if (paras.length > 0 && parseInt(ai) >= lastArt) {
+                lastArt  = parseInt(ai);
+                lastPara = Math.max(...paras);
+            }
+        });
+        const art = articles[currentArticle];
+        const total = art?.content.split('\n\n').length || 0;
+        const done  = (practicedMap[currentArticle] || []).length;
+        if (done > 0 && done < total) {
+            text   = `继续第 ${currentArticle + 1} 篇，第 ${done + 1} 段`;
+            action = '继续';
+            document.getElementById('dgBtn').dataset.action = 'continue';
+        } else {
+            text   = `从第 ${currentArticle + 1} 篇开始学习`;
+            action = '开始';
+            document.getElementById('dgBtn').dataset.action = 'start';
+        }
+    }
+    document.getElementById('dgText').textContent = text;
+    document.getElementById('dgBtn').textContent  = action;
+    document.getElementById('dailyGuide').classList.add('show');
+}
+
+function dailyGuideAction() {
+    const action = document.getElementById('dgBtn').dataset.action;
+    if (action === 'flashcard') {
+        startFlashcard();
+    } else {
+        const art   = articles[currentArticle];
+        const total = art?.content.split('\n\n').length || 0;
+        const done  = (practicedMap[currentArticle] || []).length;
+        const targetPara = (done > 0 && done < total) ? done : 0;
+        const el = document.querySelector(`.paragraph-wrapper[data-index="${targetPara}"]`);
+        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// ── Level filter ──
+function setLevelFilter(level) {
+    levelFilter = level;
+    document.querySelectorAll('.lvl-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.level === level);
+    });
+    renderArticleList();
+}
+
+// ── Mobile sidebar drawer ──
+function openSidebar() {
+    document.querySelector('aside.sidebar').classList.add('drawer-open');
+    document.getElementById('sidebarOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+    document.querySelector('aside.sidebar').classList.remove('drawer-open');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+// ── Article personal difficulty ──
+function computeArticleDifficulty(idx) {
+    const content = articles[idx]?.content || '';
+    const words = [...content.matchAll(/\b([a-z]{2,})\b/gi)].map(m => m[1].toLowerCase());
+    const reviewWords = words.filter(w => wordStatuses[w] === 'review');
+    const masteredWords = words.filter(w => wordStatuses[w] === 'mastered');
+    if (reviewWords.length === 0 && masteredWords.length === 0) return { cls: 'untried', count: 0 };
+    if (reviewWords.length === 0) return { cls: 'easy', count: 0 };
+    if (reviewWords.length <= 3) return { cls: 'medium', count: reviewWords.length };
+    return { cls: 'hard', count: reviewWords.length };
 }
 
 function getInitialTarget() {
@@ -1556,17 +1793,25 @@ function getSelectedVoice() {
 
 // ── Article list ──
 function renderArticleList() {
+    const levelMap = { beginner: '初级', intermediate: '中级', advanced: '进阶' };
     document.getElementById('articleList').innerHTML = articles.map((a, i) => {
+        if (levelFilter !== 'all' && a.level !== levelFilter) return '';
         const total = a.content.split('\n\n').length;
         const done  = (practicedMap[i] || []).length;
         const prog  = done > 0 ? `${done}/${total} 段已练` : '';
+        const diff  = computeArticleDifficulty(i);
+        const lvl   = a.level || 'intermediate';
         return `
             <div class="article-item ${i === currentArticle ? 'active' : ''} ${completedArticles.has(i) ? 'completed' : ''}"
                 onclick="loadArticle(${i})">
                 <span class="article-badge">${completedArticles.has(i) ? '✓' : i + 1}</span>
-                <div class="article-meta">
+                <div style="flex:1;min-width:0">
                     <span class="article-name">${a.title}</span>
                     ${prog ? `<div class="article-para-progress">${prog}</div>` : ''}
+                </div>
+                <div class="article-meta">
+                    <span class="diff-dot ${diff.cls}" title="${diff.count > 0 ? diff.count + '词待复习' : '暂无待复习词'}"></span>
+                    <span class="lvl-badge ${lvl}">${levelMap[lvl] || lvl}</span>
                 </div>
             </div>
         `;
@@ -1579,6 +1824,7 @@ function scrollSidebarToActive() {
 
 // ── Load article ──
 function loadArticle(index) {
+    closeSidebar();
     currentArticle = index;
     localStorage.setItem(LS.ARTICLE, index);
     const article = articles[index];
@@ -1804,6 +2050,8 @@ function playOriginal() {
 function updatePlayButton() {
     document.getElementById('playIcon').textContent = isPlaying ? '⏸' : '▶';
     document.getElementById('playText').textContent = isPlaying ? '暂停' : '播放';
+    const mBtn = document.getElementById('mobilePlayBtn');
+    if (mBtn) mBtn.textContent = isPlaying ? '⏸ 暂停' : '▶ 播放';
 }
 
 function updateSpeed() {
@@ -2055,8 +2303,19 @@ function showWordPopup(event, word) {
     if (!wordStatuses[word]) wordStatuses[word] = 'unknown';
     updateStatusButtons();
 
+    // Show article context
+    const artList = wordArticleMap[word] || [];
+    const artCtx  = document.getElementById('popupArticles');
+    const artTxt  = document.getElementById('popupArticlesText');
+    if (artList.length > 1) {
+        artTxt.textContent = `出现于 ${artList.length} 篇文章`;
+        artCtx.style.display = 'flex';
+    } else {
+        artCtx.style.display = 'none';
+    }
+
     const x = Math.min(event.clientX, window.innerWidth - 326);
-    const y = Math.min(event.clientY + 12, window.innerHeight - 240);
+    const y = Math.min(event.clientY + 12, window.innerHeight - 260);
     const popup = document.getElementById('wordPopup');
     popup.style.left      = x + 'px';
     popup.style.top       = y + 'px';
@@ -2088,7 +2347,24 @@ function getWordDataWithFallback(word, el) {
     }
 
     const ctx = getContextualDef(el);
-    return { phonetic: '', pos: '', def: ctx || '暂无释义', example: '' };
+    // Async fallback: fetch from Google Translate
+    fetchGoogleTranslation(word);
+    return { phonetic: '', pos: '', def: ctx || '翻译中…', example: '' };
+}
+
+async function fetchGoogleTranslation(word) {
+    try {
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(word)}`;
+        const res = await fetch(url);
+        const json = await res.json();
+        const trans = json?.[0]?.[0]?.[0];
+        if (trans && document.getElementById('popupWord').textContent === word) {
+            const defEl = document.getElementById('popupDef');
+            if (defEl.textContent === '翻译中…' || defEl.textContent === '暂无释义') {
+                defEl.textContent = trans;
+            }
+        }
+    } catch (_) {}
 }
 
 function getWordCandidates(word) {
