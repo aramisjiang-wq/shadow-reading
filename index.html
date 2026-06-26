@@ -34,6 +34,7 @@
             --font-reading: 'Lora', 'Georgia', serif;
             --font-mono:    'SF Mono','Fira Code','Consolas',monospace;
             --sidebar-width: 264px;
+            --article-font-size: 17px;
         }
 
         .theme-light {
@@ -80,7 +81,11 @@
             position: fixed;
             height: 100vh;
             z-index: 100;
+            transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
         }
+
+        body.focus-mode .sidebar { transform: translateX(-100%); }
+        body.focus-mode .main    { margin-left: 0; }
 
         .sidebar-header {
             padding: 18px 14px 14px;
@@ -92,7 +97,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .logo {
@@ -131,6 +136,22 @@
         }
         .theme-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
 
+        /* ── Streak ── */
+        .streak-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 11px;
+            background: linear-gradient(135deg,rgba(245,158,11,0.09),rgba(245,158,11,0.04));
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: var(--r-sm);
+            margin-bottom: 10px;
+        }
+        .streak-fire   { font-size: 17px; }
+        .streak-count  { font-family:var(--font-ui); font-size:19px; font-weight:700; color:#f59e0b; line-height:1; }
+        .streak-label  { font-size:11.5px; color:var(--text-muted); flex:1; }
+        .streak-today  { font-size:11px; color:var(--success); font-family:var(--font-ui); }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3,1fr);
@@ -144,18 +165,8 @@
             padding: 10px 4px;
             text-align: center;
         }
-        .stat-value {
-            font-family: var(--font-ui);
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent-primary);
-            line-height: 1;
-        }
-        .stat-label {
-            font-size: 10.5px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
+        .stat-value { font-family:var(--font-ui); font-size:20px; font-weight:700; color:var(--accent-primary); line-height:1; }
+        .stat-label { font-size:10.5px; color:var(--text-muted); margin-top:4px; }
 
         .sidebar-tabs {
             display: flex;
@@ -186,7 +197,7 @@
         .article-list::-webkit-scrollbar-thumb,.word-list::-webkit-scrollbar-thumb { background:var(--bg-hover); border-radius:2px; }
 
         .article-item {
-            padding: 8px 10px;
+            padding: 7px 10px;
             border-radius: var(--r-sm);
             cursor: pointer;
             display: flex; align-items: center; gap: 9px;
@@ -213,6 +224,17 @@
         .article-item.completed .article-badge { background: var(--success); border-color: var(--success); color: #fff; }
         .article-item.active    .article-badge { border-color: var(--accent-primary); color: var(--accent-primary); }
 
+        .article-meta { flex:1; min-width:0; }
+        .article-name { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .article-para-progress {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            margin-top: 2px;
+        }
+        .article-item.active    .article-para-progress { color: rgba(0,212,170,0.5); }
+        .article-item.completed .article-para-progress { color: rgba(0,212,170,0.5); }
+
         .word-item {
             padding: 10px 12px;
             background: var(--bg-card);
@@ -223,14 +245,14 @@
             transition: all 0.12s;
         }
         .word-item:hover { border-color: var(--accent-primary); background: var(--bg-hover); }
-        .word-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-        .word-item-word { font-size: 14px; font-weight: 500; }
-        .word-item-status { font-size: 10px; padding: 2px 7px; border-radius: 8px; font-family: var(--font-ui); }
+        .word-item-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+        .word-item-word   { font-size:14px; font-weight:500; }
+        .word-item-status { font-size:10px; padding:2px 7px; border-radius:8px; font-family:var(--font-ui); }
         .word-item-status.unknown  { background:var(--bg-hover); color:var(--text-muted); }
         .word-item-status.mastered { background:rgba(0,212,170,0.15); color:var(--success); }
         .word-item-status.review   { background:rgba(248,113,113,0.15); color:var(--error); }
-        .word-item-def     { font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
-        .word-item-phonetic { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); }
+        .word-item-def     { font-size:12px; color:var(--text-secondary); margin-bottom:2px; }
+        .word-item-phonetic{ font-size:11px; color:var(--text-muted); font-family:var(--font-mono); }
 
         .sidebar-footer {
             padding: 8px;
@@ -254,15 +276,15 @@
 
         .tips-box {
             padding: 10px 12px;
-            background: linear-gradient(135deg, var(--accent-dim), rgba(124,58,237,0.07));
+            background: linear-gradient(135deg,var(--accent-dim),rgba(124,58,237,0.07));
             border-radius: var(--r-sm);
             border: 1px solid var(--border);
         }
-        .tips-title { font-size: 10.5px; font-weight: 600; color: var(--accent-primary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .tips-rows { display: flex; flex-direction: column; gap: 4px; }
-        .tips-row { display: flex; align-items: center; gap: 7px; }
-        .tips-key { font-family: var(--font-mono); font-size: 9.5px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 3px; padding: 1px 5px; color: var(--text-secondary); white-space: nowrap; }
-        .tips-desc { font-size: 11px; color: var(--text-muted); }
+        .tips-title { font-size:10.5px; font-weight:600; color:var(--accent-primary); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.5px; }
+        .tips-rows  { display:flex; flex-direction:column; gap:4px; }
+        .tips-row   { display:flex; align-items:center; gap:7px; }
+        .tips-key   { font-family:var(--font-mono); font-size:9.5px; background:var(--bg-card); border:1px solid var(--border); border-radius:3px; padding:1px 5px; color:var(--text-secondary); white-space:nowrap; }
+        .tips-desc  { font-size:11px; color:var(--text-muted); }
 
         /* ── Main ── */
         .main {
@@ -270,12 +292,13 @@
             margin-left: var(--sidebar-width);
             padding: 28px 52px;
             max-width: calc(var(--sidebar-width) + 880px);
+            transition: margin-left 0.28s cubic-bezier(0.4,0,0.2,1);
         }
 
         .header { margin-bottom: 20px; }
         .title-row { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
-        .article-title { font-family:var(--font-ui); font-size:22px; font-weight:700; letter-spacing:-0.4px; }
-        .article-subtitle { font-size:13px; color:var(--text-muted); margin-top:4px; }
+        .article-title   { font-family:var(--font-ui); font-size:22px; font-weight:700; letter-spacing:-0.4px; }
+        .article-subtitle{ font-size:13px; color:var(--text-muted); margin-top:4px; }
         .progress-pill {
             font-family: var(--font-mono);
             font-size: 12px;
@@ -298,7 +321,7 @@
             flex-wrap: wrap;
         }
         .ctrl-group { display:flex; align-items:center; gap:4px; }
-        .ctrl-sep { width:1px; height:22px; background:var(--border); margin:0 4px; }
+        .ctrl-sep   { width:1px; height:22px; background:var(--border); margin:0 4px; }
 
         .btn {
             padding: 7px 13px;
@@ -314,8 +337,8 @@
             transition: all 0.12s;
             white-space: nowrap;
         }
-        .btn:hover { background:var(--bg-hover); color:var(--text-primary); border-color:rgba(255,255,255,0.12); }
-        .btn:active { transform:scale(0.97); }
+        .btn:hover   { background:var(--bg-hover); color:var(--text-primary); border-color:rgba(255,255,255,0.12); }
+        .btn:active  { transform:scale(0.97); }
         .btn:disabled { opacity:0.38; cursor:not-allowed; }
         .btn:disabled:hover { transform:none; }
 
@@ -340,6 +363,20 @@
             background: rgba(248,113,113,0.14);
             color: var(--error);
             border-color: rgba(248,113,113,0.3);
+        }
+        .btn-loop.active {
+            background: rgba(245,158,11,0.12);
+            color: #f59e0b;
+            border-color: rgba(245,158,11,0.32);
+        }
+
+        .loop-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            background: rgba(245,158,11,0.22);
+            color: #f59e0b;
+            padding: 1px 5px;
+            border-radius: 4px;
         }
 
         .select-wrap {
@@ -393,6 +430,28 @@
             border-left: 3px solid var(--accent-primary);
         }
 
+        .paragraph-wrapper.shadowing {
+            background: linear-gradient(135deg,rgba(124,58,237,0.09),rgba(0,180,216,0.05));
+            border-radius: var(--r-md);
+            padding: 14px 16px;
+            margin: -14px -16px;
+            margin-bottom: 8px;
+            border-left: 3px solid #7c3aed;
+        }
+
+        /* Practiced dot indicator on left edge */
+        .paragraph-wrapper.practiced::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px; height: 5px;
+            background: var(--success);
+            border-radius: 50%;
+            opacity: 0.65;
+        }
+
         .para-header { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
 
         .play-para-btn {
@@ -407,8 +466,23 @@
             transition: all 0.12s;
             flex-shrink: 0;
         }
-        .play-para-btn:hover { background:var(--accent-primary); color:#fff; border-color:var(--accent-primary); }
-        .play-para-btn.playing { background:var(--accent-primary); color:#fff; border-color:var(--accent-primary); }
+        .play-para-btn:hover  { background:var(--accent-primary); color:#fff; border-color:var(--accent-primary); }
+        .play-para-btn.playing{ background:var(--accent-primary); color:#fff; border-color:var(--accent-primary); }
+
+        .shadow-para-btn {
+            width: 24px; height: 24px;
+            border-radius: 5px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px;
+            transition: all 0.12s;
+            flex-shrink: 0;
+        }
+        .shadow-para-btn:hover  { background:rgba(124,58,237,0.12); color:#a78bfa; border-color:rgba(124,58,237,0.3); }
+        .shadow-para-btn.active { background:rgba(124,58,237,0.16); color:#a78bfa; border-color:rgba(124,58,237,0.35); }
 
         .para-num {
             font-family: var(--font-mono);
@@ -419,9 +493,25 @@
             border-radius: 4px;
         }
 
+        .practiced-btn {
+            margin-left: auto;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px;
+            transition: all 0.15s;
+            flex-shrink: 0;
+        }
+        .practiced-btn:hover  { border-color:var(--success); color:var(--success); background:rgba(0,212,170,0.08); }
+        .practiced-btn.done   { background:rgba(0,212,170,0.14); border-color:var(--border-accent); color:var(--success); }
+
         .content p {
             font-family: var(--font-reading);
-            font-size: 17px;
+            font-size: var(--article-font-size);
             line-height: 1.92;
             color: var(--text-primary);
             text-align: justify;
@@ -435,10 +525,9 @@
             padding: 1px 1px;
             transition: background 0.1s, color 0.1s;
         }
-        .word:hover { background:var(--accent-dim); color:var(--accent-primary); }
+        .word:hover    { background:var(--accent-dim); color:var(--accent-primary); }
         .word.mastered { color:var(--success); }
         .word.review   { color:var(--error); }
-        .word.playing  { background:var(--accent-primary); color:var(--bg-primary); border-radius:4px; padding:1px 3px; }
 
         /* ── Translation ── */
         .translation {
@@ -477,7 +566,7 @@
             letter-spacing: 3px;
         }
         .practice-actions { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
-        .practice-status { text-align:center; margin-top:12px; font-size:13px; color:var(--text-secondary); }
+        .practice-status  { text-align:center; margin-top:12px; font-size:13px; color:var(--text-secondary); }
 
         .practice-mode .paragraph-wrapper p {
             color: transparent;
@@ -490,6 +579,102 @@
         .recording-indicator { display:inline-flex; align-items:center; gap:7px; color:var(--error); font-weight:500; }
         .rec-dot { width:8px; height:8px; background:var(--error); border-radius:50%; animation:rec-pulse 1.2s ease-in-out infinite; }
         @keyframes rec-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.75)} }
+
+        /* ── Shadow Sentence Panel ── */
+        .shadow-panel {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: var(--bg-elevated);
+            border-top: 1px solid rgba(124,58,237,0.28);
+            padding: 14px 48px 18px;
+            z-index: 500;
+            transform: translateY(102%);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 -12px 40px rgba(0,0,0,0.45);
+        }
+        .shadow-panel.show { transform: translateY(0); }
+
+        .sp-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .sp-label    { font-family:var(--font-ui); font-size:11px; font-weight:600; color:#a78bfa; text-transform:uppercase; letter-spacing:0.6px; }
+        .sp-para     { font-size:11px; color:var(--text-muted); }
+        .sp-progress { font-family:var(--font-mono); font-size:11px; color:var(--text-secondary); background:var(--bg-card); border:1px solid var(--border); padding:2px 8px; border-radius:4px; }
+        .sp-close {
+            margin-left: auto;
+            padding: 3px 10px;
+            border-radius: var(--r-sm);
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 12px;
+            cursor: pointer;
+            font-family: var(--font-ui);
+            transition: all 0.12s;
+        }
+        .sp-close:hover { color:var(--text-primary); border-color:rgba(255,255,255,0.15); }
+
+        .sp-sentence {
+            font-family: var(--font-reading);
+            font-size: 19px;
+            line-height: 1.55;
+            color: var(--text-primary);
+            margin-bottom: 11px;
+            min-height: 30px;
+        }
+
+        .sp-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .sp-status {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: var(--font-ui);
+            min-width: 52px;
+        }
+        .sp-track {
+            flex: 1;
+            height: 3px;
+            background: var(--bg-hover);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .sp-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: background 0.25s;
+        }
+        .sp-timer {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-secondary);
+            min-width: 34px;
+            text-align: right;
+        }
+
+        .sp-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sp-pause-select {
+            margin-left: auto;
+            font-family: var(--font-ui);
+            font-size: 12px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            padding: 5px 8px;
+            cursor: pointer;
+            outline: none;
+        }
 
         /* ── Nav row ── */
         .nav-row { display:flex; justify-content:space-between; margin-top:18px; }
@@ -514,9 +699,9 @@
         }
         .word-popup.show { opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
 
-        .popup-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
-        .popup-word { font-family:var(--font-reading); font-size:24px; font-weight:600; letter-spacing:-0.5px; }
-        .popup-phonetic { font-family:var(--font-mono); font-size:12px; color:var(--text-muted); margin-top:3px; }
+        .popup-header  { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+        .popup-word    { font-family:var(--font-reading); font-size:24px; font-weight:600; letter-spacing:-0.5px; }
+        .popup-phonetic{ font-family:var(--font-mono); font-size:12px; color:var(--text-muted); margin-top:3px; }
         .popup-speak {
             width:34px; height:34px; border-radius:50%;
             background:var(--accent-primary); border:none;
@@ -536,16 +721,16 @@
             margin-right: 7px;
             font-weight: 500;
         }
-        .popup-def { font-size:14.5px; color:var(--text-primary); line-height:1.5; margin-bottom:10px; }
+        .popup-def     { font-size:14.5px; color:var(--text-primary); line-height:1.5; margin-bottom:10px; }
         .popup-example {
-            font-family:var(--font-reading);
-            font-style:italic;
-            font-size:12.5px;
-            color:var(--text-secondary);
-            background:var(--bg-card);
-            padding:9px 12px;
-            border-radius:var(--r-sm);
-            line-height:1.5;
+            font-family: var(--font-reading);
+            font-style: italic;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            padding: 9px 12px;
+            border-radius: var(--r-sm);
+            line-height: 1.5;
         }
 
         .popup-status-row {
@@ -584,7 +769,7 @@
             border:1px solid var(--border);
             border-radius:var(--r-lg);
             padding:28px 32px;
-            width:380px;
+            width:400px;
             box-shadow:var(--shadow-lg);
         }
         .kbd-header { font-family:var(--font-ui); font-size:15px; font-weight:600; margin-bottom:18px; }
@@ -600,7 +785,7 @@
 
         /* ── Toast ── */
         .toast {
-            position:fixed; bottom:26px; right:26px;
+            position:fixed; bottom:82px; right:26px;
             background:var(--bg-elevated);
             color:var(--text-primary);
             padding:10px 18px;
@@ -621,14 +806,17 @@
         /* ── Mobile ── */
         @media (max-width:768px) {
             .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid var(--border); max-height:42vh; }
-            .app { flex-direction:column; }
-            .main { margin-left:0; padding:16px 18px; }
+            body.focus-mode .sidebar { transform:none; display:none; }
+            .app   { flex-direction:column; }
+            .main  { margin-left:0; padding:16px 18px; }
             .content { padding:20px; }
             .title-row { flex-direction:column; align-items:flex-start; gap:6px; }
             .stats-grid { display:none; }
             .sidebar-footer { display:none; }
             .ctrl-sep { display:none; }
             .controls { gap:4px; }
+            .shadow-panel { padding:12px 18px 16px; }
+            .sp-sentence { font-size:15px; }
         }
     </style>
 </head>
@@ -648,6 +836,14 @@
                 </div>
                 <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="切换主题">🌙</button>
             </div>
+
+            <div class="streak-row" id="streakRow" style="display:none">
+                <span class="streak-fire">🔥</span>
+                <span class="streak-count" id="streakCount">1</span>
+                <span class="streak-label">天连续学习</span>
+                <span class="streak-today" id="streakToday">今天 ✓</span>
+            </div>
+
             <div class="stats-grid">
                 <div class="stat"><div class="stat-value" id="completedCount">0</div><div class="stat-label">已完成</div></div>
                 <div class="stat"><div class="stat-value" id="wordCount">0</div><div class="stat-label">已学词</div></div>
@@ -664,14 +860,15 @@
         <div class="word-list" id="wordList" style="display:none"></div>
 
         <div class="sidebar-footer">
-            <a href="words.html" class="footer-link">📚 全部单词本</a>
+            <a href="words.html" class="footer-link">📚 完整单词本</a>
             <div class="tips-box">
                 <div class="tips-title">快捷键</div>
                 <div class="tips-rows">
                     <div class="tips-row"><span class="tips-key">Space</span><span class="tips-desc">播放 / 暂停</span></div>
+                    <div class="tips-row"><span class="tips-key">L</span><span class="tips-desc">循环当前段落</span></div>
+                    <div class="tips-row"><span class="tips-key">T</span><span class="tips-desc">显示译文</span></div>
+                    <div class="tips-row"><span class="tips-key">F</span><span class="tips-desc">专注模式</span></div>
                     <div class="tips-row"><span class="tips-key">← →</span><span class="tips-desc">切换文章</span></div>
-                    <div class="tips-row"><span class="tips-key">T</span><span class="tips-desc">显示翻译</span></div>
-                    <div class="tips-row"><span class="tips-key">?</span><span class="tips-desc">所有快捷键</span></div>
                 </div>
             </div>
         </div>
@@ -694,6 +891,7 @@
                     <span id="playIcon">▶</span><span id="playText">播放</span>
                 </button>
                 <button class="btn btn-icon" onclick="stopReading()" title="停止 (S)">■</button>
+                <button class="btn btn-icon btn-loop" id="loopBtn" onclick="toggleLoop()" title="循环模式 (L)">↺</button>
             </div>
 
             <div class="ctrl-sep"></div>
@@ -720,6 +918,14 @@
             <div class="ctrl-group">
                 <button class="btn" id="translateBtn" onclick="toggleTranslation()" title="显示/隐藏翻译 (T)">🌐 翻译</button>
                 <button class="btn" id="shadowBtn" onclick="togglePracticeMode()" title="复述练习模式">🎭 练习</button>
+            </div>
+
+            <div class="ctrl-sep"></div>
+
+            <div class="ctrl-group">
+                <button class="btn btn-icon" onclick="adjustFontSize(-1)" title="缩小字号">A−</button>
+                <button class="btn btn-icon" onclick="adjustFontSize(1)"  title="放大字号">A+</button>
+                <button class="btn btn-icon" id="focusBtn" onclick="toggleFocusMode()" title="专注模式 (F)">⛶</button>
             </div>
 
             <div class="ctrl-sep"></div>
@@ -757,6 +963,33 @@
     </main>
 </div>
 
+<!-- Shadow Sentence Panel -->
+<div class="shadow-panel" id="shadowPanel">
+    <div class="sp-top">
+        <span class="sp-label">🎤 逐句跟读</span>
+        <span class="sp-para" id="spParaLabel"></span>
+        <span class="sp-progress" id="spProgress">句 1/1</span>
+        <button class="sp-close" onclick="exitShadow()">× 退出</button>
+    </div>
+    <div class="sp-sentence" id="spSentText"></div>
+    <div class="sp-bar-row">
+        <span class="sp-status" id="spStatus">听...</span>
+        <div class="sp-track"><div class="sp-fill" id="spFill" style="width:100%;background:var(--accent-primary)"></div></div>
+        <span class="sp-timer" id="spTimer"></span>
+    </div>
+    <div class="sp-actions">
+        <button class="btn" onclick="repeatShadow()" title="重新播放当前句子">↺ 重听</button>
+        <button class="btn btn-primary" id="spNextBtn" onclick="nextShadow()">→ 下一句</button>
+        <select class="sp-pause-select" id="spPauseSelect" onchange="updateShadowPause()">
+            <option value="2">跟读 2s</option>
+            <option value="3" selected>跟读 3s</option>
+            <option value="4">跟读 4s</option>
+            <option value="5">跟读 5s</option>
+            <option value="7">跟读 7s</option>
+        </select>
+    </div>
+</div>
+
 <!-- Word popup -->
 <div class="popup-backdrop" id="popupBackdrop" onclick="closePopup()"></div>
 <div class="word-popup" id="wordPopup">
@@ -782,10 +1015,12 @@
         <div class="kbd-header">⌨️ 键盘快捷键</div>
         <div class="kbd-row"><span class="kbd-desc">播放 / 暂停</span><kbd>Space</kbd></div>
         <div class="kbd-row"><span class="kbd-desc">停止播放</span><kbd>S</kbd></div>
+        <div class="kbd-row"><span class="kbd-desc">循环模式开/关</span><kbd>L</kbd></div>
+        <div class="kbd-row"><span class="kbd-desc">专注模式开/关</span><kbd>F</kbd></div>
         <div class="kbd-row"><span class="kbd-desc">上一篇文章</span><kbd>←</kbd></div>
         <div class="kbd-row"><span class="kbd-desc">下一篇文章</span><kbd>→</kbd></div>
         <div class="kbd-row"><span class="kbd-desc">显示 / 隐藏翻译</span><kbd>T</kbd></div>
-        <div class="kbd-row"><span class="kbd-desc">关闭弹窗</span><kbd>Esc</kbd></div>
+        <div class="kbd-row"><span class="kbd-desc">关闭弹窗 / 退出跟读</span><kbd>Esc</kbd></div>
         <div class="kbd-row"><span class="kbd-desc">查看此列表</span><kbd>?</kbd></div>
     </div>
 </div>
@@ -798,38 +1033,63 @@
 <script>
 // ── Constants ──
 const LS = {
-    WORD_STATUS:  'sr_wordStatus',
-    COMPLETED:    'sr_completed',
-    THEME:        'sr_theme',
-    ARTICLE:      'sr_article',
-    SPEED:        'sr_speed',
-    LAST_BACKUP:  'sr_lastBackup',
+    WORD_STATUS: 'sr_wordStatus',
+    COMPLETED:   'sr_completed',
+    THEME:       'sr_theme',
+    ARTICLE:     'sr_article',
+    SPEED:       'sr_speed',
+    LAST_BACKUP: 'sr_lastBackup',
+    PRACTICED:   'sr_practiced',
+    STREAK:      'sr_streak',
+    LAST_STUDY:  'sr_lastStudy',
+    FONT_SIZE:   'sr_fontSize',
+    LOOP_MODE:   'sr_loopMode',
 };
 const BACKUP_INTERVAL = 7 * 24 * 60 * 60 * 1000;
+const FONT_STEPS = [14, 15, 16, 17, 18, 19, 21];
 
 // ── State ──
-let currentArticle   = 0;
-let isPlaying        = false;
-let currentUtterance = null;
-let speechRate       = 1;
-let completedArticles  = new Set();
-let wordStatuses       = {};
-let currentWord        = '';
-let currentTab         = 'articles';
-let showTranslation    = false;
-let currentParaIdx     = -1;
-let practiceMode       = false;
-let mediaRecorder      = null;
-let recordedChunks     = [];
-let recordedBlob       = null;
-let recordingStart     = null;
-let timerInterval      = null;
+let currentArticle  = 0;
+let isPlaying       = false;
+let currentUtterance= null;
+let speechRate      = 1;
+let completedArticles = new Set();
+let wordStatuses    = {};
+let currentWord     = '';
+let currentTab      = 'articles';
+let showTranslation = false;
+let currentParaIdx  = -1;
+let practiceMode    = false;
+let mediaRecorder   = null;
+let recordedChunks  = [];
+let recordedBlob    = null;
+let recordingStart  = null;
+let timerInterval   = null;
+
+// New state
+let loopMode        = false;
+let loopCount       = 0;
+let focusMode       = false;
+let fontSizeIdx     = 3;
+let practicedMap    = {};
+let streak          = 0;
+
+// Shadow sentence state
+let isShadowing     = false;
+let shadowParaIdx   = -1;
+let shadowSents     = [];
+let shadowSentIdx   = 0;
+let shadowPauseSec  = 3;
+let shadowRAF       = null;
+let shadowUntil     = 0;
 
 // ── Init ──
 function init() {
     loadTheme();
     loadProgress();
+    loadPracticed();
     loadSettings();
+    initStreak();
     renderArticleList();
     const target = getInitialTarget();
     loadArticle(target.articleIndex);
@@ -881,13 +1141,43 @@ function loadSettings() {
         speechRate = spd;
         document.getElementById('speedSelect').value = spd;
     }
+    const fsi = parseInt(localStorage.getItem(LS.FONT_SIZE), 10);
+    if (!isNaN(fsi) && fsi >= 0 && fsi < FONT_STEPS.length) {
+        fontSizeIdx = fsi;
+        document.documentElement.style.setProperty('--article-font-size', FONT_STEPS[fsi] + 'px');
+    }
+    if (localStorage.getItem(LS.LOOP_MODE) === '1') {
+        loopMode = true;
+        document.getElementById('loopBtn').classList.add('active');
+    }
+}
+
+// ── Streak ──
+function initStreak() {
+    const today = new Date().toISOString().slice(0, 10);
+    const lastDate = localStorage.getItem(LS.LAST_STUDY);
+    streak = parseInt(localStorage.getItem(LS.STREAK), 10) || 0;
+
+    if (lastDate !== today) {
+        const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+        streak = (!lastDate) ? 1 : (lastDate === yesterday ? streak + 1 : 1);
+        localStorage.setItem(LS.STREAK, streak);
+        localStorage.setItem(LS.LAST_STUDY, today);
+    }
+
+    if (streak >= 1) {
+        const row = document.getElementById('streakRow');
+        row.style.display = 'flex';
+        document.getElementById('streakCount').textContent = streak;
+        document.getElementById('streakToday').textContent = '今天 ✓';
+    }
 }
 
 // ── Progress ──
 function loadProgress() {
     const ws = localStorage.getItem(LS.WORD_STATUS);
     const ca = localStorage.getItem(LS.COMPLETED);
-    if (ws) wordStatuses    = JSON.parse(ws);
+    if (ws) wordStatuses      = JSON.parse(ws);
     if (ca) completedArticles = new Set(JSON.parse(ca));
     updateStats();
 }
@@ -897,8 +1187,47 @@ function saveProgress() {
     localStorage.setItem(LS.COMPLETED,   JSON.stringify([...completedArticles]));
 }
 
+function loadPracticed() {
+    const raw = localStorage.getItem(LS.PRACTICED);
+    if (raw) try { practicedMap = JSON.parse(raw); } catch {}
+}
+
+function savePracticed() {
+    localStorage.setItem(LS.PRACTICED, JSON.stringify(practicedMap));
+}
+
+function markParagraphPracticed(articleIdx, paraIdx) {
+    if (!practicedMap[articleIdx]) practicedMap[articleIdx] = [];
+    if (!practicedMap[articleIdx].includes(paraIdx)) {
+        practicedMap[articleIdx].push(paraIdx);
+        savePracticed();
+        syncPracticedBtn(paraIdx, true);
+        renderArticleList();
+    }
+}
+
+function toggleParagraphPracticed(paraIdx) {
+    if (!practicedMap[currentArticle]) practicedMap[currentArticle] = [];
+    const arr    = practicedMap[currentArticle];
+    const hadIt  = arr.includes(paraIdx);
+    practicedMap[currentArticle] = hadIt ? arr.filter(i => i !== paraIdx) : [...arr, paraIdx];
+    savePracticed();
+    syncPracticedBtn(paraIdx, !hadIt);
+    document.querySelector(`.paragraph-wrapper[data-index="${paraIdx}"]`)?.classList.toggle('practiced', !hadIt);
+    renderArticleList();
+    if (!hadIt) showToast('✓ 已标记练习完成');
+}
+
+function syncPracticedBtn(paraIdx, done) {
+    const btn = document.querySelector(`.practiced-btn[data-para="${paraIdx}"]`);
+    if (!btn) return;
+    btn.classList.toggle('done', done);
+    btn.textContent = done ? '✓' : '○';
+    btn.title = done ? '取消练习标记' : '标记为已练习';
+}
+
 function checkBackupReminder() {
-    const last = parseInt(localStorage.getItem(LS.LAST_BACKUP), 10) || 0;
+    const last  = parseInt(localStorage.getItem(LS.LAST_BACKUP), 10) || 0;
     const count = Object.values(wordStatuses).filter(s => s === 'mastered').length;
     if (count > 10 && (Date.now() - last) > BACKUP_INTERVAL) {
         setTimeout(() => showToast('💡 建议导出备份，防止数据丢失'), 4000);
@@ -909,8 +1238,8 @@ function checkBackupReminder() {
 function updateStats() {
     const total    = Object.keys(wordStatuses).length;
     const mastered = Object.values(wordStatuses).filter(s => s === 'mastered').length;
-    document.getElementById('wordCount').textContent     = total;
-    document.getElementById('masteredCount').textContent = mastered;
+    document.getElementById('wordCount').textContent      = total;
+    document.getElementById('masteredCount').textContent  = mastered;
     document.getElementById('completedCount').textContent = completedArticles.size;
 }
 
@@ -924,7 +1253,6 @@ function loadVoices() {
         { label: 'English', list: voices.filter(v => v.lang.startsWith('en')) },
         { label: '中文',    list: voices.filter(v => v.lang.startsWith('zh')) },
     ];
-
     groups.forEach(({ label, list }) => {
         if (!list.length) return;
         const g = document.createElement('optgroup');
@@ -939,10 +1267,7 @@ function loadVoices() {
         sel.appendChild(g);
     });
 
-    if (!sel.options.length) {
-        sel.innerHTML = '<option value="">默认</option>';
-        return;
-    }
+    if (!sel.options.length) { sel.innerHTML = '<option value="">默认</option>'; return; }
 
     const preferred = findPreferredVoice(voices);
     if (preferred) {
@@ -972,17 +1297,23 @@ function getSelectedVoice() {
     return null;
 }
 
-function updateVoice() { /* applied on next speech */ }
-
 // ── Article list ──
 function renderArticleList() {
-    document.getElementById('articleList').innerHTML = articles.map((a, i) => `
-        <div class="article-item ${i === currentArticle ? 'active' : ''} ${completedArticles.has(i) ? 'completed' : ''}"
-            onclick="loadArticle(${i})">
-            <span class="article-badge">${completedArticles.has(i) ? '✓' : i + 1}</span>
-            <span>${a.title}</span>
-        </div>
-    `).join('');
+    document.getElementById('articleList').innerHTML = articles.map((a, i) => {
+        const total = a.content.split('\n\n').length;
+        const done  = (practicedMap[i] || []).length;
+        const prog  = done > 0 ? `${done}/${total} 段已练` : '';
+        return `
+            <div class="article-item ${i === currentArticle ? 'active' : ''} ${completedArticles.has(i) ? 'completed' : ''}"
+                onclick="loadArticle(${i})">
+                <span class="article-badge">${completedArticles.has(i) ? '✓' : i + 1}</span>
+                <div class="article-meta">
+                    <span class="article-name">${a.title}</span>
+                    ${prog ? `<div class="article-para-progress">${prog}</div>` : ''}
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 function scrollSidebarToActive() {
@@ -1004,11 +1335,11 @@ function loadArticle(index) {
 
     const paragraphs   = article.content.split('\n\n');
     const translations = article.translation ? article.translation.split('\n\n') : [];
+    const practiced    = practicedMap[index] || [];
 
     document.getElementById('articleContent').innerHTML = paragraphs.map((p, i) => {
         const words = p.split(/(\s+)/).map(token => {
-            const clean = token.toLowerCase()
-                .replace(/^[^a-z]+/, '').replace(/[^a-z]+$/, '');
+            const clean = token.toLowerCase().replace(/^[^a-z]+/, '').replace(/[^a-z]+$/, '');
             if (clean.length > 1 && /^[a-z]+$/.test(clean)) {
                 const st = wordStatuses[clean] || '';
                 return `<span class="word ${st}" data-word="${clean}" onclick="showWordPopup(event,'${clean}')">${token}</span>`;
@@ -1016,12 +1347,17 @@ function loadArticle(index) {
             return token;
         }).join('');
 
-        const trans = translations[i] || '';
+        const trans      = translations[i] || '';
+        const isPracticed = practiced.includes(i);
         return `
-            <div class="paragraph-wrapper" data-index="${i}">
+            <div class="paragraph-wrapper ${isPracticed ? 'practiced' : ''}" data-index="${i}">
                 <div class="para-header">
                     <button class="play-para-btn" onclick="playParagraph(${i})" title="播放此段">▶</button>
+                    <button class="shadow-para-btn" onclick="startSentenceShadow(${i})" title="逐句跟读">🎤</button>
                     <span class="para-num">P${i + 1}</span>
+                    <button class="practiced-btn ${isPracticed ? 'done' : ''}" data-para="${i}"
+                        onclick="toggleParagraphPracticed(${i})"
+                        title="${isPracticed ? '取消练习标记' : '标记为已练习'}">${isPracticed ? '✓' : '○'}</button>
                 </div>
                 <p>${words}</p>
                 ${trans ? `<div class="translation${showTranslation ? ' show' : ''}">${trans}</div>` : ''}
@@ -1033,36 +1369,47 @@ function loadArticle(index) {
     setTimeout(scrollSidebarToActive, 50);
 }
 
-// ── Playback ──
-function togglePlay() {
-    if (isPlaying) {
-        speechSynthesis.pause();
-        isPlaying = false;
-    } else if (speechSynthesis.paused) {
-        speechSynthesis.resume();
-        isPlaying = true;
-    } else {
-        startReading();
-        return;
-    }
-    updatePlayButton();
-}
-
-function startReading() {
-    if (!articles[currentArticle]?.content) return showToast('❌ 文章内容为空');
-    speechSynthesis.cancel();
-    isPlaying = true;
-    updatePlayButton();
-    playParagraph(0, true);
-}
-
-function stopReading() {
+// ── Playback internals ──
+// clearPlaying: stop speech + clear visual state, but preserve loopCount
+function clearPlaying() {
     speechSynthesis.cancel();
     isPlaying = false;
     currentParaIdx = -1;
     document.querySelectorAll('.paragraph-wrapper.playing').forEach(el => el.classList.remove('playing'));
     document.querySelectorAll('.play-para-btn.playing').forEach(el => el.classList.remove('playing'));
     updatePlayButton();
+}
+
+// stopReading: user-initiated stop, also resets loop counter
+function stopReading() {
+    clearPlaying();
+    loopCount = 0;
+    updateLoopBtn();
+}
+
+function togglePlay() {
+    if (isPlaying) {
+        speechSynthesis.pause();
+        isPlaying = false;
+        updatePlayButton();
+    } else if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+        isPlaying = true;
+        updatePlayButton();
+    } else {
+        startReading();
+    }
+}
+
+function startReading() {
+    if (!articles[currentArticle]?.content) return showToast('❌ 文章内容为空');
+    clearPlaying();
+    loopCount = 0;
+    isPlaying = true;
+    updatePlayButton();
+    // In loop mode, start from current (or 0) and loop; otherwise auto-advance
+    const startIdx = currentParaIdx >= 0 ? currentParaIdx : 0;
+    playParagraph(startIdx, !loopMode);
 }
 
 function playParagraph(index, autoContinue = false) {
@@ -1074,15 +1421,16 @@ function playParagraph(index, autoContinue = false) {
             saveProgress();
             renderArticleList();
             updateStats();
-            showToast('🎉 完成！文章已标记完成');
+            showCompletionToast();
         }
         return;
     }
 
-    if (!autoContinue) stopReading();
+    // When called manually (not from loop/autoContinue onend), reset the visual state only
+    if (!autoContinue && !loopMode) clearPlaying();
 
-    document.querySelectorAll('.paragraph-wrapper').forEach(el => el.classList.remove('playing'));
-    document.querySelectorAll('.play-para-btn').forEach(el => el.classList.remove('playing'));
+    document.querySelectorAll('.paragraph-wrapper.playing').forEach(el => el.classList.remove('playing'));
+    document.querySelectorAll('.play-para-btn.playing').forEach(el => el.classList.remove('playing'));
 
     const wrapper = document.querySelector(`.paragraph-wrapper[data-index="${index}"]`);
     const btn     = wrapper?.querySelector('.play-para-btn');
@@ -1105,8 +1453,17 @@ function playParagraph(index, autoContinue = false) {
         wrapper?.classList.remove('playing');
         btn?.classList.remove('playing');
         currentParaIdx = -1;
-        if (autoContinue && isPlaying) playParagraph(index + 1, true);
-        else { isPlaying = false; updatePlayButton(); }
+
+        if (loopMode && isPlaying) {
+            loopCount++;
+            updateLoopBtn();
+            setTimeout(() => playParagraph(index, false), 280);
+        } else if (autoContinue && isPlaying) {
+            playParagraph(index + 1, true);
+        } else {
+            isPlaying = false;
+            updatePlayButton();
+        }
     };
 
     utt.onerror = () => {
@@ -1121,15 +1478,20 @@ function playParagraph(index, autoContinue = false) {
     speechSynthesis.speak(utt);
 }
 
+function showCompletionToast() {
+    const done  = (practicedMap[currentArticle] || []).length;
+    const total = articles[currentArticle].content.split('\n\n').length;
+    showToast(done > 0 ? `🎉 完成！已练 ${done}/${total} 段` : '🎉 完成！文章已标记完成');
+}
+
 function playOriginal() {
-    const article = articles[currentArticle];
     stopReading();
-    const utt   = new SpeechSynthesisUtterance(article.content);
+    const utt   = new SpeechSynthesisUtterance(articles[currentArticle].content);
     const voice = getSelectedVoice();
-    utt.voice  = voice || null;
-    utt.lang   = voice?.lang || 'en-US';
-    utt.rate   = speechRate;
-    utt.onend  = () => { isPlaying = false; updatePlayButton(); };
+    utt.voice   = voice || null;
+    utt.lang    = voice?.lang || 'en-US';
+    utt.rate    = speechRate;
+    utt.onend   = () => { isPlaying = false; updatePlayButton(); };
     utt.onerror = () => { isPlaying = false; updatePlayButton(); };
     isPlaying = true;
     updatePlayButton();
@@ -1152,13 +1514,178 @@ function testSpeech() {
     speechSynthesis.cancel();
     const utt   = new SpeechSynthesisUtterance('Hello, this is a test of the speech synthesis.');
     const voice = getSelectedVoice();
-    utt.voice  = voice || null;
-    utt.lang   = voice?.lang || 'en-US';
-    utt.rate   = speechRate;
+    utt.voice   = voice || null;
+    utt.lang    = voice?.lang || 'en-US';
+    utt.rate    = speechRate;
     utt.onstart = () => showToast('🔊 测试中…');
     utt.onend   = () => showToast('✅ 语音测试完成');
     utt.onerror = e => showToast('❌ 播放失败: ' + e.error);
     speechSynthesis.speak(utt);
+}
+
+// ── Loop mode ──
+function toggleLoop() {
+    loopMode = !loopMode;
+    loopCount = 0;
+    localStorage.setItem(LS.LOOP_MODE, loopMode ? '1' : '0');
+    updateLoopBtn();
+    showToast(loopMode ? '↺ 循环模式已开启' : '循环模式已关闭');
+}
+
+function updateLoopBtn() {
+    const btn = document.getElementById('loopBtn');
+    btn.classList.toggle('active', loopMode);
+    if (loopMode && loopCount > 0) {
+        btn.innerHTML = `↺ <span class="loop-badge">${loopCount}</span>`;
+    } else {
+        btn.textContent = '↺';
+    }
+}
+
+// ── Focus mode ──
+function toggleFocusMode() {
+    focusMode = !focusMode;
+    document.body.classList.toggle('focus-mode', focusMode);
+    document.getElementById('focusBtn').classList.toggle('active', focusMode);
+    showToast(focusMode ? '⛶ 专注模式' : '已退出专注模式');
+}
+
+// ── Font size ──
+function adjustFontSize(delta) {
+    fontSizeIdx = Math.max(0, Math.min(FONT_STEPS.length - 1, fontSizeIdx + delta));
+    document.documentElement.style.setProperty('--article-font-size', FONT_STEPS[fontSizeIdx] + 'px');
+    localStorage.setItem(LS.FONT_SIZE, fontSizeIdx);
+    showToast(`字号 ${FONT_STEPS[fontSizeIdx]}px`);
+}
+
+// ── Sentence Shadow Mode ──
+function splitSentences(text) {
+    // Split on sentence-ending punctuation followed by whitespace and an uppercase letter / quote
+    const parts = text.split(/(?<=[.!?]['"]?)\s+(?=[A-Z"'])/);
+    return parts.map(s => s.trim()).filter(s => s.length > 2);
+}
+
+function startSentenceShadow(paraIdx) {
+    const paragraphs = articles[currentArticle].content.split('\n\n');
+    if (paraIdx < 0 || paraIdx >= paragraphs.length) return;
+
+    stopReading();
+    cancelAnimationFrame(shadowRAF);
+    speechSynthesis.cancel();
+
+    shadowParaIdx = paraIdx;
+    shadowSents   = splitSentences(paragraphs[paraIdx]);
+    if (!shadowSents.length) { showToast('⚠️ 无法分割句子'); return; }
+    shadowSentIdx = 0;
+    isShadowing   = true;
+
+    // Style the active paragraph
+    document.querySelectorAll('.paragraph-wrapper').forEach(el => el.classList.remove('shadowing'));
+    document.querySelectorAll('.shadow-para-btn').forEach(el => el.classList.remove('active'));
+    const wrapper   = document.querySelector(`.paragraph-wrapper[data-index="${paraIdx}"]`);
+    const shadowBtn = wrapper?.querySelector('.shadow-para-btn');
+    wrapper?.classList.add('shadowing');
+    shadowBtn?.classList.add('active');
+    wrapper?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    document.getElementById('spParaLabel').textContent = `第 ${paraIdx + 1} 段`;
+    document.getElementById('shadowPanel').classList.add('show');
+
+    playShadowSentence();
+}
+
+function playShadowSentence() {
+    if (!isShadowing) return;
+    if (shadowSentIdx >= shadowSents.length) { completeShadowPara(); return; }
+
+    const sent = shadowSents[shadowSentIdx];
+    document.getElementById('spSentText').textContent  = sent;
+    document.getElementById('spProgress').textContent  = `句 ${shadowSentIdx + 1} / ${shadowSents.length}`;
+    document.getElementById('spStatus').textContent    = '听...';
+    document.getElementById('spTimer').textContent     = '';
+    document.getElementById('spNextBtn').textContent   = '→ 下一句';
+    setSpBar(1, 'var(--accent-primary)');
+
+    const utt   = new SpeechSynthesisUtterance(sent);
+    const voice = getSelectedVoice();
+    utt.voice   = voice || null;
+    utt.lang    = voice?.lang || 'en-US';
+    utt.rate    = speechRate;
+    utt.onend   = () => { if (isShadowing) startShadowCountdown(); };
+    utt.onerror = () => { if (isShadowing) startShadowCountdown(); };
+    speechSynthesis.speak(utt);
+}
+
+function startShadowCountdown() {
+    document.getElementById('spStatus').textContent = '跟读...';
+    setSpBar(1, 'var(--warning)');
+    shadowUntil = Date.now() + shadowPauseSec * 1000;
+    animateShadowCd();
+}
+
+function animateShadowCd() {
+    const rem = Math.max(0, shadowUntil - Date.now());
+    const pct = rem / (shadowPauseSec * 1000);
+    setSpBar(pct, 'var(--warning)');
+    document.getElementById('spTimer').textContent = (rem / 1000).toFixed(1) + 's';
+    if (rem > 0) {
+        shadowRAF = requestAnimationFrame(animateShadowCd);
+    } else {
+        shadowSentIdx++;
+        playShadowSentence();
+    }
+}
+
+function setSpBar(fraction, color) {
+    const fill = document.getElementById('spFill');
+    fill.style.width      = (fraction * 100) + '%';
+    fill.style.background = color;
+}
+
+function completeShadowPara() {
+    document.getElementById('spStatus').textContent   = '✓ 完成';
+    document.getElementById('spTimer').textContent    = '';
+    document.getElementById('spNextBtn').textContent  = '↺ 再练一次';
+    document.getElementById('spSentText').textContent = `本段 ${shadowSents.length} 句全部跟读完成 🎉`;
+    document.getElementById('spProgress').textContent = `${shadowSents.length} 句`;
+    setSpBar(1, 'var(--success)');
+    markParagraphPracticed(currentArticle, shadowParaIdx);
+}
+
+function repeatShadow() {
+    cancelAnimationFrame(shadowRAF);
+    speechSynthesis.cancel();
+    // If completed, restart; otherwise replay current sentence
+    if (shadowSentIdx >= shadowSents.length) shadowSentIdx = 0;
+    playShadowSentence();
+}
+
+function nextShadow() {
+    cancelAnimationFrame(shadowRAF);
+    speechSynthesis.cancel();
+    if (shadowSentIdx >= shadowSents.length) {
+        shadowSentIdx = 0;
+        playShadowSentence();
+    } else {
+        shadowSentIdx++;
+        playShadowSentence();
+    }
+}
+
+function exitShadow() {
+    isShadowing = false;
+    cancelAnimationFrame(shadowRAF);
+    speechSynthesis.cancel();
+    document.getElementById('shadowPanel').classList.remove('show');
+    document.querySelectorAll('.paragraph-wrapper.shadowing').forEach(el => el.classList.remove('shadowing'));
+    document.querySelectorAll('.shadow-para-btn.active').forEach(el => el.classList.remove('active'));
+    shadowSents   = [];
+    shadowSentIdx = 0;
+    shadowParaIdx = -1;
+}
+
+function updateShadowPause() {
+    shadowPauseSec = parseInt(document.getElementById('spPauseSelect').value, 10);
 }
 
 // ── Navigation ──
@@ -1226,7 +1753,6 @@ function showWordPopup(event, word) {
     if (!wordStatuses[word]) wordStatuses[word] = 'unknown';
     updateStatusButtons();
 
-    // Use clientY (viewport-relative) since popup is position:fixed
     const x = Math.min(event.clientX, window.innerWidth - 326);
     const y = Math.min(event.clientY + 12, window.innerHeight - 240);
     const popup = document.getElementById('wordPopup');
@@ -1409,7 +1935,14 @@ function exportData() {
     if (!Object.keys(wordStatuses).length && !completedArticles.size) {
         return showToast('⚠️ 暂无学习数据可导出');
     }
-    const data = { wordStatuses, completedArticles: [...completedArticles], exportDate: new Date().toISOString(), version: '2.0' };
+    const data = {
+        wordStatuses,
+        completedArticles: [...completedArticles],
+        practicedMap,
+        streak,
+        exportDate: new Date().toISOString(),
+        version: '3.0'
+    };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url  = URL.createObjectURL(blob);
     const a    = Object.assign(document.createElement('a'), {
@@ -1431,9 +1964,11 @@ function handleImport(event) {
     reader.onload = e => {
         try {
             const data = JSON.parse(e.target.result);
-            if (data.wordStatuses)      wordStatuses    = data.wordStatuses;
+            if (data.wordStatuses)      wordStatuses      = data.wordStatuses;
             if (data.completedArticles) completedArticles = new Set(data.completedArticles);
+            if (data.practicedMap)      practicedMap      = data.practicedMap;
             saveProgress();
+            savePracticed();
             updateStats();
             renderArticleList();
             loadArticle(currentArticle);
@@ -1466,12 +2001,17 @@ document.addEventListener('keydown', e => {
     const tag = document.activeElement.tagName;
     if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
     switch (e.key) {
-        case 'Escape':     closePopup(); hideShortcuts(); break;
-        case '?':          e.preventDefault(); showShortcuts(); break;
-        case ' ':          e.preventDefault(); togglePlay(); break;
+        case 'Escape':
+            closePopup(); hideShortcuts();
+            if (isShadowing) exitShadow();
+            break;
+        case '?':           e.preventDefault(); showShortcuts(); break;
+        case ' ':           e.preventDefault(); togglePlay(); break;
         case 's': case 'S': stopReading(); break;
-        case 'ArrowLeft':  prevArticle(); break;
-        case 'ArrowRight': nextArticle(); break;
+        case 'l': case 'L': toggleLoop(); break;
+        case 'f': case 'F': toggleFocusMode(); break;
+        case 'ArrowLeft':   prevArticle(); break;
+        case 'ArrowRight':  nextArticle(); break;
         case 't': case 'T': toggleTranslation(); break;
     }
 });
