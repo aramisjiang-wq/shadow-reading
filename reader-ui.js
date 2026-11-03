@@ -1,6 +1,6 @@
 (function(root){
 'use strict';
-let active=null,selected=0,observer=null,view='read';
+let active=null,selected=0,observer=null,view='read',explicitSelection=null;
 const $=id=>document.getElementById(id);
 const views={read:'articleContent',expressions:'articleExpressions',practice:'articleQuestions'};
 function setView(next,anchor,remember=true){
@@ -38,24 +38,32 @@ function syncAudio(){
  $('loopBtn')?.setAttribute('aria-pressed',String(loopMode));
 }
 function onArticle(article,index){
- active=article;selected=0;
+ active=article;selected=0;explicitSelection=null;
  $('readerArticleMeta').textContent=`${article.category||'历史原稿'} · ${{beginner:'基础',intermediate:'中级',advanced:'进阶'}[article.level]} · ${(article.content.match(/\b[a-z]+\b/gi)||[]).length} 词`;
  $('readerSegments').innerHTML=article.content.split('\n\n').map((_,i)=>`<button type="button" data-reader-paragraph="${i}" aria-label="定位第 ${i+1} 段"></button>`).join('');
  $('readerCollectionFilter').value=article.edition?'edited':'archive';
  document.querySelectorAll('#articleContent .word').forEach(el=>el.tabIndex=-1);
  document.querySelectorAll('#articleContent .paragraph-wrapper').forEach(el=>{const word=el.querySelector('.word');if(word)word.tabIndex=0;});
  observer?.disconnect();
- observer=new IntersectionObserver(entries=>{if(view!=='read'||isPlaying)return;const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(visible[0]){selected=Number(visible[0].target.dataset.index);syncAudio();}},{rootMargin:'-80px 0px -40% 0px',threshold:[0,.2,.5,.8]});
+ observer=new IntersectionObserver(entries=>{if(view!=='read'||isPlaying||explicitSelection!==null)return;const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(visible[0]){selected=Number(visible[0].target.dataset.index);syncAudio();}},{rootMargin:'-80px 0px -40% 0px',threshold:[0,.2,.5,.8]});
  document.querySelectorAll('#articleContent .paragraph-wrapper').forEach(el=>observer.observe(el));
  const hash=location.hash;const next=['#articleExpressions'].includes(hash)?'expressions':['#articleLesson','#articleQuestions','#articleRetell','#articleTransfer'].includes(hash)?'practice':'read';setView(next,null,false);filterSidebar();syncAudio();
  document.querySelectorAll('.reader-view-tabs [data-reader-view]:not([data-reader-view=read])').forEach(b=>b.disabled=!article.edition);
 }
 function playAt(index){
- const total=active?.content.split('\n\n').length||0;selected=Math.max(0,Math.min(total-1,index));
+ const total=active?.content.split('\n\n').length||0;selected=Math.max(0,Math.min(total-1,index));explicitSelection=selected;
  const playing=isPlaying;setView('read',null,false);$('articleContent')?.querySelector(`[data-index="${selected}"]`)?.scrollIntoView({block:'center',behavior:'smooth'});
  if(playing){const target=selected;stopReading();selected=target;playParagraph(target,true);}else syncAudio();
 }
 root.ReaderUI={onArticle,syncAudio,setView,filterSidebar,getParagraph:()=>selected};
+// Programmatic scrolling must not overwrite an explicitly selected paragraph.
+// Reading-position tracking resumes when the reader deliberately scrolls.
+function resumePositionTracking(event){
+ if(event.target.closest?.('.sidebar,.reader-player,#readerSettings'))return;
+ explicitSelection=null;
+}
+document.addEventListener('wheel',resumePositionTracking,{passive:true});
+document.addEventListener('touchmove',resumePositionTracking,{passive:true});
 document.addEventListener('DOMContentLoaded',()=>{
  if(!active&&articles[currentArticle])onArticle(articles[currentArticle],currentArticle);
  $('readerArticleSearch')?.addEventListener('input',filterSidebar);$('readerCollectionFilter')?.addEventListener('change',filterSidebar);
@@ -78,6 +86,7 @@ document.addEventListener('click',event=>{
  if(event.target.closest('#focusBtn'))$('focusBtn').setAttribute('aria-pressed',String(document.body.classList.contains('focus-mode')));
 });
 document.addEventListener('keydown',event=>{
+ if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)&&!event.target.closest('input,textarea,select,button,a,.word'))resumePositionTracking(event);
  if(event.key==='Escape'&&$('wordPopup')?.classList.contains('show')){closePopup();return;}
  if(document.querySelector('.sidebar.drawer-open')&&event.key==='Escape'){closeSidebar();document.querySelector('.mobile-hamburger')?.focus({preventScroll:true});return;}
  if(document.querySelector('.sidebar.drawer-open')&&event.key==='Tab'){const items=[...document.querySelector('.sidebar').querySelectorAll('button,input,select,a,[tabindex="0"]')].filter(el=>!el.disabled&&el.getClientRects().length&&!el.closest('[hidden]'));const first=items[0],last=items.at(-1);if(event.shiftKey&&event.target===first){event.preventDefault();last?.focus();}else if(!event.shiftKey&&event.target===last){event.preventDefault();first?.focus();}}
