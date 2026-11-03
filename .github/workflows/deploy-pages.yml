@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -13,7 +16,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -25,13 +28,47 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install development dependencies
+        run: npm ci
+
+      - name: Check content and learning records
+        run: npm test
+
+      - name: Build runtime files
+        run: npm run build
+
+      - name: Install browser for release checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Check the built site in a project subdirectory
+        run: |
+          mkdir -p /tmp/shadow-reading-pages/shadow-reading
+          cp -R dist/. /tmp/shadow-reading-pages/shadow-reading/
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory /tmp/shadow-reading-pages > /tmp/shadow-reading-pages.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:8765/shadow-reading/ > /dev/null; then break; fi
+            sleep 1
+          done
+          export TEST_URL=http://127.0.0.1:8765/shadow-reading
+          npm run test:browser
+          npm run test:articles
+          npm run test:ui
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment

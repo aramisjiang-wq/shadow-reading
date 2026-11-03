@@ -1,0 +1,91 @@
+'use strict';
+const assert=require('node:assert/strict');
+let playwright;
+try{playwright=require('playwright');}catch{if(!process.env.PLAYWRIGHT_PATH)throw Error('Run npm install and npx playwright install chromium, or set PLAYWRIGHT_PATH.');playwright=require(process.env.PLAYWRIGHT_PATH);}
+const {chromium}=playwright,base=process.env.TEST_URL||'http://127.0.0.1:8765';
+(async()=>{
+ const browser=await chromium.launch({headless:true});
+ const context=await browser.newContext({viewport:{width:1440,height:1000}});
+ const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const go=async url=>{await page.goto(url);if(!url.includes('/words.html')&&!url.includes('?article='))await page.waitForFunction(()=>document.querySelector('main')?.dataset.route===(location.hash||'#home'));};
+ let checks=0;const check=(condition,message)=>{assert.ok(condition,message);checks++;};
+ await go(base);await page.locator('h1').waitFor();
+ check((await page.locator('h1').innerText()).includes('读懂一篇文章'),'home renders');
+ await page.evaluate(()=>{localStorage.setItem('sr_wordStatus','{"rings":"mastered","stretch":"review"}');localStorage.setItem('sr_completed','[0,19]');localStorage.setItem('sr_practiced','{"0":[2,4]}');});
+ await go(base+'/#dialogues');await page.locator('#catalogSearch').fill('预算与大数换算');
+ check(await page.locator('.cards .card').count()===1,'dialogue search');
+ await page.locator('#catalogSearch').fill('');await page.getByRole('button',{name:'金钱与数字',exact:true}).click();
+ check(await page.locator('.cards .card').count()===4,'scene filter');
+ await page.locator('#levelFilter').selectOption('进阶');check(await page.locator('.cards .card').count()===3,'combined filters');
+ await go(base+'/#units');check(await page.locator('.cards .card').count()===17,'all units');
+ await go(base+'/#unit/verbs-core');await page.getByRole('button',{name:'开始语境回忆',exact:false}).click();
+ await page.locator('#recallAnswer').fill('ARE');await page.locator('#recallForm').evaluate(f=>f.requestSubmit());
+ await page.locator('#recallNext:not(.hidden)').waitFor();
+ let events=await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events));
+ check(events.length===1&&events[0].correct&&!events[0].assisted,'unassisted answer persisted');
+ await page.locator('#recallNext').click();await page.getByRole('button',{name:'查看提示 / 答案'}).click();await page.locator('#recallAnswer').fill('have');await page.locator('#recallForm').evaluate(f=>f.requestSubmit());await page.locator('#recallNext:not(.hidden)').waitFor();
+ events=await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events));check(events.at(-1).assisted,'hint cannot become independent recall');
+ await page.locator('#recallForm').evaluate(f=>{f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));});
+ check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.sr_learning_v1).events).length)===2,'double submit idempotent');
+ await page.locator('#recallNext').click();await page.locator('#recallAnswer').fill('make');await page.locator('#recallForm').evaluate(f=>f.requestSubmit());await page.locator('#recallNext:not(.hidden)').waitFor();
+ events=await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events));check(!events.at(-1).correct,'incorrect word recorded');
+ await go(base+'/#review');check((await page.locator('.metric strong').first().innerText())==='2','due counts assisted and incorrect');
+ await page.reload();check((await page.locator('.metric strong').first().innerText())==='2','refresh preserves due counts');
+ await go(base+'/#dialogue/meet-01?mode=dictation');
+ check(await page.locator('#recallAnswer').count()===1,'dictation direct link');
+ check(!(await page.locator('#dialoguePractice').innerText()).includes("Hi, I’m Lin."),'dictation hides original');
+ await page.locator('[data-action=recall-hint]').click();await page.locator('#recallAnswer').fill('Hi, I’m Lin. Is this your first time here?');await page.locator('#recallForm').evaluate(f=>f.requestSubmit());await page.locator('#recallNext:not(.hidden)').waitFor();
+ events=await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events));check(events.at(-1).correct&&events.at(-1).assisted,'dictation hint tracked');
+ await go(base+'/#dialogue/meet-01?mode=transfer');await page.locator('#transferAnswer').fill('<img src=x onerror=alert(1)> My own answer.');await page.locator('[data-action=transfer-hint]').click();await page.locator('[data-action=save-output][data-rating=independent]').click();await page.locator('#transferNext:not(.hidden)').waitFor();
+ events=await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events));check(events.at(-1).kind==='output'&&events.at(-1).rating==='with-help','reference exposure forces assisted self-rating');
+ await go(base+'/#progress');check(await page.locator('.history-item img').count()===0,'saved expression escaped');
+ const downloadPromise=page.waitForEvent('download');await page.locator('[data-action=export]').click();const download=await downloadPromise;const stream=await download.createReadStream();let content='';for await(const chunk of stream)content+=chunk;const backup=JSON.parse(content);
+ check(backup.version==='4.0'&&backup.completedArticles.includes(19)&&backup.practicedMap[0].includes(4)&&backup.wordStatuses.rings==='mastered','full backup includes legacy and new records');
+ const before=await page.evaluate(()=>localStorage.sr_learning_v1);
+ await page.locator('#backupInput').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"wordStatuses":{"go":"mastered"},"completedArticles":[-1]}')});await page.waitForFunction(()=>document.querySelector('#toast').textContent.startsWith('未导入'));check((await page.locator('#toast').innerText()).startsWith('未导入'),'invalid import explained');
+ check(await page.evaluate(()=>localStorage.sr_learning_v1)===before,'invalid import does not mutate new records');
+ await page.locator('#backupInput').setInputFiles({name:'backup.json',mimeType:'application/json',buffer:Buffer.from(content)});await page.waitForFunction(()=>document.querySelector('#toast').textContent.includes('备份已合并'));check(await page.evaluate(()=>localStorage.sr_learning_v1)===before,'duplicate import idempotent');
+ await go(base+'/#dialogue/meet-02?mode=role');await page.locator('[data-action=role-hint]').click();for(let i=0;i<8;i++)await page.locator('[data-action=role-next]').click();await page.locator('[data-action=save-shadow][data-rating=independent]').click();await page.waitForFunction(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events).some(e=>e.kind==='shadow'));
+ events=await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events));check(events.at(-1).rating==='with-help','role hint is retained to final self-assessment');
+ // Controlled speech dependency: verify cancellation and late callbacks independently from device audio.
+ await go(base+'/#dialogue/meet-01');
+ await page.evaluate(()=>{window.spoken=[];speechSynthesis.speak=u=>{spoken.push(u);};speechSynthesis.cancel=()=>{};});
+ await page.locator('[data-action=play-dialogue]').click();await page.locator('[data-action=stop-audio]').click();await page.evaluate(()=>spoken[0].onend());
+ check(await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events).filter(e=>e.kind==='listen').length)===0,'cancelled playback never creates listening evidence');
+ await page.locator('[data-action=play-dialogue]').click();await go(base+'/#units');await page.evaluate(()=>spoken.at(-1).onend());
+ check(await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events).filter(e=>e.kind==='listen').length)===0,'route change rejects late speech completion');
+ // A successful speech callback sequence records once, whereas missing speech is not completion.
+ await go(base+'/#dialogue/meet-01');
+ await page.evaluate(()=>{speechSynthesis.speak=u=>queueMicrotask(()=>u.onend?.());speechSynthesis.cancel=()=>{};});
+ await page.locator('[data-action=play-dialogue]').click();await page.waitForFunction(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events).some(e=>e.kind==='listen'));
+ check(await page.evaluate(()=>Object.values(JSON.parse(localStorage.sr_learning_v1).events).filter(e=>e.kind==='listen').length)===1,'successful playback records one listening event');
+ // Two real tabs write under the browser Web Locks boundary.
+ const second=await context.newPage();await second.goto(base+'/#progress');
+ const countBefore=await page.evaluate(()=>Object.keys(JSON.parse(localStorage.sr_learning_v1).events).length);
+ await Promise.all([page.evaluate(()=>LearningCore.record(localStorage,{kind:'listen',target:'dialogue:meet-03'})),second.evaluate(()=>LearningCore.record(localStorage,{kind:'listen',target:'dialogue:meet-04'}))]);
+ check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.sr_learning_v1).events).length)===countBefore+2,'concurrent tabs retain both writes');await second.close();
+ await go(base+'/#dialogue/meet-01');await page.evaluate(()=>Object.defineProperty(window,'speechSynthesis',{value:undefined,configurable:true}));await page.locator('[data-action=play-dialogue]').click();
+ check((await page.locator('#toast').innerText()).includes('没有语音'),'missing speech communicates fallback');
+ await page.reload();await page.waitForFunction(()=>document.querySelector('[data-action=play-dialogue]'));
+ await page.evaluate(()=>{navigator.mediaDevices.getUserMedia=async()=>{throw new DOMException('denied','NotAllowedError');};});await page.locator('[data-action=record]').click();
+ check((await page.locator('#toast').innerText()).includes('未能使用麦克风'),'denied microphone is handled');check(!(await page.locator('#recordButton').isDisabled()),'record button recovers from permission denial');
+ await go(base+'/#words');await page.locator('#wordSearch').fill('January');check(await page.locator('.word-directory .card').count()===1,'word search');await page.locator('#wordSearch').fill('');await page.locator('#wordPos').selectOption('num.');check(await page.locator('.word-directory .card').count()>40,'number category');
+ await go(base+'/?article=20&paragraph=2');await page.waitForURL('**/reading.html?article=20&paragraph=2');await page.waitForFunction(()=>document.getElementById('articleTitle').textContent==='Philosophy and Wisdom');
+ check(await page.evaluate(()=>localStorage.sr_wordStatus)==='{"rings":"mastered","stretch":"review"}','old bookmarks and article indexes preserve legacy words');
+ await go(base+'/words.html');await page.locator('#totalWords').waitFor({state:'attached',timeout:3000}).catch(()=>{});check((await page.locator('body').innerText()).includes('自评掌握'),'legacy wordbook states are explicitly self-ratings');
+ await go(base);await page.locator('#themeToggle').click();check(await page.locator('html').getAttribute('data-theme')==='dark','theme switches');await page.reload();check(await page.locator('html').getAttribute('data-theme')==='dark','theme persists');
+ await page.screenshot({path:'tests/home-dark.png',fullPage:true});
+ await page.locator('#themeToggle').click();await page.screenshot({path:'tests/home-desktop.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});
+ for(const hash of ['home','dialogues','units','words','dialogue/meet-02?mode=dictation','dialogue/meet-02?mode=role','unit/numbers','progress']){
+  await go(base+'/#'+hash);await page.locator('main').waitFor();
+  check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`no mobile overflow ${hash}`);
+ }
+ await go(base+'/#dialogue/meet-02');await page.screenshot({path:'tests/dialogue-mobile.png',fullPage:true});
+ await go(base+'/#home');await page.screenshot({path:'tests/home-mobile.png',fullPage:true});
+ for(const width of [320,768]){await page.setViewportSize({width,height:900});await go(base+'/#progress');check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`progress fits width ${width}`);}
+ const broken=await context.newPage();await broken.goto(base);await broken.evaluate(()=>localStorage.setItem('sr_learning_v1','{broken'));await broken.reload();check(await broken.locator('#storageWarning').isVisible(),'corrupt storage gets visible recovery path');await broken.close();
+ check(errors.length===0,`browser errors: ${errors.join('; ')}`);
+ console.log(JSON.stringify({checks,errors,screenshots:['home-desktop.png','home-dark.png','home-mobile.png','dialogue-mobile.png']}));
+ await browser.close();
+})().catch(e=>{console.error(e);process.exit(1);});

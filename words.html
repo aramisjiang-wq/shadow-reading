@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>单词本 — Shadow Reading</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary:      #0d0d11;
@@ -673,20 +670,24 @@
             .header { flex-wrap:wrap; gap:10px; }
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="legacy-words-ui.css">
 </head>
 <body>
 <div class="container">
 
     <div class="header">
         <div class="header-left">
-            <div class="page-title">📚 单词本</div>
+            <div class="page-title">文章单词本</div>
         </div>
         <div class="header-actions">
             <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
-            <button class="btn" onclick="openWordFlashcard()" id="fcStartBtn" title="对待复习单词进行闪卡练习" style="display:none">📇 闪卡复习</button>
-            <button class="btn btn-icon" onclick="exportData()" title="导出学习数据">📤</button>
-            <button class="btn btn-icon" onclick="document.getElementById('importFile').click()" title="导入学习数据">📥</button>
-            <a href="index.html" class="btn">← 返回学习</a>
+            <button class="btn" onclick="openWordFlashcard()" id="fcStartBtn" title="对待复习单词进行闪卡练习" style="display:none">闪卡复习</button>
+            <button class="btn btn-icon" onclick="exportData()" title="导出学习数据">导出</button>
+            <button class="btn btn-icon" onclick="document.getElementById('importFile').click()" title="导入学习数据">导入</button>
+            <a href="index.html" class="btn">← 学习工作台</a>
+            <a href="index.html#words" class="btn">系统词汇用法 ↗</a>
         </div>
     </div>
 
@@ -705,7 +706,7 @@
                 <div class="stat-value mastered" id="masteredWords">0</div>
                 <div class="stat-pct" id="masteredPct"></div>
             </div>
-            <div class="stat-label">已掌握</div>
+            <div class="stat-label">自评掌握</div>
             <div class="stat-bar-track"><div class="stat-bar-fill mastered" id="barMastered" style="width:0%"></div></div>
         </div>
         <div class="stat-card">
@@ -727,16 +728,16 @@
     </div>
 
     <div class="view-tabs">
-        <button class="view-tab active" data-view="alpha" onclick="switchView('alpha')">🔤 字母</button>
-        <button class="view-tab" data-view="pos"   onclick="switchView('pos')">📝 词性</button>
-        <button class="view-tab" data-view="scene" onclick="switchView('scene')">🎬 场景</button>
+        <button class="view-tab active" data-view="alpha" onclick="switchView('alpha')">按字母</button>
+        <button class="view-tab" data-view="pos"   onclick="switchView('pos')">按词性</button>
+        <button class="view-tab" data-view="scene" onclick="switchView('scene')">按场景</button>
     </div>
 
     <div class="filter-bar">
         <input type="text" class="search-input" id="searchInput" placeholder="搜索单词…" oninput="renderWords()">
         <div class="filter-group">
             <button class="filter-btn active" data-filter="all"      onclick="setFilter('all')">全部</button>
-            <button class="filter-btn f-mastered" data-filter="mastered" onclick="setFilter('mastered')">已掌握</button>
+            <button class="filter-btn f-mastered" data-filter="mastered" onclick="setFilter('mastered')">自评掌握</button>
             <button class="filter-btn f-review"   data-filter="review"   onclick="setFilter('review')">待复习</button>
             <button class="filter-btn f-new"      data-filter="new"      onclick="setFilter('new')">未学习</button>
         </div>
@@ -765,7 +766,7 @@
     <div class="popup-example" id="popupExample"></div>
     <div class="popup-sources" id="popupSources"></div>
     <div class="popup-actions">
-        <button class="popup-action-btn mastered" onclick="setWordStatus('mastered')">✓ 已掌握</button>
+        <button class="popup-action-btn mastered" onclick="setWordStatus('mastered')">✓ 自评掌握</button>
         <button class="popup-action-btn review"   onclick="setWordStatus('review')">↺ 待复习</button>
         <button class="popup-action-btn new"      onclick="setWordStatus('new')">○ 未学习</button>
     </div>
@@ -792,22 +793,24 @@
         </div>
         <div class="wfc-actions" id="wfcActions" style="display:none">
             <button class="wfc-btn wfc-btn-no" onclick="wfcJudge('review')">↺ 还不熟</button>
-            <button class="wfc-btn wfc-btn-yes" onclick="wfcJudge('mastered')">✓ 已掌握</button>
+            <button class="wfc-btn wfc-btn-yes" onclick="wfcJudge('mastered')">✓ 自评掌握</button>
         </div>
         <div class="wfc-tip">Space 翻转 · Y 掌握 · N 继续复习 · Esc 退出</div>
     </div>
 </div>
 
 <script src="articles-data.js"></script>
+<script src="editorial-data.js"></script>
 <script src="dictionary-data.js"></script>
+<script src="learning-core.js"></script>
 <script>
 // ── POS lookup (word → category) ──
 const wordPosMap = (() => {
     const raw = {
         n:    ["alarm","clock","morning","eyes","arms","head","sunlight","curtains","glow","bedroom","breath","day","bed","bathroom","face","tooth","teeth","water","mirror","smile","challenges","breakfast","meal","mother","eggs","toast","cup","coffee","aroma","kitchen","phone","messages","news","headlines","briefcase","coat","air","weather","skies","breeze","subway","station","bus","exercise","rush","hour","people","newspapers","music","headphones","seat","window","book","journey","building","guard","elevator","floor","colleagues","desks","computers","workstation","emails","meetings","calls","presentation","week","time","data","boss","suggestions","lunchtime","coworkers","restaurant","sandwiches","salads","plans","stories","break","friends","conversation","stress","afternoon","reports","session","training","software","company","notes","skills","career","development","tasks","list","home","commute","podcast","train","clothes","dinner","pasta","sauce","vegetables","television","dishes","room","novel","vocabulary","word","opportunities","technology","internet","smartphone","laptop","device","information","communication","education","health","medicine","science","nature","environment","food","culture","history","art","sports","business","economics","law","psychology","philosophy"],
         v:    ["rings","stretch","stream","prepare","wash","brush","smile","check","greet","take","read","arrive","begin","complete","attend","adopt","finish","organize","relax","relieve","reflect","improve","embrace","study","work","play","use","create","build","develop","change","grow","move","run","walk","talk","speak","write","listen","watch","see","hear","feel","think","know","understand","believe","hope","want","need","love","like","try","start","stop","continue","keep","make","give","get","do","say","go"],
-        adj:  ["typical","warm","busy","cold","important","scrambled","freshly","hungry","crisp","pleasant","clear","blue","gentle","crowded","detailed","interesting","beneficial","funny","nice","simple","therapeutic","long","productive","good","great","bad","old","young","small","big","high","low","fast","slow","hard","easy","difficult","complex","possible","available","different","similar","real","true","right","wrong","beautiful","happy","sad","angry","tired","healthy","sick","strong","safe","dangerous","natural","modern","fresh","clean","rich","free","full","empty","open","ready","popular","special","common","strange"],
-        adv:  ["slowly","immediately","completely","always","usually","often","sometimes","rarely","never","still","already","just","now","then","soon","later","early","quickly","carefully","easily","really","very","quite","rather","too","almost","nearly","hardly","certainly","definitely","probably","possibly","actually","truly","clearly","simply","even","also","together","apart"],
+        adj:  ["typical","warm","busy","cold","important","scrambled","hungry","crisp","pleasant","clear","blue","gentle","crowded","detailed","interesting","beneficial","funny","nice","simple","therapeutic","long","productive","good","great","bad","old","young","small","big","high","low","fast","slow","hard","easy","difficult","complex","possible","available","different","similar","real","true","right","wrong","beautiful","happy","sad","angry","tired","healthy","sick","strong","safe","dangerous","natural","modern","fresh","clean","rich","free","full","empty","open","ready","popular","special","common","strange"],
+        adv:  ["freshly","slowly","immediately","completely","always","usually","often","sometimes","rarely","never","still","already","just","now","then","soon","later","early","quickly","carefully","easily","really","very","quite","rather","too","almost","nearly","hardly","certainly","definitely","probably","possibly","actually","truly","clearly","simply","even","also","together","apart"],
         prep: ["in","on","at","to","for","with","by","from","of","about","after","before","between","under","over","through","during","without","within","along","across","behind","beyond","beside","among","around","above","below","into","onto","toward","since","until","except","against"],
         conj: ["and","but","or","so","because","although","though","while","when","where","if","unless","until","since","as","than","whether","even","once","whenever","wherever","however"],
         pron: ["i","you","he","she","it","we","they","me","him","her","us","them","this","that","these","those","who","what","which","anyone","everyone","someone","nothing","anything","something","everything","each","all","some","any","none","both","one","another","other","others"],
@@ -898,16 +901,16 @@ function setArticleFilter(val) {
 
 // ── Theme ──
 function loadTheme() {
-    if (localStorage.getItem(LS.THEME) === 'light') {
-        document.body.classList.add('theme-light');
-        document.getElementById('themeBtn').textContent = '☀️';
-    }
+    const light=localStorage.getItem(LS.THEME)!=='dark';
+    document.body.classList.toggle('theme-light',light);
+    document.documentElement.dataset.theme=light?'light':'dark';
+    document.getElementById('themeBtn').textContent=light?'深色':'浅色';
 }
-
 function toggleTheme() {
-    const light = document.body.classList.toggle('theme-light');
-    document.getElementById('themeBtn').textContent = light ? '☀️' : '🌙';
-    localStorage.setItem(LS.THEME, light ? 'light' : 'dark');
+    const light=document.body.classList.toggle('theme-light');
+    document.documentElement.dataset.theme=light?'light':'dark';
+    document.getElementById('themeBtn').textContent=light?'深色':'浅色';
+    localStorage.setItem(LS.THEME,light?'light':'dark');
 }
 
 // ── Progress ──
@@ -934,7 +937,7 @@ function saveAutoTranslations() {
 // ── Extract words from articles ──
 function extractAllWords() {
     allWords = {};
-    articles.forEach((article, ai) => {
+    articles.map((article,ai)=>({article,ai})).sort((x,y)=>Number(Boolean(y.article.edition))-Number(Boolean(x.article.edition))).forEach(({article,ai}) => {
         const paragraphs   = article.content.split('\n\n');
         const translations = article.translation ? article.translation.split('\n\n') : [];
         paragraphs.forEach((para, pi) => {
@@ -1014,7 +1017,7 @@ function updateStats() {
     const fcBtn = document.getElementById('fcStartBtn');
     if (fcBtn) {
         fcBtn.style.display = review > 0 ? '' : 'none';
-        fcBtn.textContent = `📇 闪卡复习 (${review})`;
+        fcBtn.textContent = `闪卡复习 (${review})`;
     }
 }
 
@@ -1132,8 +1135,9 @@ function renderWords() {
     filtered.forEach(wd => {
         const status   = wordStatuses[wd.word] || 'new';
         const resolved = resolveDef(wd.word);
-        const defText  = resolved.def || '暂无释义';
-        if (!resolved.def) requestAutoTrans(wd.word);
+        // Query missing definitions only when a word is opened. A large article
+        // library must not launch thousands of translations while rendering.
+        const defText  = resolved.def || '点词查询释义';
         const posHtml = wd.pos
             ? `<span class="wc-pos pos-${wd.pos}">${posShortMap[wd.pos] || wd.pos}</span>`
             : '';
@@ -1239,7 +1243,7 @@ function renderPopupSources(wd) {
             <div class="source-item">
                 <div class="source-meta">${ctx.articleTitle} · P${ctx.paraIndex}</div>
                 <div class="source-sentence">${ctx.sentence}</div>
-                <a class="source-link" href="index.html?article=${ctx.articleId}&paragraph=${ctx.paraIndex}">跳转原文</a>
+                <a class="source-link" href="reading.html?article=${ctx.articleId}&paragraph=${ctx.paraIndex}">跳转原文</a>
             </div>
         `).join('')}`;
 }
@@ -1266,7 +1270,7 @@ function setWordStatus(status) {
     updateStats();
     renderWords();
     hidePopup();
-    const names = { new:'未学习', mastered:'已掌握', review:'待复习' };
+    const names = { new:'未学习', mastered:'自评掌握', review:'待复习' };
     showToast(`"${currentPopupWord}" → ${names[status]}`);
 }
 
@@ -1297,38 +1301,30 @@ async function requestAutoTrans(word) {
 
 // ── Export / Import ──
 function exportData() {
-    if (!Object.keys(wordStatuses).length) return showToast('⚠️ 暂无学习数据可导出');
-    const data = { wordStatuses, exportDate: new Date().toISOString(), version: '2.0' };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url  = URL.createObjectURL(blob);
-    const a    = Object.assign(document.createElement('a'), {
-        href: url, download: `shadow-reading-${new Date().toISOString().slice(0,10)}.json`
-    });
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    localStorage.setItem(LS.LAST_BACKUP, Date.now());
-    showToast('✅ 学习数据已导出');
+    try {
+        const data = LearningCore.backup(localStorage);
+        const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type:'application/json'}));
+        const a = document.createElement('a'); a.href=url;
+        a.download=`shadow-reading-full-${LearningCore.dayKey()}.json`;
+        document.body.append(a); a.click(); a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url), 1000);
+        localStorage.setItem(LS.LAST_BACKUP, Date.now());
+        showToast('完整备份已导出，含新版课程与原有记录');
+    } catch { showToast('导出失败，请到学习工作台的学习记录页检查并导出存储原件'); }
 }
-
 function handleImport(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = e => {
+    const file=event.target.files[0]; event.target.value='';
+    if(!file)return;
+    if(file.size>10*1024*1024)return showToast('请选择 10MB 以内的学习备份');
+    const reader=new FileReader();
+    reader.onload=async e=>{
         try {
-            const data = JSON.parse(e.target.result);
-            if (data.wordStatuses) wordStatuses = data.wordStatuses;
-            saveProgress();
-            updateStats();
-            renderWords();
-            showToast('✅ 学习数据已导入');
-        } catch { showToast('❌ 导入失败：文件格式错误'); }
+            const data=JSON.parse(e.target.result);
+            await LearningCore.locked(()=>LearningCore.importBackup(localStorage,data));
+            window.location.reload();
+        } catch(error) {showToast('未导入：'+(error.message||'文件格式错误'));}
     };
-    reader.onerror = () => showToast('❌ 文件读取失败');
-    reader.readAsText(file);
-    event.target.value = '';
+    reader.onerror=()=>showToast('文件读取失败'); reader.readAsText(file);
 }
 
 // ── Toast ──
