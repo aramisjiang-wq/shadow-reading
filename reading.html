@@ -1556,7 +1556,7 @@
                     <h1 class="article-title" id="articleTitle">Loading…</h1>
                     <div class="article-subtitle" id="articleSubtitle"></div>
                     <div class="reader-article-meta" id="readerArticleMeta"></div>
-                    <div class="reader-current-practice" id="readerCurrentPractice" aria-live="polite"></div>
+                    <div class="reader-practice-line"><span class="reader-current-practice" id="readerCurrentPractice" aria-live="polite"></span><a href="index.html#progress" data-sync-link>保存与同步</a></div>
                 </div>
                 <span class="progress-pill" id="progressPill">精编文章</span>
             </div>
@@ -1768,6 +1768,7 @@
 <script src="dictionary-data.js"></script>
 <script src="vendor/lz-string.js"></script>
 <script src="learning-core.js"></script>
+<script src="progress-sync.js"></script>
 <script src="curriculum-data.js"></script>
 <script src="vocabulary-data.js"></script>
 <script src="series-core.js"></script>
@@ -2043,6 +2044,7 @@ function loadProgress() {
 function saveProgress() {
     localStorage.setItem(LS.WORD_STATUS, JSON.stringify(wordStatuses));
     localStorage.setItem(LS.COMPLETED,   JSON.stringify([...completedArticles]));
+    window.dispatchEvent(new Event('learning-local-change'));
 }
 
 function loadPracticed() {
@@ -2052,6 +2054,7 @@ function loadPracticed() {
 
 function savePracticed() {
     localStorage.setItem(LS.PRACTICED, JSON.stringify(practicedMap));
+    window.dispatchEvent(new Event('learning-local-change'));
 }
 
 function markParagraphPracticed(articleIdx, paraIdx) {
@@ -3134,6 +3137,17 @@ document.addEventListener('click', e => {
     }
 });
 
+window.addEventListener('learning-synced',()=>{
+    loadProgress();
+    loadPracticed();
+    for (const wrapper of document.querySelectorAll('.paragraph-wrapper[data-index]')) {
+        const index = Number(wrapper.dataset.index);
+        const done = (practicedMap[currentArticle] || []).includes(index);
+        wrapper.classList.toggle('practiced', done);
+        syncPracticedBtn(index, done);
+    }
+    renderArticleList();
+});
 window.addEventListener('pagehide',()=>{stopReading();exitShadow();stopRecording();});
 init();
 </script>

@@ -60,6 +60,39 @@ const base=process.env.TEST_URL||'http://127.0.0.1:8765';
  for(const width of [320,390,768]){
   await page.setViewportSize({width,height:844});for(const path of ['/#home','/#articles','/#vocabulary?view=bank','/#vocabulary?word=table&mode=output','/reading.html?article=61']){await go(path);check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`${path} fits ${width}`);}
  }
+ const desktop=await browser.newContext(),phone=await browser.newContext({viewport:{width:390,height:844}});
+ let cloud=null,revision=0;
+ for(const device of [desktop,phone]){
+  await device.route('https://api.github.com/repos/demo/learning**',async route=>{
+   const request=route.request();
+   if(!request.url().includes('/contents/'))return route.fulfill({json:{private:true,visibility:'private'}});
+   if(request.method()==='PUT'){
+    const {content,sha}=request.postDataJSON();
+    if(cloud&&sha!==cloud.sha)return route.fulfill({status:409});
+    cloud={type:'file',sha:String(++revision),encoding:'base64',content};return route.fulfill({status:201,json:{}});
+   }
+   return cloud?route.fulfill({json:cloud}):route.fulfill({status:404});
+  });
+ }
+ const laptop=await desktop.newPage(),handset=await phone.newPage();
+ await laptop.goto(base+'/#progress');
+ await laptop.evaluate(()=>{localStorage.setItem('sr_practiced','{"60":[0,1,2,3],"61":[0,1,2,3]}');localStorage.setItem('sr_article','61');});
+ async function connect(device){
+  await device.locator('#sync summary').click();
+  await device.locator('#syncForm input[name=repo]').fill('demo/learning');
+  await device.locator('#syncForm input[name=token]').fill('github_pat_test');
+  await device.locator('#syncForm button').click();
+  await device.locator('#syncStatus').filter({hasText:'最近同步'}).waitFor();
+ }
+ await connect(laptop);
+ await handset.goto(base+'/#progress');await connect(handset);
+ await handset.locator('[data-mobile-nav=home]').click();
+ await handset.locator('.featured-actions a[href^="reading.html?article=63"]').waitFor();
+ check((await handset.locator('.reading-status').innerText()).includes('2/43'),'phone resumes episode three after two desktop lessons sync');
+ await handset.locator('[data-mobile-nav=vocabulary]').click();
+ await handset.locator('.series-speaking-cue').waitFor();
+ check(await handset.locator('.series-speaking-cue').isVisible(),'mobile bottom navigation opens vocabulary');
+ await desktop.close();await phone.close();
  await page.setViewportSize({width:1440,height:1000});await go('/#vocabulary');await page.locator('#themeToggle').click();check(await page.locator('html').getAttribute('data-theme')==='dark','vocabulary supports shared dark theme');
  check(errors.length===0,errors.join('; '));console.log(JSON.stringify({checks,errors}));await browser.close();
 })().catch(e=>{console.error(e);process.exit(1);});

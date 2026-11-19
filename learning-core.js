@@ -132,9 +132,11 @@ async function record(storage, e) {
     const state = read(storage);
     const id = root.crypto?.randomUUID ? root.crypto.randomUUID() : `e-${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const next = validState({version:1,events:{...state.events,[id]:{...e,at:new Date().toISOString()}}});
-    storage.setItem(KEY,serialize(next)); return next;
+    storage.setItem(KEY,serialize(next));
+    if(typeof root.dispatchEvent==='function'&&storage===root.localStorage)root.dispatchEvent(new Event('learning-local-change'));
+    return next;
   });
 }
-root.LearningCore = {KEY,LEGACY,empty,validState,read,serialize,merge,dayKey,addDays,eventsFor,schedule,normalize,matches,backup,importBackup,locked,record};
+root.LearningCore = {KEY,LEGACY,empty,validState,validateLegacy,read,serialize,merge,dayKey,addDays,eventsFor,schedule,normalize,matches,backup,importBackup,locked,record};
 if (typeof module !== 'undefined') module.exports = root.LearningCore;
 })(typeof window !== 'undefined' ? window : globalThis);

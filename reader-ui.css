@@ -40,3 +40,16 @@ html{scroll-padding-bottom:150px}.article-study textarea{scroll-margin-bottom:15
 .reader-row-practice.is-started,.reader-row-practice.is-complete{color:var(--ui-accent);font-weight:600}
 .reader-current-practice{margin-top:5px;color:var(--ui-accent);font:600 11px/1.4 var(--ui-font-sans);font-variant-numeric:tabular-nums}
 @media(max-width:899px){.sidebar{width:245px;max-width:85vw}}
+
+.reader-practice-line{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:3px}
+.reader-practice-line a{color:var(--ui-secondary);font-size:11px;white-space:nowrap;text-decoration:underline}
+@media(max-width:600px){
+ .reader-view-tabs button{min-height:40px}
+ .reader-practice-line{gap:10px}
+ .reader-practice-line a{display:inline-flex;align-items:center;min-height:36px}
+ .reader-inline-tools .btn,.reader-player #playBtn,.reader-player #speedSelect{min-height:44px}
+ .reader-player .reader-icon-button{height:44px}
+ .reader-player .reader-player-actions{gap:4px}
+ .reader-player .reader-player-options{gap:5px}
+ .article-study textarea{font-size:16px}
+}

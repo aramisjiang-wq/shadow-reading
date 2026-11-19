@@ -805,6 +805,7 @@
 <script src="dictionary-data.js"></script>
 <script src="vendor/lz-string.js"></script>
 <script src="learning-core.js"></script>
+<script src="progress-sync.js"></script>
 <script>
 // ── POS lookup (word → category) ──
 const wordPosMap = (() => {
@@ -923,6 +924,7 @@ function loadProgress() {
 
 function saveProgress() {
     localStorage.setItem(LS.WORD_STATUS, JSON.stringify(wordStatuses));
+    window.dispatchEvent(new Event('learning-local-change'));
 }
 
 function loadAutoTranslations() {
@@ -1408,6 +1410,7 @@ function closeWordFlashcard() {
     speechSynthesis?.cancel();
 }
 
+window.addEventListener('learning-synced',()=>{loadProgress();renderWords();renderSidebar();});
 init();
 </script>
 </body>

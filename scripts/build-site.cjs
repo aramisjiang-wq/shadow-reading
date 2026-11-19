@@ -12,7 +12,7 @@ const files = [
   'serial-data.js', 'vocabulary-data.js', 'series-core.js', 'series-vocabulary.js', 'series.css',
   'vendor/lz-string.js', 'licenses/LZ-String-MIT.txt',
   'curriculum-data.js', 'dialogues-data.js', 'learning-core.js',
-  'learning-app.js', 'article-study.js', 'reader-ui.js', 'ui-assets.js',
+  'learning-app.js', 'progress-sync.js', 'article-study.js', 'reader-ui.js', 'ui-assets.js',
   'design-system.css', 'learning.css', 'workspace-ui.css',
   'article-study.css', 'reader-ui.css', 'legacy-words-ui.css',
   'assets/favicon.svg', 'Shadow-Reading-English-Materials.md',
