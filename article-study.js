@@ -51,6 +51,7 @@ document.addEventListener('click',async event=>{
  const buttons=[...document.querySelectorAll(`[data-study-action=save-expression][data-kind=${kind}]`)];buttons.forEach(b=>b.disabled=true);
  try{
   await LearningCore.record(localStorage,{kind:'output',target:`article:${a.id}:${kind}`,text,rating});
+  window.dispatchEvent(new Event('reader-expression-saved'));
   if(version!==serial)return;
   document.getElementById(kind==='retell'?'articleRetellStatus':'articleTransferStatus').textContent=`已保存本次${kind==='retell'?'复述':'迁移'}自评${kind==='transfer'&&usedReference?'（看过参考，按借助提示记录）':''}。`;
  }catch{if(version===serial){buttons.forEach(b=>b.disabled=false);document.getElementById(kind==='retell'?'articleRetellStatus':'articleTransferStatus').textContent='这次未能保存，请先导出现有记录并检查浏览器存储。';}}

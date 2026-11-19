@@ -16,3 +16,27 @@ html{scroll-padding-bottom:150px}.article-study textarea{scroll-margin-bottom:15
 .ai-title{font-size:12px}.ai-prog{font-size:10px}.reader-sidebar-search input{font-size:12px}.reader-sidebar-search label,.reader-sidebar-search>span{font-size:10px}.reader-article-meta{font-size:11px}.article-guide .ag-meta{font-size:10px}.article-guide p{font-size:12px}.reader-inline-tools>span{font-size:11px}.reader-playback-state,#readerPlaybackState{font-size:10px}.reader-track-info strong{font-size:12px}.reader-settings-toggle span{font-size:11px}.reader-settings-row .btn{font-size:11px}.reader-setting-label{font-size:11px}.reader-player #speedSelect{font-size:11px}.reader-icon-button{width:30px;height:36px}.as-label,.as-note{font-size:11px}
 @media(max-width:600px){.reader-article-meta{font-size:10px}.article-guide .ag-meta{font-size:9px}.article-guide p{font-size:11px}.reader-inline-tools>span{font-size:10px}.reader-player-actions{gap:7px}.reader-icon-button{width:29px;height:36px}.reader-player #speedSelect{font-size:10px}.as-ratings .btn{font-size:11px}.as-note{font-size:10px}}
 @media(max-width:350px){.reader-icon-button{width:25px}.reader-player-actions{gap:4px}.as-ratings .btn{font-size:10px}}
+
+/* A narrower directory with persistent collection and paragraph counts. */
+:root,.theme-light{--sidebar-width:210px}
+.reader-series-progress{margin:0 11px 8px;padding:8px 9px;border:1px solid var(--ui-border);border-radius:6px;background:var(--ui-paper);font:10px/1.4 var(--ui-font-sans);color:var(--ui-secondary)}
+.reader-series-progress[hidden]{display:none}
+.reader-series-progress div{display:flex;justify-content:space-between;gap:5px;align-items:baseline}
+.reader-series-progress strong{color:var(--ui-accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.reader-series-progress progress{display:block;width:100%;height:5px;margin:6px 0;border:0;border-radius:4px;overflow:hidden;background:var(--ui-border);accent-color:var(--ui-accent)}
+.reader-series-progress progress::-webkit-progress-bar{background:var(--ui-border)}
+.reader-series-progress progress::-webkit-progress-value{background:var(--ui-accent)}
+.reader-series-progress progress::-moz-progress-bar{background:var(--ui-accent)}
+.reader-sidebar-search{padding:0 11px 7px;gap:5px}
+.reader-sidebar-search .reader-search-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.reader-sidebar-search input{min-height:30px;padding:5px 8px}
+.article-list{padding:0 6px}
+.article-item{min-height:45px;padding:5px 6px;gap:5px;margin-bottom:2px}
+.article-badge{width:20px;min-width:20px;height:20px}
+.ai-body{flex:1;min-width:0}
+.ai-title{line-height:1.3}
+.ai-prog{max-width:none;margin-top:2px;line-height:1.3}
+.reader-row-practice{flex:none;font:10px/1.4 var(--ui-font-sans);font-variant-numeric:tabular-nums;color:var(--ui-secondary);white-space:nowrap}
+.reader-row-practice.is-started,.reader-row-practice.is-complete{color:var(--ui-accent);font-weight:600}
+.reader-current-practice{margin-top:5px;color:var(--ui-accent);font:600 11px/1.4 var(--ui-font-sans);font-variant-numeric:tabular-nums}
+@media(max-width:899px){.sidebar{width:245px;max-width:85vw}}

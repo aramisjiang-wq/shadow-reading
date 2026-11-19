@@ -23,7 +23,10 @@ function filterSidebar(){
   const index=Number(el.dataset.articleIndex),a=articles[index];if(!a)return;
   const show=(!q||`${a.title} ${a.subtitle}`.toLowerCase().includes(q))&&(collection==='all'||(collection==='series'?!!a.series:collection==='edited'?!!a.edition&&!a.series:!a.edition));el.hidden=!show;if(show)count++;
  });
- if($('readerListCount'))$('readerListCount').textContent=count?`${count} 篇文章`:'没有匹配文章，试试其他关键词';
+ const listCount=$('readerListCount');
+ listCount.hidden=!q&&collection==='series'&&levelFilter==='all';
+ listCount.textContent=count?`${count} ${collection==='series'?'集':'篇文章'}`:'没有匹配文章，试试其他关键词';
+ $('readerSeriesProgress').hidden=collection!=='series'&&collection!=='all';
 }
 function syncAudio(){
  if(!active||!$('readerPlaybackState'))return;

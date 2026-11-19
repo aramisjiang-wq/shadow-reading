@@ -1500,7 +1500,12 @@
             <button class="lvl-filter-btn" data-level="advanced" onclick="setLevelFilter('advanced')">进阶</button>
         </div>
 
-        <div class="reader-sidebar-search"><label for="readerArticleSearch">本地文章</label><input id="readerArticleSearch" type="search" placeholder="搜索文章…"><select id="readerCollectionFilter" aria-label="文章集合"><option value="series">连载 · 43 集</option><option value="edited">旧独立文章 · 40 篇</option><option value="archive">历史原稿</option><option value="all">全部文章</option></select><span id="readerListCount" aria-live="polite"></span></div>
+        <section class="reader-series-progress" id="readerSeriesProgress" aria-label="连载学习进度" hidden>
+            <div><label for="readerSeriesBar">连载段落练完</label><strong id="readerSeriesCount"></strong></div>
+            <progress id="readerSeriesBar" value="0" max="43"></progress>
+            <div><span>复述与迁移自评完成</span><strong id="readerSeriesOutput"></strong></div>
+        </section>
+        <div class="reader-sidebar-search"><label class="reader-search-label" for="readerArticleSearch">搜索文章</label><input id="readerArticleSearch" type="search" placeholder="搜索文章…"><select id="readerCollectionFilter" aria-label="文章集合"><option value="series">连载 · 43 集</option><option value="edited">旧独立文章 · 40 篇</option><option value="archive">历史原稿</option><option value="all">全部文章</option></select><span id="readerListCount" aria-live="polite"></span></div>
         <div class="article-list" id="articleList"></div>
         <div class="word-list" id="wordList" style="display:none"></div>
 
@@ -1551,6 +1556,7 @@
                     <h1 class="article-title" id="articleTitle">Loading…</h1>
                     <div class="article-subtitle" id="articleSubtitle"></div>
                     <div class="reader-article-meta" id="readerArticleMeta"></div>
+                    <div class="reader-current-practice" id="readerCurrentPractice" aria-live="polite"></div>
                 </div>
                 <span class="progress-pill" id="progressPill">精编文章</span>
             </div>
@@ -2165,29 +2171,53 @@ function readingCollection() {
     return articles.map((a,i)=>({a,i})).filter(x=>(x.a.series?'series':x.a.edition?'edited':'archive')===(articles[currentArticle]?.series?'series':articles[currentArticle]?.edition?'edited':'archive'));
 }
 
+function paragraphProgress(index) {
+    const total = articles[index].content.split('\n\n').length;
+    const done = new Set((practicedMap[index] || []).filter(n => Number.isInteger(n) && n >= 0 && n < total)).size;
+    return {done, total};
+}
+
 function renderArticleList() {
+    const current = paragraphProgress(currentArticle);
+    document.getElementById('readerCurrentPractice').textContent = `已练 ${current.done}/${current.total} 段`;
+    const serial = articles.filter(a => a.series);
+    const doneEpisodes = serial.filter(a => {
+        const progress = paragraphProgress(a.id - 1);
+        return progress.done === progress.total;
+    }).length;
+    let outputEpisodes = '—';
+    try {
+        const state = LearningCore.read(localStorage);
+        outputEpisodes = `${serial.filter(a => SeriesCore.episodeDone(state, a)).length}/${serial.length} 集`;
+    } catch { /* The paragraph marks can still be displayed. */ }
+    const bar = document.getElementById('readerSeriesBar');
+    bar.max = serial.length;
+    bar.value = doneEpisodes;
+    document.getElementById('readerSeriesCount').textContent = `${doneEpisodes}/${serial.length} 集`;
+    document.getElementById('readerSeriesOutput').textContent = outputEpisodes;
     document.getElementById('articleList').innerHTML = articles.map((a,i)=>({a,i})).sort((x,y)=>Number(Boolean(y.a.series))-Number(Boolean(x.a.series))||Number(Boolean(y.a.edition))-Number(Boolean(x.a.edition))).map(({a, i}) => {
         if (levelFilter !== 'all' && a.level !== levelFilter) return '';
-        const total    = a.content.split('\n\n').length;
-        const done     = (practicedMap[i] || []).length;
-        const prog     = done > 0 ? `${done}/${total} 段` : '';
+        const {done, total} = paragraphProgress(i);
         const diff     = computeArticleDifficulty(i);
         const lvl      = a.level || 'intermediate';
         const isActive = i === currentArticle;
-        const isDone   = completedArticles.has(i);
-        const badge    = isDone ? '✓' : i + 1;
+        const isDone   = a.series ? done === total : completedArticles.has(i);
+        const badge    = a.series ? a.series.episode : isDone ? '✓' : i + 1;
+        const subtitle = a.series ? a.subtitle.replace(/^第 \d+ 集 · /, '') : a.edition ? a.subtitle : '历史原稿';
         const diffTip  = diff.count > 0 ? `${diff.count}词待复习` : diff.cls === 'easy' ? '自评掌握' : '';
         return `<div data-article-index="${i}" role="button" tabindex="0" aria-label="打开 ${a.title}" class="article-item${isActive ? ' active' : ''}${isDone ? ' completed' : ''} lvl-${lvl}" onclick="loadArticle(${i})" title="${a.title}">
             <span class="article-badge">${badge}</span>
             <div class="ai-body">
                 <span class="ai-title">${a.title}</span>
-                <span class="ai-prog">${a.edition?`${a.format} · ${a.subtitle}`:'历史原稿'}${prog?` · ${prog} 已练`:''}</span>
+                <span class="ai-prog">${subtitle}</span>
             </div>
-            <span class="diff-dot ${diff.cls}"${diffTip ? ` title="${diffTip}"` : ''}></span>
+            <span class="reader-row-practice${done===total?' is-complete':done?' is-started':''}" aria-label="已练 ${done}/${total} 段"${diffTip?` title="${diffTip}"`:''}>${done===total?'✓ ':''}${done}/${total}</span>
         </div>`;
     }).join('');
     window.ReaderUI?.filterSidebar();
 }
+
+window.addEventListener('reader-expression-saved', renderArticleList);
 
 function scrollSidebarToActive() {
     document.querySelector('.article-item.active')?.scrollIntoView({ block: 'nearest' });
