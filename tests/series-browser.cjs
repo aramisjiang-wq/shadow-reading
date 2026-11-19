@@ -92,6 +92,11 @@ const base=process.env.TEST_URL||'http://127.0.0.1:8765';
  await handset.locator('[data-mobile-nav=vocabulary]').click();
  await handset.locator('.series-speaking-cue').waitFor();
  check(await handset.locator('.series-speaking-cue').isVisible(),'mobile bottom navigation opens vocabulary');
+ await handset.setViewportSize({width:320,height:700});
+ check(await handset.locator('.mobile-navigation a').evaluateAll(items=>{
+  const bounds=items.map(item=>item.getBoundingClientRect());
+  return bounds.length===5&&bounds.every(b=>b.top===bounds[0].top&&b.left>=0&&b.right<=innerWidth);
+ }),'all five mobile shortcuts fit in one row at 320 px');
  await desktop.close();await phone.close();
  await page.setViewportSize({width:1440,height:1000});await go('/#vocabulary');await page.locator('#themeToggle').click();check(await page.locator('html').getAttribute('data-theme')==='dark','vocabulary supports shared dark theme');
  check(errors.length===0,errors.join('; '));console.log(JSON.stringify({checks,errors}));await browser.close();
