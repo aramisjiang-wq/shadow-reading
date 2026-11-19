@@ -1,0 +1,17 @@
+Tatoeba example sentences via ManyThings (2026-02-13 export)
+
+Source: https://www.manythings.org/anki/
+Original database: https://tatoeba.org/
+License: Creative Commons Attribution 2.0 France (CC BY 2.0 FR)
+License URL: https://creativecommons.org/licenses/by/2.0/fr/
+
+Each sentence retains its original contributor name(s) and Tatoeba sentence ID(s)
+in vocabulary-data.js, displayed alongside the example. English-only examples
+from fra-eng retain the English sentence attribution. Chinese translations,
+when provided, retain both contributors and IDs. Texts were selected without
+rewriting. No French translations are redistributed.
+
+This subset is an automated editorial selection. Source data may contain errors.
+Chinese dictionary definitions are separately licensed ECDICT data (MIT).
+The source archives and SHA-256 checksums are recorded in vocabulary-data.js.
+Original fictional story text and original study prompts: Shadow Reading project.

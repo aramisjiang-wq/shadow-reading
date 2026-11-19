@@ -18,10 +18,10 @@ function toggleSettings(show){
  if(open)panel.querySelector('select')?.focus({preventScroll:true});else button.focus({preventScroll:true});
 }
 function filterSidebar(){
- const q=$('readerArticleSearch')?.value.trim().toLowerCase()||'',collection=$('readerCollectionFilter')?.value||'edited';let count=0;
+ const q=$('readerArticleSearch')?.value.trim().toLowerCase()||'',collection=$('readerCollectionFilter')?.value||'series';let count=0;
  document.querySelectorAll('#articleList .article-item').forEach(el=>{
   const index=Number(el.dataset.articleIndex),a=articles[index];if(!a)return;
-  const show=(!q||`${a.title} ${a.subtitle}`.toLowerCase().includes(q))&&(collection==='all'||(collection==='edited'?!!a.edition:!a.edition));el.hidden=!show;if(show)count++;
+  const show=(!q||`${a.title} ${a.subtitle}`.toLowerCase().includes(q))&&(collection==='all'||(collection==='series'?!!a.series:collection==='edited'?!!a.edition&&!a.series:!a.edition));el.hidden=!show;if(show)count++;
  });
  if($('readerListCount'))$('readerListCount').textContent=count?`${count} 篇文章`:'没有匹配文章，试试其他关键词';
 }
@@ -41,7 +41,7 @@ function onArticle(article,index){
  active=article;selected=0;explicitSelection=null;
  $('readerArticleMeta').textContent=`${article.category||'历史原稿'} · ${{beginner:'基础',intermediate:'中级',advanced:'进阶'}[article.level]} · ${(article.content.match(/\b[a-z]+\b/gi)||[]).length} 词`;
  $('readerSegments').innerHTML=article.content.split('\n\n').map((_,i)=>`<button type="button" data-reader-paragraph="${i}" aria-label="定位第 ${i+1} 段"></button>`).join('');
- $('readerCollectionFilter').value=article.edition?'edited':'archive';
+ $('readerCollectionFilter').value=article.series?'series':article.edition?'edited':'archive';
  document.querySelectorAll('#articleContent .word').forEach(el=>el.tabIndex=-1);
  document.querySelectorAll('#articleContent .paragraph-wrapper').forEach(el=>{const word=el.querySelector('.word');if(word)word.tabIndex=0;});
  observer?.disconnect();

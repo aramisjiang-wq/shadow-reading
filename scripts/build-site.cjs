@@ -9,11 +9,14 @@ const output = path.join(root, 'dist');
 const files = [
   'index.html', 'reading.html', 'words.html',
   'articles-data.js', 'editorial-data.js', 'dictionary-data.js',
+  'serial-data.js', 'vocabulary-data.js', 'series-core.js', 'series-vocabulary.js', 'series.css',
+  'vendor/lz-string.js', 'licenses/LZ-String-MIT.txt',
   'curriculum-data.js', 'dialogues-data.js', 'learning-core.js',
   'learning-app.js', 'article-study.js', 'reader-ui.js', 'ui-assets.js',
   'design-system.css', 'learning.css', 'workspace-ui.css',
   'article-study.css', 'reader-ui.css', 'legacy-words-ui.css',
-  'assets/favicon.svg', 'Shadow-Reading-English-Materials.md'
+  'assets/favicon.svg', 'Shadow-Reading-English-Materials.md',
+  'licenses/ECDICT-MIT.txt', 'licenses/Tatoeba-CC-BY.txt'
 ];
 
 // Relative links must resolve under a project subdirectory on GitHub Pages.

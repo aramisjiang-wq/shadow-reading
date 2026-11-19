@@ -1,0 +1,55 @@
+'use strict';
+const assert=require('node:assert/strict'),{chromium}=require('playwright');
+const base=process.env.TEST_URL||'http://127.0.0.1:8765';
+(async()=>{
+ const browser=await chromium.launch({headless:true}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
+ await context.addInitScript(()=>localStorage.setItem('sr_onboarded','1'));
+ page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(10000);let checks=0;
+ const check=(v,m)=>{assert.ok(v,m);checks++;};
+ async function go(path){await page.goto(base+path);if(path.includes('reading.html'))await page.waitForFunction(()=>document.querySelector('#articleTitle').textContent!=='Loading…'&&getComputedStyle(document.querySelector('#articleContent')).opacity==='1');else await page.waitForFunction(()=>document.querySelector('main')?.dataset.route===(location.hash||'#home'));}
+ await go('/');check((await page.locator('.hero .btn.primary').getAttribute('href')).startsWith('reading.html?article=61'),'first visit starts the serial, not an old essay');
+ await page.evaluate(()=>{localStorage.setItem('sr_completed','[0,19]');localStorage.setItem('sr_practiced','{"0":[2,4]}');});
+ await go('/#articles');check(await page.locator('.article-card').count()===43,'all 43 episodes are published');
+ await page.locator('#articleCollection').selectOption('edited');check(await page.locator('.article-card').count()===40,'previous edited essays remain accessible');
+ await page.locator('#articleCollection').selectOption('archive');check(await page.locator('.article-card').count()===20,'historical originals remain accessible');
+ await go('/reading.html?article=61&paragraph=3');check(await page.locator('#progressPill').innerText()==='连载 1 / 43','separate serial collection');
+ check(await page.locator('#articleContent .paragraph-wrapper').count()===4,'four bilingual story segments');check(await page.locator('#prevBtn').isDisabled(),'first episode has no previous episode');check(await page.locator('.paragraph-wrapper.practiced').count()===0,'old paragraph progress is not inherited');
+ check((await page.locator('#articleGuide').innerText()).includes('故事开始'),'first episode introduction');
+ await page.getByRole('tab',{name:'语言点',exact:true}).click();check(await page.locator('.series-word-chips a').count()===12,'context words link to target practice');
+ await page.getByRole('tab',{name:'理解与复述',exact:true}).click();await page.locator('[data-kind=retell][data-rating=independent]').click();check((await page.locator('#articleRetellStatus').innerText()).includes('先写下'),'blank output rejected');
+ await page.locator('#articleRetellText').fill('Maya knocks at the wrong door and Leo helps her find her room.');await page.locator('[data-kind=retell][data-rating=independent]').click();await page.waitForFunction(()=>document.querySelector('#articleRetellStatus').textContent.includes('已保存'));
+ await go('/reading.html?article=62');check((await page.locator('#articleGuide').innerText()).includes('前情回顾'),'continuity recap');
+ await go('/reading.html?article=103');check(await page.locator('#nextBtn').isDisabled(),'actual final episode has no next episode');check((await page.locator('#articleGuide').innerText()).includes('故事完结'),'resolved final episode');
+ await go('/#vocabulary?view=bank');check(await page.locator('.series-bank article').count()===40,'5200-word bank paginates');check((await page.locator('#seriesBankResults').innerText()).includes('5200'),'accurate headword count');
+ await go('/#vocabulary');check(await page.locator('.series-speaking-cue').isVisible(),'new words start from a situation');
+ await go('/#vocabulary?word=key&mode=say');
+ check((await page.locator('.series-speaking-cue').innerText()).includes('钥匙还在屋里')&&await page.locator('#seriesReference').isHidden(),'situation appears before the English model');
+ await page.locator('[data-sv-action=reference]').click();await page.locator('#seriesReference').waitFor({state:'visible'});
+ check((await page.locator('#seriesReference').innerText()).includes('I left my key inside.'),'model offers a natural phrase');
+ await page.locator('[data-sv-action=hide-reference]').click();
+ await page.locator('#seriesOutput').fill('My key is on the kitchen table.');await page.locator('[data-sv-action=save-output]').click();
+ await page.waitForFunction(()=>document.querySelector('#seriesPracticeStatus').textContent.includes('借助提示'));
+ await go('/#vocabulary?view=bank');
+ await page.locator('#seriesWordSearch').fill('commute');check(await page.locator('.series-bank strong').filter({hasText:/^commute$/}).count()===1,'frequency bank includes practical daily words');
+ await go('/#vocabulary?word=book');const answer=await page.evaluate(()=>SeriesVocabulary.words.find(w=>w.id==='book').surface);await page.locator('#seriesRecallInput').fill(answer);await page.locator('#seriesRecallForm button').click();await page.waitForFunction(()=>document.querySelector('#seriesPracticeStatus').textContent.includes('已保存独立回忆'));
+ await page.locator('[data-sv-action=mode][data-mode=output]').click();await page.locator('#seriesOutput').fill('Could you bring my book tomorrow morning?');await page.locator('[data-sv-action=save-output][data-rating=independent]').click();await page.waitForFunction(()=>document.querySelector('#seriesPracticeStatus').textContent.includes('已保存独立表达'));
+ check(await page.evaluate(()=>SeriesCore.evidence(LearningCore.read(localStorage),SeriesVocabulary.words.find(w=>w.id==='book')).ready)===false,'one successful day does not imply mastery');
+ await go('/#vocabulary?word=book');await page.locator('[data-sv-action=reference]').click();await page.locator('#seriesReference').waitFor({state:'visible'});await page.reload();await page.locator('#seriesRecallInput').fill(answer);await page.locator('#seriesRecallForm button').click();await page.waitForFunction(()=>document.querySelector('#seriesPracticeStatus').textContent.includes('辅助练习'));
+ check(await page.evaluate(()=>LearningCore.eventsFor(LearningCore.read(localStorage),'serial-word:book','recall').at(-1).assisted),'hint exposure survives reload');
+ await page.locator('[data-sv-action=mode][data-mode=output]').click();await page.locator('#seriesOutput').fill(await page.evaluate(()=>SeriesVocabulary.words.find(w=>w.id==='book').example));await page.locator('[data-sv-action=save-output][data-rating=independent]').click();check((await page.locator('#seriesPracticeStatus').innerText()).includes('不要直接复制'),'copied example does not count as transfer');
+ await page.locator('#seriesOutput').fill('I left my book at home this morning.');await page.locator('[data-sv-action=save-output][data-rating=independent]').click();await page.waitForFunction(()=>document.querySelector('#seriesPracticeStatus').textContent.includes('借助提示'));
+ check(await page.evaluate(()=>LearningCore.eventsFor(LearningCore.read(localStorage),'serial-use:book:home','output').at(-1).rating)==='with-help','same-day reference downgrades output self-rating');
+ await go('/#vocabulary?word=table&mode=output');await page.locator('#seriesOutput').fill('Please put my bag on the table.');await page.locator('[data-sv-action=context][data-context=work]').click();await page.locator('#seriesOutput').fill('We need a table for the meeting.');await page.locator('[data-sv-action=context][data-context=home]').click();check((await page.locator('#seriesOutput').inputValue()).includes('my bag'),'context drafts survive switching');
+ const backup=await page.evaluate(()=>LearningCore.backup(localStorage));await page.evaluate(data=>LearningCore.importBackup(localStorage,data),backup);check(await page.evaluate(()=>localStorage.sr_completed)==='[0,19]','complete backup preserves old indices');
+ await go('/#vocabulary?word=table');
+ await page.evaluate(()=>{window.holdReady=false;navigator.locks.request('sr-learning-write',async()=>{holdReady=true;await new Promise(resolve=>window.releaseHold=resolve);});});
+ await page.waitForFunction(()=>holdReady);await page.locator('[data-sv-action=reference]').click();
+ await page.evaluate(()=>{location.hash='home';});await page.waitForFunction(()=>document.querySelector('main').dataset.route==='#home');
+ await page.evaluate(()=>releaseHold());await page.waitForFunction(()=>LearningCore.eventsFor(LearningCore.read(localStorage),'serial-word:table','exposure').length>0);
+ check(await page.locator('.hero').count()===1,'leaving during a queued save does not update a removed practice panel');
+ for(const width of [320,390,768]){
+  await page.setViewportSize({width,height:844});for(const path of ['/#home','/#articles','/#vocabulary?view=bank','/#vocabulary?word=table&mode=output','/reading.html?article=61']){await go(path);check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`${path} fits ${width}`);}
+ }
+ await page.setViewportSize({width:1440,height:1000});await go('/#vocabulary');await page.locator('#themeToggle').click();check(await page.locator('html').getAttribute('data-theme')==='dark','vocabulary supports shared dark theme');
+ check(errors.length===0,errors.join('; '));console.log(JSON.stringify({checks,errors}));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1);});

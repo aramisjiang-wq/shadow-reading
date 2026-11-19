@@ -14,7 +14,9 @@ root.renderArticleStudy=function(a){
   lesson.innerHTML='';lesson.hidden=true;return;
  }
  const count=(a.content.match(/\b[a-z]+\b/gi)||[]).length;
- guide.innerHTML=`<div class="ag-meta">${esc(a.category)} / ${esc(a.format)} · 约 ${count} 词 · 6 个段落 · ${esc(a.source)}</div><p><strong>这一篇练什么</strong> ${esc(a.goal)}</p><div class="ag-links"><a href="#articleContent">① 读正文与跟读 ↓</a><a href="#articleExpressions">② 学文章表达 ↓</a><a href="#articleQuestions">③ 检查理解 ↓</a><a href="#articleRetell">④ 复述与迁移 ↓</a>${a.revisionOf?`<a href="reading.html?article=${a.revisionOf}">查看历史原稿 ↗</a>`:''}</div>`;
+ const series=a.series;
+ const journey=series?`<div class="series-journey">${series.previousId?`<a href="reading.html?article=${series.previousId}">← 上一集</a>`:'<span>故事从这里开始</span>'}${series.nextId?`<a href="reading.html?article=${series.nextId}">接着看第 ${series.episode+1} 集 →</a>`:'<a href="index.html#vocabulary">故事完结，继续把词用出来 →</a>'}</div>`:'';
+ guide.innerHTML=`${series?`<div class="ag-meta">${esc(series.title)} · 第 ${series.season} 章「${esc(series.seasonTitle)}」· 第 ${series.episode} / ${SerialReading.episodes.length} 集</div><p><strong>${series.episode===1?'故事开始':'前情回顾'}</strong>${esc(series.recap)}</p>`:''}<div class="ag-meta">${esc(a.category)} / ${esc(a.format)} · 约 ${count} 词 · ${a.content.split('\n\n').length} 个段落 · ${esc(a.source)}</div><p><strong>这一集练什么</strong> ${esc(a.goal)}</p><div class="ag-links"><a href="#articleContent">① 读正文与跟读 ↓</a><a href="#articleExpressions">② 学文章表达 ↓</a><a href="#articleQuestions">③ 检查理解 ↓</a><a href="#articleRetell">④ 复述与迁移 ↓</a>${a.revisionOf?`<a href="reading.html?article=${a.revisionOf}">查看历史原稿 ↗</a>`:''}</div>${journey}`;
  const retellText=savedText(`article:${a.id}:retell`),transferText=savedText(`article:${a.id}:transfer`);
  lesson.hidden=false;
  lesson.innerHTML=`<div class="as-heading"><span>AFTER READING</span><h2>读过之后，把这篇用起来。</h2><p>先理解具体内容，再不看原文复述。可以多次练同一篇文章。</p></div>
@@ -23,6 +25,11 @@ root.renderArticleStudy=function(a){
  <section id="articleRetell"><h3>合上原文，用自己的话复述</h3><p>${esc(a.retell)}</p><label class="as-label" for="articleRetellText">你的复述笔记（也可在下方录音后回放比较）</label><textarea id="articleRetellText" maxlength="10000" placeholder="先试着说明人物、事情经过、原因与结果…">${esc(retellText)}</textarea>${ratingButtons('retell')}<div id="articleRetellStatus" class="as-answer" aria-live="polite"></div></section>
  <section id="articleTransfer"><h3>换个条件，再表达一次</h3><p>${esc(a.transfer.prompt)}</p><label class="as-label" for="articleTransferText">你的新表达</label><textarea id="articleTransferText" maxlength="10000" placeholder="把文章里的搭配用到新的人物、时间或数字中…">${esc(transferText)}</textarea><button class="as-text-btn" data-study-action="show-reference">需要时看参考表达</button><div id="articleReference" hidden><p class="as-note">参考表达不是唯一正确答案。</p><p class="as-reference">${esc(a.transfer.sample)}</p></div>${ratingButtons('transfer')}<div id="articleTransferStatus" class="as-answer" aria-live="polite"></div></section>
  <p class="as-note">复述与迁移保存的是自评，未自动评判发音或语法。录音可使用下面的原文练习面板。</p>`;
+ if(series){
+  const words=SeriesCore.inEpisode(a,SeriesVocabulary.words).filter(w=>w.rank>150&&w.id.length>=4).slice(0,12);
+  document.getElementById('articleExpressions').insertAdjacentHTML('beforeend',`<h3 style="margin-top:24px">本集语境里的目标词</h3><p class="as-note">以下词或其已记录词形实际出现在正文。点开后先试着开口，再听示范、换个细节重说；5200 词库包含额外拓展词，并非本集新词数量。</p><div class="series-word-chips">${words.map(w=>`<a href="index.html#vocabulary?word=${w.id}&mode=say">${esc(w.head)} ↗</a>`).join('')}</div><a href="index.html#vocabulary">进入今日 10 词与到期复习 →</a>`);
+  lesson.insertAdjacentHTML('beforeend',`<section class="series-episode-end"><h3>${series.nextId?'这一件事，解决了。下一件呢？':'故事完结，生活里的练习继续。'}</h3><p>先不看原文复述，再改变一个条件表达。你可以随时接着读；看完一集不会把词汇标记为掌握。</p>${journey}</section>`);
+ }
  if(location.hash&&['#articleGuide','#articleLesson','#articleExpressions','#articleQuestions','#articleRetell'].includes(location.hash))setTimeout(()=>document.querySelector(location.hash)?.scrollIntoView({block:'start'}),180);
 };
 function ratingButtons(type){return `<div class="as-ratings">${[['again','还需再练'],['with-help','借助提示完成'],['independent','自评独立完成']].map(([r,label])=>`<button class="btn" data-study-action="save-expression" data-kind="${type}" data-rating="${r}">${label}</button>`).join('')}</div>`;}
@@ -38,6 +45,9 @@ document.addEventListener('click',async event=>{
  if(button.dataset.studyAction!=='save-expression'||writing)return;
  writing=true;const a=active,version=serial,kind=button.dataset.kind,input=document.getElementById(kind==='retell'?'articleRetellText':'articleTransferText');
  const text=input.value,rating=kind==='transfer'&&usedReference&&button.dataset.rating==='independent'?'with-help':button.dataset.rating;
+ if(!text.trim()||(rating==='independent'&&(text.match(/\b[a-z]+\b/gi)||[]).length<5)){
+  document.getElementById(kind==='retell'?'articleRetellStatus':'articleTransferStatus').textContent='先写下你的尝试；独立完成至少需要 5 个英文词。空白内容不会记为完成。';writing=false;return;
+ }
  const buttons=[...document.querySelectorAll(`[data-study-action=save-expression][data-kind=${kind}]`)];buttons.forEach(b=>b.disabled=true);
  try{
   await LearningCore.record(localStorage,{kind:'output',target:`article:${a.id}:${kind}`,text,rating});

@@ -1441,6 +1441,7 @@
     </style>
     <link rel="stylesheet" href="design-system.css">
     <link rel="stylesheet" href="article-study.css">
+<link rel="stylesheet" href="series.css">
     <link rel="stylesheet" href="reader-ui.css">
 </head>
 <body>
@@ -1499,7 +1500,7 @@
             <button class="lvl-filter-btn" data-level="advanced" onclick="setLevelFilter('advanced')">进阶</button>
         </div>
 
-        <div class="reader-sidebar-search"><label for="readerArticleSearch">本地文章</label><input id="readerArticleSearch" type="search" placeholder="搜索文章…"><select id="readerCollectionFilter" aria-label="文章集合"><option value="edited">精编文章</option><option value="archive">历史原稿</option><option value="all">全部文章</option></select><span id="readerListCount" aria-live="polite"></span></div>
+        <div class="reader-sidebar-search"><label for="readerArticleSearch">本地文章</label><input id="readerArticleSearch" type="search" placeholder="搜索文章…"><select id="readerCollectionFilter" aria-label="文章集合"><option value="series">连载 · 43 集</option><option value="edited">旧独立文章 · 40 篇</option><option value="archive">历史原稿</option><option value="all">全部文章</option></select><span id="readerListCount" aria-live="polite"></span></div>
         <div class="article-list" id="articleList"></div>
         <div class="word-list" id="wordList" style="display:none"></div>
 
@@ -1757,9 +1758,13 @@
 
 <script src="articles-data.js"></script>
 <script src="editorial-data.js"></script>
+<script src="serial-data.js"></script>
 <script src="dictionary-data.js"></script>
+<script src="vendor/lz-string.js"></script>
 <script src="learning-core.js"></script>
 <script src="curriculum-data.js"></script>
+<script src="vocabulary-data.js"></script>
+<script src="series-core.js"></script>
 <script src="article-study.js"></script>
 <script src="ui-assets.js"></script>
 <script src="reader-ui.js"></script>
@@ -1954,7 +1959,7 @@ function getInitialTarget() {
     const saved = parseInt(localStorage.getItem(LS.ARTICLE), 10);
     const articleIdx = (Number.isInteger(a) && a >= 1 && a <= articles.length)
         ? a - 1
-        : (Number.isInteger(saved) && saved >= 0 && saved < articles.length ? saved : articles.findIndex(a=>a.edition));
+        : (Number.isInteger(saved) && saved >= 0 && saved < articles.length ? saved : articles.findIndex(a=>a.series));
     const paraIdx = (Number.isInteger(p) && p >= 1) ? p - 1 : null;
     return { articleIndex: articleIdx, paragraphIndex: paraIdx };
 }
@@ -2157,11 +2162,11 @@ function getSelectedVoice() {
 
 // ── Article list ──
 function readingCollection() {
-    return articles.map((a,i)=>({a,i})).filter(x=>Boolean(x.a.edition)===Boolean(articles[currentArticle]?.edition));
+    return articles.map((a,i)=>({a,i})).filter(x=>(x.a.series?'series':x.a.edition?'edited':'archive')===(articles[currentArticle]?.series?'series':articles[currentArticle]?.edition?'edited':'archive'));
 }
 
 function renderArticleList() {
-    document.getElementById('articleList').innerHTML = articles.map((a,i)=>({a,i})).sort((x,y)=>Number(Boolean(y.a.edition))-Number(Boolean(x.a.edition))).map(({a, i}) => {
+    document.getElementById('articleList').innerHTML = articles.map((a,i)=>({a,i})).sort((x,y)=>Number(Boolean(y.a.series))-Number(Boolean(x.a.series))||Number(Boolean(y.a.edition))-Number(Boolean(x.a.edition))).map(({a, i}) => {
         if (levelFilter !== 'all' && a.level !== levelFilter) return '';
         const total    = a.content.split('\n\n').length;
         const done     = (practicedMap[i] || []).length;
@@ -2203,7 +2208,7 @@ function loadArticle(index) {
     document.getElementById('articleTitle').textContent    = article.title;
     document.getElementById('articleSubtitle').textContent = article.subtitle;
     const collection=readingCollection(),position=collection.findIndex(x=>x.i===index);
-    document.getElementById('progressPill').textContent = `${article.edition?'精编':'原稿'} ${position+1} / ${collection.length}`;
+    document.getElementById('progressPill').textContent = `${article.series?'连载':article.edition?'精编':'原稿'} ${position+1} / ${collection.length}`;
     document.getElementById('progressBar').style.width     = ((position + 1) / collection.length * 100) + '%';
     document.getElementById('prevBtn').disabled = position === 0;
     document.getElementById('nextBtn').disabled = position === collection.length - 1;
@@ -2942,7 +2947,7 @@ function exportData() {
 function handleImport(event) {
     const file=event.target.files[0]; event.target.value='';
     if(!file)return;
-    if(file.size>10*1024*1024)return showToast('请选择 10MB 以内的学习备份');
+    if(file.size>40*1024*1024)return showToast('请选择 40MB 以内的学习备份');
     const reader=new FileReader();
     reader.onload=async e=>{
         try {

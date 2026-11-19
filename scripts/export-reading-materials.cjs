@@ -1,30 +1,31 @@
 'use strict';
 const fs=require('node:fs'),vm=require('node:vm');
 const context={};vm.createContext(context);
-vm.runInContext(fs.readFileSync('articles-data.js','utf8')+'\n'+fs.readFileSync('editorial-data.js','utf8')+'\nthis.all=articles;',context);
-const all=context.all,edited=all.filter(a=>a.edition),original=all.filter(a=>!a.edition);
-const wc=a=>(a.content.match(/\b[a-z]+\b/gi)||[]).length,level={beginner:'基础',intermediate:'中级',advanced:'进阶'};
-const total=edited.reduce((n,a)=>n+wc(a),0);
-const out=['# Shadow Reading 双语文章与练习','',
-'以文章为学习主线：精听 → 逐段理解 → 跟读 → 学词汇用法 → 理解检查 → 复述与迁移。词汇专题和短对话为补充。','',
-`**精编内容**：${edited.length} 篇、${total.toLocaleString('en-US')} 个英文词次、240 组中英对齐段落、160 个文章表达讲解、80 道理解题，以及每篇各 1 个复述与迁移任务。另保留原 20 篇历史原稿。词次不是独立单词数，也不是掌握词汇量。`,'',
-'精编稿为原创教学材料，人物、机构、访谈与事件均为虚构。难度为编辑提示；音频由浏览器合成，不是真人原声。原稿编号与文字保持不变，重写稿使用独立学习记录。','',
-'## 精编文章目录','','| 编号 | 中文标题 / English title | 题材 | 难度 | 词次 |','| --- | --- | --- | --- | --- |',
-...edited.map(a=>`| ${a.id} | ${a.subtitle} / ${a.title} | ${a.category} · ${a.format} | ${level[a.level]} | ${wc(a)} |`),''];
-for(const a of edited){
- out.push(`## 精编 ${a.id}：${a.title}`,`### ${a.subtitle}`,'',`**${a.category} · ${a.format} · ${level[a.level]} · 约 ${wc(a)} 词**`,'',`**学习目标**：${a.goal}`,'');
- if(a.revisionOf)out.push(`原主题对应历史原稿 ${a.revisionOf}；本篇为独立重写稿。`,'');
- const zh=a.translation.split('\n\n');a.content.split('\n\n').forEach((p,i)=>out.push(p,'',`> ${zh[i]}`,''));
- out.push('#### 文章表达','','| 表达 | 中文 | 用法 |','| --- | --- | --- |',...a.phrases.map(p=>`| ${p.en}${p.quote!==p.en?`（原文：${p.quote}）`:''} | ${p.zh} | ${p.note} |`),'','#### 理解检查','');
+vm.runInContext(['articles-data.js','editorial-data.js','serial-data.js'].map(p=>fs.readFileSync(p,'utf8')).join('\n')+'\nthis.all=articles;',context);
+const all=context.all,episodes=all.filter(a=>a.series),archive=all.filter(a=>!a.series);
+const vocabulary=require('../vocabulary-data.js');
+const wc=a=>(a.content.match(/\b[a-z]+\b/gi)||[]).length;
+const out=['# Shadow Reading · 枫树街的夏天','',
+'43 集完整双语连载 + 5200 词拓展练习。','',
+'前情回顾 → 听读本集 → 理解与搭配 → 不看原文复述 → 换生活场景表达 → 隔天再回忆。','',
+`连载共 ${episodes.length} 集、${episodes.reduce((n,a)=>n+wc(a),0)} 个英文词次、${episodes.length*4} 组对齐段落、${episodes.length*4} 个搭配、${episodes.length*2} 道理解题。另保留 60 篇旧独立文章与原稿。`,'',
+'连载是原创虚构教学文本，难度为编辑提示。5200 词库另配用法例句，包含正文以外的拓展词；词次、唯一词条数与已掌握词汇量分开计算，不承诺读完自动获得 5200 主动词汇。','',
+'## 连载目录','','| 集数 | 章节 | 标题 | 词次 |','| --- | --- | --- | --- |',
+...episodes.map(a=>`| ${a.series.episode} | ${a.series.seasonTitle} | ${a.subtitle} / ${a.title} | ${wc(a)} |`),''];
+function body(a){const zh=a.translation.split('\n\n');a.content.split('\n\n').forEach((p,i)=>out.push(p,'',`> ${zh[i]||'（历史原稿缺少此段对应译文。）'}`,''));}
+for(const a of episodes){
+ out.push(`## 第 ${a.series.episode} 集：${a.title}`,`### ${a.subtitle}`,'',`**第 ${a.series.season} 章 · ${a.series.seasonTitle}**`,'',`**前情**：${a.series.recap}`,'',`**学习目标**：${a.goal}`,'');body(a);
+ out.push('#### 本集搭配','','| 表达 | 中文 | 用法 |','| --- | --- | --- |',...a.phrases.map(p=>`| ${p.en}${p.quote!==p.en?`（原文：${p.quote}）`:''} | ${p.zh} | ${p.note} |`),'','#### 理解检查','');
  a.checks.forEach((q,i)=>out.push(`${i+1}. ${q.q}`,...q.options.map((o,j)=>`   - ${String.fromCharCode(65+j)}. ${o}`),''));
  out.push('**参考答案**：'+a.checks.map((q,i)=>`${i+1}. ${String.fromCharCode(65+q.answer)} — ${q.why}`).join('；'),'','#### 复述',a.retell,'','#### 换条件表达',a.transfer.prompt,'',`参考表达（不唯一）：${a.transfer.sample}`,'','---','');
 }
-out.push('## 历史原稿档案','','下列文字为原有 20 篇文章，保留其原始学习对象。精编阅读以此前 40 篇为主。','');
-for(const a of original){out.push(`## 历史原稿 ${a.id}：${a.title}`,`### ${a.subtitle}`,'');const zh=a.translation.split('\n\n');a.content.split('\n\n').forEach((p,i)=>out.push(p,'',`> ${zh[i]||'（历史原稿缺少此段对应译文。）'}`,''));}
-out.push('## 方法说明与来源','',
-'本项目的文章练习流程是学习设计建议，不整体归因为“尚雯婕影子阅读法”。她工作室的公开说明包括课文、新闻、专业谈话，强调听、背、写结合；本项目不据此承诺固定篇数或固定天数即可掌握一种语言。','',
-'- [尚雯婕工作室公开说明](https://www.sina.cn/news/detail/5175282183181395.html)',
-'- [新华网相关报道](https://www.xinhuanet.com/ent/20230707/d6e8c851a52b4e12b279716e11061caf/c.html)','',
-'此文件由 `scripts/export-reading-materials.cjs` 从文章数据生成。更新文章后重新导出，以免正文、译文、答案与网页分叉。','');
+out.push('## 5200 词拓展：从看懂到会用','',vocabulary.counting,'',
+'每次最多 10 个词，先做已到期复习，再学新词。每词先理解例句，隔天不看答案回忆词形，再换生活情境表达。当前连续回忆阶段至少三级，且首末独立回忆跨至少七天；另有至少两天、两个场景的独立表达自评，才记入“回忆 + 迁移自评达标”。看例句当天按辅助练习记录，辅助或失败回忆重置阶段。同日重复不连续升级。','',
+'系统未评判语义、语法或口语；表达保存的是自评。每词有一种实际例句用法，不代表掌握全部词义。语料经自动筛选，未逐句人工审校；部分例句无中文整句译文，词条释义不是整句翻译。','',
+'词义：[ECDICT / MIT](https://github.com/skywind3000/ECDICT)。例句：[Tatoeba，经 ManyThings](https://www.manythings.org/anki/)，[CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/)。原句未改写，逐句署名保留如下；来源文件哈希见 vocabulary-data.js。','');
+for(const w of vocabulary.words)out.push(`### ${w.head}`,'',w.meaning,'',w.example,'',w.exampleZh||'（此例句只提供英文原文，上方为词条释义。）','',`来源署名：${w.attribution}`,'',`练习：不看例句，用 ${w.head} 在家庭邻里、出门办事或工作朋友中选择一个场景，先说一句具体的话，再把它写下来。隔天换场景再试。`,'');
+out.push('## 旧独立文章与历史原稿','','以下保留原文与编号，网页默认学习主线为连载。旧稿若中英段落不一致，仍按原稿保留，不将其作为新连载的进度。','');
+for(const a of archive){out.push(`## 旧稿 ${a.id}：${a.title}`,`### ${a.subtitle}`,'');body(a);}
+out.push('此文件由 scripts/export-reading-materials.cjs 从运行数据导出。更新正文或词库后重新导出。','');
 fs.writeFileSync('Shadow-Reading-English-Materials.md',out.join('\n'));
-console.log(JSON.stringify({edited:edited.length,original:original.length,englishTokens:total,paragraphs:edited.length*6,expressions:edited.length*4,questions:edited.length*2}));
+console.log(JSON.stringify({episodes:episodes.length,archived:archive.length,englishTokens:episodes.reduce((n,a)=>n+wc(a),0),targetHeadwords:vocabulary.count}));

@@ -1,8 +1,10 @@
 (function (root) {
 'use strict';
 const KEY = 'sr_learning_v1';
+const PACKED='srz1:';
+const compression=root.LZString||(typeof module!=='undefined'?require('./vendor/lz-string.js'):null);
 const LEGACY = ['sr_wordStatus','sr_completed','sr_practiced','sr_streak','sr_lastStudy'];
-const KINDS = new Set(['recall','listen','shadow','output']);
+const KINDS = new Set(['recall','listen','shadow','output','exposure']);
 const plain = x => x !== null && typeof x === 'object' && !Array.isArray(x) && Object.getPrototypeOf(x) === Object.prototype;
 const empty = () => ({version: 1, events: {}});
 const eventIndexes = new WeakMap();
@@ -18,8 +20,12 @@ function validState(value) {
 }
 function read(storage) {
   const raw = storage.getItem(KEY);
-  return raw === null ? empty() : validState(JSON.parse(raw));
+  if(raw===null)return empty();
+  const text=raw.startsWith(PACKED)?compression?.decompressFromUTF16(raw.slice(PACKED.length)):raw;
+  if(typeof text!=='string'||!text)throw Error('学习记录无法解压，请先导出存储原件。');
+  return validState(JSON.parse(text));
 }
+function serialize(state){const text=JSON.stringify(state);return compression&&text.length>500000?PACKED+compression.compressToUTF16(text):text;}
 function merge(a, b) {
   validState(a); validState(b);
   const events = {...a.events};
@@ -93,7 +99,7 @@ function importBackup(storage, data) {
   if (!data.learning && !data.wordStatuses && !data.completedArticles && !data.practicedMap) throw Error('备份中没有可识别的学习记录。');
   if (data.version === '4.0' && (data.format !== 'shadow-reading' || !data.learning)) throw Error('新版备份内容不完整。');
   const next = data.learning ? merge(read(storage),validState(data.learning)) : read(storage);
-  const writes = {[KEY]:JSON.stringify(next)};
+  const writes = {[KEY]:serialize(next)};
   if (data.wordStatuses) {
     const old = JSON.parse(storage.getItem('sr_wordStatus')||'{}');
     validateLegacy({wordStatuses:old});
@@ -126,9 +132,9 @@ async function record(storage, e) {
     const state = read(storage);
     const id = root.crypto?.randomUUID ? root.crypto.randomUUID() : `e-${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const next = validState({version:1,events:{...state.events,[id]:{...e,at:new Date().toISOString()}}});
-    storage.setItem(KEY,JSON.stringify(next)); return next;
+    storage.setItem(KEY,serialize(next)); return next;
   });
 }
-root.LearningCore = {KEY,LEGACY,empty,validState,read,merge,dayKey,addDays,eventsFor,schedule,normalize,matches,backup,importBackup,locked,record};
+root.LearningCore = {KEY,LEGACY,empty,validState,read,serialize,merge,dayKey,addDays,eventsFor,schedule,normalize,matches,backup,importBackup,locked,record};
 if (typeof module !== 'undefined') module.exports = root.LearningCore;
 })(typeof window !== 'undefined' ? window : globalThis);

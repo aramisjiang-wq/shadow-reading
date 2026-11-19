@@ -10,7 +10,7 @@ const {chromium}=playwright,base=process.env.TEST_URL||'http://127.0.0.1:8765';
  const go=async url=>{await page.goto(url);if(!url.includes('/words.html')&&!url.includes('?article='))await page.waitForFunction(()=>document.querySelector('main')?.dataset.route===(location.hash||'#home'));};
  let checks=0;const check=(condition,message)=>{assert.ok(condition,message);checks++;};
  await go(base);await page.locator('h1').waitFor();
- check((await page.locator('h1').innerText()).includes('读懂一篇文章'),'home renders');
+ check((await page.locator('h1').innerText()).includes('跟着故事'),'home renders');
  await page.evaluate(()=>{localStorage.setItem('sr_wordStatus','{"rings":"mastered","stretch":"review"}');localStorage.setItem('sr_completed','[0,19]');localStorage.setItem('sr_practiced','{"0":[2,4]}');});
  await go(base+'/#dialogues');await page.locator('#catalogSearch').fill('预算与大数换算');
  check(await page.locator('.cards .card').count()===1,'dialogue search');

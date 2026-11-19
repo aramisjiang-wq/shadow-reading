@@ -61,6 +61,7 @@ jobs:
           npm run test:browser
           npm run test:articles
           npm run test:ui
+          npm run test:series
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

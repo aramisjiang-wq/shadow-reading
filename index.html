@@ -4,35 +4,42 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f4f1e9">
-<meta name="description" content="以文章为主线的英语影子学习。40 篇精编双语文章，围绕精听、跟读、词汇用法和复述，逐步练会实际表达。">
+<meta name="description" content="以文章为主线的英语影子学习。43 集连续生活故事，配套 5200 个唯一目标词条、语境回忆与生活迁移自评。">
 <title>Shadow Reading · 把英语用起来</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="design-system.css">
 <link rel="stylesheet" href="learning.css">
 <link rel="stylesheet" href="workspace-ui.css">
+<link rel="stylesheet" href="series.css">
 <script defer src="articles-data.js"></script>
 <script defer src="editorial-data.js"></script>
+<script defer src="serial-data.js"></script>
+<script defer src="vocabulary-data.js"></script>
 <script defer src="curriculum-data.js"></script>
 <script defer src="dialogues-data.js"></script>
+<script defer src="vendor/lz-string.js"></script>
 <script defer src="learning-core.js"></script>
+<script defer src="series-core.js"></script>
+<script defer src="series-vocabulary.js"></script>
 <script defer src="ui-assets.js"></script>
 <script defer src="learning-app.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到内容</a>
 <aside class="sidebar">
-<a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15"/></svg></span><span>Shadow Reading<small>读一篇，用起来。</small></span></a>
+<a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15"/></svg></span><span>Shadow Reading<small>跟着故事，把话用起来。</small></span></a>
 <div class="nav-caption">阅读与练习</div>
 <nav aria-label="主导航">
 <a href="#home" data-nav="home"><span aria-hidden="true">◷</span> 今日阅读</a>
-<a href="#articles" data-nav="articles"><span aria-hidden="true">▱</span> 文章库 <small>40</small></a>
+<a href="#articles" data-nav="articles"><span aria-hidden="true">▱</span> 连载剧集 <small>43</small></a>
+<a href="#vocabulary" data-nav="vocabulary"><span aria-hidden="true">Aa</span> 5200 词会用计划</a>
 <a href="#words" data-nav="words"><span aria-hidden="true">Aa</span> 词汇检索</a>
 <a href="#units" data-nav="units"><span aria-hidden="true">▤</span> 词汇专题 <small>17</small></a>
 <a href="#review" data-nav="review"><span aria-hidden="true">↺</span> 到期复习 <small id="navDue">0</small></a>
 <a href="#progress" data-nav="progress"><span aria-hidden="true">▥</span> 学习记录</a>
 <a href="#dialogues" data-nav="dialogues"><span aria-hidden="true">◌</span> 对话补充 <small>40</small></a>
 </nav>
-<div class="side-note"><span class="overline">慢一点，也可以。</span><p>读懂一篇，<br>反复练习与复述。</p><div class="side-rule"></div><small>精听 · 跟读 · 理解 · 复述</small></div>
+<div class="side-note"><span class="overline">慢一点，也可以。</span><p>追一集，<br>在生活里用一遍。</p><div class="side-rule"></div><small>精听 · 跟读 · 理解 · 复述</small></div>
 <div class="side-bottom"><button id="themeToggle" class="text-btn">切换深色</button><a href="#progress">备份记录 ↗</a></div>
 </aside>
 <div class="workspace">
@@ -43,7 +50,7 @@
 </div>
 <nav class="mobile-navigation" aria-label="手机主导航"><a href="#home" data-mobile-nav="home">今日</a><a href="#articles" data-mobile-nav="articles">文章</a><a href="#review" data-mobile-nav="review">复习</a><a href="#progress" data-mobile-nav="progress">记录</a></nav>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<dialog id="guideDialog"><button class="dialog-close text-btn" data-close="guideDialog" aria-label="关闭指南">关闭 ×</button><p class="overline">READ, LISTEN & RETELL</p><h2>围绕一篇文章，练到能复述。</h2><ol class="guide-steps"><li><strong>先选适合的文章</strong><p>看题材、难度和阅读目标。同一篇可以练几天，不必每天换。</p></li><li><strong>先听，再理解</strong><p>先听文章大意，再逐段读懂；需要时显示中文并查词。</p></li><li><strong>理解用法，再跟读</strong><p>留意文章里的动词搭配、数字和时间。逐句或逐段模仿重音、停顿与节奏。</p></li><li><strong>不看原文，复述文章</strong><p>先完成理解题，再按文章提供的任务，用自己的话讲出过程、理由和结果。</p></li><li><strong>换条件表达，隔天再回忆</strong><p>改变人物、数字或时间，把文章里的表达用到自己的情境。词汇专题、复习和短对话可以辅助巩固。</p></li></ol><p class="muted">难度为编辑提示，朗读为浏览器合成语音。播放和自评记录均不等于全面掌握。</p></dialog>
+<dialog id="guideDialog"><button class="dialog-close text-btn" data-close="guideDialog" aria-label="关闭指南">关闭 ×</button><p class="overline">READ, LISTEN & RETELL</p><h2>围绕一篇文章，练到能复述。</h2><ol class="guide-steps"><li><strong>从第一集或上次那集开始</strong><p>固定人物、九个连续章节；先看前情，再看本集的问题如何解决。每集可以练几天。</p></li><li><strong>先听，再理解</strong><p>先听文章大意，再逐段读懂；需要时显示中文并查词。</p></li><li><strong>理解用法，再跟读</strong><p>留意文章里的动词搭配、数字和时间。逐句或逐段模仿重音、停顿与节奏。</p></li><li><strong>不看原文，复述文章</strong><p>先完成理解题，再按文章提供的任务，用自己的话讲出过程、理由和结果。</p></li><li><strong>换条件表达，隔天再回忆</strong><p>改变人物、数字或时间，把本集表达用到自己的情境。进入 5200 词计划，每次最多 10 词，先复习再学新词。</p></li></ol><p class="muted">难度为编辑提示，朗读为浏览器合成语音。播放和自评记录均不等于全面掌握。</p></dialog>
 <input type="file" id="backupInput" accept="application/json,.json" hidden>
 <noscript><p>请开启 JavaScript 后使用。你也可以直接打开 <a href="Shadow-Reading-English-Materials.md">原始阅读材料</a>。</p></noscript>
 </body>

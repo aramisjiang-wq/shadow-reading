@@ -801,7 +801,9 @@
 
 <script src="articles-data.js"></script>
 <script src="editorial-data.js"></script>
+<script src="serial-data.js"></script>
 <script src="dictionary-data.js"></script>
+<script src="vendor/lz-string.js"></script>
 <script src="learning-core.js"></script>
 <script>
 // ── POS lookup (word → category) ──
@@ -1315,7 +1317,7 @@ function exportData() {
 function handleImport(event) {
     const file=event.target.files[0]; event.target.value='';
     if(!file)return;
-    if(file.size>10*1024*1024)return showToast('请选择 10MB 以内的学习备份');
+    if(file.size>40*1024*1024)return showToast('请选择 40MB 以内的学习备份');
     const reader=new FileReader();
     reader.onload=async e=>{
         try {

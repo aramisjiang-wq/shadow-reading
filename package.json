@@ -1,6 +1,6 @@
 {
   "name": "shadow-reading",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "private": true,
   "description": "Article-first English reading, listening and vocabulary practice workspace",
   "scripts": {
@@ -9,6 +9,7 @@
     "test:browser": "node tests/browser-check.cjs",
     "test:articles": "node tests/article-browser.cjs",
     "test:ui": "node tests/ui-browser.cjs",
+    "test:series": "node tests/series-browser.cjs",
     "export:articles": "node scripts/export-reading-materials.cjs",
     "start": "python3 -m http.server 8765 --bind 127.0.0.1"
   },

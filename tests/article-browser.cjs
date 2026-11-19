@@ -7,10 +7,10 @@ const base=process.env.TEST_URL||'http://127.0.0.1:8765';
  page.on('pageerror',e=>errors.push(e.message));let checks=0;function check(value,message){assert.ok(value,message);checks++;}
  async function go(path){await page.goto(base+path);if(path.includes('reading.html')){await page.waitForFunction(()=>document.getElementById('articleTitle').textContent!=='Loading…');await page.waitForFunction(()=>getComputedStyle(document.getElementById('articleContent')).opacity==='1');}else if(path.includes('words.html'))await page.locator('#articleSelect').waitFor();else await page.waitForFunction(()=>document.querySelector('main')?.dataset.route===(location.hash||'#home'));}
  await go('/#home');check((await page.locator('.hero a.btn.primary').getAttribute('href')).startsWith('reading.html?article='),'home primary action reads an article');
- check((await page.locator('nav a').nth(1).innerText()).includes('文章库'),'article library is the main content navigation');
+ check((await page.locator('nav a').nth(1).innerText()).includes('连载剧集'),'article library is the main content navigation');
  check(await page.locator('main a[href^="#dialogue/"]').count()===0,'short dialogues do not displace articles on homepage');
  await page.evaluate(()=>{localStorage.setItem('sr_onboarded','1');localStorage.setItem('sr_completed','[0,19]');localStorage.setItem('sr_practiced','{"0":[2,4]}');});
- await go('/#articles');check(await page.locator('.article-card').count()===40,'edited library has forty manuscripts');
+ await go('/#articles?collection=edited');check(await page.locator('.article-card').count()===40,'edited library has forty manuscripts');
  await page.locator('#articleFormat').selectOption('访谈');check(await page.locator('.article-card').count()===10,'ten long interviews');
  await page.locator('#articleLevel').selectOption('advanced');check(await page.locator('.article-card').count()===2,'format and difficulty combine');
  await page.locator('#articleFormat').selectOption('');await page.locator('#articleLevel').selectOption('');await page.locator('#articleSearch').fill('Thirteen, Not Thirty');check(await page.locator('.article-card').count()===1,'article title search');
@@ -46,7 +46,7 @@ const base=process.env.TEST_URL||'http://127.0.0.1:8765';
  await go('/words.html');await page.locator('#articleSelect').selectOption('59');check((await page.locator('#articleSelect').inputValue())==='59','wordbook includes final new article index');
  await go('/#home');await page.screenshot({path:'tests/article-home.png'});
  for(const width of [390,320]){
- await page.setViewportSize({width,height:844});await go('/#articles');check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`library fits ${width}`);
+ await page.setViewportSize({width,height:844});await go('/#articles?collection=edited');check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`library fits ${width}`);
  await go('/reading.html?article=57');check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`reader fits ${width}`);
  await page.getByRole('tab',{name:'理解与复述',exact:true}).click();await page.locator('#articleQuestions').scrollIntoViewIfNeeded();check(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)),`quiz fits ${width}`);
  }
