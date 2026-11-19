@@ -4,7 +4,7 @@ let playwright;
 try{playwright=require('playwright');}catch{if(!process.env.PLAYWRIGHT_PATH)throw Error('Run npm install and npx playwright install chromium, or set PLAYWRIGHT_PATH.');playwright=require(process.env.PLAYWRIGHT_PATH);}
 const {chromium}=playwright,base=process.env.TEST_URL||'http://127.0.0.1:8765';
 (async()=>{
- const browser=await chromium.launch({headless:true});
+ const browser=await chromium.launch({headless:true,channel:process.env.TEST_BROWSER_CHANNEL||undefined});
  const context=await browser.newContext({viewport:{width:1440,height:1000}});
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  const go=async url=>{await page.goto(url);if(!url.includes('/words.html')&&!url.includes('?article='))await page.waitForFunction(()=>document.querySelector('main')?.dataset.route===(location.hash||'#home'));};

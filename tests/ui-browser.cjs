@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),{chromium}=require('playwright');
 const base=process.env.TEST_URL||'http://127.0.0.1:8765';
 (async()=>{
- const b=await chromium.launch({headless:true}),context=await b.newContext({viewport:{width:1440,height:1000}}),p=await context.newPage(),errors=[];
+ const b=await chromium.launch({headless:true,channel:process.env.TEST_BROWSER_CHANNEL||undefined}),context=await b.newContext({viewport:{width:1440,height:1000}}),p=await context.newPage(),errors=[];
  p.setDefaultTimeout(10000);p.on('pageerror',e=>errors.push(e.message));let checks=0,translationRequests=0;p.on('request',r=>{if(r.url().includes('translate.googleapis.com/translate_a/'))translationRequests++;});const check=(v,m)=>{assert.ok(v,m);checks++;};
  async function go(path){
   await p.goto(base+path);

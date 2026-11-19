@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -43,10 +43,12 @@ jobs:
       - name: Build runtime files
         run: npm run build
 
-      - name: Install browser for release checks
-        run: npx playwright install --with-deps chromium
+      - name: Verify preinstalled Chrome
+        run: google-chrome --version
 
       - name: Check the built site in a project subdirectory
+        env:
+          TEST_BROWSER_CHANNEL: chrome
         run: |
           mkdir -p /tmp/shadow-reading-pages/shadow-reading
           cp -R dist/. /tmp/shadow-reading-pages/shadow-reading/

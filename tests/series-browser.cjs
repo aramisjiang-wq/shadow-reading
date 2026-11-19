@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),{chromium}=require('playwright');
 const base=process.env.TEST_URL||'http://127.0.0.1:8765';
 (async()=>{
- const browser=await chromium.launch({headless:true}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
+ const browser=await chromium.launch({headless:true,channel:process.env.TEST_BROWSER_CHANNEL||undefined}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
  await context.addInitScript(()=>localStorage.setItem('sr_onboarded','1'));
  page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(10000);let checks=0;
  const check=(v,m)=>{assert.ok(v,m);checks++;};

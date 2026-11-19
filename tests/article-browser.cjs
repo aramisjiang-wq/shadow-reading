@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),{chromium}=require('playwright');
 const base=process.env.TEST_URL||'http://127.0.0.1:8765';
 (async()=>{
- const browser=await chromium.launch({headless:true}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
+ const browser=await chromium.launch({headless:true,channel:process.env.TEST_BROWSER_CHANNEL||undefined}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
  page.setDefaultTimeout(10000);page.setDefaultNavigationTimeout(15000);await context.route('https://fonts.googleapis.com/**',route=>route.abort());await context.route('https://fonts.gstatic.com/**',route=>route.abort());
  page.on('pageerror',e=>errors.push(e.message));let checks=0;function check(value,message){assert.ok(value,message);checks++;}
  async function go(path){await page.goto(base+path);if(path.includes('reading.html')){await page.waitForFunction(()=>document.getElementById('articleTitle').textContent!=='Loading…');await page.waitForFunction(()=>getComputedStyle(document.getElementById('articleContent')).opacity==='1');}else if(path.includes('words.html'))await page.locator('#articleSelect').waitFor();else await page.waitForFunction(()=>document.querySelector('main')?.dataset.route===(location.hash||'#home'));}
