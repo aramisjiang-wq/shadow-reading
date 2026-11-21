@@ -4,6 +4,8 @@ const assert=require('node:assert/strict');
 require('../learning-core.js');
 globalThis.LZString=require('../vendor/lz-string.js');
 const sync=require('../progress-sync.js');
+const pairing=require('../sync-pairing.js');
+require('../vendor/qr-encoder.js');
 const storage=()=>new class{
  constructor(){this.data=new Map();}
  getItem(k){return this.data.get(k)??null;}
@@ -66,4 +68,17 @@ test('client refuses public repositories and uses authenticated repository-scope
   return Response.json({private:false,visibility:'public'});
  });
  await assert.rejects(()=>remote.verify(),/私有仓库/);
+});
+
+test('pairing links do not carry a readable token and reject wrong codes or expired links',async()=>{
+ const settings=sync.config({repo:'https://github.com/Owner/Progress/',token:'github_pat_test_token'});
+ const now=Date.now(),pair=await pairing.create(settings,now);
+ assert.equal(pair.payload.includes(settings.token),false);
+ assert.match(pair.code,/^\d{10}$/);
+ assert.deepEqual(await pairing.open(pair.payload,pair.code,now),settings);
+ const wrong=pair.code==='0000000000'?'1111111111':'0000000000';
+ await assert.rejects(()=>pairing.open(pair.payload,wrong,now),/不匹配/);
+ await assert.rejects(()=>pairing.open(pair.payload,pair.code,pair.expires),/过期/);
+ const qr=encodePairingQR('https://example.com/shadow-reading/index.html#pair='+pair.payload);
+ assert.ok(qr.length>21&&qr.every(row=>row.length===qr.length));
 });

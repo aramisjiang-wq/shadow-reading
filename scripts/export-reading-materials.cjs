@@ -4,9 +4,10 @@ const context={};vm.createContext(context);
 vm.runInContext(['articles-data.js','editorial-data.js','serial-data.js'].map(p=>fs.readFileSync(p,'utf8')).join('\n')+'\nthis.all=articles;',context);
 const all=context.all,episodes=all.filter(a=>a.series),archive=all.filter(a=>!a.series);
 const vocabulary=require('../vocabulary-data.js');
+const sceneGroups=require('../scene-data.js'),sceneArticles=require('../scene-articles.js');
 const wc=a=>(a.content.match(/\b[a-z]+\b/gi)||[]).length;
 const out=['# Shadow Reading · 枫树街的夏天','',
-'43 集完整双语连载 + 5200 词拓展练习。','',
+`${episodes.length} 集完整双语连载 + ${sceneArticles.size} 篇生活场景短文 + 5200 词拓展练习。`,'',
 '前情回顾 → 听读本集 → 理解与搭配 → 不看原文复述 → 换生活场景表达 → 隔天再回忆。','',
 `连载共 ${episodes.length} 集、${episodes.reduce((n,a)=>n+wc(a),0)} 个英文词次、${episodes.length*4} 组对齐段落、${episodes.length*4} 个搭配、${episodes.length*2} 道理解题。另保留 60 篇旧独立文章与原稿。`,'',
 '连载是原创虚构教学文本，难度为编辑提示。5200 词库另配用法例句，包含正文以外的拓展词；词次、唯一词条数与已掌握词汇量分开计算，不承诺读完自动获得 5200 主动词汇。','',
@@ -15,9 +16,25 @@ const out=['# Shadow Reading · 枫树街的夏天','',
 function body(a){const zh=a.translation.split('\n\n');a.content.split('\n\n').forEach((p,i)=>out.push(p,'',`> ${zh[i]||'（历史原稿缺少此段对应译文。）'}`,''));}
 for(const a of episodes){
  out.push(`## 第 ${a.series.episode} 集：${a.title}`,`### ${a.subtitle}`,'',`**第 ${a.series.season} 章 · ${a.series.seasonTitle}**`,'',`**前情**：${a.series.recap}`,'',`**学习目标**：${a.goal}`,'');body(a);
+ if(a.series.reviewGroup){
+  const again=episodes.filter(x=>x!==a&&x.series.reviewGroup===a.series.reviewGroup).map(x=>x.subtitle);
+  out.push(`**用同一组表达再读**：${again.join('、')}`,'');
+ }
  out.push('#### 本集搭配','','| 表达 | 中文 | 用法 |','| --- | --- | --- |',...a.phrases.map(p=>`| ${p.en}${p.quote!==p.en?`（原文：${p.quote}）`:''} | ${p.zh} | ${p.note} |`),'','#### 理解检查','');
  a.checks.forEach((q,i)=>out.push(`${i+1}. ${q.q}`,...q.options.map((o,j)=>`   - ${String.fromCharCode(65+j)}. ${o}`),''));
  out.push('**参考答案**：'+a.checks.map((q,i)=>`${i+1}. ${String.fromCharCode(65+q.answer)} — ${q.why}`).join('；'),'','#### 复述',a.retell,'','#### 换条件表达',a.transfer.prompt,'',`参考表达（不唯一）：${a.transfer.sample}`,'','---','');
+}
+out.push('## 生活场景短文','',`${sceneGroups.length} 类生活领域，${sceneArticles.size} 篇原创双语短文。`,'',
+'先读英语正文，需要时对照中文。读完后用自己的话复述，再把表达用在自己的情境。','');
+for(const group of sceneGroups){
+ out.push(`### ${group.title}`,'');
+ for(const scene of group.situations){
+  const story=sceneArticles.get(scene.title);
+  out.push(`#### ${scene.title} / ${story.title}`,'');
+  for(const {en,zh} of story.paragraphs)out.push(en,'',`> ${zh}`,'');
+  out.push(`**脱稿复述**　${story.retell}`,'');
+  out.push(`**换情境表达**　${scene.prompt}`,'',scene.sample,'');
+ }
 }
 out.push('## 5200 词拓展：从看懂到会用','',vocabulary.counting,'',
 '每次最多 10 个词，先做已到期复习，再学新词。每词先理解例句，隔天不看答案回忆词形，再换生活情境表达。当前连续回忆阶段至少三级，且首末独立回忆跨至少七天；另有至少两天、两个场景的独立表达自评，才记入“回忆 + 迁移自评达标”。看例句当天按辅助练习记录，辅助或失败回忆重置阶段。同日重复不连续升级。','',

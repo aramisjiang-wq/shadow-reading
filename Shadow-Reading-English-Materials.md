@@ -1,10 +1,10 @@
 # Shadow Reading · 枫树街的夏天
 
-43 集完整双语连载 + 5200 词拓展练习。
+55 集完整双语连载 + 120 篇生活场景短文 + 5200 词拓展练习。
 
 前情回顾 → 听读本集 → 理解与搭配 → 不看原文复述 → 换生活场景表达 → 隔天再回忆。
 
-连载共 43 集、6946 个英文词次、172 组对齐段落、172 个搭配、86 道理解题。另保留 60 篇旧独立文章与原稿。
+连载共 55 集、9163 个英文词次、220 组对齐段落、220 个搭配、110 道理解题。另保留 60 篇旧独立文章与原稿。
 
 连载是原创虚构教学文本，难度为编辑提示。5200 词库另配用法例句，包含正文以外的拓展词；词次、唯一词条数与已掌握词汇量分开计算，不承诺读完自动获得 5200 主动词汇。
 
@@ -55,6 +55,18 @@
 | 41 | 留下来的理由 | 第 41 集 · 明年的那个数字 / Next Year’s Number | 165 |
 | 42 | 留下来的理由 | 第 42 集 · 没有她盯着的一天 / A Day That Ran Without Her | 172 |
 | 43 | 留下来的理由 | 第 43 集 · 一个还能回来的地方 / A Place to Return To | 187 |
+| 44 | 上线之前 | 第 44 集 · 周一的三条反馈 / The Monday List | 182 |
+| 45 | 上线之前 | 第 45 集 · 午饭前的十分钟 / Ten Minutes Before Lunch | 181 |
+| 46 | 上线之前 | 第 46 集 · 下班前的最后一条消息 / The Last Message | 189 |
+| 47 | 上线之前 | 第 47 集 · 少了一盒 / The Missing Box | 186 |
+| 48 | 上线之前 | 第 48 集 · 还能再加一个吗 / Room for One More | 183 |
+| 49 | 上线之前 | 第 49 集 · 雨天跑还是不跑 / A Run in the Rain | 188 |
+| 50 | 工作之外 | 第 50 集 · 回家的车晚点了 / The Train Home | 189 |
+| 51 | 工作之外 | 第 51 集 · 两张小票 / Two Receipts | 181 |
+| 52 | 工作之外 | 第 52 集 · 周五上线前 / The Friday Release | 186 |
+| 53 | 工作之外 | 第 53 集 · 套餐能不能降一档 / The Price of the Smaller Plan | 182 |
+| 54 | 工作之外 | 第 54 集 · 一页汇报就够 / One Slide Is Enough | 182 |
+| 55 | 工作之外 | 第 55 集 · 先把时间留出来 / Book the Time First | 188 |
 
 ## 第 1 集：The Wrong Door
 ### 第 1 集 · 敲错的门
@@ -2549,6 +2561,2700 @@ Someone knocked upstairs. A woman stood outside number nine with two bags. Her k
 参考表达（不唯一）：I’ve learned to ask clearer questions, confirm arrangements and ask for help sooner. Thanks for practising with me. Shall we meet next Saturday and try a new situation?
 
 ---
+
+## 第 44 集：The Monday List
+### 第 44 集 · 周一的三条反馈
+
+**第 10 章 · 上线之前**
+
+**前情**：玛雅到了河对岸的新团队。37 岁的产品同事陈伟带她接手一个给小店用的预约工具。
+
+**学习目标**：追问反馈，给出明确回复时间。
+
+At nine on Monday, Wei opened his work chat. A shop owner had sent three messages before breakfast. They all said the same thing: “I can’t see the booking.” Maya joined him at his desk. “Is the booking gone,” she asked, “or can’t they find it?”
+
+> 周一九点，陈伟打开工作聊天。早餐前，一位店主已经连发三条消息，都是“我看不到预约”。玛雅走到他桌边：“预约消失了，还是他们找不到？”
+
+Wei asked for the booking number. He wanted to find out which screen the owner had been using. “I’ll check with support,” he wrote. “Can you send me a picture of what you see? Please cover the customer’s name first.”
+
+> 陈伟问预约单号。他想弄清店主当时在哪个页面。“我会跟客服确认，”他写道，“能发一张你看到的页面截图吗？请先遮住顾客名字。”
+
+While they waited, Maya asked Wei to write down the time, the shop and the exact problem. They left the cause blank. One shop could be having trouble, or the same thing might be happening elsewhere. They would check before they told the team.
+
+> 等待时，玛雅请陈伟记下时间、门店和具体问题。原因那一栏先空着。可能只有一家店遇到问题，也可能别处也有。他们决定先核实再通知团队。
+
+“I’ll get back to you by two,” Wei told the owner. Then he moved his lunch to twelve thirty and shut the chat window. He still had a short meeting to prepare for, and he knew the owner now had a clear time to expect a reply.
+
+> “我最迟两点回复你，”陈伟告诉店主。然后他把午饭改到十二点半，关掉聊天窗口。他还要准备一个短会，也知道店主现在有了明确的回复时间。
+
+**用同一组表达再读**：第 47 集 · 少了一盒、第 50 集 · 回家的车晚点了、第 53 集 · 套餐能不能降一档
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| check with | 跟某人确认 | check with + 人。check the time 是核对时间本身。 |
+| find out | 弄清楚 | find out what happened 表示通过询问或查看弄清情况。 |
+| write down | 记下来 | 接代词时说 write it down。 |
+| get back to | 稍后回复 | get back to someone by + 截止时间。 |
+
+#### 理解检查
+
+1. What does Wei ask the shop to send?
+   - A. The owner’s phone password.
+   - B. A list of staff names.
+   - C. The booking number.
+
+2. When will he reply?
+   - A. Before ten.
+   - B. By two.
+   - C. After the weekend.
+
+**参考答案**：1. C — 陈伟请门店提供预约单号。；2. B — 他承诺最迟两点答复。
+
+#### 复述
+不看原文，用 4–6 句讲清「周一的三条反馈」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+同事说后台找不到订单。问他订单号，并说你会在哪个时间前回复。
+
+参考表达（不唯一）：Could you send me the order number? I’ll check with support and get back to you by two.
+
+---
+
+## 第 45 集：Ten Minutes Before Lunch
+### 第 45 集 · 午饭前的十分钟
+
+**第 10 章 · 上线之前**
+
+**前情**：收到店主截图后，团队要决定今天先做什么。
+
+**学习目标**：在短会上确认负责人和下一步。
+
+Before lunch, Maya brought the screen shot to a small meeting. A blue line at the top of the screen hid old bookings. The shop owner had missed it. Two people wanted to change the whole screen, so Wei put his phone on the table.
+
+> 午饭前，玛雅带着截图开了个短会。页面顶部的蓝色选项会隐藏旧预约，店主没注意到。两个人想重做整个页面，陈伟把手机放在桌上。
+
+“Let’s set aside ten minutes to choose what we can do today,” he said. “If we start talking about every button, we’ll run out of time.” Maya asked whether a better line of text could help until they finished a bigger change.
+
+> “我们留十分钟，定下今天能做什么，”他说，“每个按钮都讨论的话，时间就不够了。”玛雅问，在完成较大的改动前，能不能先用一句更清楚的提示帮到店主。
+
+They had to work out who could change the wording and who could test it. Ren, the developer, agreed to update the text. Maya would ask a shop owner to try it on a phone. They used two lines in the chat to make sure everybody had the same plan.
+
+> 他们得弄清谁能改文案、谁来试。开发同事阿任负责改字，玛雅找一位店主在手机上试。他们在群里发了两行字，确认大家对安排理解一致。
+
+The meeting ended at twelve twenty-nine. Wei picked up his lunch bag. “If the new text helps, we can send it out on Friday,” he said. “If it doesn’t, we’ll ask the shop what they still can’t see.”
+
+> 会议十二点二十九分结束。陈伟拎起午饭袋说：“如果新提示有用，周五就可以发布。如果没用，就再问问门店还有哪儿看不明白。”
+
+**用同一组表达再读**：第 48 集 · 还能再加一个吗、第 51 集 · 两张小票、第 54 集 · 一页汇报就够
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| make sure | 确保；确认 | 后面可接完整句子，例如 make sure the door is locked。 |
+| work out | 想办法解决；算清 | work out a plan；work out how much it costs。 |
+| set aside | 留出 | set aside ten minutes 或 set aside some money。 |
+| run out of | 用完；不够用 | 后面接 time、milk 等被用完的东西。 |
+
+#### 理解检查
+
+1. What do they decide to change today?
+   - A. The opening hours of the shop.
+   - B. The wording above the list.
+   - C. The whole booking system.
+
+2. Who will try the revised page?
+   - A. A shop owner.
+   - B. The whole office.
+   - C. Someone at the gym.
+
+**参考答案**：1. B — 今天只先改列表上方的提示。；2. A — 找一位熟悉实际流程的店主试用。
+
+#### 复述
+不看原文，用 4–6 句讲清「午饭前的十分钟」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+午饭前只剩十分钟。请大家先定下一步和负责人，把细节留到下午。
+
+参考表达（不唯一）：Let’s set aside ten minutes to choose the next step. Can we make sure one person is in charge?
+
+---
+
+## 第 46 集：The Last Message
+### 第 46 集 · 下班前的最后一条消息
+
+**第 10 章 · 上线之前**
+
+**前情**：页面提示改好了，但手机上的最后一步还没有试过。
+
+**学习目标**：说明什么今天处理，什么留到明早。
+
+At six, Wei was putting on his running shoes at the office door. Ren sent a message: “The new text looks good on my phone. Should we turn it on tonight?” Wei looked at the message twice. He wanted to finish the job, but one shop owner had not tried it yet.
+
+> 六点，陈伟在办公室门口换跑鞋。阿任发来消息：“新提示在我手机上没问题。今晚开吗？”陈伟看了两遍。他也想把事做完，但那位店主还没试过。
+
+“Let’s hold off on the change until tomorrow,” he wrote. “I’ll follow up with the shop in the morning.” He added a short note in case someone else opened the task first. It said which phone to use and what to look for before turning it on.
+
+> “先缓一晚，明天再开，”他写道，“我早上跟门店跟进。”他又加了条短备注，以防别人先打开任务，写明用哪台手机、打开改动前看什么。
+
+Maya was still at her desk. “Go take a break,” she said. “The note is clear.” Wei left his work phone in his bag. Outside, the pavement was still wet. He decided to take the longer route by the river because there were fewer cars.
+
+> 玛雅还在桌边：“去休息一下吧。备注写清楚了。”陈伟把工作手机留在包里。外面人行道还湿着，他选了稍远的河边路，因为车少。
+
+He ran slowly for twenty minutes, stopped for water and walked home. When he got to his front door, he remembered the shop, but he did not have to take out his phone. He already knew what he would check in the morning.
+
+> 他慢跑二十分钟，停下来喝水，再走回家。到了门口，他想起那家店，但不用掏出手机。他已经清楚早上该看什么。
+
+**用同一组表达再读**：第 49 集 · 雨天跑还是不跑、第 52 集 · 周五上线前、第 55 集 · 先把时间留出来
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| follow up | 跟进 | follow up with + 人；follow up on + 事情。 |
+| take a break | 休息一下 | a short break / take a break from work。 |
+| hold off | 暂缓 | hold off on + 名词或动名词。 |
+| in case | 以防 | 后面接可能发生的情况，例如 in case it rains。 |
+
+#### 理解检查
+
+1. Why does Wei leave a note in the chat?
+   - A. So the team knows what to test tomorrow.
+   - B. So he can ask someone to work overnight.
+   - C. So he can cancel the change.
+
+2. What does he do after leaving work?
+   - A. He buys a new phone.
+   - B. He checks every store’s booking.
+   - C. He goes for a run.
+
+**参考答案**：1. A — 备注写清第二天要做的测试。；2. C — 他去跑步了。
+
+#### 复述
+不看原文，用 4–6 句讲清「下班前的最后一条消息」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+下班前收到一个不紧急的请求。先说你已收到，再约明天上午跟进。
+
+参考表达（不唯一）：I saw your message. Can we hold off on the change for tonight? I’ll follow up tomorrow morning.
+
+---
+
+## 第 47 集：The Missing Box
+### 第 47 集 · 少了一盒
+
+**第 10 章 · 上线之前**
+
+**前情**：跑完步回到家，陈伟发现晚饭食材送少了一件。
+
+**学习目标**：用订单信息说清少送的商品。
+
+Wei put his keys down and opened the grocery bag. It had rice, spinach and a bag of oranges. There was no box of eggs. Before he called the shop, he opened the order on his phone to find out whether he had actually paid for the eggs.
+
+> 陈伟放下钥匙，打开购物袋。米、菠菜和一袋橙子都在，唯独没有那盒鸡蛋。打电话前，他先打开订单，弄清自己有没有付鸡蛋的钱。
+
+The eggs were on the list. He called the shop and asked the woman on the phone to check with the person who packed the order. She asked him to write down the order number so she could find it again if the call dropped.
+
+> 订单上有鸡蛋。他打给店里，请接电话的人跟打包员确认。她请他记下订单号，以防电话断了，下次能再查到。
+
+“I need a few minutes,” she said. “I’ll get back to you before seven.” Wei thanked her, washed the spinach and put some water on. When she called back, she offered to send the eggs the next morning or give him a refund today.
+
+> “我需要几分钟，”她说，“七点前给你回电话。”陈伟道谢，洗菠菜、烧水。她回电说，可以明早补送，也可以今天退款。
+
+Wei chose the refund. He had noodles in the cupboard and could make dinner without the eggs. “That works for me,” he said. He found himself using almost the same words he had used at work that morning, just this time from the other side of the call.
+
+> 陈伟选了退款。柜子里有面条，没有鸡蛋也能做饭。“这样可以，”他说。他发现用上的几乎还是早上在公司那几句话，只不过这次他是电话另一头的顾客。
+
+**用同一组表达再读**：第 44 集 · 周一的三条反馈、第 50 集 · 回家的车晚点了、第 53 集 · 套餐能不能降一档
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| check with | 跟某人确认 | check with + 人。check the time 是核对时间本身。 |
+| find out | 弄清楚 | find out what happened 表示通过询问或查看弄清情况。 |
+| write down | 记下来 | 接代词时说 write it down。 |
+| get back to | 稍后回复 | get back to someone by + 截止时间。 |
+
+#### 理解检查
+
+1. What is missing?
+   - A. A bag of rice.
+   - B. A bottle of water.
+   - C. A box of eggs.
+
+2. Why does Wei choose a refund?
+   - A. He ordered a meal instead.
+   - B. He has another dinner he can make now.
+   - C. The shop refuses to deliver to his street.
+
+**参考答案**：1. C — 袋子里少了一盒鸡蛋。；2. B — 他可以用家里现有的食材做另一顿饭。
+
+#### 复述
+不看原文，用 4–6 句讲清「少了一盒」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+外卖只到了两份中的一份。说明少了哪件，并问能否补送。
+
+参考表达（不唯一）：One item is missing from my order. Could you check with the kitchen and get back to me?
+
+---
+
+## 第 48 集：Room for One More
+### 第 48 集 · 还能再加一个吗
+
+**第 10 章 · 上线之前**
+
+**前情**：到了周五，页面提示可以上线了，团队却收到一个临时加功能的请求。
+
+**学习目标**：协商上线前临时增加的需求。
+
+On Friday, the shop owner tried the new wording. She found an old booking in less than a minute. Everyone was ready to send out the change when Nina, their manager, asked if they could also add a button to send a reminder to customers.
+
+> 周五，店主试了新提示，不到一分钟就找到了旧预约。大家准备发布时，经理妮娜问能不能再加一个给顾客发提醒的按钮。
+
+Wei liked the idea, but it was already midafternoon. “We need to make sure the text still fits on a small phone,” he said. “If we add a button today, we may run out of time to test the part we promised.” Ren put down his coffee and nodded.
+
+> 陈伟觉得主意不错，但已是下午中段。“我们还得确认文字在小手机上放得下，”他说，“今天再加按钮，承诺过的那部分可能就来不及测了。”阿任放下咖啡，点了点头。
+
+The team would set aside twenty minutes on Monday to talk about reminders. Nina asked Maya to bring an example from one shop. Then the group could work out when a reminder would help and who should be able to send it.
+
+> 团队决定周一留二十分钟讨论提醒。妮娜请玛雅带一个门店的具体例子。到时大家可以商量什么情况下提醒有用，以及谁该有权发。
+
+At four, Maya tried the text on her smallest phone. It was easy to read. Ren turned on the change for two stores first. Wei sent Nina one line: “The text is ready. The reminder is on Monday’s list.” Nobody had to guess what had changed.
+
+> 四点，玛雅用自己最小的手机测了一遍，文字一眼能看清。阿任先给两家店打开改动。陈伟给妮娜发了一行：“提示已就绪，提醒按钮在周一的清单上。”大家不用猜这次改了什么。
+
+**用同一组表达再读**：第 45 集 · 午饭前的十分钟、第 51 集 · 两张小票、第 54 集 · 一页汇报就够
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| make sure | 确保；确认 | 后面可接完整句子，例如 make sure the door is locked。 |
+| work out | 想办法解决；算清 | work out a plan；work out how much it costs。 |
+| set aside | 留出 | set aside ten minutes 或 set aside some money。 |
+| run out of | 用完；不够用 | 后面接 time、milk 等被用完的东西。 |
+
+#### 理解检查
+
+1. What extra thing does Nina ask for?
+   - A. A way to take payments.
+   - B. A button to send a reminder.
+   - C. A second login screen.
+
+2. What will the team do with it?
+   - A. Discuss it on Monday.
+   - B. Add it that afternoon.
+   - C. Ask every shop to stop taking bookings.
+
+**参考答案**：1. B — 她想加一个发提醒的按钮。；2. A — 先记下来，周一讨论。
+
+#### 复述
+不看原文，用 4–6 句讲清「还能再加一个吗」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+产品快发布了，同事想再加一项。说明剩余时间，提出先记下来、下周讨论。
+
+参考表达（不唯一）：Let’s make sure the current change works first. Can we set aside time on Monday to discuss the extra request?
+
+---
+
+## 第 49 集：A Run in the Rain
+### 第 49 集 · 雨天跑还是不跑
+
+**第 10 章 · 上线之前**
+
+**前情**：小范围发布后，陈伟和玛雅约了周末去河边跑步。
+
+**学习目标**：给周末安排准备一个备选计划。
+
+Wei and Maya planned to run by the river on Saturday. At seven, the sky was grey. The weather app showed rain later, but it had been wrong the day before. “Let’s hold off until eight,” Maya wrote. “If it’s really wet, we can go to the gym.”
+
+> 陈伟和玛雅原计划周六去河边跑。七点天是灰的，天气软件说晚点下雨，但前一天它就报错过。玛雅写道：“八点再定。如果下大了，就去健身房。”
+
+Wei left his running shoes by the door. He also put a light jacket in his bag in case they did go outside. He made coffee and ate a piece of bread. At eight it was raining harder than before, so they picked the gym near the station.
+
+> 陈伟把跑鞋放门边，也在包里塞了件薄外套，以防还是要出门跑。他煮了咖啡，吃了片面包。八点雨比之前大，他们选了车站附近的健身房。
+
+The place took Wei a while to find. The entrance was behind the bike shop, and there was no sign on the main street. “I’ll follow up with a photo of the door,” he told Maya. “You can use the photo when you get here.”
+
+> 陈伟找了一会儿。入口在自行车店后面，大路上没标牌。他对玛雅说：“我补发一张门口照片，你到的时候照着找。”
+
+They started on two machines side by side. Halfway through, Wei slowed down to take a break. Neither of them tried to make up for the lost outdoor run. They finished early, walked to the station and bought hot drinks on the way home.
+
+> 他们用相邻两台跑步机开始跑。到一半，陈伟降速休息。两个人都没拼命补回少跑的户外距离。他们早早结束，走去车站，回家路上买了杯热饮。
+
+**用同一组表达再读**：第 46 集 · 下班前的最后一条消息、第 52 集 · 周五上线前、第 55 集 · 先把时间留出来
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| follow up | 跟进 | follow up with + 人；follow up on + 事情。 |
+| take a break | 休息一下 | a short break / take a break from work。 |
+| hold off | 暂缓 | hold off on + 名词或动名词。 |
+| in case | 以防 | 后面接可能发生的情况，例如 in case it rains。 |
+
+#### 理解检查
+
+1. Where do they go when it rains harder?
+   - A. The gym near the station.
+   - B. The café by the river.
+   - C. A shop across town.
+
+2. Why does Wei send a photo?
+   - A. To show what he had for breakfast.
+   - B. To show how fast he ran.
+   - C. To show where the gym entrance is.
+
+**参考答案**：1. A — 雨大起来后，他们改去车站附近的健身房。；2. C — 照片是为了让玛雅找到入口。
+
+#### 复述
+不看原文，用 4–6 句讲清「雨天跑还是不跑」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+跟朋友约在户外见面。说明如果下雨，改去哪里，几点确认。
+
+参考表达（不唯一）：Let’s hold off on making a final plan until eight. I’ll bring a jacket in case it rains.
+
+---
+
+## 第 50 集：The Train Home
+### 第 50 集 · 回家的车晚点了
+
+**第 11 章 · 工作之外**
+
+**前情**：周六白天跑完步，陈伟又去看了位朋友。晚上回家时，车晚点了。
+
+**学习目标**：核实延误，告诉家人预计到达时间。
+
+That evening, the screen at the station still showed the seven forty train. It was already seven fifty. Some people walked outside to look for a bus. Wei stayed near the door to find out if the train had left the last station. His sister was waiting for him at home.
+
+> 晚上，车站大屏还显示七点四十那班车，但已七点五十。有人走出去找公交。陈伟留在门边，想弄清列车有没有离开上一站。他姐姐还在家里等他。
+
+“I’ll check with the staff,” he texted her. “I’ll get back to you once I have a better idea.” At the desk, he learned the train would be there in about twelve minutes. The next bus was at eight twenty, so he decided to wait.
+
+> 他给姐姐发消息：“我去跟工作人员确认，有较准确的时间再回你。”服务台说车约十二分钟到，下一班公交要八点二十，所以他决定等。
+
+Wei used the time to write down the station name and arrival time. Then he sent a clear message: “I should be home by eight thirty. Start dinner without me.” His sister sent back a picture of a bowl of soup with his name beside it.
+
+> 陈伟趁这段时间记下站名和预计到站时间，然后发了条清楚的消息：“我应该八点半前到家，你们先吃。”姐姐回了一张照片，一碗汤旁边写着他的名字。
+
+The train came when the staff had said it would. When Wei got home, his soup was warm, and the kitchen light was still on. He told his sister which door at the station had a desk. She used the same train on Sundays sometimes.
+
+> 列车在工作人员说的时间到了。陈伟到家时，汤还温着，厨房灯也亮着。他告诉姐姐车站哪扇门进去有服务台。她有时周日也坐这趟车。
+
+**用同一组表达再读**：第 44 集 · 周一的三条反馈、第 47 集 · 少了一盒、第 53 集 · 套餐能不能降一档
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| check with | 跟某人确认 | check with + 人。check the time 是核对时间本身。 |
+| find out | 弄清楚 | find out what happened 表示通过询问或查看弄清情况。 |
+| write down | 记下来 | 接代词时说 write it down。 |
+| get back to | 稍后回复 | get back to someone by + 截止时间。 |
+
+#### 理解检查
+
+1. Why does Wei stay at the station?
+   - A. He cannot find his bus ticket.
+   - B. His sister is on the train.
+   - C. The train should arrive before the next bus.
+
+2. What does he tell his sister?
+   - A. To bring him a jacket.
+   - B. To start dinner without him.
+   - C. To meet him at another station.
+
+**参考答案**：1. C — 火车预计比下一班公交早到。；2. B — 他让姐姐先吃，不用等。
+
+#### 复述
+不看原文，用 4–6 句讲清「回家的车晚点了」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+下班路上地铁晚点。告诉家人你正在确认换乘路线，晚些回复到家时间。
+
+参考表达（不唯一）：My train is late. I’ll check with the staff and get back to you once I know when I’ll be home.
+
+---
+
+## 第 51 集：Two Receipts
+### 第 51 集 · 两张小票
+
+**第 11 章 · 工作之外**
+
+**前情**：隔周出差结束，酒店给了陈伟两张金额不同的小票。
+
+**学习目标**：核对账单，解释多收的一笔钱。
+
+On Tuesday, Wei checked out of a hotel after a short work trip. He had two receipts in his hand. One had the room and breakfast on it, and the other had just breakfast. He wanted to make sure he was not going to pay twice.
+
+> 周二，短途出差结束后，陈伟办酒店退房，手里有两张小票。一张写着房费和早餐，另一张只有早餐。他想确认自己没有付两次。
+
+He did not want to run out of time before his train, so he asked the front desk to set aside a few minutes to go through both receipts. The worker looked at the screen, then asked Wei what he had been told when he arrived.
+
+> 怕赶不上火车，他请前台留几分钟，两张小票一起核对。工作人员看了电脑，又问入住时别人怎么跟他说的。
+
+Together they tried to work out what had happened. Breakfast was already in the room price, but another worker had put it on a second receipt. Wei pointed to the two amounts and asked if he could have a new receipt with the right total.
+
+> 他们一起理清了情况。早餐本来已含在房费里，但另一位员工又把它加在第二张小票上。陈伟指着两笔金额，问能不能开一张总额正确的新小票。
+
+The worker printed it and gave back the extra money. Wei put the new receipt in his bag and walked to the station. There were still twenty minutes before his train. He bought a piece of fruit instead of running straight to the gate.
+
+> 工作人员打印好，把多收的钱退了。陈伟把新小票装进包里，走去车站。离发车还有二十分钟，他买了个水果，没有一路跑去检票口。
+
+**用同一组表达再读**：第 45 集 · 午饭前的十分钟、第 48 集 · 还能再加一个吗、第 54 集 · 一页汇报就够
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| make sure | 确保；确认 | 后面可接完整句子，例如 make sure the door is locked。 |
+| work out | 想办法解决；算清 | work out a plan；work out how much it costs。 |
+| set aside | 留出 | set aside ten minutes 或 set aside some money。 |
+| run out of | 用完；不够用 | 后面接 time、milk 等被用完的东西。 |
+
+#### 理解检查
+
+1. Why are there two breakfast charges?
+   - A. A colleague paid for him.
+   - B. Breakfast was added at the desk after it was already included.
+   - C. Wei ate twice.
+
+2. What does Wei receive?
+   - A. A corrected receipt.
+   - B. A free night.
+   - C. A new room key.
+
+**参考答案**：1. B — 房费已含早餐，前台又加收一笔。；2. A — 工作人员给了他更正后的小票。
+
+#### 复述
+不看原文，用 4–6 句讲清「两张小票」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+点的早餐被重复收费。把两张小票给前台，请对方帮你核算。
+
+参考表达（不唯一）：I think I paid for breakfast twice. Could you help me work out the total on these receipts?
+
+---
+
+## 第 52 集：The Friday Release
+### 第 52 集 · 周五上线前
+
+**第 11 章 · 工作之外**
+
+**前情**：上线过了几天，第二家店的平板上出现了陈伟没见过的页面。
+
+**学习目标**：遇到不确定的问题，先暂停扩大上线。
+
+On Friday morning, a second shop owner sent a photo. The new text was missing on her tablet. The same page looked fine on Wei’s phone. Ren was getting ready to send the change to ten more shops, so Wei asked him to hold off for a moment.
+
+> 周五早上，第二位店主发来照片，她的平板上没看到新提示。陈伟用手机看是正常的。阿任正准备再开放十家店，陈伟请他先缓一缓。
+
+“I’ll follow up with the owner before eleven,” Wei said. He asked her to show him how she reached the page. He also took an old tablet off the shelf in case the problem only happened on a device like hers.
+
+> “十一点前我跟店主确认，”陈伟说。他请她演示怎么进到页面，也从架子上拿了台旧平板，以防问题只出在类似的设备上。
+
+It turned out the owner had saved a link months ago. The old link still opened an older page. When she opened the page from the home screen, she saw the new text. Ren added a line to the old page that pointed her to the current one.
+
+> 原来店主几个月前收藏过一个链接，旧链接还能打开旧页面。从首页进，她就能看到新提示。阿任在旧页面加了一行引导，让她去现在的页面。
+
+“Now we can take a break,” Maya said. The team went for lunch after Wei left a note about the old link. They agreed to wait for the owner to check again before changing anything for the ten new shops. No one needed to rush through lunch.
+
+> “现在可以歇一会儿了，”玛雅说。陈伟留了条关于旧链接的记录，团队去吃饭。他们约好先等店主再确认一次，才动新一批十家店。没人得匆匆扒完午饭。
+
+**用同一组表达再读**：第 46 集 · 下班前的最后一条消息、第 49 集 · 雨天跑还是不跑、第 55 集 · 先把时间留出来
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| follow up | 跟进 | follow up with + 人；follow up on + 事情。 |
+| take a break | 休息一下 | a short break / take a break from work。 |
+| hold off | 暂缓 | hold off on + 名词或动名词。 |
+| in case | 以防 | 后面接可能发生的情况，例如 in case it rains。 |
+
+#### 理解检查
+
+1. What did the owner use to open the page?
+   - A. An old saved link.
+   - B. The new home screen.
+   - C. A customer’s phone.
+
+2. What does Ren add?
+   - A. A new payment form.
+   - B. A warning on every booking.
+   - C. A line pointing owners to the current page.
+
+**参考答案**：1. A — 店主从以前收藏的旧链接进入。；2. C — 他在旧页面加指引，带去新版。
+
+#### 复述
+不看原文，用 4–6 句讲清「周五上线前」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+同事催扩大上线，但平板上有问题。请暂缓，并给出你会复查的时间。
+
+参考表达（不唯一）：Let’s hold off on turning it on for more shops. I’ll follow up by eleven after checking the tablet.
+
+---
+
+## 第 53 集：The Price of the Smaller Plan
+### 第 53 集 · 套餐能不能降一档
+
+**第 11 章 · 工作之外**
+
+**前情**：周末整理账单时，陈伟发现手机套餐用了很久，却很少用完流量。
+
+**学习目标**：打客服确认套餐与生效日期。
+
+On Sunday, Wei looked at his phone bill while he waited for his laundry. The same amount had come out of his account every month. He rarely used all the data. He called the phone company to find out if a smaller plan would be enough.
+
+> 周日，陈伟等洗衣机转完时看了眼手机账单。每月都扣同样的钱，他却很少用完流量。他给运营商打电话，想弄清小一点的套餐是否够用。
+
+The woman on the phone offered a lower price, but Wei wanted to know when it would start. She said she would check with the billing team. “Can you get back to me this morning?” he asked. He was free until eleven, but had lunch with a friend after that.
+
+> 电话那头给了个更低的价格，但陈伟想知道何时开始。她说会跟账单组确认。“能上午回我吗？”他问。他十一点前有空，之后要跟朋友吃饭。
+
+She called back just before ten. The price would change at the start of the next billing month. This month stayed the same. Wei asked her to send a message and took a moment to write down the new price and the start date.
+
+> 她十点前回了电话。新价格从下个账期开始，这个月照旧。陈伟请她发条消息确认，自己也花了一点时间记下新价格和生效日期。
+
+When the washing machine stopped, he was folding towels before he even looked at the message. The two details matched his notes, so he put the phone down. Next month he would be able to tell whether the new amount was right.
+
+> 洗衣机停下时，他先叠好毛巾才看消息。两项细节和记录一致，他放下了手机。下个月扣费时，他一眼就能看出金额对不对。
+
+**用同一组表达再读**：第 44 集 · 周一的三条反馈、第 47 集 · 少了一盒、第 50 集 · 回家的车晚点了
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| check with | 跟某人确认 | check with + 人。check the time 是核对时间本身。 |
+| find out | 弄清楚 | find out what happened 表示通过询问或查看弄清情况。 |
+| write down | 记下来 | 接代词时说 write it down。 |
+| get back to | 稍后回复 | get back to someone by + 截止时间。 |
+
+#### 理解检查
+
+1. When does the smaller plan start?
+   - A. That afternoon.
+   - B. After six months.
+   - C. At the start of the next billing month.
+
+2. What does Wei write down?
+   - A. All the numbers he called.
+   - B. The new price and the start date.
+   - C. The worker’s home address.
+
+**参考答案**：1. C — 下个账期才生效。；2. B — 他记下新价格和生效日期。
+
+#### 复述
+不看原文，用 4–6 句讲清「套餐能不能降一档」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+你想换小一档套餐。问是否有费用、什么时候生效，并请对方确认。
+
+参考表达（不唯一）：Could you check with your team about any fees? I’d like to find out when the new plan would start.
+
+---
+
+## 第 54 集：One Slide Is Enough
+### 第 54 集 · 一页汇报就够
+
+**第 11 章 · 工作之外**
+
+**前情**：预约提示已在多家门店试过，经理要听一段简短的进展汇报。
+
+**学习目标**：简短汇报做了什么、结果和下一步。
+
+On Monday, Nina asked Wei for an update at the team meeting. He opened a blank slide. He could say what they changed, what happened in the first two shops and what they would look at next. He left out the long chat thread.
+
+> 周一开组会，妮娜请陈伟讲讲进展。陈伟打开一页空白幻灯片。他能说清改了什么、最先试用的两家店结果如何，以及接下来要看什么。那串很长的聊天记录就不用放进去。
+
+Maya helped him work out which numbers were worth showing. Two owners had found their old bookings in under a minute. They still did not know how things would go in the other shops. Wei wanted to make sure he said that out loud, too.
+
+> 玛雅跟他一起想哪些数字值得讲。两位店主都在一分钟内找到了旧预约，其他门店还不知道会怎样。陈伟也特地要把这一点说出来。
+
+Nina had five minutes before her next call. “We’ll run out of time if I open all the pictures,” Wei said. He showed the one slide, then asked the team to set aside half an hour on Thursday to read more feedback together.
+
+> 妮娜离下个电话会还有五分钟。“要是把所有截图都打开，时间肯定不够，”陈伟说。他展示了一页，又请大家周四留半小时，一起看更多反馈。
+
+When the meeting ended, Maya asked him to send the slide to her. “I can use that to tell support what we did,” she said. Wei sent it with a short note and went downstairs for lunch. This time he still had time to eat before his next call.
+
+> 散会后，玛雅请他把那页发过来：“我能用它跟客服讲清楚我们做了什么。”陈伟发过去，附了一句短说明，然后下楼吃午饭。这次他在下一个电话会前还有时间吃。
+
+**用同一组表达再读**：第 45 集 · 午饭前的十分钟、第 48 集 · 还能再加一个吗、第 51 集 · 两张小票
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| make sure | 确保；确认 | 后面可接完整句子，例如 make sure the door is locked。 |
+| work out | 想办法解决；算清 | work out a plan；work out how much it costs。 |
+| set aside | 留出 | set aside ten minutes 或 set aside some money。 |
+| run out of | 用完；不够用 | 后面接 time、milk 等被用完的东西。 |
+
+#### 理解检查
+
+1. What does Wei put on the slide?
+   - A. Only the release date.
+   - B. The change, the result and the next step.
+   - C. Every message from every shop.
+
+2. What does the team want to learn next?
+   - A. Whether the same change helps other shops.
+   - B. Whether the screen has a new color.
+   - C. How many slides the manager likes.
+
+**参考答案**：1. B — 一页上写改动、结果和下一步。；2. A — 他们要看对其余门店有没有帮助。
+
+#### 复述
+不看原文，用 4–6 句讲清「一页汇报就够」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+只用三句话向同事说清本周改动、实际结果和下周计划。
+
+参考表达（不唯一）：We changed the wording last week. Two shops found their old bookings. Let’s set aside time to watch what happens next.
+
+---
+
+## 第 55 集：Book the Time First
+### 第 55 集 · 先把时间留出来
+
+**第 11 章 · 工作之外**
+
+**前情**：工作告一段落，陈伟打算给自己的一周留点余地。
+
+**学习目标**：在忙碌里给自己的计划留时间。
+
+On Sunday, Wei opened his calendar over breakfast. He added two short runs and left Wednesday evening free. It was easier to take a break when the time was already there. He also put his running jacket by the door in case the weather changed.
+
+> 周日吃早饭时，陈伟打开日历，加上两次短跑，把周三晚上空出来。时间先留着，休息才容易实现。他也把跑步外套放门边，以防变天。
+
+A colleague asked in the afternoon if they could talk through a new idea that night. Wei read the message and thought about his plan. “Can we hold off until Tuesday morning?” he replied. “I’ll follow up tomorrow with two times that work.”
+
+> 下午，有位同事问能不能晚上聊聊一个新点子。陈伟看完消息，想了想自己的安排，回道：“能推到周二早上吗？我明天发两个合适的时间给你。”
+
+The colleague said Tuesday was fine. Wei put a note on Monday’s list and closed the app. Then he went to the market to buy fish and something green for dinner. He took the long way home and stopped to look at a bike in a shop window.
+
+> 同事说周二没问题。陈伟把事情记在周一的清单上，关掉软件。然后他去市场买鱼和青菜做晚饭，回家特地绕了点路，还停下来看了眼橱窗里的自行车。
+
+Later that evening, he sent his sister a photo of the dinner he had made. She asked whether he was free for a walk on Wednesday. “Yes,” he wrote. He had not waited for work to get quiet. He had left a space for the things he wanted to do.
+
+> 那天晚些时候，他把自己做的晚饭拍给姐姐。姐姐问周三有空散步吗。“有，”他回道。他没等工作清闲才安排生活，而是先给想做的事留了位置。
+
+**用同一组表达再读**：第 46 集 · 下班前的最后一条消息、第 49 集 · 雨天跑还是不跑、第 52 集 · 周五上线前
+
+#### 本集搭配
+
+| 表达 | 中文 | 用法 |
+| --- | --- | --- |
+| follow up | 跟进 | follow up with + 人；follow up on + 事情。 |
+| take a break | 休息一下 | a short break / take a break from work。 |
+| hold off | 暂缓 | hold off on + 名词或动名词。 |
+| in case | 以防 | 后面接可能发生的情况，例如 in case it rains。 |
+
+#### 理解检查
+
+1. What does Wei put in his calendar?
+   - A. Two short runs and a free evening.
+   - B. A call every night.
+   - C. A long run every morning.
+
+2. When will he discuss the extra work request?
+   - A. Late Sunday night.
+   - B. During his Wednesday run.
+   - C. On Tuesday morning.
+
+**参考答案**：1. A — 他安排两次短跑和一个空着的晚上。；2. C — 他们约在周二早上聊，陈伟答应周一发时间。
+
+#### 复述
+不看原文，用 4–6 句讲清「先把时间留出来」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。
+
+#### 换条件表达
+告诉朋友你想把一晚留给自己，另约一个能见面的时间。
+
+参考表达（不唯一）：Can we hold off on dinner until Friday? I want to take a break on Wednesday, but I’m free after work on Friday.
+
+---
+
+## 生活场景短文
+
+24 类生活领域，120 篇原创双语短文。
+
+先读英语正文，需要时对照中文。读完后用自己的话复述，再把表达用在自己的情境。
+
+### 居家与家务
+
+#### 早晨出门 / The Keys by the Door
+
+At seven fifty, Ben found his keys beside the empty milk carton. He was about to leave when he remembered that his roommate had lost her spare set. She usually pulled the door shut without locking it.
+
+> 七点五十，本在空牛奶盒旁找到了钥匙。出门前，他想起室友弄丢了备用钥匙。她平时只是把门带上，并不反锁。
+
+“I’m leaving at eight. Could you lock up when you go?” he asked. She borrowed his keys and promised to drop them at his office on her way home. He took the milk carton out with him.
+
+> “我八点走。你走的时候能把门锁好吗？”他问。室友借走他的钥匙，答应回家路上送到他办公室。本出门时顺手带走了牛奶盒。
+
+**脱稿复述**　室友为什么需要借钥匙？约好什么时候、在哪里归还？
+
+**换情境表达**　告诉室友你几点出门，提醒他离开时锁门。
+
+I’m leaving at eight. Could you lock the door when you leave?
+
+#### 分配家务 / Whose Turn Is It?
+
+By Sunday evening, the sink was full and the kitchen bin would barely close. Kim had washed up on Saturday, but her brother had cooked both meals. Neither wanted to spend what was left of the weekend cleaning alone.
+
+> 周日晚上，水槽堆满了碗，厨房垃圾桶盖都快合不上了。金周六洗过碗，她弟弟则做了两顿饭。谁也不想把剩下的周末时间都花在独自打扫上。
+
+“I’ll do the dishes if you take out the trash,” she said. He agreed and asked her to leave the broom out. While she washed the last pan, he swept under the table.
+
+> “我来洗碗，你倒垃圾，行吗？”她说。弟弟同意了，还请她把扫帚留在外面。她洗最后一口锅时，他把桌子底下扫了。
+
+**脱稿复述**　周六谁做了什么？周日两人怎么分工？
+
+**换情境表达**　你负责洗碗，问对方今天能不能倒垃圾。
+
+I’ll do the dishes. Could you take out the trash today?
+
+#### 借用工具 / One Loose Handle
+
+The handle on Mina’s front door was about to fall off. A coin would not turn the screw, and she had people coming over at six. She knocked on the door across the hall.
+
+> 米娜家大门的把手快掉了。硬币拧不动螺丝，而她六点有客人要来。她敲了敲走廊对面的门。
+
+“Could I borrow a screwdriver? I can bring it back tonight.” Her neighbor handed her two because he wasn’t sure which one would fit. Mina tightened the handle and returned both before her guests arrived.
+
+> “能借我一把螺丝刀吗？我今晚就还。”邻居给了她两把，因为他不确定哪把合用。米娜拧紧了把手，赶在客人到来前把两把都还了。
+
+**脱稿复述**　为什么只用硬币不行？邻居为什么借了两把螺丝刀？
+
+**换情境表达**　向邻居借螺丝刀，承诺今晚归还。
+
+Could I borrow your screwdriver? I’ll bring it back this evening.
+
+#### 家里来客人 / The Side Entrance
+
+Lena was chopping onions when her guest sent a photo of a locked gate. He had followed the map to the front of the building. After six, visitors could only get in from the side street.
+
+> 莉娜正在切洋葱，客人发来一张锁着的大门的照片。他跟着地图走到了楼的正面。六点以后，访客只能从侧街进来。
+
+She sent him a voice message: “Walk past the bike rack, then buzz apartment six. I’ll let you in.” A minute later the bell rang. It was him, holding a cake with both hands.
+
+> 她给他发了条语音：“走过自行车架，再按六号房的门铃，我给你开门。”一分钟后，门铃响了。是他，双手捧着一个蛋糕。
+
+**脱稿复述**　客人为什么被挡在门外？莉娜给了哪两条进门指示？
+
+**换情境表达**　告诉客人怎么进楼，到了按哪个门铃。
+
+Use the side entrance and buzz apartment six. I’ll let you in.
+
+#### 洗衣前核对洗标 / The Sweater in the Laundry Basket
+
+A gray sweater was already in the washing machine when Kim noticed the label had faded. Her sister was the last person to wash it. Kim turned off the machine before it started and called her into the kitchen.
+
+> 金把灰毛衣放进洗衣机后，才注意到洗标已经褪色。上一次是姐姐洗的。机器还没启动，她先关掉电源，把姐姐叫到厨房。
+
+“Do you remember how you washed this?” she asked. Her sister remembered taking it to the cleaners and found the ticket in an old coat pocket. Kim took the sweater out and washed the rest of the load.
+
+> “你还记得这件是怎么洗的吗？”她问。姐姐想起来是送去洗衣店的，还在旧外套口袋里找到了取衣单。金拿出毛衣，把剩下的衣服洗了。
+
+**脱稿复述**　金原本打算怎么洗？姐姐用什么确认了上次的洗法？
+
+**换情境表达**　毛衣不确定能否机洗，问室友上次用的洗法。
+
+Do you remember how you washed this sweater last time? The label is hard to read.
+
+### 租房与社区
+
+#### 看房问租金 / What the Rent Includes
+
+The first apartment was cheaper than anything Ana had seen that week. Then she noticed the electric heaters under both windows. The listing mentioned the monthly rent, but it said nothing about bills or the deposit.
+
+> 第一套公寓比安娜这周看过的其他房子都便宜。接着，她注意到两扇窗下都有电暖器。广告写了月租，却没提账单和押金。
+
+“Are utilities included? And how much would I pay before moving in?” she asked. The agent wrote down the deposit and showed her a recent winter bill. Ana put both figures in her notes before heading to the next viewing.
+
+> “水电费包含在内吗？入住前一共要付多少？”她问。中介写下押金金额，又给她看了最近一张冬季账单。安娜记下两个数字，才去看下一套。
+
+**脱稿复述**　为什么月租便宜还不够判断？安娜从中介那里拿到了哪两个数字？
+
+**换情境表达**　问月租和押金，并确认水电费是否包含在内。
+
+What’s the monthly rent, and how much is the deposit? Are utilities included?
+
+#### 搬家交接 / The Last Set of Keys
+
+The moving van was due at noon, but the landlord’s message only said, “See you Friday.” Jin didn’t want the driver to wait outside while he tried to find the keys. He called the landlord that evening.
+
+> 搬家车中午到，房东的信息却只写了“周五见”。金不想让司机在楼下等他到处找钥匙，于是当晚给房东打了电话。
+
+They agreed to meet at the new apartment at eleven thirty. At the door, Jin checked that both keys worked and took a photo of the meter with the landlord. By noon, the hallway was clear and the van was pulling up.
+
+> 他们约好十一点半在新公寓碰头。金在门口试了两把钥匙，又和房东一起拍下了电表读数。中午时，走廊已经腾空，搬家车也正好开到。
+
+**脱稿复述**　搬家车几点到？金和房东交钥匙时核对了哪些东西？
+
+**换情境表达**　约交钥匙，确认在哪里见面。
+
+Could we meet at the apartment at five so I can pick up the keys?
+
+#### 联系物业报修 / Water Under the Sink
+
+A drop from the kitchen pipe woke Nia at midnight. By morning, the towel under the sink was soaked. She took a picture that showed where the water was coming from and called the building office.
+
+> 半夜，厨房水管的滴水声把妮娅吵醒了。到了早上，水槽下的毛巾已经湿透。她拍下漏水的位置，给物业打了电话。
+
+“It’s been leaking since last night. Can anyone come today?” she asked. The manager offered a visit between two and four. Nia left her number so the plumber could call when he was close.
+
+> “从昨晚就漏了。今天能有人过来吗？”她问。物业经理安排下午两点到四点上门。妮娅留下电话，方便水管工快到时联系她。
+
+**脱稿复述**　哪里从什么时候开始漏水？物业给了哪个上门时段？
+
+**换情境表达**　告诉物业厨房水管从昨晚开始漏水，问什么时候能来。
+
+The kitchen pipe has been leaking since last night. When can someone come by?
+
+#### 跟邻居说噪音 / Music Through the Wall
+
+On Thursday, the music next door kept Imani awake until midnight. She had an early shift the next morning. When she saw her neighbor taking out the bins, she stopped to talk.
+
+> 周四，隔壁的音乐让伊玛妮直到半夜还没睡。第二天一早她还要上班。看见邻居出来倒垃圾时，她停下来和对方说了几句。
+
+“I could hear the music in my bedroom. Could you turn it down after ten?” she asked. He looked surprised and said his speaker was against their shared wall. That evening he moved it across the room.
+
+> “我在卧室能听见音乐。十点以后能小点声吗？”她问。邻居有些意外，说音箱正贴着两家共用的墙。那天晚上，他把音箱搬到了房间另一边。
+
+**脱稿复述**　噪音持续到几点？两人谈完后邻居怎样处理音箱？
+
+**换情境表达**　说明昨晚听到音乐，请邻居晚上十点后调小。
+
+I could hear the music last night. Could you turn it down after ten?
+
+#### 退租核对押金扣款 / Two Deductions From the Deposit
+
+A week after moving out, Ana received most of her deposit back. The transfer was short by eighty dollars, and the landlord’s text just said “cleaning and repairs.” Ana still had the photos she took at the handover.
+
+> 搬走一周后，安娜收到了大部分押金。转账少了八十美元，房东只发了句“清洁和维修”。安娜还留着交接时拍的照片。
+
+She asked for a breakdown. The landlord sent a cleaning invoice and a charge to replace the kitchen handle. Ana showed a photo of the loose handle from move-in day. The landlord agreed to review that charge and said he would reply by Friday.
+
+> 她请房东列出明细。对方发来清洁发票和更换厨房把手的费用。安娜拿出入住当天拍的照片，证明把手当时就松了。房东同意重新核对这笔费用，答应周五前回复。
+
+**脱稿复述**　押金少了多少？安娜用什么说明把手原来就松了？最后约好什么时候有回复？
+
+**换情境表达**　请房东列出清洁费和维修费，并确认剩余押金什么时候退。
+
+Could you send me a breakdown of the deductions and tell me when I’ll get the rest of my deposit back?
+
+### 吃饭与做饭
+
+#### 咖啡店打包 / Coffee Before the Bus
+
+Tara had six minutes before her bus and wanted something warm to take with her. The café was quiet, but the board listed three sizes and two kinds of milk she had never tried.
+
+> 离公交到站还有六分钟，塔拉想带杯热饮上车。咖啡馆里人不多，菜单上却列着三种杯型，还有两种她没试过的奶。
+
+“Could I get a small oat milk latte to go?” she asked. “Sure. About three minutes,” the barista said. “Would you like a lid?” Tara took the cup with her and reached the stop just as the bus turned the corner.
+
+> “可以来杯小杯燕麦奶拿铁吗？打包。”她问。“可以，大约三分钟，”咖啡师说，“要杯盖吗？”塔拉拿着咖啡到站时，公交正从街角拐过来。
+
+**脱稿复述**　塔拉等哪班车？她说了哪几个点单要求？最后赶上了吗？
+
+**换情境表达**　点一杯小杯燕麦奶拿铁，说明要带走。
+
+Could I get a small latte with oat milk to go?
+
+#### 点餐确认过敏原 / What’s in the Sauce?
+
+At lunch, Rina liked the look of the noodles, but the menu didn’t list the ingredients in the sauce. She waited until the server came back before placing her order.
+
+> 午餐时，莉娜觉得那份面条看着不错，但菜单没有列出酱料成分。她等服务员回来再点单。
+
+“I have a peanut allergy. Could you check the sauce with the kitchen?” she asked. The server returned and explained that the sauce contained peanuts. Rina asked the server to check another dish before she ordered it.
+
+> “我对花生过敏。能跟厨房确认一下这个酱吗？”她问。服务员回来告诉她，酱里有花生。莉娜请服务员再确认另一道菜，才决定点它。
+
+**脱稿复述**　莉娜为什么要查酱料？确认含花生后，她怎么继续点餐？
+
+**换情境表达**　说明你对花生过敏，问厨房能否确认酱料成分。
+
+I’m allergic to peanuts. Could you check with the kitchen whether the sauce contains any?
+
+#### 市场买菜 / Half a Kilo
+
+Omar needed tomatoes for dinner. At the market, he picked up a little box marked three dollars. The stallholder was also selling loose tomatoes, so Omar asked which price was per kilo.
+
+> 奥马尔晚饭要用番茄。他在市场拿起一盒标价三美元的小番茄。摊主也卖散装的，于是他问哪一个价格是按公斤算的。
+
+The boxed ones were three dollars a box. The loose ones were five dollars a kilo. Omar asked for half a kilo of the loose tomatoes, watched the seller weigh them, and paid two dollars fifty.
+
+> 盒装的一盒三美元，散装的一公斤五美元。奥马尔买了半公斤散装番茄，看着摊主称好，付了两美元五十。
+
+**脱稿复述**　盒装和散装分别怎样计价？奥马尔最后买了多少、付了多少？
+
+**换情境表达**　买半公斤番茄，确认按公斤还是按盒计价。
+
+Could I get half a kilo of tomatoes? Is that price per kilo or per box?
+
+#### 外卖送错 / The Wrong Dinner
+
+Maya ordered chicken and rice after a long day. When she opened the delivery bag, there were two boxes of noodles. The receipt on top belonged to someone in the next street.
+
+> 忙了一天，玛雅点了份鸡肉饭。打开外卖袋，里面却有两盒面条。最上面的小票是隔壁街另一位顾客的。
+
+She sent the restaurant a photo and gave them her order number. “Could you send what I ordered?” she wrote. The restaurant checked the receipts and gave her a new delivery time.
+
+> 她给餐厅发了照片和自己的订单号。“能把我点的那份送来吗？”她写道。餐厅核对小票后，告诉了她新的送达时间。
+
+**脱稿复述**　玛雅点了什么、收到什么？她给餐厅提供了哪些信息？
+
+**换情境表达**　说明你点的是鸡肉饭，请对方补送正确餐品。
+
+I ordered the chicken and rice, but I got noodles. Could you send the correct order?
+
+#### 餐厅预订迟到 / Can You Hold Our Table?
+
+Wei had reserved a table for four at seven. At six forty-five, his train stopped between stations. The arrival time on the app kept moving, so he called the restaurant from the train.
+
+> 陈伟订了七点的四人桌。六点四十五，火车停在两站之间。应用里的预计到站时间一再推迟，他就在车上给餐厅打电话。
+
+“We’re running about fifteen minutes late. Could you hold the table?” he asked. The server could hold it until seven twenty but asked him to call back if the delay got longer. Wei sent the plan to the other three people.
+
+> “我们大概要晚十五分钟，能帮我们保留座位吗？”他问。服务员可以留到七点二十，但请他如果更晚就回个电话。陈伟把安排发给另外三人。
+
+**脱稿复述**　原来订的是几点、几个人？餐厅最多留到几点？什么情况下要再打电话？
+
+**换情境表达**　告诉餐厅你们要晚十五分钟，问能不能保留座位。
+
+We’re running about fifteen minutes late. Could you hold our table?
+
+### 购物、快递与售后
+
+#### 试穿换尺码 / Room to Move
+
+Ella liked the jacket, but she could barely lift her arms in it. The mirror made it look fine from the front. She came out of the fitting room and asked for the next size up.
+
+> 埃拉喜欢那件夹克，可穿上后胳膊都快抬不起来。镜子里从正面看倒挺合身。她走出试衣间，问能不能试大一码。
+
+The assistant brought a larger one in a different color. Ella tried it with her sweater underneath and reached for her bag to see how it felt. She bought the larger size and asked how long she had to exchange it.
+
+> 店员拿来一件不同颜色的大号。埃拉套在毛衣外面试了试，又伸手去拿包，感受活动时合不合适。她买了大一码的，还问了多久之内可以换货。
+
+**脱稿复述**　镜子里看着合适，埃拉为什么还要换大一码？她怎么试新尺码？
+
+**换情境表达**　说明这件太紧，问大一码能否试穿。
+
+This one is a little tight. Could I try the next size up?
+
+#### 退货或换货 / A Fan That Wouldn’t Start
+
+The little fan Leo bought on Monday did not turn on. He tried another outlet, found the receipt, and took it back on his lunch break. The shop assistant asked what he had already tried.
+
+> 里奥周一买的小风扇打不开。他换了插座试，又找到小票，午休时把风扇带回店里。店员问他已经试过哪些办法。
+
+They plugged it in at the counter. Still nothing. “Could I get a refund? I have the receipt here,” Leo said. The assistant scanned it and handed it back. “It should go back on your card in a few days.”
+
+> 他们在柜台插电试了试，还是没反应。“能退款吗？我带了小票。”里奥说。店员扫完小票，把它还给他。“过几天应该会退回原来的银行卡。”
+
+**脱稿复述**　里奥在家和店员在柜台分别做了什么检查？退款怎么退？
+
+**换情境表达**　说明产品打不开，出示小票并问能不能退款。
+
+This won’t turn on. I have the receipt. Could I get a refund?
+
+#### 网购少送一件 / One Item Short
+
+There were three items on Wei’s order, but only two in the box. The packing slip listed the missing bottle. He took a photo before throwing away the packaging and opened the shop’s support chat.
+
+> 陈伟的订单有三件商品，箱子里却只有两件。装箱单上写着缺的那只水瓶。他先拍照留存，再打开店铺的客服聊天。
+
+He gave the order number and asked whether the bottle had been sent separately. The agent checked the shipment and found a packing error. Wei chose a replacement and asked for its tracking number.
+
+> 他报了订单号，问水瓶是不是单独发了。客服查了发货记录，发现是打包出错。陈伟选择补发，并请客服提供物流单号。
+
+**脱稿复述**　箱子里缺了什么？如何确认是漏装？客服最终怎么处理？
+
+**换情境表达**　用订单号说明缺件，请客服补发。
+
+Order 4821 is missing a water bottle. Could you send it separately?
+
+#### 快递显示签收却没收到 / Delivered to Which Door?
+
+The app said “Delivered,” but there was no parcel at Grace’s door. She checked the lobby and asked her neighbor. Then she noticed the delivery photo showed a red mat. Hers was blue.
+
+> 应用显示“已送达”，格蕾丝门口却没有包裹。她查看了大厅，又问了邻居。后来她注意到签收照片里是红色地垫，而她家的地垫是蓝色的。
+
+“It says delivered, but that isn’t my front door,” Grace told support. “Could you check which building it went to?” The driver confirmed it was at the building next door. Grace found it there and added the building number to her delivery notes.
+
+> “系统显示已送达，但照片里不是我家门口，”格蕾丝告诉客服，“能核对一下送到哪栋楼了吗？”快递员确认包裹在隔壁楼。格蕾丝在那里找到了包裹，并在配送备注里补上楼号。
+
+**脱稿复述**　照片里的什么线索和格蕾丝家对不上？包裹最后在哪找到？
+
+**换情境表达**　请客服核对签收地址和放置地点。
+
+It says my package was delivered, but I can’t find it. Could you check the address and where it was left?
+
+#### 询问补货和替代款 / A Pair Before Friday
+
+Nia needed black shoes for a Friday shift. The store had her size online, but in-store collection was only available next week. She called and asked whether another branch had a pair she could try on.
+
+> 妮娅周五上班需要一双黑鞋。网上有她的尺码，但最快下周才能到店自取。她打给店里，问其他门店有没有现货能试穿。
+
+The assistant found a similar pair nearby. “Could you ask them to hold it until six?” Nia said. The other branch set it aside, and she tried it with her work socks before buying it.
+
+> 店员查到附近门店有一双类似的。“能请他们帮我留到六点吗？”妮娅说。另一家门店把鞋留了下来。她穿着上班用的袜子试过才买。
+
+**脱稿复述**　为什么网上下单来不及？妮娅让门店留货到几点？为什么要用上班穿的袜子试鞋？
+
+**换情境表达**　需要周五拿到一双鞋，询问什么时候补货及可替代尺码。
+
+Will this size be back in stock by Friday? If not, is there a similar pair I can try?
+
+### 通勤与本地交通
+
+#### 问路和换乘 / One Stop Before the Bridge
+
+Hana wanted to get to the central library. The bus stop showed two routes, both going toward town. She asked the driver whether his bus went past the library or whether she would need to change.
+
+> 哈娜要去市中心图书馆。站牌上两条线路都开往市区。她问司机这班车是否经过图书馆，还是需要换乘。
+
+He told her to get off one stop before the bridge and take the number six. “So I change at Market Street?” she asked. He nodded, and she sat where she could see the next-stop display.
+
+> 司机说，她要在过桥前一站下车，换乘六路。“也就是在市场街换乘，对吗？”她问。司机点头，她找了个看得见到站提示的位置坐下。
+
+**脱稿复述**　哈娜要去哪？应该在哪一站下车、换几路车？
+
+**换情境表达**　问这班公交是否到市中心，确认在哪站换乘。
+
+Does this bus go downtown, or do I need to change? Which stop should I get off at?
+
+#### 买票核对时间 / The Nine O’Clock Train
+
+Leo needed to reach Brighton before eleven. The kiosk showed two trains at nine, with different arrival times. He could not tell from the screen whether either one was direct.
+
+> 里奥要在十一点前到布莱顿。售票机显示两班九点发车的列车，到达时间各不相同。屏幕上看不出哪一班直达。
+
+At the ticket window he asked which train reached Brighton first and whether he had to change. The clerk pointed out the direct service and printed the arrival time on the ticket. Leo checked it before paying.
+
+> 他在售票窗口问哪班先到布莱顿、要不要换乘。工作人员指出直达的那班，把到达时间印在票上。里奥付钱前核对了一遍。
+
+**脱稿复述**　里奥最晚几点到？他付款前确认了哪两个信息？
+
+**换情境表达**　买一张九点的车票，问是否需要换乘。
+
+I’d like a ticket for the nine o’clock train. Is it direct?
+
+#### 坐反方向了 / Across the Road
+
+After three stops, Maya realized the bus was getting farther from the office. The driver told her she had boarded on the wrong side of the street. She asked where she could catch a bus back.
+
+> 坐了三站后，玛雅发现公交离办公室越来越远。司机告诉她，她在马路另一边上错了车。她问到哪里能坐回去。
+
+At the next stop she crossed at the lights. While waiting, she texted her teammate: “I got on the wrong bus. I’ll be about ten minutes late. Please start without me.” Her teammate sent her the meeting link.
+
+> 下一站她下车，从红绿灯路口过马路。等车时，她给队友发信息：“我坐反了，可能晚到十分钟。你们先开始吧。”队友发来了会议链接。
+
+**脱稿复述**　玛雅怎么发现坐反？她怎样换车，又怎样通知同事？
+
+**换情境表达**　问下一站能不能坐回去，再给同事发消息说明迟到。
+
+Can I catch a bus back the other way at the next stop? I’ll be about ten minutes late.
+
+#### 叫车找不到司机 / Two Station Entrances
+
+The ride app showed Sam’s driver nearby, but Sam could only see buses outside the station. The pin was on the west side. Sam was standing with his luggage by a sign that said East Entrance.
+
+> 叫车软件显示司机就在附近，山姆却只看见车站外的公交。定位在西侧，而山姆提着行李站在写着“东门”的牌子旁。
+
+He phoned the driver and described the sign. The driver couldn’t stop at that entrance, so they agreed to meet by the taxi bay around the corner. Sam checked the license plate before getting in.
+
+> 他打电话告诉司机牌子上写的字。司机不能在东门停车，于是两人约在拐角的出租车停靠区碰头。山姆上车前核对了车牌。
+
+**脱稿复述**　乘客站在哪个入口？司机为什么不能过去？两人最后约在哪？
+
+**换情境表达**　告诉司机你在车站东门，问他停在哪里。
+
+I’m at the east entrance of the station. Where are you parked?
+
+#### 末班车取消后找替代路线 / The Bus After the Last Train
+
+The board changed to “Canceled” just as Leo reached the platform. It was the last train home. A station attendant was directing passengers toward the front exit, but Leo hadn’t heard where to go next.
+
+> 里奥到站台时，屏幕刚变成“取消”。那是回家的最后一班火车。站务员把乘客引向前面的出口，但里奥没听清接下来去哪。
+
+He asked where the replacement bus stopped and whether he could use his train ticket. The attendant said it left from Bay C at eleven twenty and checked the ticket. Leo took a picture of the bay sign and sent it to the friend waiting for him.
+
+> 他问接驳车在哪上、火车票能不能用。站务员说十一点二十从 C 区发车，并核对了车票。里奥拍下站区标识，发给等他的朋友。
+
+**脱稿复述**　哪趟车被取消了？替代车从哪里、什么时候发车？里奥怎么确认原票能用？
+
+**换情境表达**　询问还能坐哪班车，现有车票能否使用。
+
+What’s the last bus I can take from here? Can I use my train ticket on it?
+
+### 开车、停车与租车
+
+#### 确认停车规则 / The Two-Hour Sign
+
+A sign near the clinic said “Two hours,” but the payment machine offered an all-day ticket. Imani didn’t know whether the machine also covered the spaces across the street. Her appointment could run late.
+
+> 诊所附近的牌子写着“限停两小时”，缴费机却可以购买全天停车票。伊玛妮不知道对面那排车位是不是也用这台机器。她的预约有可能拖久一点。
+
+She asked a parking attendant how long she could stay in that space and where to pay. The attendant explained that the all-day rate applied to the lot behind the clinic. Imani moved there before checking in.
+
+> 她问停车管理员这个车位能停多久、在哪里缴费。管理员解释，全天票适用于诊所后面的停车场。伊玛妮把车挪过去，才到诊所报到。
+
+**脱稿复述**　路边牌子和机器显示了什么？全天停车票适用于哪里？
+
+**换情境表达**　问能停多久、在哪里付费。
+
+How long can I park here, and where do I pay?
+
+#### 租车取车 / Returning the Rental
+
+Wei picked up a rental car on Saturday morning. His flight home was early on Monday, before the desk opened. He asked where to park on return, where to leave the key, and whether to fill the tank.
+
+> 陈伟周六早上取了租来的车。周一回程的航班很早，出发时租车柜台还没开。他问还车该停哪、钥匙放哪、油箱要不要加满。
+
+The clerk marked the return bays on a map and showed him the key box. She explained the fuel policy and printed the return time. Wei took the map with him so he could find the entrance in the dark.
+
+> 店员在地图上标出还车位，又给他看了钥匙投递箱。她解释了油量要求，打印出还车时间。陈伟把地图带走，免得天没亮时找不到入口。
+
+**脱稿复述**　为什么不能在柜台营业时还车？店员交代了哪三件事？
+
+**换情境表达**　确认还车地点和时间，问是否需要加满油。
+
+Where and when do I return the car? Does it need to have a full tank?
+
+#### 开车途中故障 / Just Past Exit Twelve
+
+Jin’s van lost power on the highway. He stopped in a safe place and called roadside assistance. He could see a sign for exit twelve behind him, but he did not know the number of the road.
+
+> 金的面包车在高速上失去了动力。他在安全地点停好车，打电话给道路救援。他能看见后方十二号出口的标牌，却不知道这条路的编号。
+
+He gave the direction of travel and read out the nearest marker number. The dispatcher used those details to locate him and texted a case number with an estimated arrival time.
+
+> 他说明行驶方向，又读出了最近的里程标识编号。调度员根据这些信息找到了他的位置，发来案件编号和预计到达时间。
+
+**脱稿复述**　金能提供哪些位置线索？调度员最后发来了什么？
+
+**换情境表达**　向道路救援说明情况、道路方向和最近的出口。
+
+My car won’t start. I’m on the northbound side, just past exit twelve.
+
+#### 轻微碰撞后交换信息 / A Dent at the Grocery Store
+
+As Ana backed out of a space, her car touched another car’s bumper. Both drivers got out and checked that nobody was hurt. A dent about the size of a thumb was visible on the other car.
+
+> 安娜从车位倒出来时，碰到了另一辆车的保险杠。两位司机都下车，确认没人受伤。对方的车上有一处拇指大小的凹痕。
+
+Ana suggested exchanging contact and insurance information. They took photos of the cars and the space, then checked that they had each other’s correct phone numbers before leaving.
+
+> 安娜提议交换联系方式和保险信息。他们拍下两辆车和车位的照片，离开前确认对方的电话号码都记对了。
+
+**脱稿复述**　两位司机下车后先确认什么？离开前交换和保存了哪些信息？
+
+**换情境表达**　确认对方是否受伤，提出交换联系方式和保险信息。
+
+Are you hurt? Could we exchange contact and insurance information?
+
+#### 加油站预付与退款 / Thirty on Pump Four
+
+Sam pulled up at pump four and went inside to pay. He wanted about thirty dollars’ worth of fuel, but he did not know how much would fit. The cashier asked how much to put on the pump.
+
+> 山姆把车停在四号加油机旁，进去付款。他想加大约三十美元的油，却不知道油箱还能装多少。收银员问他想预付多少。
+
+“Thirty, please. What if I use less?” Sam asked. The cashier explained how that station handled the difference and told him to keep the receipt. Sam used twenty-six dollars and went back inside to check the final charge.
+
+> “三十美元。如果没用完呢？”山姆问。收银员说明这家站怎么处理差额，让他留好小票。山姆加了二十六美元，又进去核对最终扣款。
+
+**脱稿复述**　山姆在哪台机器预付了多少？实际用了多少？他为什么回到柜台？
+
+**换情境表达**　想预付三十元，问没加完的余额如何退回。
+
+Could I put thirty on pump four? What happens if I use less than that?
+
+### 旅行与住宿
+
+#### 机场改签 / A Flight That Still Gets There Today
+
+At the gate, the screen changed from “Delayed” to “Canceled.” Lena had a room booked that night and wanted to know whether she could still arrive today. The line at the service desk was already long.
+
+> 登机口屏幕从“延误”变成了“取消”。莉娜订了当晚的房间，想知道今天还能不能到。服务柜台前已经排起长队。
+
+When it was her turn, she asked about same-day flights, including ones with a connection. The agent found one seat via another city. Lena checked the arrival time before accepting and let the hotel know she would be late.
+
+> 轮到她时，她问当天还有没有航班，转机也可以。工作人员找到一张经另一座城市中转的机票。莉娜确认到达时间后接受改签，并告诉酒店要晚到。
+
+**脱稿复述**　莉娜最关心的到达条件是什么？接受改签后她通知了谁？
+
+**换情境表达**　说明航班取消了，问今天是否还能到目的地。
+
+My flight was canceled. Is there another flight that gets me there today?
+
+#### 行李没到 / The Empty Carousel
+
+The belt stopped, but Omar’s suitcase never appeared. Almost everyone from flight 218 had left. He kept his baggage tag and went to the desk near the exit.
+
+> 传送带停了，奥马尔的行李箱却没出现。218 航班的乘客几乎都走了。他留着行李牌，去了出口旁的服务台。
+
+He gave his flight number and described the black case with a yellow strap. The agent filed a report and asked where to deliver it. Before leaving, Omar checked that his phone number and hotel address were right on the form.
+
+> 他报了航班号，描述了套着黄色绑带的黑色行李箱。工作人员登记后问送到哪里。奥马尔离开前核对了表上的手机号和酒店地址。
+
+**脱稿复述**　奥马尔用哪些细节描述行李？报告提交前又核对了什么？
+
+**换情境表达**　说明航班号、行李颜色，并出示行李牌。
+
+My black suitcase didn’t arrive on flight 218. Here’s my baggage tag.
+
+#### 酒店入住与退房 / A Checkout Time That Works
+
+Mina reached the hotel just before midnight. She gave the receptionist the name on the booking and checked that it was for two nights. Her train home left in the late afternoon on her checkout day.
+
+> 米娜快到午夜才到酒店。她向前台报了预订姓名，确认住两晚。退房那天，她回程的火车要到下午较晚才发车。
+
+“What time is checkout, and can you hold my bag after that?” she asked. The receptionist said checkout was at eleven and offered to keep the bag at the desk. Mina noted the checkout time before going upstairs.
+
+> “几点退房？退房后可以寄存行李吗？”她问。前台说十一点退房，可以把行李寄存在前台。米娜记下退房时间才上楼。
+
+**脱稿复述**　米娜为什么需要寄存行李？前台给了什么安排？
+
+**换情境表达**　报名字办理入住，确认退房时间。
+
+I have a reservation under Chen. What time is checkout?
+
+#### 酒店换房 / Smoke in Room 406
+
+When Rina opened the door to room 406, she noticed a strong smell of smoke. She went back downstairs with her key card and explained she had booked a nonsmoking room.
+
+> 莉娜打开 406 的房门时，闻到很重的烟味。她带着房卡回到楼下，说明自己订的是无烟房。
+
+The receptionist offered to send someone up. Rina had not unpacked, so she asked whether another room was available. The receptionist found a room on the same floor and asked her to check it before moving her bags.
+
+> 前台提出派人上去处理。莉娜还没收拾行李，就问能否换房。前台找到同一层的另一间，让她先确认房间再搬行李。
+
+**脱稿复述**　莉娜为什么没等人来处理？前台让她做什么再搬行李？
+
+**换情境表达**　说明房间烟味重，问能否换一间。
+
+There’s a strong smell of smoke in my room. Could I move to another room?
+
+#### 两段机票，第一班晚点 / Twenty Minutes Between Gates
+
+Tara’s first flight was forty minutes late. Her boarding pass said the next gate closed at seven twenty, and she had only twenty minutes after the new arrival time. Both flights were on the same booking.
+
+> 塔拉的第一班飞机晚点四十分钟。登机牌上写着下一班七点二十关闭登机口，按新的到达时间只剩二十分钟转机。两段航班在同一个订单。
+
+She showed both boarding passes to an airline agent. “If I miss the connection, who should I speak to?” she asked. The agent pointed out the transfer desk on the map and checked the next flight with seats. Tara saved the desk location before boarding.
+
+> 她给航司工作人员看了两张登机牌。“如果赶不上转机，我该找谁？”她问。工作人员在地图上指出中转柜台，并查了下一班还有座位的飞机。塔拉登机前存下了柜台位置。
+
+**脱稿复述**　为什么转机时间变短了？塔拉出示了什么？航司人员提供了哪些信息？
+
+**换情境表达**　告诉柜台第二段航班几点关舱，问赶不上时谁能帮忙改签。
+
+My connecting flight closes at seven twenty. Who should I speak to if I miss it?
+
+### 就医与健康管理
+
+#### 预约或改约就诊 / Moving the Appointment
+
+Sam had a clinic appointment on Tuesday, but his work shift had just changed. The reminder text didn’t offer a way to reschedule, so he called with his appointment number ready.
+
+> 山姆周二约了诊，可他的上班时间刚改。提醒短信没有改约入口，于是他备好预约编号打了电话。
+
+“Could I move it to Thursday afternoon?” he asked. The receptionist offered three o’clock, but only at their Oak Street branch. “Thursday at three, on Oak Street?” Sam repeated. He asked for an updated text before hanging up.
+
+> “能改到周四下午吗？”他问。前台说只有橡树街分诊所三点有号。“周四三点，橡树街，对吗？”山姆复述道。挂电话前，他请对方发一条更新后的短信。
+
+**脱稿复述**　为什么要改约？新时间和地点各是什么？山姆怎么避免记错？
+
+**换情境表达**　把周二的预约改到周四下午，复述新时间。
+
+Could I move my Tuesday appointment to Thursday afternoon? Just to confirm, that’s Thursday at three?
+
+#### 当面描述症状 / Since Monday
+
+Hana’s throat had been sore since Monday. By Thursday, swallowing hurt more than talking. On the bus to the clinic, she wrote down when the pain started and what had changed.
+
+> 哈娜从周一开始喉咙疼。周四时，吞咽比说话更疼。去诊所的公交上，她记下了什么时候开始疼，以及后来有什么变化。
+
+When the clinician asked what brought her in, Hana described the timeline and pointed to where it hurt. The clinician asked a few more questions. Hana answered what she knew and said when she wasn’t sure.
+
+> 医生问她为什么来就诊时，哈娜讲清了时间经过，并指出疼在哪里。医生又问了几句。哈娜回答了自己知道的，不确定的地方也如实说明。
+
+**脱稿复述**　哈娜的症状什么时候开始？到周四有什么变化？她如何描述给医生听？
+
+**换情境表达**　说明喉咙痛从周一开始，今天吞咽更疼。
+
+My throat has been sore since Monday, and it hurts more when I swallow today.
+
+#### 药房核对说明 / Could You Write That Down?
+
+At the pharmacy counter, Nia could hear the pharmacist but missed part of the instructions. Another customer was talking behind her. She stepped closer and asked the pharmacist to repeat what was on the label.
+
+> 在药房柜台，妮娅听得见药师说话，却漏掉了部分说明。身后另一位顾客也在说话。她靠近一些，请药师再说一遍标签上的内容。
+
+“Could you write down how much to take and how often?” she asked. When he handed her the note, she read it back to check she had understood. She put the written instructions in the bag with the medicine.
+
+> “能把每次用量和使用频率写下来吗？”她问。药师递给她纸条，她读了一遍给对方听，确认自己理解对了。她把写好的说明和药放在同一个袋子里。
+
+**脱稿复述**　妮娅漏听了什么？她做了什么来确认自己记得对？
+
+**换情境表达**　请药师把用量和频率写下来。
+
+Could you write down how much to take and how often?
+
+#### 看牙后问复诊 / Before Leaving the Dentist
+
+After her dental appointment, Grace had her coat on when she realized the dentist had mentioned a follow-up without giving a date. At the front desk, she asked when she should come back.
+
+> 看完牙，格蕾丝穿上外套时才想起来，牙医提过复诊，却没说日期。她到前台问自己什么时候该回来。
+
+The receptionist checked the dentist’s notes and offered an appointment in two weeks. Grace asked which number to call if she needed to change it. She saved the number and added the visit to her calendar.
+
+> 前台查了牙医的记录，约了两周后的时间。格蕾丝问要改约该打哪个电话，然后存下号码，把复诊加入日历。
+
+**脱稿复述**　牙医当时漏说了什么？前台给的日期和联络安排是什么？
+
+**换情境表达**　问牙医何时复诊，以及怎样联系诊所。
+
+When should I come back for a follow-up? What’s the best number to call?
+
+#### 体检前确认准备事项 / Before the Morning Checkup
+
+The clinic texted Jin a reminder for Thursday morning. It listed the time and address but said nothing about breakfast. He remembered getting different instructions for a previous test and didn’t want to guess.
+
+> 诊所给金发来周四早上体检的提醒。短信有时间和地址，却没说能不能吃早餐。他记得之前做别的检查时要求不同，这次不想靠猜。
+
+He called and asked whether he needed to fast for the tests on his booking. The receptionist checked with the clinic and sent written instructions for his visit. Jin read them and asked one follow-up question before ending the call.
+
+> 他打电话问预约项目是否需要空腹。前台跟诊所人员核对后，发来适用于这次体检的书面说明。金读了一遍，又确认了一个问题才挂电话。
+
+**脱稿复述**　短信缺了什么信息？金为什么要让对方按自己的预约项目核对？
+
+**换情境表达**　说明预约是周四早上，问是否要空腹并请对方发书面说明。
+
+My checkup is on Thursday morning. Do I need to fast? Could you send me the instructions in writing?
+
+### 运动与户外
+
+#### 约朋友跑步 / Three Kilometers Before Breakfast
+
+Wei wanted a short run on Saturday and asked Maya to join him. He sent her the route and suggested meeting at the park gate. She liked the plan but could only stay for half an hour.
+
+> 陈伟周六想短跑一趟，就约玛雅一起。他发了路线，提议在公园门口见。玛雅觉得不错，但只能待半小时。
+
+They agreed on three kilometers and picked a loop that ended where it started. Wei sent a pin for the gate on River Road. On Saturday, they reached it again just in time for Maya to catch her bus.
+
+> 他们约好跑三公里，选了回到起点的环形路线。陈伟发了河滨路那个门的定位。周六，他们回到原处，玛雅正好赶上公交。
+
+**脱稿复述**　两人怎么选路线和集合点？为什么选择环形路线？
+
+**换情境表达**　约周六早上跑三公里，说明集合点。
+
+Want to run three kilometers on Saturday morning? Let’s meet by the park gate.
+
+#### 下雨改去室内 / The Rain Plan
+
+Nia and Sam planned to exercise in the park. At seven, light rain was falling, but the gym did not open until eight. They agreed to check the weather again before leaving.
+
+> 妮娅和山姆计划去公园运动。七点下着小雨，健身房却要八点才开放。他们约好出门前再看一次天气。
+
+At eight, the path outside was already full of puddles. Nia suggested the gym near the station and checked that visitors could buy a day pass. Sam sent her the address, and they met inside.
+
+> 八点时，外面的小路已经积了不少水。妮娅提议去车站旁的健身房，并确认访客可以买单次票。山姆给她发了地址，两人在里面碰头。
+
+**脱稿复述**　他们什么时候决定换计划？进健身房前确认了什么？
+
+**换情境表达**　提出八点看天气，大雨就改去健身房。
+
+Let’s check the weather at eight. If it’s raining hard, we can go to the gym instead.
+
+#### 健身房问器械 / Two Sets Left
+
+All the benches were in use. Leo waited by one, but the person using it still had several weights beside him. Leo was not sure whether he was done or resting between sets.
+
+> 所有训练凳都有人用。里奥在其中一张旁边等，但使用者身边还放着几副哑铃。里奥不知道对方练完了，还是正在组间休息。
+
+“How many sets do you have left?” he asked. “Two,” the other man said. They discovered they needed the same weights and agreed to take turns. Leo finished before the gym closed.
+
+> “你还剩几组？”他问。“两组，”对方说。他们发现需要的重量一样，就同意轮流使用。里奥在健身房关门前练完了。
+
+**脱稿复述**　对方还剩几组？两人为什么可以共用器械？
+
+**换情境表达**　问对方还有几组，能否轮流使用。
+
+How many sets do you have left? Do you mind if we take turns?
+
+#### 队友走散了 / Back at the Trailhead
+
+At a fork in the path, Ella stopped to take a picture. By the time she looked up, both friends were out of sight. One path went downhill, and the other followed the stream.
+
+> 在步道岔路口，埃拉停下来拍照。她抬头时，两个朋友都看不见了。一条小路下坡，另一条沿着溪流走。
+
+She called and told them she had just passed the wooden bridge. Her friends had gone downhill. They agreed to return by the marked paths and meet back at the trail entrance, where they had started.
+
+> 她打电话说自己刚过木桥。朋友们已经下坡了。大家约好沿标记过的路线返回，在出发时的步道入口汇合。
+
+**脱稿复述**　埃拉最后经过哪处地标？大家怎么约定重新集合？
+
+**换情境表达**　发送你最后经过的地点，确认新的集合点。
+
+I just passed the bridge. Can we meet at the trail entrance?
+
+#### 新会员试课和取消规则 / One Class Before Joining
+
+Maya wanted to try a Saturday class before paying for a gym membership. The website offered a trial but asked for a card to hold the booking. She sometimes worked Saturdays at short notice.
+
+> 玛雅想先试一节周六的课，再决定办不办健身房会员。网站有试课，但需要填银行卡来保留预约。她有时会临时接到周六上班的安排。
+
+She asked how much notice she needed to give if she had to cancel. The receptionist said she could move the session until Friday evening. Maya booked the trial and set a Friday reminder to check her shift.
+
+> 她问取消的话最晚要提前多久。前台说周五晚上前可以改约。玛雅订了试课，并设了个周五提醒核对排班。
+
+**脱稿复述**　玛雅为什么要先问取消规则？确认后她设置了什么提醒？
+
+**换情境表达**　问有没有单次试课，报名后最晚多久可以取消。
+
+Can I try one class first? How much notice do I need to give if I have to cancel?
+
+### 家人、伴侣与朋友
+
+#### 邀请朋友吃饭 / Dinner for How Many?
+
+On Wednesday, Kim invited her friend Hana over for dinner on Saturday. Hana asked whether she could bring her brother, who was visiting for the weekend. Kim was happy to meet him, but her table only seated four.
+
+> 周三，金邀请朋友哈娜周六来家里吃饭。哈娜问能不能带上周末来做客的哥哥。金很乐意认识他，但家里的桌子只能坐四个人。
+
+Kim confirmed that two people were coming with Hana’s reply, then told her to arrive at seven. She moved dinner into the kitchen, where she could pull up an extra chair if she needed it.
+
+> 哈娜回复后，金确认对方一共来两个人，请她们七点到。她决定在厨房吃饭，需要的话还能拉一把椅子过来。
+
+**脱稿复述**　哈娜想带谁来？金最后确认了人数、时间和什么安排？
+
+**换情境表达**　发出邀请，确认时间和人数。
+
+Would you like to come over for dinner on Saturday? How many of you can make it?
+
+#### 婉拒并改约 / Friday Instead
+
+Lena was looking forward to seeing Tara, but a late shift meant she could no longer make dinner on Tuesday. She sent a message as soon as she knew, before Tara left to meet her.
+
+> 莉娜本来很期待见塔拉，但临时加了晚班，周二的晚饭去不了了。她一知道就发了消息，赶在塔拉出门前通知她。
+
+“I can’t make it tonight. Are you free on Friday?” she wrote. Tara had plans until eight, so they picked a café that stayed open late. Lena sent the new time and address in one message.
+
+> “我今晚去不了了。你周五有空吗？”她写道。塔拉八点前有事，于是她们选了一家营业到很晚的咖啡馆。莉娜把新时间和地址发在同一条消息里。
+
+**脱稿复述**　莉娜为什么去不了？周五的新安排为什么要换地点？
+
+**换情境表达**　拒绝今晚邀约，提议周五见。
+
+I can’t make it tonight, but I’d love to catch up on Friday.
+
+#### 协调照护安排 / Who Can Pick Up Dad?
+
+Rina was supposed to pick up her father after his appointment. Then a meeting at work moved to the same time. She called her brother before the appointment ended to check whether he could go.
+
+> 莉娜原本要在父亲看完诊后接他，工作上的会议却改到了同一个时间。她趁父亲还没看完，打给哥哥问他能不能去。
+
+Her brother agreed but didn’t know the clinic. Rina shared the address, said to wait at the main entrance at four, and texted her father who would pick him up. All three had the same plan.
+
+> 哥哥同意了，但不知道诊所在哪。莉娜发了地址，说四点在正门等，又发信息告诉父亲谁来接。三个人都清楚了安排。
+
+**脱稿复述**　为什么要换人接父亲？莉娜分别给哥哥和父亲发了什么信息？
+
+**换情境表达**　你今天无法接家人，请对方先去，告知到达位置。
+
+I can’t pick Dad up today. Could you meet him at the main entrance at four?
+
+#### 倾听与安慰 / Company on the Sofa
+
+When Mina came home, her sister was sitting on the sofa with her coat still on. She had just heard that the team she worked with was being closed. Mina put the kettle on and sat beside her.
+
+> 米娜回到家时，姐姐穿着外套坐在沙发上。她刚得知自己所在的团队要解散。米娜烧了壶水，在她身边坐下。
+
+“Do you want to talk, or would you rather just have some company?” Mina asked. Her sister said she didn’t know what to say yet. They drank tea together, and for a while neither of them said much.
+
+> “你想聊聊，还是只想有人陪一会儿？”米娜问。姐姐说她还不知道该说什么。她们一起喝茶，有一阵子谁也没怎么说话。
+
+**脱稿复述**　米娜的姐姐遇到了什么？她想要的是建议、聊天，还是陪伴？
+
+**换情境表达**　回应家人的担忧，问他想聊聊还是想有人陪。
+
+That sounds hard. Do you want to talk about it, or would you rather just have some company?
+
+#### 室友临时留客过夜 / Can We Keep It Quiet After Ten?
+
+At dinner, Omar’s roommate said a friend might stay over. Omar had an early call the next day, and the guest would be sleeping on the sofa outside his room. He asked how long the friend was staying.
+
+> 晚饭时，奥马尔的室友说可能有朋友要过夜。奥马尔第二天一早要打工作电话，客人会睡在他房门外的沙发上。他先问客人住多久。
+
+“Just tonight,” his roommate said. Omar asked if they could keep things quiet after ten, and offered to leave clean sheets on the sofa. His roommate agreed to take his friend out for dinner and let him know when they were back.
+
+> “就今晚，”室友说。奥马尔问十点后能不能安静一点，还说可以把干净床单放在沙发上。室友同意带朋友出去吃晚饭，回来时跟他说一声。
+
+**脱稿复述**　奥马尔担心什么？他说清了哪个时间，并主动提供了什么？
+
+**换情境表达**　说明自己明早要早起，约定客人留宿的时间和安静时段。
+
+I’m up early tomorrow. Is it just for one night, and could we keep it quiet after ten?
+
+### 育儿与照护
+
+#### 了解托育安排 / A Place Starting in September
+
+Omar found a daycare close to work, but the website did not say whether it opened early enough for his shift. He went to an open morning and asked about hours, fees, and the next available start date.
+
+> 奥马尔找到一家离公司很近的托育机构，但网站没写开门时间能不能赶上他的班。他参加了一次上午的开放日，询问时间、费用和最早能入托的日期。
+
+The director showed him a sample week and explained the late pickup fee. There was a place in September. Omar asked for the details in an email so he and his partner could compare it with another center.
+
+> 负责人给他看了一周的示例安排，解释了晚接的费用。九月有个名额。奥马尔请她把详情发邮件，方便和伴侣一起比较另一家。
+
+**脱稿复述**　网站上缺什么关键信息？奥马尔从负责人那里问到了哪些比较条件？
+
+**换情境表达**　问托育时间、费用和最早入托日期。
+
+What are your hours and fees, and what’s the earliest date my child could start?
+
+#### 通知学校换人接孩子 / A Different Person at Pickup
+
+Grace’s train was running late, so her sister offered to collect her son from school. Grace called the office. She gave her son’s name and class, then explained who would arrive in her place.
+
+> 格蕾丝的火车晚点了，妹妹主动提出帮她去学校接儿子。格蕾丝打给学校办公室，报了儿子的名字和班级，又说明谁会代她来。
+
+The office asked her to send the aunt’s full name and said the aunt should bring ID. Grace passed that along and reminded her sister which gate to use. The school confirmed the change before pickup.
+
+> 办公室请她发孩子姨妈的全名，并说来接时要带身份证件。格蕾丝转告妹妹，又提醒她走哪个门。放学前，学校确认了变更。
+
+**脱稿复述**　为什么换人接孩子？学校要哪些信息或证件？
+
+**换情境表达**　告诉老师今天由孩子的姑姑来接，问接人需要出示什么。
+
+My child’s aunt is picking him up today. What does she need to show when she arrives?
+
+#### 和老师聊孩子近况 / What Happens After Lunch?
+
+At the parent meeting, Jin mentioned that his daughter said school was fine, then talked almost entirely about lunch. He asked the teacher what she was like in class, particularly when the class worked in groups.
+
+> 家长会上，金提到女儿说学校挺好，但回家几乎只聊午饭。他问老师，孩子在课上怎么样，尤其是做小组活动时。
+
+The teacher said she had plenty of ideas but needed a moment to speak up. They agreed to try giving her time to explain one thing she had enjoyed each day. The teacher would check in again next month.
+
+> 老师说她有很多想法，但需要一点时间才会开口。他们约好试着每天留点时间，让她讲一件自己喜欢的事。老师下个月再和家长聊聊进展。
+
+**脱稿复述**　老师观察到了什么？家里能做什么？下次什么时候跟进？
+
+**换情境表达**　问孩子最近在课堂上怎么样，自己能在家做什么。
+
+How has she been doing in class lately? Is there anything we can do at home to help?
+
+#### 交接长辈陪诊 / The Letter in the Blue Folder
+
+Maya’s mother had a clinic visit at three, but Maya was out of town. Her cousin could take her. Maya gave him the pickup time and the clinic address, then told him where to find the appointment letter.
+
+> 玛雅母亲三点要去诊所，但玛雅在外地。表弟可以陪她去。玛雅告诉他接人的时间和诊所地址，又说明预约信放在哪里。
+
+“It’s in the blue folder by the front door,” she said. Her cousin read back the address and said he would call once they had checked in. Maya told her mother to expect him at two.
+
+> “在大门边的蓝色文件夹里，”她说。表弟复述了地址，说到了诊所报到后会打电话。玛雅告诉母亲，他两点来接。
+
+**脱稿复述**　文件在什么地方？亲属几点接人、什么时候联系玛雅？
+
+**换情境表达**　告知几点接人、去哪家诊所、需要带什么。
+
+Could you pick Mom up at two and take her to the clinic on Oak Street? Please bring her appointment letter.
+
+#### 孩子忘带午餐 / The Lunchbox at the Office
+
+Grace saw her daughter’s lunchbox on the kitchen counter after school had started. She could drop it off on her way to work, but visitors could not enter the classroom area. She called the school office first.
+
+> 上课后，格蕾丝发现女儿的午餐盒留在厨房台面上。她上班路上可以送去，但访客不能进入教室区域。她先给学校办公室打了电话。
+
+The secretary asked her to label the box with her daughter’s name and class. Grace left it at the office and checked who would deliver it. The secretary said an aide would take it to the room before lunch.
+
+> 学校秘书请她在餐盒上写好女儿的名字和班级。格蕾丝把餐盒放到办公室，又确认由谁转交。秘书说助教会在午餐前送到教室。
+
+**脱稿复述**　格蕾丝为什么先打电话？餐盒要标什么？最后由谁送到教室？
+
+**换情境表达**　联系学校，问能否送到办公室，谁会转交给孩子。
+
+My child left her lunch at home. Can I drop it off at the office? Who can get it to her?
+
+### 认识人、社交与休闲
+
+#### 第一次见面 / How Do You Know Ana?
+
+At a birthday party, Wei only knew Ana, who was busy in the kitchen. A guest beside him was trying to find somewhere to put a plate. Wei cleared a space on the table and introduced himself.
+
+> 生日聚会上，陈伟只认识安娜，而她正在厨房忙。一旁的客人想找地方放盘子。陈伟在桌上腾出一块地方，介绍了自己。
+
+He asked how the guest knew Ana. It turned out they had run in the same club for years. Wei mentioned he was looking for a weekend group, and the guest told him when they met.
+
+> 他问那位客人是怎么认识安娜的。原来他们在同一个跑步俱乐部好多年了。陈伟提到自己想找个周末跑团，对方告诉了他集合时间。
+
+**脱稿复述**　陈伟怎样自然开口？他和新认识的客人聊出了什么共同话题？
+
+**换情境表达**　介绍自己，问对方怎么认识活动组织者。
+
+Hi, I’m Wei. How do you know the organizer?
+
+#### 没听清名字或数字 / Thirteen or Thirty?
+
+The hall outside the training rooms was loud. A staff member told Grace which room to go to, but a door slammed at the same moment. She had heard the first sound of the number and nothing else.
+
+> 培训室外的大厅很吵。工作人员告诉格蕾丝该去哪间屋子，正好有扇门砰的一声关上。她只听到数字开头。
+
+“Sorry, was that thirteen or thirty?” she asked. “Thirty, three zero,” the woman replied, pointing upstairs. Grace repeated the room number and followed the signs to the third floor.
+
+> “不好意思，是十三还是三十？”她问。“三十，三、零，”工作人员指着楼上说。格蕾丝复述了房间号，沿指示牌去了三楼。
+
+**脱稿复述**　格蕾丝没听清的是哪个数字？对方怎样帮助她核对？
+
+**换情境表达**　请对方重复，确认是十三还是三十。
+
+Sorry, did you say thirteen or thirty? Could you say that again?
+
+#### 活动报名和候补 / The Last Place on the List
+
+The pottery workshop was full by the time Lena found the registration page. She had already arranged the afternoon off and asked the organizer whether there was a waiting list.
+
+> 莉娜找到报名页面时，陶艺工作坊已经满员了。她早就空出了那个下午，便问组织者有没有候补名单。
+
+The organizer put her next on the list and said she would email if a place opened. On Friday, someone canceled. Lena confirmed that she could come and asked whether she needed to bring an apron.
+
+> 组织者把她排到候补名单第一位，说有空位就发邮件。周五，有人取消了。莉娜确认能来，还问需不需要带围裙。
+
+**脱稿复述**　莉娜一开始为什么没报上？收到候补通知后她确认了什么？
+
+**换情境表达**　询问活动是否满员，能否加入候补名单。
+
+Is the workshop full? If it is, could you put me on the waiting list?
+
+#### 讲一段自己的经历 / The Night We Missed the Train
+
+Over lunch, Omar told a friend about his trip to York. He and his brother had spent so long looking for dinner that they missed the last train. At the empty station, two other travelers had the same problem.
+
+> 午饭时，奥马尔给朋友讲了约克之行。他和弟弟找晚饭找了太久，错过了末班火车。空荡的车站里，还有两位旅客遇到同样的问题。
+
+The four of them shared a taxi and got home just before midnight. Omar said he remembered very little about dinner but could still name every person in the taxi. His friend laughed and asked whether they kept in touch.
+
+> 四个人拼了辆出租车，快到午夜才到家。奥马尔说，他几乎忘了晚饭吃什么，却还叫得出车里每个人的名字。朋友笑着问，他们后来还联系吗？
+
+**脱稿复述**　他们怎么错过末班车？最后跟谁、怎样回到家？
+
+**换情境表达**　向朋友讲一件旅行插曲，交代发生了什么和结果。
+
+We missed the last train, so we shared a taxi with another couple and got back just before midnight.
+
+#### 加入已经开始的聊天 / Mind If I Join You?
+
+At a neighborhood event, three people were already talking by the coffee table when Ella arrived. She recognized one face but didn’t know what they were discussing. There was an empty chair next to them.
+
+> 埃拉到社区活动时，咖啡桌旁已经有三个人在聊。她认得其中一个，但不知道他们在谈什么。旁边有一把空椅子。
+
+“Mind if I join you?” she asked. One woman moved her bag and explained they were talking about Saturday markets. Ella asked which one stayed open latest, and the group told her where they usually went.
+
+> “介意我一起坐吗？”她问。一位女士挪开包，解释大家在聊周六的集市。埃拉问哪家开得最晚，大家就告诉她平时去哪里。
+
+**脱稿复述**　埃拉怎么加入聊天？她听懂话题后追问了什么？
+
+**换情境表达**　走进休息区，问能否加入，并请对方简单说说在聊什么。
+
+Mind if I join you? What were you talking about?
+
+### 看演出、逛展与参加活动
+
+#### 买演出票选座 / Two Seats Together
+
+Mina wanted to take her sister to a play. The ticket page showed two cheap places, but they were on opposite sides of the theater. At the box office, she asked whether there were two seats together under forty each.
+
+> 米娜想带姐姐看戏。售票页面上还有两张便宜票，但在剧场两侧。她到售票处问，有没有每张不超过四十、又能坐在一起的座位。
+
+The clerk found a pair in the back row. One had a limited view, so Mina asked what part of the stage was hidden. She chose a different evening when they could both see the whole stage.
+
+> 售票员在最后一排找到了两个连座。其中一个视野受限，米娜便问看不见舞台哪一部分。最后她改选了另一个晚上，两个人都能看见整个舞台。
+
+**脱稿复述**　米娜要满足哪两个购票条件？她为什么没买最后一排的座位？
+
+**换情境表达**　问有没有两张连座，说明预算。
+
+Do you have two seats together for tonight? We’d like to spend no more than forty each.
+
+#### 在展馆租导览 / Start With Number One
+
+Hana could read the painting labels, but she wanted to know the story behind the pictures. At the museum desk, she asked for an English audio guide and where to start.
+
+> 哈娜看得懂画作标签，但想知道画背后的故事。她在博物馆服务台问有没有英文语音导览，以及应该从哪里开始。
+
+The assistant showed her how to enter the number printed beside each painting. Hana started with number one by the stairs and returned the guide to a tray at the desk on her way out.
+
+> 工作人员演示了怎么输入画旁的编号。哈娜从楼梯旁的一号作品听起，离开时把导览设备放回服务台的托盘。
+
+**脱稿复述**　哈娜为何要语音导览？怎么选作品编号，最后把导览设备还到哪里？
+
+**换情境表达**　问有没有英文导览、从哪里开始。
+
+Do you have an audio guide in English? Where should I start?
+
+#### 活动取消申请退款 / The Original Payment Method
+
+The concert was canceled the day before the show. The organizer sent a message that promised refunds but didn’t say when they would arrive. Sam had paid for both tickets and wanted to know how the money would come back.
+
+> 演出前一天，音乐会取消了。主办方发消息说会退款，却没说什么时候到账。山姆付了两张票的钱，想知道通过什么方式退回。
+
+He emailed the booking number and asked about the timing. The team replied that the money would go back to the original payment method within five business days. Sam forwarded the reply to his friend.
+
+> 他把预订号发邮件过去，问了到账时间。主办方回复，五个工作日内会原路退款。山姆把回复转发给朋友。
+
+**脱稿复述**　主办方第一条消息漏了什么？补充回复说明了什么退款安排？
+
+**换情境表达**　说明活动取消，核对退款方式和到账时间。
+
+Since the event was canceled, how will I get my refund? When should I expect it?
+
+#### 报名做志愿者 / An Hour at the Welcome Table
+
+Ella wanted to help at the neighborhood fair but was only free on Saturday morning. She emailed the organizer with her available hours and asked what kind of help they needed.
+
+> 埃拉想在社区集市帮忙，但只有周六上午有空。她把可用时间发邮件给组织者，问需要做些什么。
+
+The organizer asked her to hand out maps at the welcome table. Ella asked when to arrive and whether there would be a handover. They agreed she would meet the first shift ten minutes early.
+
+> 组织者请她在接待桌发地图。埃拉问几点到、是否有人交接。他们约好她提前十分钟去和上一班的人碰头。
+
+**脱稿复述**　志愿者能来哪个时间？她做什么、提前多久到场？
+
+**换情境表达**　告知周六上午有空，问需要做什么、几点到。
+
+I’m available on Saturday morning. What would I be doing, and what time should I arrive?
+
+#### 演出迟到怎么入场 / Wait for the Scene Change
+
+Ben arrived ten minutes after the play started. The doors were closed, but an usher was standing nearby. His seat was in the middle of a row, and he didn’t want to make everyone stand up in the dark.
+
+> 本在开演十分钟后到场。门关着，旁边有一位引座员。他的座位在一排中间，不想让整排观众在黑暗中站起来让路。
+
+He asked when he could enter and whether he should use a different seat first. The usher let him wait by the door until a scene change, then showed him an empty seat near the aisle. He moved to his own seat at intermission.
+
+> 他问什么时候能进，要不要先坐别的位置。引座员请他在门边等换场，再把他领到靠过道的空位。中场休息时，他才换到自己的座位。
+
+**脱稿复述**　本为什么没有直接进场？临时坐在哪里？什么时候换回自己的座位？
+
+**换情境表达**　说明演出已经开始，问什么时候可以进、是否会错过座位。
+
+I’m late for the show. When can I go in, and will I still be able to sit in my seat?
+
+### 庆祝、道歉与人生变化
+
+#### 祝贺朋友的新进展 / Good News on the Bus
+
+On the bus home, Nia saw a message from Kim: she had finally been offered the job she wanted. Kim had spent weeks preparing for the interviews and hadn’t told many people about them.
+
+> 回家的公交上，妮娅看到金发来的消息：她终于拿到了想要的工作。金花了好几周准备面试，也没和太多人提起。
+
+Nia congratulated her and asked when she would start. Kim said she had a month before her first day. They decided to get breakfast together on Sunday to celebrate.
+
+> 妮娅向她道贺，又问她什么时候入职。金说还有一个月。两人决定周日一起吃顿早餐庆祝。
+
+**脱稿复述**　妮娅听到什么好消息？她怎样把祝贺接到一个庆祝邀约上？
+
+**换情境表达**　祝贺朋友找到新工作，问何时入职。
+
+Congratulations on the new job! When do you start?
+
+#### 忘了约定后道歉 / The Missed Coffee
+
+Tara saw the message “Are you on your way?” forty minutes after she was supposed to meet a friend. She had entered the right time on the wrong day and left her phone in her bag.
+
+> 本该和朋友碰面的时间过了四十分钟，塔拉才看到“你在路上了吗？”这条消息。她把日期记错了，又把手机留在包里。
+
+She called and apologized for leaving him waiting. He had already gone home, so she offered to come to his neighborhood on Saturday. He agreed, and Tara checked the date with him as she put it in her calendar.
+
+> 她打电话道歉，说让对方久等了。朋友已经回家，于是她提出周六去他家附近碰面。他同意了，塔拉这次一边记日历，一边和他核对日期。
+
+**脱稿复述**　塔拉怎样弄错时间？她提出了怎样的补救安排？
+
+**换情境表达**　为错过约定道歉，提出新的时间。
+
+I’m sorry I missed our meetup. Could I make it up to you on Saturday?
+
+#### 给丧亲的朋友发消息 / Dinner on Thursday
+
+After hearing that Leo’s father had died, Ana started three messages and erased them all. She knew Leo’s family had people arriving from out of town and little time to cook.
+
+> 得知里奥父亲去世后，安娜写了三次消息，又一一删掉。她知道里奥家这几天要接待从外地来的亲友，没什么时间做饭。
+
+She wrote that she was sorry for his loss and could drop off dinner on Thursday if that would help. Leo replied the next morning. He said he would be grateful and asked her to leave it by the door.
+
+> 她写道，得知噩耗很难过，如果合适，周四可以送晚饭过来。里奥第二天早上回复，说很感谢，请她放在门边就好。
+
+**脱稿复述**　安娜最后提出了什么具体帮忙？里奥说怎样送最合适？
+
+**换情境表达**　表达关心，提出一项具体的帮忙。
+
+I’m so sorry for your loss. I can bring dinner over this week if that would help.
+
+#### 告知即将搬走 / One More Breakfast
+
+Sam had signed a lease in another city but had not told his closest neighbor. They usually got breakfast together on Saturdays. He brought it up while they were waiting for their coffee.
+
+> 山姆已经在另一座城市签了租约，还没告诉关系最好的邻居。两人通常周六一起吃早餐。他们等咖啡时，山姆提起了这件事。
+
+“I’m moving next month,” he said. “Could we get together the weekend before I leave?” His neighbor saved the date and offered to lend him some boxes from the last time she moved.
+
+> “我下个月要搬走了，”他说，“走前那个周末能再聚一次吗？”邻居记下了日子，又说可以借给他几个上次搬家剩下的箱子。
+
+**脱稿复述**　山姆什么时候要搬家？他怎样约了离开前的最后一次见面？
+
+**换情境表达**　告诉朋友下个月搬走，提议离开前见一面。
+
+I’m moving next month. Could we get together before I leave?
+
+#### 聚会上提前告别 / Leaving Before the Cake
+
+Nia was enjoying a birthday dinner, but she had promised to be home by nine. The host was busy carrying plates, so Nia waited until she had a quiet moment by the kitchen door.
+
+> 妮娅在生日晚餐上玩得开心，但答应九点前到家。主人正忙着端盘子，妮娅等她在厨房门边稍微空下来才开口。
+
+“Thanks for having me. I need to head out before the cake,” she said. She asked if they could have coffee the following weekend. The host said yes and went to wrap a slice of cake for Nia before she left.
+
+> “谢谢你请我来。我得在切蛋糕前先走，”她说。她问下个周末能不能一起喝咖啡。主人答应了，并在妮娅出门前给她打包了一块蛋糕。
+
+**脱稿复述**　妮娅怎么选开口的时机？她怎样道谢并约了下一次见面？
+
+**换情境表达**　感谢主人邀请，解释需要早走，并约下一次见面。
+
+Thanks for having me. I need to head out early tonight. Could we catch up next weekend?
+
+### 上班与团队协作
+
+#### 约会议、改时间、核对时区 / Tomorrow in Which Time Zone?
+
+Wei sent a meeting invite for ten, then noticed that a teammate in London had accepted it for a time when she was normally asleep. The invite used his calendar’s local time.
+
+> 陈伟发了一份十点的会议邀请，后来发现伦敦的同事接受了，但那个时段她平常还在睡觉。邀请用了陈伟日历里的本地时间。
+
+He offered two new times and wrote “Shanghai time” next to each one. His teammate replied with the time in London. They checked that both meant the same slot before Wei sent the new invite.
+
+> 他给出两个新时段，每个后面都写明北京时间。对方回复了对应的伦敦时间。确认是同一时段后，陈伟重新发了邀请。
+
+**脱稿复述**　旧邀请哪里不合适？双方怎么确认新时间是同一个时段？
+
+**换情境表达**　给异地同事两个时段，说明所用时区。
+
+Could we meet at ten or two tomorrow, Shanghai time?
+
+#### 汇报进展和阻塞 / The Missing Numbers
+
+At the morning meeting, Maya’s screen showed a nearly finished report. Two boxes were blank because the weekend sales numbers hadn’t arrived. Her manager asked whether the report would be ready that day.
+
+> 早会上，玛雅屏幕上的报告几乎写完了。周末的销售数据还没到，有两栏是空的。经理问当天能不能完成。
+
+“The draft is ready. I’m still waiting for the weekend sales figures,” Maya said. “Jin, could you send them by noon?” He could send the store totals by then, so they agreed to add the detailed breakdown the next morning.
+
+> “初稿已经好了，还在等周末的销售数据。”玛雅说，“金，你能中午前发给我吗？”金能在中午前发门店总数，于是他们约好第二天上午再补明细。
+
+**脱稿复述**　报告已完成到哪一步？金当天能提供什么？剩下的什么时候补？
+
+**换情境表达**　说清已完成什么、卡在哪里、需要谁帮忙。
+
+The draft is ready, but I’m still waiting for the numbers. Could you send them by noon?
+
+#### 协商范围和截止时间 / Friday’s Smaller Release
+
+On Friday morning, the team was due to release clearer checkout instructions. A colleague asked for an extra reminder button. Wei liked the idea, but the developer had only two hours left for testing.
+
+> 周五上午，团队准备发布更清楚的结账提示。有位同事想再加一个提醒按钮。陈伟喜欢这个主意，但开发人员只剩两小时测试。
+
+Wei proposed releasing the text that day and discussing the button on Monday. The colleague agreed once Wei added the request to the agenda. The team used the remaining time to check the text on three phones.
+
+> 陈伟提议当天先发布文字，周一再讨论按钮。他把需求加进会议议程后，同事同意了。团队用剩下的时间在三部手机上检查文字。
+
+**脱稿复述**　哪项内容当天发布？哪项延后？为什么这样取舍？
+
+**换情境表达**　解释今天能完成什么，提议剩余部分周一处理。
+
+I can finish the checkout copy today. Can we leave the reminder feature for Monday?
+
+#### 上线异常和交接 / Pause at Two Stores
+
+A new booking screen went live at two shops. One shop reported a blank page after signing in. The team was about to enable it for ten more shops when Rina saw the message.
+
+> 新预约页面先在两家门店上线。有店家反馈登录后是白屏。莉娜看到消息时，团队正准备给另外十家店打开。
+
+She asked the team to pause the rollout. One colleague checked the error logs, and another called the shop to find out what the user had done. Rina wrote down who was doing what and set a time for the next update.
+
+> 她请团队暂停扩大上线。一位同事查错误日志，另一位打电话向门店了解用户做了什么。莉娜记下各自的分工，并约好下次同步时间。
+
+**脱稿复述**　什么信号让莉娜暂停上线？两位同事各负责什么？
+
+**换情境表达**　让同事先暂停扩大上线，并确认谁负责排查。
+
+Let’s hold off on rolling this out to more shops. Can you check the error logs?
+
+#### 会议中核对决定和负责人 / Before Everyone Leaves the Call
+
+At the end of a product call, two people thought the new page would launch Friday. Wei had heard that Friday was the deadline for the test results. He spoke before anyone dropped off the call.
+
+> 产品会议快结束时，有两个人以为新页面周五上线。陈伟听到的是周五要交测试结果。他趁大家还没离开会议提出核对。
+
+“Are we launching Friday, or reviewing results on Friday?” he asked. The team agreed they were reviewing results. Jin would run the test by Thursday, and Maya would summarize it on Friday morning. Wei put the decision in the meeting notes.
+
+> “我们是周五上线，还是周五看测试结果？”他问。团队确认是看结果。金周四前完成测试，玛雅周五上午汇总。陈伟把决定写进会议记录。
+
+**脱稿复述**　大家对周五的安排有哪些不同理解？最后谁负责测试、谁负责汇总？
+
+**换情境表达**　说出你对决定的理解，核对负责人和交付时间。
+
+Just to confirm, we’re testing the change before release. Who’s running the test, and when do we need the results?
+
+### 客户、业务与产品沟通
+
+#### 追问用户反馈 / What Did You Tap?
+
+A shop owner told Wei that an appointment had disappeared. The support note only said, “Can’t find booking.” Wei called and asked the owner to walk him through the last time it happened.
+
+> 一家门店的店主告诉陈伟，有个预约不见了。客服记录上只有“找不到预约”。陈伟打电话过去，请店主讲一遍上次遇到这个问题时的操作。
+
+He asked what she had tapped just before the list went blank. She mentioned turning on a date filter. With her permission, they tested the same steps together and found that the booking was outside the selected dates.
+
+> 他问列表变空前她最后点了哪里。她想起来曾打开日期筛选。经她同意，他们一起重做一遍，发现那笔预约不在选定日期内。
+
+**脱稿复述**　最初的客服记录缺什么？陈伟和店主重做操作后发现了什么？
+
+**换情境表达**　请用户复述最后一次操作，确认问题出现前点了哪里。
+
+What were you trying to do the last time this happened, and what did you tap right before it?
+
+#### 处理投诉 / A Call Back by Four
+
+A customer called because the same order appeared twice on her bill. She had already explained it once in a chat. Leo read the earlier message before asking her to confirm the order number.
+
+> 一位顾客打来电话，因为同一笔订单在账单上出现了两次。她已经在线上聊天里解释过一遍。里奥先读了之前的消息，再请她确认订单号。
+
+“So you were charged twice for one order,” he said. “I’ll check the payments and call you back by four.” At three thirty, he explained that the second charge had been refunded and gave her the reference number so she could check it later.
+
+> “所以同一笔订单扣了两次款，”他说，“我查一下付款记录，四点前给你回电。”三点半，他告诉她第二笔扣款已经退款，并给了她一个单号，方便之后查询。
+
+**脱稿复述**　顾客为什么再次联系？里奥什么时候回电，又给了什么查询凭证？
+
+**换情境表达**　复述客户的问题，承诺一个明确的回复时间。
+
+So you were billed twice for the same order. I’ll check what happened and get back to you by four.
+
+#### 报价和交付 / What the Quote Covers
+
+Grace needed new shelves before her shop reopened. The carpenter sent a price, but it didn’t say whether tax or installation was included. It also gave a week for delivery with no exact date.
+
+> 格蕾丝需要在店铺重新营业前装上新货架。木工发来的报价没说明是否含税或安装，只给了预计到货的那一周，没有具体日期。
+
+She asked for the full price, including installation, and a written delivery date. The carpenter sent a revised quote showing both. Grace checked the date against the reopening plan before confirming the job.
+
+> 她请对方列明含安装的总价，并书面确认交付日。木工重新发来报价，两项都有了。格蕾丝对照重新营业的安排，核对日期后才确认下单。
+
+**脱稿复述**　原报价有哪些地方不明确？格蕾丝收到修订版后核对了什么才下单？
+
+**换情境表达**　确认报价是否含税，交付日期是否写进报价。
+
+Does the quote include tax, and does it specify the delivery date?
+
+#### 汇报结果与下一步 / Two Shops, One Clear Next Step
+
+At the end of a small trial, Maya had notes from two shop owners. Both found past bookings without help, but one was unsure how to clear a filter. Maya had five minutes to update the client.
+
+> 小范围试用结束时，玛雅记下了两家店主的反馈。两人都能独立找到历史预约，但有一人不确定怎么清掉筛选。玛雅有五分钟向客户汇报。
+
+She reported the result, mentioned the filter problem, and proposed trying clearer wording with five more shops. The client asked to see the wording first. Maya promised to send it that afternoon.
+
+> 她说了试用结果和筛选问题，提议改清楚文案后再让五家门店试。客户想先看文字。玛雅答应当天下午发给他。
+
+**脱稿复述**　两家店试用有什么共同结果？还有什么问题？下一步先发什么？
+
+**换情境表达**　用两句话告诉客户试用结果和下一步。
+
+Two shops tried the new screen and both could find old bookings. Next, we’ll test it with five more shops.
+
+#### 答复客户暂时没有解决办法 / An Update, Not a Fix Date
+
+A store manager needed to download yesterday’s orders for a stock check. The automatic export was failing, and Rina didn’t know when it would be fixed. She found that the print view still loaded with all the records.
+
+> 一位门店经理盘点时需要下载昨天的订单，但自动导出出错了。莉娜还不知道何时能修复，但发现打印页面仍能显示全部记录。
+
+She told the manager what she had verified and showed him how to save the print view as a PDF. The manager could use that for the stock check. Rina promised to send an update by three the next day and logged that commitment.
+
+> 她告诉经理已经核实的情况，并演示怎么把打印页面保存成 PDF。经理可以先用它盘点。莉娜答应第二天下午三点前同步进展，并把这个约定记下来。
+
+**脱稿复述**　客户真正需要完成什么？临时办法是什么？莉娜承诺的是哪一类时间？
+
+**换情境表达**　说明已经确认的问题，给临时办法和下次进展更新时间。
+
+We’ve confirmed the issue. For now, you can export the list manually. I’ll send you an update by three tomorrow.
+
+### 求职与职业变化
+
+#### 投递后跟进 / Checking In on an Application
+
+Nine days after applying for a job, Tara still had no confirmation email. She checked her sent folder, found the posting number, and wrote a short note to the hiring team.
+
+> 投递职位九天后，塔拉仍没收到确认邮件。她查了已发送邮件，找到招聘编号，给招聘团队写了一封简短的跟进邮件。
+
+She asked them to confirm they had received her application and share the next step if possible. The recruiter replied that it was in review and that interview invitations would go out the following week.
+
+> 她请对方确认收到申请，并问方便的话能否告知下一步。招聘方回复说，申请正在审核，面试邀请会在下周发出。
+
+**脱稿复述**　塔拉等了多久才跟进？她问了什么？招聘方怎样回复？
+
+**换情境表达**　向招聘方确认是否收到材料，并问下一步。
+
+I’m following up on my application. Could you confirm you received it and let me know what happens next?
+
+#### 安排或改期面试 / Two Times That Work
+
+Jin received an interview invitation for the same hour as a workshop he was leading. He checked his calendar for two times he could definitely make before replying to the recruiter.
+
+> 金收到面试邀请，时间正好和他负责的一场工作坊冲突。他先在日历里找了两个确定能参加的时段，再回复招聘人员。
+
+“I have a conflict at that time. Would Tuesday at ten or Wednesday at two work instead?” he wrote. The recruiter picked Wednesday. Jin checked the time zone in the updated link and accepted the invitation.
+
+> “那个时段我有安排。能改到周二十点或周三两点吗？”他写道。招聘人员选了周三。金核对新邀请里的时区后，接受了邀请。
+
+**脱稿复述**　原时间为什么冲突？金给出哪些备选？接受前还检查什么？
+
+**换情境表达**　说明时间冲突，给两个替代时段。
+
+I have a conflict at that time. Would Tuesday at ten or Wednesday at two work instead?
+
+#### 面试讲项目经历 / The Search Box Customers Missed
+
+In an interview, Rina was asked about a change she had made based on user feedback. She described a booking site where customers called support because they couldn’t find past orders.
+
+> 面试时，莉娜被要求讲一次根据用户反馈做出的改动。她介绍了一个预约网站，顾客经常因为找不到历史订单而给客服打电话。
+
+She explained how she watched users search and spotted a label they kept skipping. Her team changed the label and ran another trial. This time, four of five participants found the orders on their own.
+
+> 她解释，自己观察用户搜索，发现大家总是略过一个标签。团队改了标签，再做了一轮试用。这次五名参与者中有四人独立找到了订单。
+
+**脱稿复述**　用户遇到什么困难？团队改了哪里？下一轮试用的结果如何？
+
+**换情境表达**　说清遇到的问题、你采取的行动和结果。
+
+Customers couldn’t find past orders, so I worked with support to identify where people got stuck. We changed the labels and tested them with two stores.
+
+#### 核对录用条件 / Before Saying Yes
+
+The offer email said Ana could start “in early June,” but it didn’t give a date or say which office she would work from. She still needed to arrange her move.
+
+> 录用邮件说安娜可以“六月初”入职，却没给日期，也没说去哪个办公室办公。她还得安排搬家。
+
+Ana asked the recruiter to confirm the date, office location, and length of the probation period. The recruiter put all three in a revised offer. Ana checked her travel plans before writing back to accept.
+
+> 安娜请招聘方确认日期、办公地点和试用期时长。对方把三项都写进了新版录用函。安娜确认出行安排后，回信接受了录用。
+
+**脱稿复述**　录用邮件还缺哪些信息？安娜接受前为什么要核对行程？
+
+**换情境表达**　确认工作地点、开始日期、是否有试用期。
+
+Could you confirm the work location, the start date, and whether there’s a probation period?
+
+#### 询问面试形式和准备内容 / What Should I Prepare?
+
+Tara received a calendar invitation titled “Second round.” It was ninety minutes long, with three people on the invite. The recruiter hadn’t said whether there would be a group conversation or a task to complete.
+
+> 塔拉收到标题为“第二轮”的会议邀请，时长九十分钟，有三个人参加。招聘人员没说是多人面谈，还是要现场做题。
+
+She asked how the time was split and whether she should prepare anything. The recruiter said the first half was a discussion and the second was a short exercise using a shared document. Tara checked that her laptop could open it.
+
+> 她问这段时间怎么安排、有没有东西需要准备。招聘人员说前半场是讨论，后半场要在共享文档里做一个小练习。塔拉检查了自己的电脑能否打开。
+
+**脱稿复述**　邀请里有哪些信息已经明确？塔拉进一步确认了哪两件事？
+
+**换情境表达**　确认面试多久、有没有动手任务、需要准备什么。
+
+How long will the interview take? Will there be a practical task, and is there anything I should prepare?
+
+### 上学、培训与自学
+
+#### 报名课程 / What If I Miss a Class?
+
+Omar wanted to take an evening photography course. The page mentioned some prior experience but didn’t explain how much. He also knew he would be away on the second Tuesday.
+
+> 奥马尔想报晚上的摄影课。页面说需要有些基础，却没说要到什么程度。他也知道第二个周二自己不在。
+
+He asked the course office what he should already know and how to catch up after one absence. The teacher said basic camera controls were enough and offered to send the second week’s practice notes. Omar registered that evening.
+
+> 他问课程办公室需要哪些基础，缺一次课怎么补。老师说会用相机的基本功能就行，还可以发第二周的练习笔记。奥马尔当晚报了名。
+
+**脱稿复述**　奥马尔问了哪两类信息？老师给了什么补课办法？
+
+**换情境表达**　问先修要求、上课时间和补课安排。
+
+Are there any prerequisites? What time does class start, and what happens if I miss one?
+
+#### 跟老师请假 / What Should We Make Up?
+
+Kim’s daughter woke up unwell on the day of a spelling quiz. Kim emailed the teacher before school, saying her daughter would be absent and asking what work she should make up when she returned.
+
+> 拼写测验那天，金的女儿起床时不舒服。金在上课前给老师发邮件，说女儿今天缺课，问回来后需要补哪些作业。
+
+The teacher said she could take the quiz on Friday and shared the practice page. Kim thanked her and wrote down the new date. She saved the practice page for when her daughter felt better.
+
+> 老师说可以周五补测，并发来了练习页。金道谢后记下新日期，把练习页保存下来，等女儿好些再用。
+
+**脱稿复述**　孩子缺了哪项课堂活动？老师给了怎样的补做安排？
+
+**换情境表达**　告诉老师孩子今天缺课，问作业怎么补。
+
+My child won’t be in class today. Could you let me know what work they should make up?
+
+#### 请求具体反馈 / Where Did I Lose You?
+
+During a speaking class, Ben told a story about finding a lost dog. His partner understood the ending but thought Ben had found the dog before calling its owner. Ben wanted to know where the story had become hard to follow.
+
+> 口语课上，本讲了一个找走失狗的故事。同伴听懂了结尾，却以为本先找到狗，后来才打给主人。本想知道自己从哪里开始没讲清楚。
+
+His partner pointed to a sentence with three actions in it. Ben split it in two and added “before I called.” He told that part again, and this time his partner got the order right.
+
+> 同伴指出一句话里塞了三个动作。本把它拆成两句，加上“在我打电话之前”，然后重讲那一段。这次同伴听对了先后顺序。
+
+**脱稿复述**　同伴弄反了哪两个动作？本用了什么办法重讲？
+
+**换情境表达**　请老师指出哪里说不清楚，给你一次重说机会。
+
+Could you point out where I lost you? I’d like to try explaining it again.
+
+#### 制定学习安排 / Two Short Sessions a Week
+
+Nia and Hana wanted to practice English together, but neither had an hour free every evening. They compared calendars and found twenty minutes on Tuesday and another twenty on Friday.
+
+> 妮娅和哈娜想一起练英语，但两人都没法每晚空出一小时。她们对了日历，找出周二二十分钟、周五二十分钟。
+
+They agreed to read a short article on Tuesday and tell the story from memory on Friday. Each person would bring one sentence they found hard to say. They put the first two sessions in their calendars.
+
+> 她们约好周二读一篇短文，周五凭记忆讲故事。每个人带一句自己觉得难说的话。两人把前两次练习加进了日历。
+
+**脱稿复述**　两人每周什么时候练？两次练习的任务各是什么？
+
+**换情境表达**　告诉搭档每周能学几次，约定如何互相检查。
+
+I can practice twice a week. Can we meet on Fridays to go over what we learned?
+
+#### 小组作业有人无法到场 / Slides From Home
+
+A class group had planned to rehearse a presentation on Thursday. One member messaged that he couldn’t come to campus. The others still needed someone to check whether the slides matched their notes.
+
+> 一个课程小组原计划周四排练报告。一名同学发消息说到不了学校。其他人仍需要有人核对幻灯片和讲稿是否一致。
+
+Mina asked him to review the slide deck from home and leave comments before seven. He agreed to check the dates and labels first. The group rehearsed in person and saved ten minutes at the end to read his comments together.
+
+> 米娜请他在家检查幻灯片，七点前留下批注。他同意先查日期和标签。小组线下排练，并在结束前留出十分钟一起看他的批注。
+
+**脱稿复述**　缺席的人怎么继续参与？要在几点前交付？其他成员如何接续他的工作？
+
+**换情境表达**　给缺席同学一项可远程完成的任务，并确定交稿时间。
+
+Could you review the slides from home and send your comments by Thursday evening?
+
+### 付款、银行与保险
+
+#### 核对账单与重复收费 / Two Charges at 8:42
+
+On her banking app, Ella saw two charges for the same haircut. They had the same amount and time. She found the receipt and called the salon with both references in front of her.
+
+> 埃拉在银行应用里看到同一次理发扣了两笔钱，金额和时间都相同。她找到小票，把两笔交易记录放在眼前，给理发店打电话。
+
+The owner checked the payment log and found the terminal had processed the retry. She refunded the second payment and sent a receipt. Ella saved it so she could match the refund when it appeared.
+
+> 店主查了支付记录，发现终端把重试那次也扣款了。她退了第二笔钱，并发来退款凭证。埃拉把凭证存下，方便到账后核对。
+
+**脱稿复述**　埃拉靠哪两个线索确认两笔扣款可疑？怎么保留证据等待退款？
+
+**换情境表达**　指出同一笔收费出现两次，请对方核对。
+
+This charge appears twice on my bill. Could you check whether I was charged twice?
+
+#### 和朋友分账 / Sixty Between Three
+
+After dinner, the server brought one bill for sixty. Three friends had agreed to share the dishes, but one was about to leave. Maya checked that the total already included the charge listed at the bottom.
+
+> 晚饭后，服务员拿来一张六十元的账单。三位朋友约好共享几道菜，其中一人马上要走。玛雅先核对总额是否已经包含底部列出的费用。
+
+“Sixty split three ways is twenty each,” she said. One friend paid by card while the other two sent their shares to her. Maya waited for both transfers to show up before leaving.
+
+> “六十，三个人分，每人二十，”她说。一位朋友刷卡，另外两位把各自那份转给她。玛雅看到两笔都到账后才离开。
+
+**脱稿复述**　总额与每份分别是多少？谁刷卡，其他人怎样付给她？
+
+**换情境表达**　说明总额六十、三人平摊、每人二十。
+
+The total came to sixty. If we split it three ways, that’s twenty each.
+
+#### 银行卡遗失 / The Card That Wasn’t in the Wallet
+
+At the grocery checkout, Sam realized his bank card was gone. He used a different card to pay. Outside the shop, he opened his bank’s app and contacted support through it.
+
+> 在超市结账时，山姆发现银行卡不见了。他换了张卡付款。走出商店后，他打开银行应用，通过应用联系客服。
+
+He said the card was missing and asked them to freeze it. He asked what would happen to any recent payments and how to get a new card. The agent confirmed the freeze and gave him an estimate for delivery.
+
+> 他说卡找不到了，请对方冻结。他问最近的付款会怎样处理、怎么补卡。客服确认已经冻结，并给出新卡预计寄到的时间。
+
+**脱稿复述**　山姆在哪里发现遗失？他要求银行做什么、还核对了哪两项？
+
+**换情境表达**　向银行说明卡找不到了，请冻结并询问补卡流程。
+
+I’ve lost my card. Could you freeze it and tell me how to get a replacement?
+
+#### 询问保险理赔材料 / Three Documents to Submit
+
+A pipe leaked in Lena’s apartment and damaged a rug. She took photos and opened the insurance claim page. The form asked for supporting documents without saying which ones applied to her case.
+
+> 莉娜公寓的水管漏水，弄坏了一张地毯。她拍了照片，打开保险理赔页面。表格要求上传证明，却没说她这种情况具体要哪些。
+
+She asked the insurer for a list, the deadline, and a way to track the claim. The agent sent her a checklist for her case and gave her a reference number. Lena saved both with the photos.
+
+> 她向保险公司询问材料清单、截止日期和查询进度的方式。客服发来她这起理赔的清单，并提供案件编号。莉娜把这些与照片一起保存了。
+
+**脱稿复述**　表格为什么让莉娜不知道下一步？保险客服给了哪两样便于提交和追踪的信息？
+
+**换情境表达**　问需要哪些文件、提交期限和查询方式。
+
+What documents do I need to submit, what’s the deadline, and how can I track my claim?
+
+#### 刷卡失败但银行显示处理中 / Before Tapping Again
+
+At the grocery checkout, the card terminal said “Try again,” but Ana’s bank app showed a pending charge for the same amount. The cashier held out the terminal for a second attempt.
+
+> 超市结账时，刷卡终端显示“请重试”，但安娜的银行应用里有一笔同金额的待处理交易。收银员把终端递过来让她再刷一次。
+
+Ana showed the timestamp and asked the cashier to check the register first. The register had no completed payment. The cashier printed the terminal slip, and Ana kept it so she could check what happened to the pending entry later.
+
+> 安娜给收银员看了交易时间，请对方先核实收银记录。收银机没有已完成的付款。收银员打印了终端凭条，安娜留着它，以便之后查看那笔待处理记录。
+
+**脱稿复述**　终端和银行应用显示有什么不同？安娜给对方看了什么，还留了哪份凭证？
+
+**换情境表达**　给店员看待入账的扣款，问能否先核对交易再重刷。
+
+My bank shows a pending charge. Could you check your terminal before we try the card again?
+
+### 数码、网络与客服
+
+#### 登录失败 / The Exact Error Message
+
+Wei needed a file before a meeting, but the website kept rejecting his login. He had already reset his password. The page still said his account was locked, so he copied the message into a support request.
+
+> 陈伟开会前需要一份文件，但网站一直拒绝登录。他已重置密码，页面仍显示账号被锁定，于是他把错误提示复制到工单里。
+
+He wrote when he had last signed in and what he had already tried. Support explained how to verify his account through the official page. While waiting, Wei asked an authorized teammate to present the file at the meeting.
+
+> 他写明上次登录的时间，以及已经试过什么。客服说明怎么通过官方页面验证账号。等待处理期间，陈伟请有权限的同事在会上展示那份文件。
+
+**脱稿复述**　陈伟已经试过什么？页面显示什么？等待时他怎样让会议继续？
+
+**换情境表达**　说明已重置密码却仍无法登录，报出页面提示。
+
+I reset my password, but I still can’t sign in. The page says my account is locked.
+
+#### 停网报修 / No Connection Since Noon
+
+Nia’s internet stopped working just after lunch. All of her devices went offline. Restarting the router didn’t help, so she contacted support using mobile data.
+
+> 午饭后不久，妮娅家的网络断了，所有设备都离线。重启路由器也没用，她便用手机流量联系客服。
+
+She gave the time it went down and said which lights were showing on the router. Support identified an outage in her area and offered to text an update. Nia told her team she would join the meeting by phone.
+
+> 她说了断网时间和路由器亮着哪些灯。客服查到是片区故障，答应短信通知进展。妮娅告诉团队，她会用手机入会。
+
+**脱稿复述**　网络什么时候断的？妮娅怎样描述排查情况？她怎么临时参会？
+
+**换情境表达**　告知什么时候断网、重启过路由器，并问恢复时间。
+
+My internet has been down since noon. I restarted the router. Do you know when service will be back?
+
+#### 取消订阅或降档 / Will the Old Price Still Apply?
+
+Omar used his streaming subscription once in June. He wanted to switch to a cheaper plan, but the billing page said the next payment was already scheduled.
+
+> 奥马尔六月只用了一次流媒体会员。他想换便宜一点的套餐，但账单页面显示下次扣款已经排好了。
+
+He asked support when the cheaper plan would start and whether the next payment would still be at the old rate. The agent explained the change would take effect after the current month. Omar saved the confirmation email.
+
+> 他问便宜套餐何时生效、下次是否还按原价扣款。客服解释，当前订阅周期结束后才会生效。奥马尔保存了确认邮件。
+
+**脱稿复述**　奥马尔担心下次会按什么价格扣款？客服说新套餐何时开始？
+
+**换情境表达**　确认什么时候生效、下个月是否还收费。
+
+If I switch to the cheaper plan today, when does it start? Will I still be charged the old rate next month?
+
+#### 收到可疑链接 / A Message That Looked Familiar
+
+Grace received a text that appeared to come from her delivery company. It asked her to follow a link and pay a small fee. She checked her recent order and saw no mention of the fee.
+
+> 格蕾丝收到一条看似来自快递公司的短信，让她点链接支付一小笔费用。她查看最近的订单，并没看到这笔费。
+
+She opened the delivery company’s app herself and contacted its support team there. The agent confirmed that the company had not sent the text. Grace deleted it and kept checking the package through the app.
+
+> 她自己打开快递公司的应用，通过里面的入口联系客服。客服确认短信不是公司发的。格蕾丝删掉短信，继续在应用里查包裹。
+
+**脱稿复述**　短信要求做什么？格蕾丝用哪个渠道独立核实这条短信？
+
+**换情境表达**　通过原有联系方式询问对方是否真的发过消息。
+
+I got a text claiming to be from you. Can you confirm whether you sent it?
+
+#### 旧手机号收不到验证码 / A Code Sent to the Old Number
+
+Jin tried to sign in to a delivery account after changing phone plans. The verification screen showed the last two digits of his old number. He still knew his password, but he couldn’t receive the code.
+
+> 金换了手机套餐后想登录配送账户。验证页面显示的尾号是旧手机号。他还记得密码，却收不到验证码。
+
+He opened support through the official website and asked what other verification options were available. The agent directed him to the account recovery form. Jin checked what documents it requested before submitting anything.
+
+> 他通过官方网站联系支持，询问还有哪些验证方式。客服指引他打开账号恢复表。金先核实表格要求哪些材料，再决定提交。
+
+**脱稿复述**　金为什么无法完成验证？他通过哪里联系了客服？客服给了什么下一步？
+
+**换情境表达**　说明旧号码停用，问官方账号恢复还有什么验证方式。
+
+I don’t have access to my old number. Is there another way to verify my account?
+
+### 理发、维修与本地服务
+
+#### 理发确认长度 / Just This Much
+
+In the salon, Ana said she wanted a trim. The stylist held up a section of hair and suggested taking off several centimeters. Ana usually wore it tied back and wanted to keep enough length for that.
+
+> 理发店里，安娜说只想稍微修一下。发型师举起一绺头发，建议剪掉几厘米。安娜平时会把头发扎起来，希望还能保留足够长度。
+
+She asked the stylist to show her exactly how much would come off. They agreed on a shorter trim in front of the mirror. After the cut, Ana tried tying it back before she left.
+
+> 她请发型师比一下实际要剪多少。两人在镜子前确认少剪一点。剪完后，安娜试着把头发扎起来，然后离开了。
+
+**脱稿复述**　安娜为什么要保留头发长度？她怎样在开剪前确认？
+
+**换情境表达**　请理发师只修剪一点，动手前先比一下长度。
+
+Just a trim, please. Could you show me how much you’re going to take off?
+
+#### 修手机拿报价 / Screen Only
+
+Jin’s phone fell onto a tile floor. The screen cracked, but the buttons and camera still worked. At the repair shop he asked how much a screen replacement would cost and when he could collect it.
+
+> 金的手机掉在瓷砖上，屏幕碎了，但按钮和摄像头还正常。他在维修店问，换屏多少钱、什么时候能取。
+
+The technician listed parts and labor and said the screen could be replaced that afternoon. Jin asked the shop to call him before doing any extra work. He collected the phone on his way home.
+
+> 维修人员列出配件和人工费，说当天下午能换好。金请店里如需做额外维修先打给他。他下班回家路上取了手机。
+
+**脱稿复述**　手机哪里坏了、哪里还正常？金怎样限制维修范围？
+
+**换情境表达**　问更换屏幕要多少钱、多久能取。
+
+How much would it cost to replace the screen, and when could I pick it up?
+
+#### 洗衣店说明污渍 / The Mark on the Sleeve
+
+Lena spilled coffee on a jacket she needed for Friday. At the cleaner’s, the stain was hard to see under the counter light. She pointed to the inside edge of the left sleeve.
+
+> 莉娜把咖啡洒在了周五要穿的外套上。洗衣店的柜台灯下不太看得清污渍，她指给店员看左袖内侧。
+
+She told the clerk when it had happened and asked if the jacket could be ready by Friday. The clerk wrote “left sleeve” on the ticket and offered Thursday after five. Lena kept the ticket in her wallet.
+
+> 她告诉店员什么时候弄脏的，问周五前能不能取。店员在单上写了“左袖”，说周四五点后可取。莉娜把取衣单放进了钱包。
+
+**脱稿复述**　污渍在哪里？店员写下什么？哪天几点后可取？
+
+**换情境表达**　指出衣服上的咖啡渍，问周五之前能否取。
+
+There’s a coffee stain on the sleeve. Could I pick this up by Friday?
+
+#### 改约上门服务 / After Two, Please
+
+The washing machine needed a repair. The company offered a morning visit, but Maya had to be at work. She called with her booking reference so the company could find the appointment quickly.
+
+> 洗衣机需要维修。维修公司安排上午上门，可玛雅要上班。她打电话时报了预约编号，方便对方快速查找。
+
+She asked whether the technician could come after two. The scheduler offered a window from three to five and added a note to call ahead. Maya confirmed the time and asked for a text with the change.
+
+> 她问维修人员能不能两点后过来。调度员安排三点到五点，还备注了到前先打电话。玛雅确认时间，请对方发短信通知改约结果。
+
+**脱稿复述**　原上门时间为什么不行？新时间窗口是什么？怎样确认变更？
+
+**换情境表达**　说明上午不在家，问能否改到两点以后。
+
+I won’t be home in the morning. Could the technician come after two?
+
+#### 维修发现额外问题 / A Second Line on the Quote
+
+The technician came to fix a dripping tap. Once he opened the cupboard, he found that a hose was also worn. He offered to replace it while he was there, but the original quote only covered the tap.
+
+> 维修师傅来修滴水的水龙头。打开柜门后，他发现有根软管也磨损了，就问要不要顺便换掉。原报价只包含水龙头。
+
+Tara asked him to price the hose separately before starting the extra work. He showed her the new line on the quote and explained how long it would add. Tara called her landlord with both amounts and got a decision before the work went ahead.
+
+> 塔拉请他先把软管单独报价，再做额外项目。师傅给她看了报价上新增的一行，也说明要多花多久。塔拉报着两笔金额打给房东，等房东确认后才继续。
+
+**脱稿复述**　维修师傅发现了什么额外问题？塔拉怎么核对费用？谁最后确认能继续？
+
+**换情境表达**　请师傅分开报价，说明没得到同意前先不做额外项目。
+
+Could you price the extra work separately? Please check with me before you do anything beyond the original repair.
+
+### 养宠与动物照护
+
+#### 预约宠物看诊 / The First Available Visit
+
+Mina’s cat had not eaten since the day before. She called the vet and described when she had last seen him eat. The receptionist asked a few questions before checking the available appointments.
+
+> 米娜的猫从前一天起就没吃东西。她打电话给兽医诊所，说明上次看到猫进食的时间。前台问了几个问题，再查可预约的时间。
+
+Mina asked for the earliest appointment. The receptionist passed the details to the vet and offered a time that morning. Mina repeated the time and asked what information she should bring along.
+
+> 米娜问最早几点能看。前台把情况转告兽医，给出当天上午的时间。米娜复述了时间，并问需要带哪些信息过去。
+
+**脱稿复述**　米娜给诊所描述了哪条时间线？前台怎么安排？
+
+**换情境表达**　说明猫从昨天开始不吃东西，问最早何时能看。
+
+My cat hasn’t eaten since yesterday. What’s the earliest appointment available?
+
+#### 交接宠物照护 / Dinner at Six
+
+Sam was going away for one night, and a friend agreed to look after his dog. As they stood in the kitchen, Sam showed him the food tin and the scoop. He said dinner was at six.
+
+> 山姆要出门住一晚，朋友同意帮忙照看他的狗。两人站在厨房，山姆指给朋友看狗粮罐和量勺，说六点喂晚饭。
+
+On his way out, he pointed to the leash on the hook by the door. His friend took a photo of the instructions and asked which route the dog knew best. Sam marked the short loop on a map.
+
+> 出门时，他又指了指挂在门边钩子上的牵引绳。朋友拍下照护说明，问狗最熟悉哪条路。山姆在地图上标了常走的小环线。
+
+**脱稿复述**　狗几点吃饭？牵引绳在哪？常走路线怎样交代？
+
+**换情境表达**　告诉朋友狗几点吃饭，牵引绳放在哪里。
+
+He eats at six. His leash is on the hook next to the door.
+
+#### 询问宠物能否入内 / A Table Outside
+
+Tara stopped at a café with her dog. She could see water bowls on the patio but no sign saying whether dogs could go inside. She waited by the door and asked a server.
+
+> 塔拉带狗来到一家咖啡馆。露台上摆着水碗，但没有牌子说狗能不能进室内。她在门边等了一下，问了服务员。
+
+The server said dogs could sit outside as long as they were on a leash. He offered a table in the shade. Tara ordered at the patio table and clipped the leash to the chair beside her.
+
+> 服务员说，系好牵引绳就可以带狗坐在室外，并安排了阴凉处的一张桌子。塔拉坐在露台点单，把牵引绳扣在身旁的椅子上。
+
+**脱稿复述**　塔拉从水碗推测到了什么？店员明确了哪条规则？
+
+**换情境表达**　问能不能带狗进入，是否必须用牵引绳。
+
+Are dogs allowed inside? Do they need to be on a leash?
+
+#### 宠物走失求助 / The Blue Collar
+
+Ella’s small brown dog slipped away near the park gate. She checked the path where she had last seen her, then called the park office and gave a clear description, including the blue collar.
+
+> 埃拉的小棕狗在公园门口附近跑掉了。她先回到最后看见狗的小路上找，又打给公园办公室，说明狗的外观，特别提到蓝色项圈。
+
+A worker had seen a dog like that by the fountain. Ella gave her phone number in case anyone called again and walked over. The dog was sitting beside a bench with a woman who had found her.
+
+> 工作人员在喷泉边见过一只很像的狗。埃拉留下号码，方便有线索时联系，然后走了过去。那只狗正坐在长椅旁，旁边有一位找到它的女士。
+
+**脱稿复述**　埃拉怎样描述狗？谁给了线索，最后在哪里找到？
+
+**换情境表达**　描述走失宠物的外观和最后出现的位置。
+
+My dog is missing. She’s small and brown, with a blue collar. I last saw her near the park gate.
+
+#### 和邻居沟通狗叫 / Barking Before Breakfast
+
+Hana heard barking through the wall at six three mornings in a row. Her neighbor left for work early and might never have heard it. Hana wrote down the times and knocked when she saw him come home.
+
+> 哈娜连续三天早晨六点隔着墙听见狗叫。邻居很早出门上班，可能根本没听到。哈娜记下时间，看见他回家时去敲门。
+
+She explained when she heard it and asked if he knew what was happening. He said he had just changed shifts and agreed to check. They exchanged numbers so Hana could let him know if it happened again.
+
+> 她说明自己什么时候听到狗叫，问邻居知不知道情况。邻居说最近刚换班，答应查看一下。两人交换了号码，以便下次再发生时哈娜能跟他说。
+
+**脱稿复述**　哈娜记录了什么？邻居为什么可能不知道？他们约好了怎么跟进？
+
+**换情境表达**　说明自己听到狗叫的时段，问是否也注意到并约好反馈。
+
+I’ve been hearing barking around six in the morning. Have you noticed it? Can I text you if it happens again?
+
+### 公共办事、证件与搬迁
+
+#### 预约办理证件 / The Appointment Checklist
+
+Wei needed to renew his ID before a trip. The booking page offered appointments, but the checklist only said to bring proof of address. It didn’t say whether a digital copy was accepted.
+
+> 出行前，陈伟要换领证件。预约页面有可选时段，但材料说明只说要带地址证明，没说电子版能不能用。
+
+He called the office and asked about the earliest appointment, accepted documents, and copies. The clerk pointed him to the checklist for renewals and explained what to bring. Wei booked a time after checking he had everything.
+
+> 他打电话问最早预约、认可哪些文件，以及要不要复印件。工作人员给他指了换领专用清单，说明要带什么。陈伟核对材料齐全后才订时间。
+
+**脱稿复述**　办证前陈伟要核对哪三项？什么时候才下预约？
+
+**换情境表达**　问最早的预约、要带的文件和是否需要复印件。
+
+When is the earliest appointment? What documents should I bring, and do I need copies?
+
+#### 登记新地址 / When Does the Change Take Effect?
+
+Ana moved on the first of June. A notice was still delivered to her old address the following week. She called the office with her reference number and gave them the new address, including the apartment number.
+
+> 安娜六月一日搬了家。第二周还有一份通知寄到旧地址。她带着编号给办事处打电话，报了新地址和房号。
+
+The clerk read the address back and said the update would apply to future notices from Friday. Ana also asked for a copy of the notice already sent. The clerk arranged to send it to her online account.
+
+> 工作人员复述地址，说从周五起后续通知会用新地址。安娜还要了一份已经寄出的通知副本。工作人员安排发到她的网上账户。
+
+**脱稿复述**　新地址从哪天开始用于发通知？已经寄出的通知怎么处理？
+
+**换情境表达**　给出搬家日期和新地址，确认何时更新。
+
+I moved on the first of June. Could you update my address and tell me when the change will take effect?
+
+#### 邮寄文件并查询 / Proof It Arrived
+
+At the post office, Omar said he needed to send signed papers and wanted to know when they would arrive. The clerk showed him two services with different delivery estimates and explained which one included tracking.
+
+> 在邮局，奥马尔说他要寄签过字的文件，想知道什么时候到。工作人员给他看了两种服务的预计送达时间，并解释哪种可以查物流。
+
+Omar asked whether he could also see proof of delivery. He chose the service that recorded a signature and kept the tracking receipt. That afternoon, he sent the recipient the number so she could follow the delivery too.
+
+> 奥马尔问能不能看到签收证明。他选了需要签名的服务，留好物流凭证。那天下午，他把单号发给收件人，方便她也能查进度。
+
+**脱稿复述**　两种服务怎么比较？奥马尔选择哪项能力，为什么把单号给收件人？
+
+**换情境表达**　问送达时间、追踪号和签收证明。
+
+When should this arrive? Can I get a tracking number and proof of delivery?
+
+#### 机场入境沟通 / The First Night’s Address
+
+At the airport, the officer asked Tara why she was visiting and how long she planned to stay. She said she was there for a week on vacation. The officer then asked where she would spend the first night.
+
+> 在机场，工作人员问塔拉来做什么、计划停留多久。她说来度假，待一周。工作人员接着问她第一晚住在哪里。
+
+Tara gave the name of her hotel. When asked for the street address, she opened her reservation and read it out. The officer handed back her passport, and she went to the baggage hall.
+
+> 塔拉报了酒店名。被问到街道地址时，她打开预订信息读出来。工作人员把护照还给她，她去了行李大厅。
+
+**脱稿复述**　工作人员先问什么？塔拉怎样补充第一晚的详细地址？
+
+**换情境表达**　说明旅行目的、停留时间和第一晚住宿地点。
+
+I’m here on vacation for a week. I’m staying at the Riverside Hotel tonight.
+
+#### 表格姓名和证件写法不一致 / The Missing Middle Name
+
+At the service desk, Omar noticed the name on his application didn’t match his passport. He had left out his middle name because the online form only showed two boxes. The clerk had not yet processed the application.
+
+> 在服务柜台，奥马尔发现申请表上的姓名和护照不一致。网上表格只有两个框，他漏填了中间名。工作人员还没处理申请。
+
+He pointed to the difference and asked which field he should correct. The clerk explained where this particular form put middle names, then checked the corrected version against the passport. Omar asked whether the first submission would be replaced.
+
+> 他指出不同的地方，问该更正哪一栏。工作人员解释这张表应把中间名填在哪里，再对照护照查了改好的版本。奥马尔问原来的提交记录会不会被替换。
+
+**脱稿复述**　姓名哪里不一致？工作人员怎么核对改好的表？奥马尔最后确认了什么？
+
+**换情境表达**　指出表格漏了中间名，询问在哪一栏更正及是否需重新提交。
+
+My middle name is missing from the form. Which field should I correct, and do I need to submit it again?
+
+### 紧急求助与无障碍
+
+#### 请求急救 / The Address Comes First
+
+At a community hall, a man collapsed and did not answer when people called his name. Maya called for an ambulance. She read the building number and street name from the sign beside the entrance.
+
+> 在社区礼堂，一名男子倒地，旁人叫他名字也没有回应。玛雅打电话叫救护车。她看着入口旁的牌子，报出楼号和街名。
+
+She told the dispatcher the man was not responding and explained which door was open. A staff member went to meet the ambulance while Maya stayed on the line and answered the dispatcher’s questions.
+
+> 她告诉接线员男子没有回应，又说明哪扇门开着。一名工作人员去接救护车，玛雅没有挂断，继续回答接线员的问题。
+
+**脱稿复述**　玛雅怎么确认准确地址？她和另一位工作人员怎样分工？
+
+**换情境表达**　向接线员报准确地址，说明有人倒地且没有回应。
+
+Please send an ambulance. We’re at 27 River Road. Someone collapsed and isn’t responding.
+
+#### 发现烟或火情 / Smoke Above the Shop
+
+On her way home, Rina saw smoke coming from a window above a closed shop. From across the street she called emergency services. She gave the building number and said the smoke was coming from the second floor.
+
+> 回家路上，莉娜看见一家关门店铺上方的窗户冒烟。她在马路对面拨打紧急电话，报出楼号，说烟是从二楼冒出来的。
+
+The dispatcher asked where the entrance was. Rina said it was around the corner on Pine Lane and added that she couldn’t see anyone inside. She stayed in a safe place while the crew arrived.
+
+> 接线员问入口在哪。莉娜说入口在拐角的松树巷，又补充说自己看不见里面是否有人。消防人员到场时，她待在安全的地方。
+
+**脱稿复述**　莉娜报告了哪个楼层、哪条街的入口？她怎样交代自己看不到的信息？
+
+**换情境表达**　说清从哪里看到烟，说明楼号和入口。
+
+There’s smoke coming from the second floor at 12 Park Street. The building entrance is on Pine Lane.
+
+#### 证件遗失求助 / The Passport at the Counter
+
+At the station, Grace opened her bag and found her passport was missing. She remembered taking it out at the ticket counter around noon. She went to the information desk and explained where she had last seen it.
+
+> 在车站，格蕾丝打开包，发现护照不见了。她记得中午左右在售票窗口拿出来过，就去问讯处说明了最后看到护照的地方。
+
+The assistant called the ticket counter. A cleaner had handed in a passport just after lunch. The assistant asked Grace to confirm the name and details before returning it, and Grace put it straight into a zipped pocket.
+
+> 工作人员打给售票窗口。清洁人员午饭后刚交来一本护照。工作人员请格蕾丝核对姓名和信息后把护照还给她，格蕾丝马上把它放进了带拉链的口袋。
+
+**脱稿复述**　格蕾丝最后在哪见过护照？领回前工作人员怎样确认？
+
+**换情境表达**　向工作人员说明最后一次见到护照的时间与地点。
+
+I can’t find my passport. I last had it at the ticket counter around noon.
+
+#### 询问无障碍入口 / A Door Without Steps
+
+At the theater, Leo saw steps at the main entrance. His friend used a wheelchair, and the lift symbol on the ticket did not say where to go. Leo asked a staff member for the step-free entrance.
+
+> 剧场正门有台阶。里奥的朋友使用轮椅，而票上的电梯标志没说该往哪走。里奥问工作人员，无台阶入口在哪里。
+
+The staff member pointed to a door on the side street and explained that it led directly to the elevator. Leo asked whether they could scan their tickets there. They could, so both friends went round together.
+
+> 工作人员指向侧街的一扇门，说进去就能直接到电梯。里奥问能不能在那里验票。工作人员说可以，两人便一起绕了过去。
+
+**脱稿复述**　正门有什么障碍？侧门通到哪里？两人还确认了什么？
+
+**换情境表达**　说明你需要无台阶入口，问如何走到电梯。
+
+Is there a step-free entrance? What’s the easiest way to get to the elevator?
+
+#### 在商场联系失散的家人 / By the Bookstore
+
+Nia lost sight of her father in a busy shopping center. He didn’t answer his phone. At the information desk she gave his name, said she had last seen him by the bookstore, and described his blue jacket.
+
+> 商场里人很多，妮娅一转眼找不到父亲了。他没接电话。她到服务台报出父亲的名字，说最后是在书店旁见到的，并描述了他的蓝色外套。
+
+The assistant asked Nia to wait by the desk and took her phone number. Another worker checked the bookstore entrance. Her father was waiting by the store’s other door and hadn’t heard the phone in his coat.
+
+> 工作人员请妮娅在服务台旁等，记下她的电话。另一名工作人员查看书店入口。父亲正等在店铺的另一扇门旁，手机在外套里，他没听见。
+
+**脱稿复述**　妮娅给了服务台哪些线索？她在哪里等？父亲最后在哪找到？
+
+**换情境表达**　向服务台说清最后见到的位置、衣着和你的联系方式。
+
+I last saw my father by the bookstore. He’s wearing a blue jacket. Where should I wait, and can I leave you my number?
 
 ## 5200 词拓展：从看懂到会用
 

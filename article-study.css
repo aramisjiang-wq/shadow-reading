@@ -2,3 +2,7 @@
 @media(max-width:600px){.article-guide{padding:15px}.article-study{padding:19px 16px}.as-phrases{grid-template-columns:1fr}.article-study h2{font-size:21px}.article-study legend{font-size:17px}.article-study fieldset{padding:12px}.article-study fieldset label{font-size:15px}.as-ratings .btn{padding:8px 10px;flex:1;white-space:nowrap;font-size:11px}}
 .shadow-panel:not(.show){visibility:hidden;pointer-events:none}
 @media(hover:none){.para-header{opacity:1}}
+
+.series-repeat{margin-top:22px;padding:14px;background:var(--ui-hover);border-radius:8px}
+.series-repeat ul{display:grid;gap:6px;margin:0;padding-left:1.3em}
+.series-repeat a{display:inline-block;padding:5px 0}

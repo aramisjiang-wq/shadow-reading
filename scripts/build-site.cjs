@@ -11,11 +11,11 @@ const files = [
   'articles-data.js', 'editorial-data.js', 'dictionary-data.js',
   'serial-data.js', 'vocabulary-data.js', 'series-core.js', 'series-vocabulary.js', 'series.css',
   'vendor/lz-string.js', 'licenses/LZ-String-MIT.txt',
-  'curriculum-data.js', 'dialogues-data.js', 'learning-core.js',
-  'learning-app.js', 'progress-sync.js', 'article-study.js', 'reader-ui.js', 'ui-assets.js',
+  'curriculum-data.js', 'dialogues-data.js', 'scene-data.js', 'scene-articles.js', 'learning-core.js',
+  'learning-app.js', 'progress-sync.js', 'sync-pairing.js', 'vendor/qr-encoder.js', 'licenses/qr-encoder.txt', 'article-study.js', 'reader-ui.js', 'ui-assets.js',
   'design-system.css', 'learning.css', 'workspace-ui.css',
   'article-study.css', 'reader-ui.css', 'legacy-words-ui.css',
-  'assets/favicon.svg', 'Shadow-Reading-English-Materials.md',
+  'assets/favicon.svg', 'assets/parcel-story.webp', 'Shadow-Reading-English-Materials.md',
   'licenses/ECDICT-MIT.txt', 'licenses/Tatoeba-CC-BY.txt'
 ];
 

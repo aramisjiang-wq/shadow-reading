@@ -26,6 +26,10 @@ root.renderArticleStudy=function(a){
  <section id="articleTransfer"><h3>换个条件，再表达一次</h3><p>${esc(a.transfer.prompt)}</p><label class="as-label" for="articleTransferText">你的新表达</label><textarea id="articleTransferText" maxlength="10000" placeholder="把文章里的搭配用到新的人物、时间或数字中…">${esc(transferText)}</textarea><button class="as-text-btn" data-study-action="show-reference">需要时看参考表达</button><div id="articleReference" hidden><p class="as-note">参考表达不是唯一正确答案。</p><p class="as-reference">${esc(a.transfer.sample)}</p></div>${ratingButtons('transfer')}<div id="articleTransferStatus" class="as-answer" aria-live="polite"></div></section>
  <p class="as-note">复述与迁移保存的是自评，未自动评判发音或语法。录音可使用下面的原文练习面板。</p>`;
  if(series){
+  if(series.reviewGroup){
+   const related=SerialReading.episodes.filter(episode=>episode.id!==a.id&&episode.series.reviewGroup===series.reviewGroup);
+   document.getElementById('articleExpressions').insertAdjacentHTML('beforeend',`<div class="series-repeat"><h3>同一组表达，换个场景再练</h3><p class="as-note">下面三集都用到了本集的四个搭配。选一个场景，不看原句先试着说一遍。</p><ul>${related.map(episode=>`<li><a href="reading.html?article=${episode.id}">${esc(episode.subtitle)}</a></li>`).join('')}</ul></div>`);
+  }
   const words=SeriesCore.inEpisode(a,SeriesVocabulary.words).filter(w=>w.rank>150&&w.id.length>=4).slice(0,12);
   document.getElementById('articleExpressions').insertAdjacentHTML('beforeend',`<h3 style="margin-top:24px">本集语境里的目标词</h3><p class="as-note">以下词或其已记录词形实际出现在正文。点开后先试着开口，再听示范、换个细节重说；5200 词库包含额外拓展词，并非本集新词数量。</p><div class="series-word-chips">${words.map(w=>`<a href="index.html#vocabulary?word=${w.id}&mode=say">${esc(w.head)} ↗</a>`).join('')}</div><a href="index.html#vocabulary">进入今日 10 词与到期复习 →</a>`);
   lesson.insertAdjacentHTML('beforeend',`<section class="series-episode-end"><h3>${series.nextId?'这一件事，解决了。下一件呢？':'故事完结，生活里的练习继续。'}</h3><p>先不看原文复述，再改变一个条件表达。你可以随时接着读；看完一集不会把词汇标记为掌握。</p>${journey}</section>`);

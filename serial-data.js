@@ -2,14 +2,14 @@
 (function(root){
 'use strict';
 const episodes=[];
-const seasons=['搬到枫树街','三十天的约定','把小店开起来','第一次真正营业','一起解决麻烦','街区节的倒计时','真正上场','学会放手','留下来的理由'];
+const seasons=['搬到枫树街','三十天的约定','把小店开起来','第一次真正营业','一起解决麻烦','街区节的倒计时','真正上场','学会放手','留下来的理由','上线之前','工作之外'];
 function episode(meta,expressions,questions,text){
  const [title,subtitle,category,goal,recap,task,sample]=meta.split('|');
  const pairs=text.trim().split('\n\n').map(p=>p.split('§'));
  const number=episodes.length+1,id=60+number;
  const phrases=expressions.split('~').map(row=>{const[en,zh,note]=row.split('|');return{en,quote:en,zh,note};});
  const checks=questions.split('~').map(row=>{const[q,a,b,c,why]=row.split('|');return{q,options:[a,b,c],answer:0,why};});
- episodes.push({id,title,subtitle:`第 ${number} 集 · ${subtitle}`,category,goal,edition:'serial-2026-11',format:'生活连载',level:number<=15?'beginner':number<=30?'intermediate':'advanced',source:'原创双语连载（虚构人物与事件）',units:['verbs-daily','verbs-work','connections'],series:{id:'maple-street',title:'枫树街的夏天',episode:number,season:Math.ceil(number/5),seasonTitle:seasons[Math.floor((number-1)/5)],recap,previousId:number===1?null:id-1,nextId:number===40?null:id+1},phrases,checks,retell:`不看原文，用 4–6 句讲清「${subtitle}」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。`,transfer:{prompt:task,sample},content:pairs.map(p=>p[0].trim()).join('\n\n'),translation:pairs.map(p=>p[1].trim()).join('\n\n')});
+ episodes.push({id,title,subtitle:`第 ${number} 集 · ${subtitle}`,category,goal,edition:'serial-2026-11',format:'生活连载',level:number<=15?'beginner':number<=30?'intermediate':'advanced',source:'原创双语连载（虚构人物与事件）',units:['verbs-daily','verbs-work','connections'],series:{id:'maple-street',title:'枫树街的夏天',episode:number,season:Math.ceil(number/5),seasonTitle:seasons[Math.floor((number-1)/5)],recap,previousId:number===1?null:id-1,nextId:null},phrases,checks,retell:`不看原文，用 4–6 句讲清「${subtitle}」：人物想做什么、遇到什么麻烦、如何选择、结尾发生什么。尽量用本集两个表达。`,transfer:{prompt:task,sample},content:pairs.map(p=>p[0].trim()).join('\n\n'),translation:pairs.map(p=>p[1].trim()).join('\n\n')});
 }
 episode('The Wrong Door|敲错的门|日常生活|自我介绍、确认地址、向邻居求助。|Maya 为一份新工作搬到枫树街，故事从一个错误的门牌开始。|你刚搬家，向邻居说明名字、正确房号，并问哪里能买晚饭。|Hi, I’m new here. My name is Maya, and I live in flat four. Is there a place nearby where I can get dinner?',
 'move in|搬进来|move in 描述入住；搬出去用 move out。~next door|隔壁|live next door 表示住在隔壁。~give me a hand|帮我一下|礼貌请求可用 Could you give me a hand?~come back|回来|come back to a place；come back home 不加 to。',
@@ -483,6 +483,139 @@ Maya had begun to settle in to both the street and her new role. She could ask f
 "What are you looking forward to?" Leo asked over lunch. "A normal Saturday," she said. "And the next person who shows up with a real question." Rosa laughed. Ordinary days now contained more people, but also clearer ways to share the work.§午饭时，里奥问：“你接下来期待什么？”“一个普通周六，”她说，“还有下一个带着真实问题来的人。”罗莎笑了。普通日子里，人更多了，但分工也更清楚。
 
 Someone knocked upstairs. A woman stood outside number nine with two bags. Her key did not work. Maya looked at the tag and smiled. "You want number six. I’m Maya. Would you like a hand?" This time, she knew what to say.§楼上传来敲门声。一位女士提着两个包站在九号门外，钥匙打不开。玛雅看了看钥匙牌，笑了：“你要找的是六号。我叫玛雅，要帮忙吗？”这一次，她知道该怎么说。
+`);
+// The same twelve expressions recur in work, errands, exercise and home life.
+const reviewSets=[
+ 'check with|跟某人确认|check with + 人。check the time 是核对时间本身。~find out|弄清楚|find out what happened 表示通过询问或查看弄清情况。~write down|记下来|接代词时说 write it down。~get back to|稍后回复|get back to someone by + 截止时间。',
+ 'make sure|确保；确认|后面可接完整句子，例如 make sure the door is locked。~work out|想办法解决；算清|work out a plan；work out how much it costs。~set aside|留出|set aside ten minutes 或 set aside some money。~run out of|用完；不够用|后面接 time、milk 等被用完的东西。',
+ 'follow up|跟进|follow up with + 人；follow up on + 事情。~take a break|休息一下|a short break / take a break from work。~hold off|暂缓|hold off on + 名词或动名词。~in case|以防|后面接可能发生的情况，例如 in case it rains。'
+];
+function workEpisode(meta,questions,text){
+ const index=episodes.length-43,group=index%reviewSets.length;
+ episode(meta,reviewSets[group],questions,text);
+ const current=episodes.at(-1);
+ current.level='beginner';
+ Object.assign(current.series,{season:index<6?10:11,seasonTitle:seasons[index<6?9:10],reviewGroup:group+1});
+}
+workEpisode('The Monday List|周一的三条反馈|工作协作|追问反馈，给出明确回复时间。|玛雅到了河对岸的新团队。37 岁的产品同事陈伟带她接手一个给小店用的预约工具。|同事说后台找不到订单。问他订单号，并说你会在哪个时间前回复。|Could you send me the order number? I’ll check with support and get back to you by two.',
+'What does Wei ask the shop to send?|The booking number.|The owner’s phone password.|A list of staff names.|陈伟请门店提供预约单号。~When will he reply?|By two.|After the weekend.|Before ten.|他承诺最迟两点答复。',`
+At nine on Monday, Wei opened his work chat. A shop owner had sent three messages before breakfast. They all said the same thing: “I can’t see the booking.” Maya joined him at his desk. “Is the booking gone,” she asked, “or can’t they find it?”§周一九点，陈伟打开工作聊天。早餐前，一位店主已经连发三条消息，都是“我看不到预约”。玛雅走到他桌边：“预约消失了，还是他们找不到？”
+
+Wei asked for the booking number. He wanted to find out which screen the owner had been using. “I’ll check with support,” he wrote. “Can you send me a picture of what you see? Please cover the customer’s name first.”§陈伟问预约单号。他想弄清店主当时在哪个页面。“我会跟客服确认，”他写道，“能发一张你看到的页面截图吗？请先遮住顾客名字。”
+
+While they waited, Maya asked Wei to write down the time, the shop and the exact problem. They left the cause blank. One shop could be having trouble, or the same thing might be happening elsewhere. They would check before they told the team. §等待时，玛雅请陈伟记下时间、门店和具体问题。原因那一栏先空着。可能只有一家店遇到问题，也可能别处也有。他们决定先核实再通知团队。
+
+“I’ll get back to you by two,” Wei told the owner. Then he moved his lunch to twelve thirty and shut the chat window. He still had a short meeting to prepare for, and he knew the owner now had a clear time to expect a reply.§“我最迟两点回复你，”陈伟告诉店主。然后他把午饭改到十二点半，关掉聊天窗口。他还要准备一个短会，也知道店主现在有了明确的回复时间。
+`);
+workEpisode('Ten Minutes Before Lunch|午饭前的十分钟|工作协作|在短会上确认负责人和下一步。|收到店主截图后，团队要决定今天先做什么。|午饭前只剩十分钟。请大家先定下一步和负责人，把细节留到下午。|Let’s set aside ten minutes to choose the next step. Can we make sure one person is in charge?',
+'What do they decide to change today?|The wording above the list.|The whole booking system.|The opening hours of the shop.|今天只先改列表上方的提示。~Who will try the revised page?|A shop owner.|The whole office.|Someone at the gym.|找一位熟悉实际流程的店主试用。',`
+Before lunch, Maya brought the screen shot to a small meeting. A blue line at the top of the screen hid old bookings. The shop owner had missed it. Two people wanted to change the whole screen, so Wei put his phone on the table. §午饭前，玛雅带着截图开了个短会。页面顶部的蓝色选项会隐藏旧预约，店主没注意到。两个人想重做整个页面，陈伟把手机放在桌上。
+
+“Let’s set aside ten minutes to choose what we can do today,” he said. “If we start talking about every button, we’ll run out of time.” Maya asked whether a better line of text could help until they finished a bigger change.§“我们留十分钟，定下今天能做什么，”他说，“每个按钮都讨论的话，时间就不够了。”玛雅问，在完成较大的改动前，能不能先用一句更清楚的提示帮到店主。
+
+They had to work out who could change the wording and who could test it. Ren, the developer, agreed to update the text. Maya would ask a shop owner to try it on a phone. They used two lines in the chat to make sure everybody had the same plan.§他们得弄清谁能改文案、谁来试。开发同事阿任负责改字，玛雅找一位店主在手机上试。他们在群里发了两行字，确认大家对安排理解一致。
+
+The meeting ended at twelve twenty-nine. Wei picked up his lunch bag. “If the new text helps, we can send it out on Friday,” he said. “If it doesn’t, we’ll ask the shop what they still can’t see.”§会议十二点二十九分结束。陈伟拎起午饭袋说：“如果新提示有用，周五就可以发布。如果没用，就再问问门店还有哪儿看不明白。”
+`);
+workEpisode('The Last Message|下班前的最后一条消息|日常生活|说明什么今天处理，什么留到明早。|页面提示改好了，但手机上的最后一步还没有试过。|下班前收到一个不紧急的请求。先说你已收到，再约明天上午跟进。|I saw your message. Can we hold off on the change for tonight? I’ll follow up tomorrow morning.',
+'Why does Wei leave a note in the chat?|So the team knows what to test tomorrow.|So he can ask someone to work overnight.|So he can cancel the change.|备注写清第二天要做的测试。~What does he do after leaving work?|He goes for a run.|He buys a new phone.|He checks every store’s booking.|他去跑步了。',`
+At six, Wei was putting on his running shoes at the office door. Ren sent a message: “The new text looks good on my phone. Should we turn it on tonight?” Wei looked at the message twice. He wanted to finish the job, but one shop owner had not tried it yet.§六点，陈伟在办公室门口换跑鞋。阿任发来消息：“新提示在我手机上没问题。今晚开吗？”陈伟看了两遍。他也想把事做完，但那位店主还没试过。
+
+“Let’s hold off on the change until tomorrow,” he wrote. “I’ll follow up with the shop in the morning.” He added a short note in case someone else opened the task first. It said which phone to use and what to look for before turning it on.§“先缓一晚，明天再开，”他写道，“我早上跟门店跟进。”他又加了条短备注，以防别人先打开任务，写明用哪台手机、打开改动前看什么。
+
+Maya was still at her desk. “Go take a break,” she said. “The note is clear.” Wei left his work phone in his bag. Outside, the pavement was still wet. He decided to take the longer route by the river because there were fewer cars.§玛雅还在桌边：“去休息一下吧。备注写清楚了。”陈伟把工作手机留在包里。外面人行道还湿着，他选了稍远的河边路，因为车少。
+
+He ran slowly for twenty minutes, stopped for water and walked home. When he got to his front door, he remembered the shop, but he did not have to take out his phone. He already knew what he would check in the morning.§他慢跑二十分钟，停下来喝水，再走回家。到了门口，他想起那家店，但不用掏出手机。他已经清楚早上该看什么。
+`);
+workEpisode('The Missing Box|少了一盒|购物消费|用订单信息说清少送的商品。|跑完步回到家，陈伟发现晚饭食材送少了一件。|外卖只到了两份中的一份。说明少了哪件，并问能否补送。|One item is missing from my order. Could you check with the kitchen and get back to me?',
+'What is missing?|A box of eggs.|A bag of rice.|A bottle of water.|袋子里少了一盒鸡蛋。~Why does Wei choose a refund?|He has another dinner he can make now.|The shop refuses to deliver to his street.|He ordered a meal instead.|他可以用家里现有的食材做另一顿饭。',`
+Wei put his keys down and opened the grocery bag. It had rice, spinach and a bag of oranges. There was no box of eggs. Before he called the shop, he opened the order on his phone to find out whether he had actually paid for the eggs.§陈伟放下钥匙，打开购物袋。米、菠菜和一袋橙子都在，唯独没有那盒鸡蛋。打电话前，他先打开订单，弄清自己有没有付鸡蛋的钱。
+
+The eggs were on the list. He called the shop and asked the woman on the phone to check with the person who packed the order. She asked him to write down the order number so she could find it again if the call dropped.§订单上有鸡蛋。他打给店里，请接电话的人跟打包员确认。她请他记下订单号，以防电话断了，下次能再查到。
+
+“I need a few minutes,” she said. “I’ll get back to you before seven.” Wei thanked her, washed the spinach and put some water on. When she called back, she offered to send the eggs the next morning or give him a refund today.§“我需要几分钟，”她说，“七点前给你回电话。”陈伟道谢，洗菠菜、烧水。她回电说，可以明早补送，也可以今天退款。
+
+Wei chose the refund. He had noodles in the cupboard and could make dinner without the eggs. “That works for me,” he said. He found himself using almost the same words he had used at work that morning, just this time from the other side of the call.§陈伟选了退款。柜子里有面条，没有鸡蛋也能做饭。“这样可以，”他说。他发现用上的几乎还是早上在公司那几句话，只不过这次他是电话另一头的顾客。
+`);
+workEpisode('Room for One More|还能再加一个吗|工作协作|协商上线前临时增加的需求。|到了周五，页面提示可以上线了，团队却收到一个临时加功能的请求。|产品快发布了，同事想再加一项。说明剩余时间，提出先记下来、下周讨论。|Let’s make sure the current change works first. Can we set aside time on Monday to discuss the extra request?',
+'What extra thing does Nina ask for?|A button to send a reminder.|A second login screen.|A way to take payments.|她想加一个发提醒的按钮。~What will the team do with it?|Discuss it on Monday.|Add it that afternoon.|Ask every shop to stop taking bookings.|先记下来，周一讨论。',`
+On Friday, the shop owner tried the new wording. She found an old booking in less than a minute. Everyone was ready to send out the change when Nina, their manager, asked if they could also add a button to send a reminder to customers.§周五，店主试了新提示，不到一分钟就找到了旧预约。大家准备发布时，经理妮娜问能不能再加一个给顾客发提醒的按钮。
+
+Wei liked the idea, but it was already midafternoon. “We need to make sure the text still fits on a small phone,” he said. “If we add a button today, we may run out of time to test the part we promised.” Ren put down his coffee and nodded.§陈伟觉得主意不错，但已是下午中段。“我们还得确认文字在小手机上放得下，”他说，“今天再加按钮，承诺过的那部分可能就来不及测了。”阿任放下咖啡，点了点头。
+
+The team would set aside twenty minutes on Monday to talk about reminders. Nina asked Maya to bring an example from one shop. Then the group could work out when a reminder would help and who should be able to send it.§团队决定周一留二十分钟讨论提醒。妮娜请玛雅带一个门店的具体例子。到时大家可以商量什么情况下提醒有用，以及谁该有权发。
+
+At four, Maya tried the text on her smallest phone. It was easy to read. Ren turned on the change for two stores first. Wei sent Nina one line: “The text is ready. The reminder is on Monday’s list.” Nobody had to guess what had changed.§四点，玛雅用自己最小的手机测了一遍，文字一眼能看清。阿任先给两家店打开改动。陈伟给妮娜发了一行：“提示已就绪，提醒按钮在周一的清单上。”大家不用猜这次改了什么。
+`);
+workEpisode('A Run in the Rain|雨天跑还是不跑|日常生活|给周末安排准备一个备选计划。|小范围发布后，陈伟和玛雅约了周末去河边跑步。|跟朋友约在户外见面。说明如果下雨，改去哪里，几点确认。|Let’s hold off on making a final plan until eight. I’ll bring a jacket in case it rains.',
+'Where do they go when it rains harder?|The gym near the station.|The café by the river.|A shop across town.|雨大起来后，他们改去车站附近的健身房。~Why does Wei send a photo?|To show where the gym entrance is.|To show what he had for breakfast.|To show how fast he ran.|照片是为了让玛雅找到入口。',`
+Wei and Maya planned to run by the river on Saturday. At seven, the sky was grey. The weather app showed rain later, but it had been wrong the day before. “Let’s hold off until eight,” Maya wrote. “If it’s really wet, we can go to the gym.”§陈伟和玛雅原计划周六去河边跑。七点天是灰的，天气软件说晚点下雨，但前一天它就报错过。玛雅写道：“八点再定。如果下大了，就去健身房。”
+
+Wei left his running shoes by the door. He also put a light jacket in his bag in case they did go outside. He made coffee and ate a piece of bread. At eight it was raining harder than before, so they picked the gym near the station.§陈伟把跑鞋放门边，也在包里塞了件薄外套，以防还是要出门跑。他煮了咖啡，吃了片面包。八点雨比之前大，他们选了车站附近的健身房。
+
+The place took Wei a while to find. The entrance was behind the bike shop, and there was no sign on the main street. “I’ll follow up with a photo of the door,” he told Maya. “You can use the photo when you get here.”§陈伟找了一会儿。入口在自行车店后面，大路上没标牌。他对玛雅说：“我补发一张门口照片，你到的时候照着找。”
+
+They started on two machines side by side. Halfway through, Wei slowed down to take a break. Neither of them tried to make up for the lost outdoor run. They finished early, walked to the station and bought hot drinks on the way home.§他们用相邻两台跑步机开始跑。到一半，陈伟降速休息。两个人都没拼命补回少跑的户外距离。他们早早结束，走去车站，回家路上买了杯热饮。
+`);
+workEpisode('The Train Home|回家的车晚点了|旅行出行|核实延误，告诉家人预计到达时间。|周六白天跑完步，陈伟又去看了位朋友。晚上回家时，车晚点了。|下班路上地铁晚点。告诉家人你正在确认换乘路线，晚些回复到家时间。|My train is late. I’ll check with the staff and get back to you once I know when I’ll be home.',
+'Why does Wei stay at the station?|The train should arrive before the next bus.|He cannot find his bus ticket.|His sister is on the train.|火车预计比下一班公交早到。~What does he tell his sister?|To start dinner without him.|To meet him at another station.|To bring him a jacket.|他让姐姐先吃，不用等。',`
+That evening, the screen at the station still showed the seven forty train. It was already seven fifty. Some people walked outside to look for a bus. Wei stayed near the door to find out if the train had left the last station. His sister was waiting for him at home.§晚上，车站大屏还显示七点四十那班车，但已七点五十。有人走出去找公交。陈伟留在门边，想弄清列车有没有离开上一站。他姐姐还在家里等他。
+
+“I’ll check with the staff,” he texted her. “I’ll get back to you once I have a better idea.” At the desk, he learned the train would be there in about twelve minutes. The next bus was at eight twenty, so he decided to wait.§他给姐姐发消息：“我去跟工作人员确认，有较准确的时间再回你。”服务台说车约十二分钟到，下一班公交要八点二十，所以他决定等。
+
+Wei used the time to write down the station name and arrival time. Then he sent a clear message: “I should be home by eight thirty. Start dinner without me.” His sister sent back a picture of a bowl of soup with his name beside it.§陈伟趁这段时间记下站名和预计到站时间，然后发了条清楚的消息：“我应该八点半前到家，你们先吃。”姐姐回了一张照片，一碗汤旁边写着他的名字。
+
+The train came when the staff had said it would. When Wei got home, his soup was warm, and the kitchen light was still on. He told his sister which door at the station had a desk. She used the same train on Sundays sometimes.§列车在工作人员说的时间到了。陈伟到家时，汤还温着，厨房灯也亮着。他告诉姐姐车站哪扇门进去有服务台。她有时周日也坐这趟车。
+`);
+workEpisode('Two Receipts|两张小票|购物消费|核对账单，解释多收的一笔钱。|隔周出差结束，酒店给了陈伟两张金额不同的小票。|点的早餐被重复收费。把两张小票给前台，请对方帮你核算。|I think I paid for breakfast twice. Could you help me work out the total on these receipts?',
+'Why are there two breakfast charges?|Breakfast was added at the desk after it was already included.|Wei ate twice.|A colleague paid for him.|房费已含早餐，前台又加收一笔。~What does Wei receive?|A corrected receipt.|A free night.|A new room key.|工作人员给了他更正后的小票。',`
+On Tuesday, Wei checked out of a hotel after a short work trip. He had two receipts in his hand. One had the room and breakfast on it, and the other had just breakfast. He wanted to make sure he was not going to pay twice.§周二，短途出差结束后，陈伟办酒店退房，手里有两张小票。一张写着房费和早餐，另一张只有早餐。他想确认自己没有付两次。
+
+He did not want to run out of time before his train, so he asked the front desk to set aside a few minutes to go through both receipts. The worker looked at the screen, then asked Wei what he had been told when he arrived.§怕赶不上火车，他请前台留几分钟，两张小票一起核对。工作人员看了电脑，又问入住时别人怎么跟他说的。
+
+Together they tried to work out what had happened. Breakfast was already in the room price, but another worker had put it on a second receipt. Wei pointed to the two amounts and asked if he could have a new receipt with the right total.§他们一起理清了情况。早餐本来已含在房费里，但另一位员工又把它加在第二张小票上。陈伟指着两笔金额，问能不能开一张总额正确的新小票。
+
+The worker printed it and gave back the extra money. Wei put the new receipt in his bag and walked to the station. There were still twenty minutes before his train. He bought a piece of fruit instead of running straight to the gate.§工作人员打印好，把多收的钱退了。陈伟把新小票装进包里，走去车站。离发车还有二十分钟，他买了个水果，没有一路跑去检票口。
+`);
+workEpisode('The Friday Release|周五上线前|工作协作|遇到不确定的问题，先暂停扩大上线。|上线过了几天，第二家店的平板上出现了陈伟没见过的页面。|同事催扩大上线，但平板上有问题。请暂缓，并给出你会复查的时间。|Let’s hold off on turning it on for more shops. I’ll follow up by eleven after checking the tablet.',
+'What did the owner use to open the page?|An old saved link.|The new home screen.|A customer’s phone.|店主从以前收藏的旧链接进入。~What does Ren add?|A line pointing owners to the current page.|A new payment form.|A warning on every booking.|他在旧页面加指引，带去新版。',`
+On Friday morning, a second shop owner sent a photo. The new text was missing on her tablet. The same page looked fine on Wei’s phone. Ren was getting ready to send the change to ten more shops, so Wei asked him to hold off for a moment.§周五早上，第二位店主发来照片，她的平板上没看到新提示。陈伟用手机看是正常的。阿任正准备再开放十家店，陈伟请他先缓一缓。
+
+“I’ll follow up with the owner before eleven,” Wei said. He asked her to show him how she reached the page. He also took an old tablet off the shelf in case the problem only happened on a device like hers.§“十一点前我跟店主确认，”陈伟说。他请她演示怎么进到页面，也从架子上拿了台旧平板，以防问题只出在类似的设备上。
+
+It turned out the owner had saved a link months ago. The old link still opened an older page. When she opened the page from the home screen, she saw the new text. Ren added a line to the old page that pointed her to the current one.§原来店主几个月前收藏过一个链接，旧链接还能打开旧页面。从首页进，她就能看到新提示。阿任在旧页面加了一行引导，让她去现在的页面。
+
+“Now we can take a break,” Maya said. The team went for lunch after Wei left a note about the old link. They agreed to wait for the owner to check again before changing anything for the ten new shops. No one needed to rush through lunch.§“现在可以歇一会儿了，”玛雅说。陈伟留了条关于旧链接的记录，团队去吃饭。他们约好先等店主再确认一次，才动新一批十家店。没人得匆匆扒完午饭。
+`);
+workEpisode('The Price of the Smaller Plan|套餐能不能降一档|购物消费|打客服确认套餐与生效日期。|周末整理账单时，陈伟发现手机套餐用了很久，却很少用完流量。|你想换小一档套餐。问是否有费用、什么时候生效，并请对方确认。|Could you check with your team about any fees? I’d like to find out when the new plan would start.',
+'When does the smaller plan start?|At the start of the next billing month.|That afternoon.|After six months.|下个账期才生效。~What does Wei write down?|The new price and the start date.|The worker’s home address.|All the numbers he called.|他记下新价格和生效日期。',`
+On Sunday, Wei looked at his phone bill while he waited for his laundry. The same amount had come out of his account every month. He rarely used all the data. He called the phone company to find out if a smaller plan would be enough.§周日，陈伟等洗衣机转完时看了眼手机账单。每月都扣同样的钱，他却很少用完流量。他给运营商打电话，想弄清小一点的套餐是否够用。
+
+The woman on the phone offered a lower price, but Wei wanted to know when it would start. She said she would check with the billing team. “Can you get back to me this morning?” he asked. He was free until eleven, but had lunch with a friend after that.§电话那头给了个更低的价格，但陈伟想知道何时开始。她说会跟账单组确认。“能上午回我吗？”他问。他十一点前有空，之后要跟朋友吃饭。
+
+She called back just before ten. The price would change at the start of the next billing month. This month stayed the same. Wei asked her to send a message and took a moment to write down the new price and the start date.§她十点前回了电话。新价格从下个账期开始，这个月照旧。陈伟请她发条消息确认，自己也花了一点时间记下新价格和生效日期。
+
+When the washing machine stopped, he was folding towels before he even looked at the message. The two details matched his notes, so he put the phone down. Next month he would be able to tell whether the new amount was right.§洗衣机停下时，他先叠好毛巾才看消息。两项细节和记录一致，他放下了手机。下个月扣费时，他一眼就能看出金额对不对。
+`);
+workEpisode('One Slide Is Enough|一页汇报就够|工作协作|简短汇报做了什么、结果和下一步。|预约提示已在多家门店试过，经理要听一段简短的进展汇报。|只用三句话向同事说清本周改动、实际结果和下周计划。|We changed the wording last week. Two shops found their old bookings. Let’s set aside time to watch what happens next.',
+'What does Wei put on the slide?|The change, the result and the next step.|Every message from every shop.|Only the release date.|一页上写改动、结果和下一步。~What does the team want to learn next?|Whether the same change helps other shops.|Whether the screen has a new color.|How many slides the manager likes.|他们要看对其余门店有没有帮助。',`
+On Monday, Nina asked Wei for an update at the team meeting. He opened a blank slide. He could say what they changed, what happened in the first two shops and what they would look at next. He left out the long chat thread.§周一开组会，妮娜请陈伟讲讲进展。陈伟打开一页空白幻灯片。他能说清改了什么、最先试用的两家店结果如何，以及接下来要看什么。那串很长的聊天记录就不用放进去。
+
+Maya helped him work out which numbers were worth showing. Two owners had found their old bookings in under a minute. They still did not know how things would go in the other shops. Wei wanted to make sure he said that out loud, too.§玛雅跟他一起想哪些数字值得讲。两位店主都在一分钟内找到了旧预约，其他门店还不知道会怎样。陈伟也特地要把这一点说出来。
+
+Nina had five minutes before her next call. “We’ll run out of time if I open all the pictures,” Wei said. He showed the one slide, then asked the team to set aside half an hour on Thursday to read more feedback together.§妮娜离下个电话会还有五分钟。“要是把所有截图都打开，时间肯定不够，”陈伟说。他展示了一页，又请大家周四留半小时，一起看更多反馈。
+
+When the meeting ended, Maya asked him to send the slide to her. “I can use that to tell support what we did,” she said. Wei sent it with a short note and went downstairs for lunch. This time he still had time to eat before his next call.§散会后，玛雅请他把那页发过来：“我能用它跟客服讲清楚我们做了什么。”陈伟发过去，附了一句短说明，然后下楼吃午饭。这次他在下一个电话会前还有时间吃。
+`);
+workEpisode('Book the Time First|先把时间留出来|家庭关系|在忙碌里给自己的计划留时间。|工作告一段落，陈伟打算给自己的一周留点余地。|告诉朋友你想把一晚留给自己，另约一个能见面的时间。|Can we hold off on dinner until Friday? I want to take a break on Wednesday, but I’m free after work on Friday.',
+'What does Wei put in his calendar?|Two short runs and a free evening.|A call every night.|A long run every morning.|他安排两次短跑和一个空着的晚上。~When will he discuss the extra work request?|On Tuesday morning.|Late Sunday night.|During his Wednesday run.|他们约在周二早上聊，陈伟答应周一发时间。',`
+On Sunday, Wei opened his calendar over breakfast. He added two short runs and left Wednesday evening free. It was easier to take a break when the time was already there. He also put his running jacket by the door in case the weather changed.§周日吃早饭时，陈伟打开日历，加上两次短跑，把周三晚上空出来。时间先留着，休息才容易实现。他也把跑步外套放门边，以防变天。
+
+A colleague asked in the afternoon if they could talk through a new idea that night. Wei read the message and thought about his plan. “Can we hold off until Tuesday morning?” he replied. “I’ll follow up tomorrow with two times that work.”§下午，有位同事问能不能晚上聊聊一个新点子。陈伟看完消息，想了想自己的安排，回道：“能推到周二早上吗？我明天发两个合适的时间给你。”
+
+The colleague said Tuesday was fine. Wei put a note on Monday’s list and closed the app. Then he went to the market to buy fish and something green for dinner. He took the long way home and stopped to look at a bike in a shop window.§同事说周二没问题。陈伟把事情记在周一的清单上，关掉软件。然后他去市场买鱼和青菜做晚饭，回家特地绕了点路，还停下来看了眼橱窗里的自行车。
+
+Later that evening, he sent his sister a photo of the dinner he had made. She asked whether he was free for a walk on Wednesday. “Yes,” he wrote. He had not waited for work to get quiet. He had left a space for the things he wanted to do.§那天晚些时候，他把自己做的晚饭拍给姐姐。姐姐问周三有空散步吗。“有，”他回道。他没等工作清闲才安排生活，而是先给想做的事留了位置。
 `);
 // Navigation references are derived only after every authored episode exists.
 const quotes={66:['turned the power off'],68:['mixed up'],69:['was allergic to'],72:[null,null,null,'let you know'],73:['available on'],74:['pointed out',null,'made it clear'],75:['had gone through','charge her twice'],76:['walk her through','got stuck','followed up'],79:[null,'belonged to'],80:['hear him out'],81:['applied for'],82:['woke Rosa up',null,'got hold of'],83:[null,'recovered from',null,'lost track of'],84:['felt unwell','breaks','took care of','Asking for help'],85:[null,null,'called off'],86:[null,null,'met halfway'],87:['allowed for'],89:[null,'change their mind','leave one person out','blurred out'],90:['stay clear'],91:[null,'talked him through'],92:[null,null,null,'had a go'],93:[null,'Getting the point across'],94:[null,null,'carried on'],96:['matched up',null,'paying back','left over'],97:[null,null,'Looking back on'],98:[null,null,'checked the result against','on his own'],99:[null,'put the main idea into words',null,'made sense'],101:['goes up by'],102:['kept to','sorted out',null,'Letting go of'],103:['looking forward to','shows up']};

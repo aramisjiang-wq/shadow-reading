@@ -4,6 +4,8 @@
 const C = LearningCore, units = Curriculum.units, entries = Curriculum.entries, dialogues = Dialogues;
 const main = document.getElementById('main');
 const byUnit = new Map(units.map(u=>[u.id,u])), byEntry = new Map(entries.map(e=>[e.id,e])), byDialogue = new Map(dialogues.map(d=>[d.id,d]));
+const scenesById = new Map(LifeScenes.flatMap(group=>group.situations.map(scene=>[scene.id,{...scene,group}])));
+const sceneSteps = [['read','听读'],['retell','脱稿复述'],['transfer','换场景表达']];
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let state = C.empty(), storageOK = true, route = {}, session = null, dialogueMode = 'read', translation = false;
@@ -27,7 +29,7 @@ function dueItems() {
 }
 function updateDue() { $('#navDue').textContent=dueItems().length+SeriesCore.summary(state,SeriesVocabulary.words).due.length; }
 window.addEventListener('series-recorded',()=>{loadState();updateDue();const panel=main.querySelector('.series-metrics');if(panel)panel.outerHTML=SeriesVocabularyUI.metrics(state);});
-function pageTop(kicker,title,subtitle,extra='') { return `<div class="page-top"><div><div class="overline">${kicker}</div><h1>${title}</h1><p>${subtitle}</p></div>${extra}</div>`; }
+function pageTop(kicker,title,subtitle,extra='') { return `<div class="page-top"><div>${kicker?`<div class="overline">${kicker}</div>`:''}<h1>${title}</h1><p>${subtitle}</p></div>${extra}</div>`; }
 function countIndependent(u) {return u.entries.filter(e=>C.schedule(state,`entry:${e.id}`).correctDays>0).length;}
 function metric(n,label) {return `<div class="metric"><strong>${n}</strong><span>${label}</span></div>`;}
 function dialogueCard(d,i) {
@@ -54,16 +56,193 @@ function home() {
  const paras=progress.practiced[recommended.id-1]||[],nextPara=recommended.content.split('\n\n').findIndex((_,i)=>!paras.includes(i));
  const link=`reading.html?article=${recommended.id}${nextPara>=0?'&paragraph='+(nextPara+1):''}`;
  const read=episodes.filter(finished).length,n=SeriesCore.summary(state,SeriesVocabulary.words);
- main.innerHTML=pageTop('A STORY YOU CAN LIVE IN','跟着故事，把英语用起来。','同一群人，前后相接的生活。每集读懂一件事，再把一句话带回你的生活。')+`
+ main.innerHTML=pageTop('A STORY YOU CAN LIVE IN','跟着故事，把英语用起来。','同一群人，前后相接的生活。每集读懂一件事，再把一句话带回你的生活。','<a class="btn" href="#scenes">按生活场景练习 →</a>')+`
  <div class="home-reading-grid"><section class="hero featured-reading"><div class="featured-top"><span class="eyebrow">枫树街的夏天 · 第 ${recommended.series.season} 章</span><span class="reading-status">已完成 ${read}/${episodes.length} 集练习</span></div><div class="featured-main">${UIAssets.cover(recommended.category,'featured-cover')}<div class="hero-copy"><div class="reading-meta">${esc(recommended.series.seasonTitle)}<span>·</span>每集约 2 分钟阅读</div><h2>${esc(recommended.subtitle)}</h2><div class="article-en-title">${esc(recommended.title)}</div><p>${esc(recommended.goal)}</p></div></div><div class="article-preview"><span>PREVIOUSLY / 前情</span><p>${esc(recommended.series.recap)}</p></div><div class="featured-actions"><a class="btn primary" href="${link}">${UIAssets.icon('book')}${recommended.series.episode===1?'从第一集开始':'接着上次，继续追读'} ${UIAssets.icon('arrow')}</a><a class="text-btn" href="#articles">看完整连载目录 →</a></div></section>
- <aside class="home-companion"><section class="quiet-panel"><div class="panel-label">这次为什么想看下一集？</div><h3>一个房间，三十天。</h3><p>刚搬来的 Maya 认识了咖啡馆老板 Leo。晚饭时，一封信宣布：邻居们的公共房间可能关闭。要留下它，他们得先学会一起解决真实生活里的问题。</p><a href="#articles" class="quiet-link">固定人物 · 九章 · 43 集 ${UIAssets.icon('arrow')}</a></section><a class="review-compact" href="#vocabulary?view=bank&filter=due"><span class="review-symbol">${UIAssets.icon('review')}</span><div><strong>${n.due.length?`${n.due.length} 个目标词到期`:'把读懂，练成能表达'}</strong><span>5200 词计划 · 先回忆，再换场景用</span></div>${UIAssets.icon('chevron')}</a><section class="reading-tip"><span class="panel-label">今天只做一个小循环</span><ol><li>接着前情，听读本集。</li><li>不看原文，复述四五句。</li><li>换到自己的生活，表达一次。</li><li>最多练 10 个词，隔天再回忆。</li></ol><button class="text-btn" data-action="guide">查看完整练习指南 →</button></section></aside></div>
+ <aside class="home-companion"><section class="quiet-panel"><div class="panel-label">这次为什么想看下一集？</div><h3>一个房间，三十天。</h3><p>刚搬来的 Maya 认识了咖啡馆老板 Leo。晚饭时，一封信宣布：邻居们的公共房间可能关闭。要留下它，他们得先学会一起解决真实生活里的问题。</p><a href="#articles" class="quiet-link">固定人物 · ${SerialReading.seasons.length} 章 · ${episodes.length} 集 ${UIAssets.icon('arrow')}</a></section><a class="review-compact" href="#vocabulary?view=bank&filter=due"><span class="review-symbol">${UIAssets.icon('review')}</span><div><strong>${n.due.length?`${n.due.length} 个目标词到期`:'把读懂，练成能表达'}</strong><span>5200 词计划 · 先回忆，再换场景用</span></div>${UIAssets.icon('chevron')}</a><section class="reading-tip"><span class="panel-label">今天只做一个小循环</span><ol><li>接着前情，听读本集。</li><li>不看原文，复述四五句。</li><li>换到自己的生活，表达一次。</li><li>最多练 10 个词，隔天再回忆。</li></ol><button class="text-btn" data-action="guide">查看完整练习指南 →</button></section></aside></div>
+ <section class="series-banner"><h2>上班以后，下班之前</h2><p>从 37 岁互联网员工陈伟的日常练起。开会、上线、下班跑步，换场景反复用同一批英语。</p><div class="actions"><a class="btn primary" href="reading.html?article=${episodes.find(a=>a.series.reviewGroup).id}">从职场第一集开始</a><a class="btn" href="#articles?track=worklife">查看 12 集</a></div></section>
  <section class="series-banner"><div class="overline">5200 WORDS / A MEASURABLE GOAL</div><h2>追得下去，也要用得出来。</h2><p>正文练连续理解与重点搭配，拓展词库练 5200 个唯一基础词条的实际用法。看过、回忆正确、跨天保留、换场景表达分开记录。系统不会把阅读次数换算成掌握量。</p>${SeriesVocabularyUI.metrics(state)}<a class="btn primary" href="#vocabulary">开始今日 10 词 →</a> <a class="text-btn" href="#vocabulary?view=bank">查看全部词与验证标准</a></section>
- <div class="section-head"><div><h2>一件事接着另一件事</h2><p class="section-description">门牌读反、坐错车、算不清的费用……先从易懂的生活开始。</p></div><a href="#articles">全部 43 集 ${UIAssets.icon('arrow')}</a></div><div class="cards reading-list">${episodes.slice(0,3).map(articleCard).join('')}</div>
+ <div class="section-head"><div><h2>一件事接着另一件事</h2><p class="section-description">门牌读反、坐错车、算不清的费用……先从易懂的生活开始。</p></div><a href="#articles">全部 ${episodes.length} 集 ${UIAssets.icon('arrow')}</a></div><div class="cards reading-list">${episodes.slice(0,3).map(articleCard).join('')}</div>
  <div class="section-head"><div><h2>你会反复遇见的人</h2><p class="section-description">人物与关系保持连续，新情境让老表达再次用得上。</p></div></div><div class="series-character-list">${SerialReading.characters.map(([name,description])=>`<div><strong>${esc(name)}</strong><p>${esc(description)}</p></div>`).join('')}</div>
- <div class="section-head"><div><h2>按生活场景找一集</h2></div></div><div class="topic-shelf">${['日常生活','工作协作','旅行出行','购物消费'].map(cat=>`<a href="#articles?topic=${encodeURIComponent(cat)}" class="topic-tile">${UIAssets.cover(cat)}<span>${cat}</span>${UIAssets.icon('arrow')}</a>`).join('')}</div>
+ <div class="section-head"><div><h2>按题材找连载</h2></div></div><div class="topic-shelf">${['日常生活','工作协作','旅行出行','购物消费'].map(cat=>`<a href="#articles?topic=${encodeURIComponent(cat)}" class="topic-tile">${UIAssets.cover(cat)}<span>${cat}</span>${UIAssets.icon('arrow')}</a>`).join('')}</div>
  <div class="subtle-note">有余力时，用<a href="#units">词汇专题</a>、<a href="#review">辅助复习</a>与<a href="#dialogues">短对话</a>巩固。旧文章与历史学习记录可在连载目录的版本筛选中找到。</div>`;
 }
 
+function sceneLink(scene, params=new URLSearchParams()) {
+ return `#scene/${encodeURIComponent(scene.title)}${params.size?'?'+params:''}`;
+}
+function sceneOutput(id) {
+ return C.eventsFor(state,`scene:${id}:transfer`,'output').at(-1);
+}
+function scenesPage() {
+ let recent;
+ try {recent=scenesById.get(localStorage.getItem('sr_lastScene'));} catch {}
+ const starter=recent||scenesById.get('shopping-4');
+ const featured=SceneArticles.get(starter.title).visual;
+ main.innerHTML=pageTop('','用英语办一件生活里的事',`从 ${SceneArticles.size} 篇短文里找你要做的事，听一遍，再用自己的话说出来。`)+`
+ <div class="scene-start">
+ <a class="card link scene-card" href="${sceneLink(starter)}"><h2>${recent?'继续上次':'先看一个故事'}</h2><p>${esc(starter.title)}</p><b>${featured?'看图听音':recent?'回到短文':'开始听读'} ↗</b></a>
+ <a class="card link scene-card" href="#scenes?practiced=1"><h2>重练我的表达</h2><p id="scenePracticeCount"></p><b>查看练过的 ↗</b></a>
+ </div>
+ <section aria-label="按事情找短文"><div class="section-head"><h2>我需要为哪件事做准备？</h2></div>
+ <div class="toolbar scene-toolbar"><label class="search-wrap"><span class="hidden">搜索生活场景短文</span><input type="search" id="sceneSearch" placeholder="搜一件事，比如晚点、押金、验证码"></label><label><span class="hidden">生活领域</span><select id="sceneGroup"><option value="">全部生活领域</option>${LifeScenes.map(group=>`<option value="${group.id}">${esc(group.title)}</option>`).join('')}</select></label><label class="check-label"><input type="checkbox" id="practicedScenes"> 只看练过的</label></div>
+ <div class="actions scene-shortcuts" aria-label="常查场景">${['预约','退款','晚点','面试'].map(query=>`<button class="btn small" type="button" data-action="scene-query" data-value="${query}">${query}</button>`).join('')}</div>
+ <p id="sceneCount" class="result-count" role="status"></p><div id="sceneResults"></div></section>`;
+ const group=route.query.get('group');
+ if(LifeScenes.some(item=>item.id===group))$('#sceneGroup').value=group;
+ $('#sceneSearch').value=route.query.get('q')||'';
+ $('#practicedScenes').checked=route.query.get('practiced')==='1';
+ renderSceneResults();
+}
+function renderSceneResults() {
+ const rawQuery=$('#sceneSearch').value.trim();
+ const words=rawQuery.toLowerCase().split(/\s+/).filter(Boolean);
+ const selected=$('#sceneGroup').value;
+ const practiced=$('#practicedScenes').checked;
+ const params=new URLSearchParams();
+ if(selected)params.set('group',selected);
+ if(rawQuery)params.set('q',rawQuery);
+ if(practiced)params.set('practiced','1');
+ const groups=LifeScenes.filter(group=>!selected||group.id===selected).map(group=>({
+  ...group,
+  situations:group.situations.flatMap(scene=>{
+   if(practiced&&!sceneOutput(scene.id))return [];
+   const story=SceneArticles.get(scene.title);
+   const title=`${scene.title} ${story.title}`.toLowerCase();
+   const search=[group.title,title,scene.prompt,...story.paragraphs.flatMap(p=>[p.en,p.zh])].join(' ').toLowerCase();
+   if(!words.every(word=>search.includes(word)))return [];
+   return [{scene,score:words.filter(word=>title.includes(word)).length}];
+  }).sort((a,b)=>b.score-a.score)
+ })).filter(group=>group.situations.length).sort((a,b)=>b.situations[0].score-a.situations[0].score);
+ const count=groups.reduce((total,group)=>total+group.situations.length,0);
+ $('#scenePracticeCount').textContent=`${[...scenesById.keys()].filter(id=>sceneOutput(id)).length} 篇已有口练记录`;
+ $('#sceneCount').textContent=`${groups.length} 个生活领域 · ${count} 篇短文`;
+ $('#sceneResults').innerHTML=groups.map(group=>`
+ <section class="scene-group" aria-labelledby="scene-${group.id}">
+ <h2 id="scene-${group.id}">${esc(group.title)}</h2>
+ <div class="scene-grid">${group.situations.map(({scene})=>sceneCard(scene,params)).join('')}</div>
+ </section>`).join('')||`<div class="empty"><p>${practiced?'这个筛选下还没有口练记录。':'没有匹配的短文。'}</p><button class="btn" data-action="scene-query" data-value="">查看全部短文</button></div>`;
+}
+function sceneCard(scene, params) {
+ const practiced=sceneOutput(scene.id);
+ const linkParams=new URLSearchParams(params);
+ if(practiced&&params.has('practiced'))linkParams.set('step','transfer');
+ const action=linkParams.has('step')?'重新开口':SceneArticles.get(scene.title).visual?'看图听音':'读短文';
+ return `<a class="card link scene-card" href="${esc(sceneLink(scene,linkParams))}"><h3>${esc(scene.title)}</h3><p>${esc(scene.prompt)}</p><div class="card-foot"><span>${practiced?'已有口练记录':''}</span><b>${action} ↗</b></div></a>`;
+}
+function scenePicture(visual, index) {
+ return `<div class="scene-picture" data-position="${index}"><img src="${esc(visual.image)}" alt="${esc(visual.frames[index].alt)}" width="1536" height="1024" decoding="async"></div>`;
+}
+function sceneVisualPanel(visual) {
+ return `<section class="study-panel scene-article scene-visual" id="scene-visual" aria-label="看图听音" hidden>
+ ${visual.frames.map((frame,index)=>`<div class="scene-frame" ${index?'hidden':''}>
+ ${scenePicture(visual,index)}
+ <div class="scene-frame-controls">
+ <h2 tabindex="-1">第 ${index+1} 幅 / 共 ${visual.frames.length} 幅</h2>
+ <p>先看图猜发生了什么，再听她怎么说。</p>
+ <div class="actions"><button class="btn primary" data-action="play-scene-frame">▶ 听这句</button><button class="text-btn" data-action="stop-audio">停止朗读</button></div>
+ <details><summary>显示英文字幕</summary><p class="scene-frame-line" lang="en">${esc(frame.line)}</p><p class="help-line">听一遍，跟着说一遍。</p></details>
+ <div class="actions scene-frame-nav">
+ ${index?`<button class="btn" data-action="scene-frame" data-index="${index-1}">← 上一幅</button>`:''}
+ ${index+1<visual.frames.length?`<button class="btn" data-action="scene-frame" data-index="${index+1}">下一幅 →</button>`:
+ '<button class="btn" data-action="scene-step" data-value="retell">看图讲一遍 →</button>'}
+ </div></div></div>`).join('')}
+ </section>`;
+}
+function showSceneFrame(index) {
+ const frames=[...main.querySelectorAll('#scene-visual .scene-frame')];
+ if(!frames[index]||!frames[index].hidden)return;
+ stopAudio();
+ frames.forEach((frame,i)=>{
+  frame.hidden=i!==index;
+  frame.querySelector('details').open=false;
+ });
+ frames[index].querySelector('h2').focus({preventScroll:true});
+ frames[index].scrollIntoView({block:'nearest'});
+}
+function sceneArticlePage(id) {
+ const scene=[...scenesById.values()].find(item=>encodeURIComponent(item.title)===id);
+ if(!scene)return notFound();
+ try {localStorage.setItem('sr_lastScene',scene.id);} catch {}
+ const story=SceneArticles.get(scene.title);
+ const visual=story.visual;
+ const steps=visual?[['visual','看图听音'],['read','读短文'],['retell','看图复述'],sceneSteps[2]]:sceneSteps;
+ const params=new URLSearchParams();
+ for(const key of ['group','q','practiced'])if(route.query.get(key))params.set(key,route.query.get(key));
+ const back=`#scenes${params.size?'?'+params:''}`;
+ const lesson=scene.lesson;
+ const link=typeof lesson==='number'
+  ? `<a class="text-btn" href="reading.html?article=${lesson}">相关连载 ↗</a>`
+  : lesson ? `<a class="text-btn" href="#dialogue/${lesson}">相关短对话 ↗</a>` : '';
+ const recent=sceneOutput(scene.id);
+ const reviewing=params.get('practiced')==='1';
+ const next=scene.group.situations.find(item=>item.id!==scene.id&&Boolean(sceneOutput(item.id))===reviewing);
+ const nextParams=new URLSearchParams(params);
+ if(reviewing)nextParams.set('step','transfer');
+ main.innerHTML=pageTop(esc(scene.group.title),esc(scene.title),`<span lang="en">${esc(story.title)}</span>`,`<a class="btn" href="${esc(back)}">← 返回场景短文</a>`)+`
+ <div class="scene-steps actions" role="group" aria-label="练习步骤">${steps.map(([step,label])=>`<button class="btn" data-action="scene-step" data-value="${step}" aria-pressed="false" aria-controls="scene-${step}">${label}</button>`).join('')}</div>
+ ${visual?sceneVisualPanel(visual):''}
+ <article class="study-panel scene-article" id="scene-read" aria-label="双语短文">
+ <div class="actions"><button class="btn primary" data-action="play-scene-article">▶ 听全文</button><button class="btn" data-action="stop-audio">停止朗读</button></div>
+ <p class="help-line">先听大意，再选一段跟读。</p>
+ ${story.paragraphs.map((paragraph,index)=>`<section class="scene-paragraph" aria-label="第 ${index+1} 段">
+ <p class="scene-english" lang="en">${esc(paragraph.en)}</p>
+ <button class="text-btn" data-action="play-scene-paragraph">▶ 听第 ${index+1} 段</button>
+ <details><summary>查看中文</summary><p>${esc(paragraph.zh)}</p></details></section>`).join('')}
+ <div class="actions scene-next"><button class="btn" data-action="scene-step" data-value="retell">${visual?'合上正文，看图复述':'合上正文，开始复述'} →</button><button class="text-btn" data-action="scene-step" data-value="transfer">赶时间？直接练开口</button></div>
+ </article>
+ <section class="study-panel scene-practice" id="scene-retell" hidden><h2 tabindex="-1">用自己的话讲一遍</h2>
+ ${visual?`<ol class="scene-storyboard" aria-label="按顺序看图复述">${visual.frames.map((_,index)=>`<li>${scenePicture(visual,index)}</li>`).join('')}</ol>`:''}
+ <p>${esc(story.retell)}</p><p class="help-line">用三四句英文讲给没读过这篇文章的人听。</p>
+ <div class="actions"><button class="btn" data-action="scene-step" data-value="read">回看正文</button><button class="btn primary" data-action="scene-step" data-value="transfer">换到我的情境 →</button></div></section>
+ <section class="study-panel scene-practice" id="scene-transfer" hidden><h2 tabindex="-1">换成你的情况，说一遍</h2>
+ <p>${esc(visual?.transfer.prompt||scene.prompt)}</p>
+ <p class="help-line">先开口说，再把时间、地点或对象换成你的实际情况，重说一遍。</p>
+ <details><summary>卡住了？查看参考表达</summary><p class="scene-sample" lang="en">${esc(visual?.transfer.sample||scene.sample)}</p>
+ <div class="actions"><button class="btn small" data-action="play-scene">▶ 听示范</button>${link}</div></details>
+ <details id="scenePrevious" ${recent?.text?'':'hidden'}><summary>查看上次记下的话</summary><p id="scenePreviousText" lang="en">${esc(recent?.text||'')}</p></details>
+ <form id="scenePracticeForm" data-id="${scene.id}">
+ <label class="inline-label" for="scenePracticeText">记下自己说的话（可选）</label><textarea id="scenePracticeText" class="answer" maxlength="1000" rows="3" lang="en"></textarea>
+ <div class="actions"><label><span class="hidden">本次口练自评</span><select id="scenePracticeRating" required><option value="">这次说得怎么样？</option><option value="again">还想再练</option><option value="with-help">借助提示说完</option><option value="independent">独立说完</option></select></label><button class="btn primary" type="submit">保存口练记录</button></div>
+ <p class="help-line" id="sceneSaveStatus" role="status">${recent?'已有口练记录。':'记录你自己的判断。'}</p>
+ </form>
+ ${next?`<a class="text-btn" href="${esc(sceneLink(next,nextParams))}">${reviewing?'重练':'同类短文'} · ${esc(next.title)} ↗</a>`:''}</section>`;
+ showSceneStep(route.query.get('step'));
+}
+function showSceneStep(step, focus=false) {
+ const buttons=[...main.querySelectorAll('.scene-steps button')];
+ if(!buttons.some(button=>button.dataset.value===step))step=buttons[0].dataset.value;
+ const current=$(`#scene-${step}`);
+ if(!current.hidden&&focus)return;
+ stopAudio();
+ buttons.forEach(button=>{
+  const active=button.dataset.value===step;
+  $(`#scene-${button.dataset.value}`).hidden=!active;
+  button.setAttribute('aria-pressed',active);
+  button.classList.toggle('selected',active);
+ });
+ if(focus){
+  current.querySelector('.scene-frame:not([hidden]) h2, :scope > h2, :scope > .actions > button')?.focus({preventScroll:true});
+  current.scrollIntoView({block:'nearest'});
+ }
+}
+async function saveScenePractice(form) {
+ const button=form.querySelector('button[type="submit"]');
+ if(button.disabled)return;
+ const rating=$('#scenePracticeRating').value;
+ if(!['again','with-help','independent'].includes(rating))return;
+ const text=$('#scenePracticeText').value.trim();
+ button.disabled=true;
+ const saved=await record({kind:'output',target:`scene:${form.dataset.id}:transfer`,rating,text});
+ if(!form.isConnected)return;
+ button.disabled=false;
+ if(saved){
+  $('#scenePracticeRating').value='';
+  $('#sceneSaveStatus').textContent='本次口练已保存。可以在「重练我的表达」里找到。';
+  $('#scenePrevious').hidden=!text;
+  $('#scenePrevious').open=false;
+  $('#scenePreviousText').textContent=text;
+ }
+}
 function catalog(type) {
  const isD=type==='dialogues', cats=[...new Set((isD?dialogues:units).map(x=>isD?x.scene:x.family))];
  main.innerHTML=pageTop(isD?'CONVERSATIONS':'VOCABULARY, IN CONTEXT',isD?'在场景里，练会一句话。':'有体系地学，也有场景地用。',isD?'40 个原创短对话。选一个与你生活有关的情境，完成听写、跟读、接话与迁移表达。':`${entries.length} 个用法条目，覆盖动词、数字数量、时间、形容词和基础表达。每条都附搭配、例句和语境回忆题。`)+`
@@ -219,8 +398,10 @@ function progressPage() {
 function eventLabel(e) {
  const parts=e.target.split(':'),item=byEntry.get(parts[1]),d=byDialogue.get(parts[1]);
  const article=parts[0]==='article'?articles.find(a=>a.id===Number(parts[1])):null;
+ const scene=parts[0]==='scene'?scenesById.get(parts[1]):null;
  const vocabulary=parts[0].startsWith('serial-')?SeriesVocabulary.words.find(w=>w.id===parts[1]):null;
- const title=esc(vocabulary?.head||item?.head||d?.title||article?.subtitle||'练习');
+ const title=esc(vocabulary?.head||item?.head||d?.title||article?.subtitle||scene?.title||'练习');
+ if(scene&&e.kind==='output')return `<a href="${sceneLink(scene,new URLSearchParams({step:'transfer'}))}">${title} ↗</a> · 口练自评 · ${{again:'还想再练','with-help':'借助提示说完',independent:'独立说完'}[e.rating]}`;
  if(e.kind==='exposure')return `${title} · 查看过参考（不计掌握）`;
  if(e.kind==='recall')return `${title} · ${e.correct&&!e.assisted?'独立回忆正确':e.assisted?'辅助回忆练习':'待巩固'}`;
  if(e.kind==='listen')return `${title} · 听完`;
@@ -229,16 +410,16 @@ function eventLabel(e) {
 }
 let articleFilters={query:'',level:'',category:'',format:'',collection:'series'};
 function articlesPage() {
- articleFilters={query:'',level:'',category:route.query.get('topic')||'',format:'',collection:['archive','edited'].includes(route.query.get('collection'))?route.query.get('collection'):'series'};
- main.innerHTML=pageTop('MAPLE STREET / 枫树街的夏天','这一集，接着上一集。','43 集原创生活连载，九章完整故事。固定人物、前情回顾、生活冲突与下一集入口；每集配 4 个搭配、理解题、复述和迁移。')+`
- <div class="toolbar"><label class="search-wrap"><span class="hidden">搜索文章</span><input type="search" id="articleSearch" placeholder="搜索题材、文章标题或正文…"></label><label><span class="hidden">难度</span><select id="articleLevel"><option value="">全部难度</option><option value="beginner">基础</option><option value="intermediate">中级</option><option value="advanced">进阶</option></select></label><label><span class="hidden">文体</span><select id="articleFormat"><option value="">全部文体</option>${[...new Set(articles.filter(a=>a.edition).map(a=>a.format))].map(f=>`<option>${f}</option>`).join('')}</select></label><label><span class="hidden">文章版本</span><select id="articleCollection"><option value="series" ${articleFilters.collection==='series'?'selected':''}>生活连载 · 43 集</option><option value="edited" ${articleFilters.collection==='edited'?'selected':''}>旧独立文章 · 40 篇</option><option value="archive" ${articleFilters.collection==='archive'?'selected':''}>历史原稿 · 20</option></select></label></div>
+ articleFilters={query:'',level:'',category:route.query.get('topic')||'',format:'',collection:['archive','edited','worklife'].includes(route.query.get('collection'))?route.query.get('collection'):route.query.get('track')==='worklife'?'worklife':'series'};
+ main.innerHTML=pageTop('MAPLE STREET / 枫树街的夏天','这一集，接着上一集。',`${SerialReading.episodes.length} 集原创双语连载。每集有 4 个常用搭配、理解题、复述和迁移练习。`,'<a class="btn" href="#scenes">按生活场景练习 →</a>')+`
+ <div class="toolbar"><label class="search-wrap"><span class="hidden">搜索文章</span><input type="search" id="articleSearch" placeholder="搜索题材、文章标题或正文…"></label><label><span class="hidden">难度</span><select id="articleLevel"><option value="">全部难度</option><option value="beginner">基础</option><option value="intermediate">中级</option><option value="advanced">进阶</option></select></label><label><span class="hidden">文体</span><select id="articleFormat"><option value="">全部文体</option>${[...new Set(articles.filter(a=>a.edition).map(a=>a.format))].map(f=>`<option>${f}</option>`).join('')}</select></label><label><span class="hidden">文章版本</span><select id="articleCollection"><option value="series" ${articleFilters.collection==='series'?'selected':''}>生活连载 · ${SerialReading.episodes.length} 集</option><option value="worklife" ${articleFilters.collection==='worklife'?'selected':''}>职场与生活 · 12 集</option><option value="edited" ${articleFilters.collection==='edited'?'selected':''}>旧独立文章 · 40 篇</option><option value="archive" ${articleFilters.collection==='archive'?'selected':''}>历史原稿 · 20</option></select></label></div>
  <div class="filter-row">${['',...[...new Set(articles.filter(a=>a.edition).map(a=>a.category))]].map(c=>`<button class="btn small ${articleFilters.category===c?'selected':''}" data-action="article-category" data-value="${esc(c)}">${c||'全部题材'}</button>`).join('')}</div><div id="articleResults"></div><p class="help-line">原创教学文本，人物与情境为虚构；基础、中级、进阶为编辑难度提示。重写稿使用独立编号，原稿的完成与段落标记不会套用到新文字。</p>`;
  renderArticleResults();
 }
 function renderArticleResults() {
  const f=articleFilters,q=f.query.trim().toLowerCase();
- const found=articles.filter(a=>(f.collection==='series'?!!a.series:f.collection==='archive'?!a.edition:!!a.edition&&!a.series)&&(!f.level||a.level===f.level)&&(!f.category||(a.category||articles.find(x=>x.revisionOf===a.id)?.category)===f.category)&&(!f.format||a.format===f.format)&&[a.title,a.subtitle,a.content,a.category,a.goal].join(' ').toLowerCase().includes(q));
- $('#articleResults').innerHTML=`<p class="result-count">${found.length} ${f.collection==='series'?'集连载':f.collection==='archive'?'历史原稿':'旧独立文章'}${f.collection==='archive'?' · 保留原有文字与记录':' · 推荐按顺序阅读；过滤后仍保留原剧集顺序'}</p><div class="cards reading-list">${found.map(articleCard).join('')}</div>${found.length?'':'<div class="empty"><p>没有符合条件的文章。</p><p>试试更短的关键词，或清除筛选重新选择。</p><button class="btn" data-action="clear-article-filters">清除筛选</button></div>'}`;
+ const found=articles.filter(a=>(f.collection==='worklife'?!!a.series?.reviewGroup:f.collection==='series'?!!a.series:f.collection==='archive'?!a.edition:!!a.edition&&!a.series)&&(!f.level||a.level===f.level)&&(!f.category||(a.category||articles.find(x=>x.revisionOf===a.id)?.category)===f.category)&&(!f.format||a.format===f.format)&&[a.title,a.subtitle,a.content,a.category,a.goal,a.series?.seasonTitle].join(' ').toLowerCase().includes(q));
+ $('#articleResults').innerHTML=`<p class="result-count">${found.length} ${['series','worklife'].includes(f.collection)?'集连载':f.collection==='archive'?'历史原稿':'旧独立文章'}${f.collection==='archive'?' · 保留原有文字与记录':' · 推荐按顺序阅读；过滤后仍保留原剧集顺序'}</p><div class="cards reading-list">${found.map(articleCard).join('')}</div>${found.length?'':'<div class="empty"><p>没有符合条件的文章。</p><p>试试更短的关键词，或清除筛选重新选择。</p><button class="btn" data-action="clear-article-filters">清除筛选</button></div>'}`;
 }
 function notFound() {main.innerHTML='<div class="empty"><h2>这个内容暂时找不到。</h2><p>链接可能不完整，可以回目录重新选择。</p><a class="btn" href="#home">回到今日阅读</a></div>';}
 function cleanupRecording() {
@@ -275,11 +456,11 @@ function routePage() {
  stopAudio();cleanupRecording();session=null;
  const [path,query='']=location.hash.replace(/^#/,'').split('?');const [page='home',id]=path.split('/');
  route={page:page||'home',id,query:new URLSearchParams(query)};filters={query:'',level:'',category:''};
- const nav={dialogue:'dialogues',unit:'units'}[route.page]||route.page;
+ const nav={dialogue:'dialogues',unit:'units',scene:'scenes'}[route.page]||route.page;
  document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===nav));
  document.querySelectorAll('[data-mobile-nav]').forEach(a=>a.classList.toggle('active',a.dataset.mobileNav===nav));
- $('#breadcrumb').textContent={home:'今日阅读',dialogues:'场景对话',dialogue:'场景对话 / 练习',units:'系统词汇',unit:'系统词汇 / 用法',words:'词汇检索',review:'到期复习',progress:'学习记录',articles:'连载剧集',vocabulary:'5200 词会用计划'}[route.page]||'学习工作台';
- if(route.page==='home')home();else if(['dialogues','units'].includes(route.page))catalog(route.page);else if(route.page==='words')wordDirectory();else if(route.page==='unit')unitDetail(id);else if(route.page==='dialogue')dialogueDetail(id,route.query.get('mode')||'read');else if(route.page==='review')reviewPage();else if(route.page==='progress')progressPage();else if(route.page==='articles')articlesPage();else if(route.page==='vocabulary')renderSeriesVocabulary(main,route.query);else notFound();
+ $('#breadcrumb').textContent={home:'今日阅读',scenes:'生活场景',scene:'生活场景 / 短文',dialogues:'场景对话',dialogue:'场景对话 / 练习',units:'系统词汇',unit:'系统词汇 / 用法',words:'词汇检索',review:'到期复习',progress:'学习记录',articles:'连载剧集',vocabulary:'5200 词会用计划'}[route.page]||'学习工作台';
+ if(route.page==='home')home();else if(route.page==='scenes')scenesPage();else if(route.page==='scene')sceneArticlePage(id);else if(['dialogues','units'].includes(route.page))catalog(route.page);else if(route.page==='words')wordDirectory();else if(route.page==='unit')unitDetail(id);else if(route.page==='dialogue')dialogueDetail(id,route.query.get('mode')||'read');else if(route.page==='review')reviewPage();else if(route.page==='progress')progressPage();else if(route.page==='articles')articlesPage();else if(route.page==='vocabulary')renderSeriesVocabulary(main,route.query);else notFound();
  updateDue();main.dataset.route=location.hash||'#home';window.scrollTo({top:0});document.title=`${$('#breadcrumb').textContent} · Shadow Reading`;
 }
 function download(data,name) {
@@ -294,10 +475,23 @@ document.addEventListener('click',async event=>{
  const button=event.target.closest('[data-action]');if(!button)return;
  const action=button.dataset.action,id=button.dataset.id,index=Number(button.dataset.index);
  if(action==='guide')$('#guideDialog').showModal();
+ else if(action==='scene-step')showSceneStep(button.dataset.value,true);
+ else if(action==='scene-frame')showSceneFrame(index);
+ else if(action==='scene-query'){
+  $('#sceneSearch').value=button.dataset.value;
+  $('#sceneGroup').value='';
+  $('#practicedScenes').checked=false;
+  renderSceneResults();
+  $('#sceneSearch').focus();
+ }
  else if(action==='clear-article-filters'){articleFilters={query:'',level:'',category:'',format:'',collection:articleFilters.collection};$('#articleSearch').value='';$('#articleLevel').value='';$('#articleFormat').value='';document.querySelectorAll('[data-action=article-category]').forEach(b=>b.classList.toggle('selected',b.dataset.value===''));renderArticleResults();}
  else if(action==='article-category'){articleFilters.category=button.dataset.value;document.querySelectorAll('[data-action=article-category]').forEach(b=>b.classList.toggle('selected',b===button));renderArticleResults();}
  else if(action==='category'){filters.category=button.dataset.value;document.querySelectorAll('[data-action=category]').forEach(b=>b.classList.toggle('selected',b===button));renderCatalogResults(route.page);}
  else if(action==='speak-word'){const e=byEntry.get(id);await play(`${e.head}. ${e.example}`);}
+ else if(action==='play-scene')await play(button.closest('.scene-practice').querySelector('.scene-sample').textContent);
+ else if(action==='play-scene-frame')await play(button.closest('.scene-frame').querySelector('.scene-frame-line').textContent);
+ else if(action==='play-scene-paragraph')await play(button.closest('.scene-paragraph').querySelector('.scene-english').textContent);
+ else if(action==='play-scene-article')await play([...button.closest('.scene-article').querySelectorAll('.scene-english')].map(p=>p.textContent).join('\n\n'));
  else if(action==='single-recall')startRecall([entryItem(byEntry.get(id))],'unit','用法回忆');
  else if(action==='unit-practice'){const u=byUnit.get(id);startRecall(u.entries.map(entryItem),'unit',u.title);}
  else if(action==='review-start')startRecall(dueItems().slice(0,20),'review','到期复习');
@@ -335,13 +529,18 @@ document.addEventListener('click',async event=>{
  else if(action==='raw-backup'){try{download(Object.fromEntries([C.KEY,...C.LEGACY].map(k=>[k,localStorage.getItem(k)])),`shadow-reading-recovery-${C.dayKey()}.json`);}catch{toast('浏览器当前不允许访问本地存储。');}}
  else if(action==='import')$('#backupInput').click();
 });
-document.addEventListener('submit',e=>{if(e.target.id==='recallForm')checkRecall(e);});
+document.addEventListener('submit',e=>{
+ if(e.target.id==='recallForm')checkRecall(e);
+ if(e.target.id==='scenePracticeForm'){e.preventDefault();saveScenePractice(e.target);}
+});
 document.addEventListener('input',e=>{
+ if(e.target.id==='sceneSearch')renderSceneResults();
  if(e.target.id==='articleSearch'){articleFilters.query=e.target.value;renderArticleResults();}
  if(e.target.id==='catalogSearch'){filters.query=e.target.value;renderCatalogResults(route.page);}
  if(e.target.id==='wordSearch'){filters.query=e.target.value;renderWordResults();}
 });
 document.addEventListener('change',e=>{
+ if(['sceneGroup','practicedScenes'].includes(e.target.id))renderSceneResults();
  if(['articleLevel','articleFormat','articleCollection'].includes(e.target.id)){const key={articleLevel:'level',articleFormat:'format',articleCollection:'collection'}[e.target.id];articleFilters[key]=e.target.value;if(key==='collection'){articleFilters.category='';articleFilters.format='';$('#articleFormat').value='';document.querySelectorAll('[data-action=article-category]').forEach(b=>b.classList.toggle('selected',b.dataset.value===''));}renderArticleResults();}
  if(e.target.id==='levelFilter'){filters.level=e.target.value;renderCatalogResults(route.page);}
  if(e.target.id==='wordFamily'){filters.category=e.target.value;renderWordResults();}
@@ -359,11 +558,12 @@ try {applyTheme(localStorage.getItem('sr_theme')==='dark'?'dark':'light');} catc
 if(window.speechSynthesis)speechSynthesis.addEventListener('voiceschanged',loadVoices);
 window.addEventListener('hashchange',routePage);
 window.addEventListener('pagehide',()=>{stopAudio();cleanupRecording();});
-window.addEventListener('learning-synced',()=>{loadState();updateDue();if(!session&&['home','progress','review'].includes(route.page)){if(route.page==='home')home();else if(route.page==='progress')progressPage();else reviewPage();}});
-window.addEventListener('storage',e=>{if(e.key===C.KEY){loadState();updateDue();if(['home','progress','review','units'].includes(route.page)&&!session)routePage();}});
+window.addEventListener('learning-synced',()=>{loadState();updateDue();if(route.page==='scenes')renderSceneResults();if(!session&&['home','progress','review'].includes(route.page)){if(route.page==='home')home();else if(route.page==='progress')progressPage();else reviewPage();}});
+window.addEventListener('storage',e=>{if(e.key===C.KEY){loadState();updateDue();if(route.page==='scenes')renderSceneResults();if(['home','progress','review','units'].includes(route.page)&&!session)routePage();}});
 // Old bookmarks and article wordbook links continue to select the same article/paragraph.
 if(new URLSearchParams(location.search).has('article')){location.replace(`reading.html${location.search}${location.hash}`);return;}
-const navIcons={home:'home',articles:'book',words:'words',vocabulary:'words',units:'layers',review:'review',progress:'chart',dialogues:'chat'};
+$('#serialEpisodeTotal').textContent=SerialReading.episodes.length;
+const navIcons={home:'home',scenes:'layers',articles:'book',words:'words',vocabulary:'words',units:'layers',review:'review',progress:'chart',dialogues:'chat'};
  document.querySelectorAll('[data-nav]').forEach(a=>{a.querySelector('span').innerHTML=UIAssets.icon(navIcons[a.dataset.nav]);});
  document.querySelectorAll('[data-mobile-nav]').forEach(a=>a.insertAdjacentHTML('afterbegin',UIAssets.icon(navIcons[a.dataset.mobileNav])));
  loadState();routePage();

@@ -7,13 +7,31 @@ const recall=(d,correct=true,assisted=false)=>({kind:'recall',target:'serial-wor
 const output=(d,context='home',rating='independent',text=context==='work'?'I left the book in our meeting room.':'Could you bring my book tomorrow morning?')=>({kind:'output',target:`serial-use:book:${context}`,rating,text,at:at(d)});
 const word=V.words.find(w=>w.id==='book');
 class Storage{constructor(){this.data=new Map();}getItem(k){return this.data.get(k)??null;}setItem(k,v){this.data.set(k,String(v));}removeItem(k){this.data.delete(k);}}
-test('43 complete episodes append after the 60 previous manuscripts, with valid two-way navigation',()=>{
+test('every life situation has one distinct bilingual article',()=>{
+ const groups=require('../scene-data.js'),stories=require('../scene-articles.js');
+ const titles=groups.flatMap(group=>group.situations.map(scene=>scene.title));
+ assert.equal(groups.length,24);
+ assert.equal(titles.length,120);
+ assert.equal(new Set(titles).size,titles.length);
+ assert.equal(new Set(groups.flatMap(group=>group.situations.map(scene=>scene.id))).size,titles.length);
+ assert.deepEqual(new Set(stories.keys()),new Set(titles));
+ assert.equal(new Set([...stories.values()].map(story=>story.title)).size,titles.length);
+ for(const [title,{paragraphs,retell}] of stories){
+  assert.match(retell,/[？]/,title);
+  assert.equal(paragraphs.length,2,title);
+  for(const {en,zh} of paragraphs){
+   assert.ok(S.tokens(en).length>=20,title);
+   assert.match(zh,/[\u4e00-\u9fff]/,title);
+  }
+ }
+});
+test('55 complete episodes append after the 60 previous manuscripts, with valid two-way navigation',()=>{
  const context={};vm.createContext(context);vm.runInContext(['articles-data.js','editorial-data.js','serial-data.js'].map(p=>fs.readFileSync(p,'utf8')).join('\n')+'\nthis.all=articles;',context);
- assert.equal(context.all.length,103);assert.equal(serial.episodes.length,43);assert.equal(serial.seasons.length,9);
- assert.deepEqual(Array.from(context.all,a=>a.id),Array.from({length:103},(_,i)=>i+1));
+ assert.equal(context.all.length,115);assert.equal(serial.episodes.length,55);assert.equal(serial.seasons.length,11);
+ assert.deepEqual(Array.from(context.all,a=>a.id),Array.from({length:115},(_,i)=>i+1));
  const endings=new Set();
  for(const [i,a] of serial.episodes.entries()){
-  assert.equal(a.series.episode,i+1);assert.equal(a.series.previousId,i===0?null:a.id-1);assert.equal(a.series.nextId,i===42?null:a.id+1);
+  assert.equal(a.series.episode,i+1);assert.equal(a.series.previousId,i===0?null:a.id-1);assert.equal(a.series.nextId,i===54?null:a.id+1);
   assert.ok(a.series.recap&&a.series.seasonTitle&&a.goal&&a.transfer.prompt&&a.transfer.sample);
   const en=a.content.split('\n\n'),zh=a.translation.split('\n\n');assert.equal(en.length,4);assert.equal(zh.length,4);
   assert.ok(en.every(p=>p.length>100));assert.ok(zh.every(p=>/[\u4e00-\u9fff]/.test(p)));
@@ -22,7 +40,7 @@ test('43 complete episodes append after the 60 previous manuscripts, with valid 
   assert.equal(a.checks.length,2);for(const q of a.checks){assert.equal(q.options.length,3);assert.ok(q.options[q.answer]&&q.why);}
   endings.add(en.at(-1));
  }
- assert.equal(endings.size,43);
+ assert.equal(endings.size,55);
  assert.equal(new Set(serial.episodes.flatMap(a=>a.checks.map(q=>q.answer))).size,3);
 });
 test('5200 distinct dictionary headwords all have an attested example form and contributor attribution',()=>{
@@ -30,6 +48,23 @@ test('5200 distinct dictionary headwords all have an attested example form and c
  const ids=new Set(V.words.map(w=>w.id));assert.ok(ids.has('i')&&ids.has('be')&&ids.has('have'));
  for(const inflection of ['is','are','am','was','went','gone','did','does','has','written'])assert.ok(!ids.has(inflection),inflection);
  for(const w of V.words){assert.match(w.id,/^[a-z]+$/);assert.match(w.meaning,/[\u4e00-\u9fff]/);assert.ok(S.containsWord(w,w.example));assert.ok(S.tokens(w.example).includes(w.surface));assert.match(w.attribution,/#\d+ \([^)]+\)/);assert.ok(S.tokens(w.example).length>=5);assert.ok(w.rank>0&&w.rank<7000);}
+});
+test('work and daily-life episodes reuse each of twelve target expressions four times across subjects',()=>{
+ const worklife=serial.episodes.filter(a=>a.series.reviewGroup);
+ assert.equal(worklife.length,12);
+ const heads=new Set();
+ for(let group=1;group<=3;group++){
+  const related=worklife.filter(a=>a.series.reviewGroup===group);
+  assert.equal(related.length,4);
+  assert.ok(new Set(related.map(a=>a.category)).size>1);
+  const sequence=related[0].phrases.map(p=>p.en);
+  for(const a of related){
+   assert.deepEqual(a.phrases.map(p=>p.en),sequence);
+   for(const phrase of sequence)assert.ok(a.content.toLowerCase().includes(phrase));
+  }
+  sequence.forEach(head=>heads.add(head));
+ }
+ assert.equal(heads.size,12);
 });
 test('reading, listening, seeing an answer and legacy self-ratings create no vocabulary mastery',()=>{
  const s=state([{kind:'exposure',target:'serial-word:book',at:at(1)},{kind:'listen',target:'article:61',at:at(1)},output(1)]);
