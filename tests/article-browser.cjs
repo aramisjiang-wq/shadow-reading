@@ -7,7 +7,10 @@ const base=process.env.TEST_URL||'http://127.0.0.1:8765';
  page.on('pageerror',e=>errors.push(e.message));let checks=0;function check(value,message){assert.ok(value,message);checks++;}
  async function go(path){await page.goto(base+path);if(path.includes('reading.html')){await page.waitForFunction(()=>document.getElementById('articleTitle').textContent!=='Loading…');await page.waitForFunction(()=>getComputedStyle(document.getElementById('articleContent')).opacity==='1');}else if(path.includes('words.html'))await page.locator('#articleSelect').waitFor();else await page.waitForFunction(()=>document.querySelector('main')?.dataset.route===(location.hash||'#home'));}
  await go('/#home');check((await page.locator('.hero a.btn.primary').getAttribute('href')).startsWith('reading.html?article='),'home primary action reads an article');
- check((await page.locator('nav a').nth(1).innerText()).includes('连载剧集'),'article library is the main content navigation');
+ const serialNav=page.locator('nav a[data-nav="articles"]');
+ check(await serialNav.isVisible()&&(await serialNav.getAttribute('href'))==='#articles','serial library is available from primary navigation');
+ const scenesNav=page.locator('nav a[data-nav="scenes"]');
+ check(await scenesNav.isVisible()&&(await scenesNav.getAttribute('href'))==='#scenes','life scenes are available from primary navigation');
  check(await page.locator('main a[href^="#dialogue/"]').count()===0,'short dialogues do not displace articles on homepage');
  await page.evaluate(()=>{localStorage.setItem('sr_onboarded','1');localStorage.setItem('sr_completed','[0,19]');localStorage.setItem('sr_practiced','{"0":[2,4]}');});
  await go('/#articles?collection=edited');check(await page.locator('.article-card').count()===40,'edited library has forty manuscripts');
